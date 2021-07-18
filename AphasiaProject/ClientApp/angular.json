@@ -25,15 +25,30 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/styles.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css",
+              "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css",
+              "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css",
+              "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css"  
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/chart.js",
+              "./node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -63,7 +78,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
