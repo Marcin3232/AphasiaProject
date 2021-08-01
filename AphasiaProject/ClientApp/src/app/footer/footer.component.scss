@@ -1,0 +1,29 @@
+
+.mat-mini-fab{
+  margin-right: 12px;
+  margin-top: 10px;
+  outline: none;
+}
+
+
+#dot::before { 
+  display: inline-block;
+    content: '';
+    -webkit-border-radius: 0.375rem;
+    border-radius: 0.375rem;
+    height: 0.55rem;
+    width: 0.5rem;
+    margin-right: 0.5rem;
+    background-color: white;
+}
+
+#dot.alternative::before { 
+  background-color: #66c;
+}
+
+#dot {
+  text-indent: -0.75em; 
+}
+  a:hover {
+  text-decoration: underline; 
+  }

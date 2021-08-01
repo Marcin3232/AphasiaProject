@@ -1,28 +1,15 @@
-
-// modify any default color variables
-$primary: #0074d9;
-$dark: #ff4136;
-
-// load the _variables.scss file
-
-
-// add any custom colors by creating your own map and merging with the (now-defined) $theme-colors map
-// Create your own map
-
 @import "~bootstrap/scss/bootstrap";
 @import "~mdb-angular-ui-kit/assets/scss/mdb.scss";
 @import "../node_modules/bootstrap/scss/variables";
-@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss"; 
-@import "~@fortawesome/fontawesome-free/scss/solid.scss"; 
-@import "~@fortawesome/fontawesome-free/scss/regular.scss"; 
-@import "~@fortawesome/fontawesome-free/scss/brands.scss";
-@import "~mdb-angular-ui-kit/assets/scss/mdb.scss";
+@import '~ngx-sharebuttons/themes/material/material-dark-theme';
+@import '~ngx-sharebuttons/themes/modern/modern-light-theme';
+@import '~ngx-sharebuttons/themes/circles/circles-dark-theme';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
+ 
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
-
-$theme-colors: (
-  "primary": $primary,
-  "dark": $dark);
