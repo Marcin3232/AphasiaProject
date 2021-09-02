@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
 namespace AphasiaProject.Models.Users
 {
-    public class AppUser:IdentityUser<int>
+    public class AppUser : IdentityUser<int>
     {
         [PersonalData]
-        public string Name { get; set; }
+        [Column(TypeName = "varchar(100)")]
+        public string FirstName { get; set; }
+
         [PersonalData]
+        [Column(TypeName = "varchar(100)")]
         public string Surname { get; set; }
+
+        public DateTime CreateDateTime { get; set; }
+        public bool IsActive { get; set; }
     }
 }

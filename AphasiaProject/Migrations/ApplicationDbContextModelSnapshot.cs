@@ -31,6 +31,9 @@ namespace AphasiaProject.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("varchar");
+
                     b.Property<string>("Name")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
@@ -48,7 +51,7 @@ namespace AphasiaProject.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("AphasiaProject.Models.Users.AppUser", b =>
+            modelBuilder.Entity("AphasiaProject.Models.Users.AppUsers", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,6 +65,9 @@ namespace AphasiaProject.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("CreateDateTime")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
@@ -69,14 +75,17 @@ namespace AphasiaProject.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -99,7 +108,7 @@ namespace AphasiaProject.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Surname")
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
@@ -232,7 +241,7 @@ namespace AphasiaProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("AphasiaProject.Models.Users.AppUser", null)
+                    b.HasOne("AphasiaProject.Models.Users.AppUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -241,7 +250,7 @@ namespace AphasiaProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("AphasiaProject.Models.Users.AppUser", null)
+                    b.HasOne("AphasiaProject.Models.Users.AppUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -256,7 +265,7 @@ namespace AphasiaProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AphasiaProject.Models.Users.AppUser", null)
+                    b.HasOne("AphasiaProject.Models.Users.AppUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -265,7 +274,7 @@ namespace AphasiaProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("AphasiaProject.Models.Users.AppUser", null)
+                    b.HasOne("AphasiaProject.Models.Users.AppUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
