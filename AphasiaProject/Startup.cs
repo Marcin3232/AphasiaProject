@@ -1,3 +1,4 @@
+using AphasiaProject.Extensions;
 using AphasiaProject.Models.DB;
 using AphasiaProject.Models.Users;
 using Microsoft.AspNetCore.Builder;
@@ -26,8 +27,9 @@ namespace AphasiaProject
         {
             services.AddControllersWithViews();
 
-            DbConfigureService(services);
-            IdentityConfigureService(services);
+            services.ConfigureSqlContext(Configuration);
+            services.ConfigureIdentityUserService();
+            services.ConfigureIdentityPasswordService();
 
             services.AddSpaStaticFiles(configuration =>
             {
@@ -71,31 +73,6 @@ namespace AphasiaProject
 
                 if (env.IsDevelopment())
                     spa.UseAngularCliServer(npmScript: "start");
-            });
-        }
-
-        private void DbConfigureService(IServiceCollection services)
-        {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-        }
-
-        private void IdentityConfigureService(IServiceCollection services)
-        {
-            services.AddIdentity<AppUser, AppRole>(options =>
-            {
-                options.User.RequireUniqueEmail = false;
-                options.User.AllowedUserNameCharacters =
-                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            }).AddEntityFrameworkStores<ApplicationDbContext>();
-
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 6;
-                options.Password.RequireUppercase = true;
-                options.Password.RequireLowercase = true;
-
             });
         }
     }

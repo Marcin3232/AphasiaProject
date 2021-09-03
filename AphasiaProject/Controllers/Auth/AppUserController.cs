@@ -8,6 +8,9 @@ using AphasiaProject.Models.Users;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using NLog;
+using ILogger = NLog.ILogger;
 
 namespace AphasiaProject.Controllers.Auth
 {
@@ -15,13 +18,15 @@ namespace AphasiaProject.Controllers.Auth
     [ApiController]
     public class AppUserController : ControllerBase
     {
+        private readonly ILogger<AppUserController> Logger;
         private UserManager<AppUser> UserManager;
         private SignInManager<AppUser> SignInManager;
 
-        public AppUserController(UserManager<AppUser> appUserManager, SignInManager<AppUser> signInManager)
+        public AppUserController(UserManager<AppUser> appUserManager, SignInManager<AppUser> signInManager, ILogger<AppUserController> logger)
         {
             UserManager = appUserManager;
             SignInManager = signInManager;
+            Logger = logger;
         }
 
         [HttpPost]
@@ -51,6 +56,7 @@ namespace AphasiaProject.Controllers.Auth
             await UserManager.AddClaimAsync(user, new Claim("Email", user.Email));
             await UserManager.AddClaimAsync(user, new Claim("Role", "Admin"));
 
+            Logger.LogInformation($"Add new user id: {user.Id}");
             return Ok(new AppRegisterResponseViewModel(user));
         }
     }

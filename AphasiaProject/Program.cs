@@ -4,8 +4,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using NLog.Web;
 
 namespace AphasiaProject
 {
@@ -13,7 +15,25 @@ namespace AphasiaProject
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var logPath = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
+            NLog.GlobalDiagnosticsContext.Set("LogDirectory", logPath);
+
+            var logger = NLogBuilder.ConfigureNLog("NLog.config").GetCurrentClassLogger();
+
+            try
+            {
+                logger.Debug("init main");
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Application stopped due to an error");
+                throw;
+            }
+            finally
+            {
+                NLog.LogManager.Shutdown();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -21,6 +41,10 @@ namespace AphasiaProject
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                }).ConfigureLogging(opt =>
+                {
+                    opt.ClearProviders();
+                    opt.SetMinimumLevel(LogLevel.Trace);
+                }).UseNLog();
     }
 }
