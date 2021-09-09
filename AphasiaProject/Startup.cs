@@ -1,4 +1,5 @@
 using AphasiaProject.Extensions;
+using AphasiaProject.Models.Auth;
 using AphasiaProject.Models.DB;
 using AphasiaProject.Models.Users;
 using Microsoft.AspNetCore.Builder;
@@ -26,10 +27,12 @@ namespace AphasiaProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.Configure<AppSettings>(Configuration.GetSection("ApplicationSettings"));
 
             services.ConfigureSqlContext(Configuration);
             services.ConfigureIdentityUserService();
             services.ConfigureIdentityPasswordService();
+            services.ConfigureAuthentication(Configuration);
 
             services.AddSpaStaticFiles(configuration =>
             {
@@ -51,7 +54,6 @@ namespace AphasiaProject
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
 
             if (!env.IsDevelopment())
             {
@@ -59,6 +61,7 @@ namespace AphasiaProject
             }
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
@@ -74,6 +77,7 @@ namespace AphasiaProject
                 if (env.IsDevelopment())
                     spa.UseAngularCliServer(npmScript: "start");
             });
+
         }
     }
 }
