@@ -1,15 +1,10 @@
-@import "~bootstrap/scss/bootstrap";
-@import "~mdb-angular-ui-kit/assets/scss/mdb.scss";
-@import "../node_modules/bootstrap/scss/variables";
-@import '~ngx-sharebuttons/themes/material/material-dark-theme';
-@import '~ngx-sharebuttons/themes/modern/modern-light-theme';
-@import '~ngx-sharebuttons/themes/circles/circles-dark-theme';
+// @import "~bootstrap/scss/bootstrap";
+// @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+// @import '~@fortawesome/fontawesome-free/scss/solid.scss';
+// @import '~@fortawesome/fontawesome-free/scss/regular.scss';
+// @import '~@fortawesome/fontawesome-free/scss/brands.scss';
+ 
+// @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
-@import '~@fortawesome/fontawesome-free/scss/solid.scss';
-@import '~@fortawesome/fontawesome-free/scss/regular.scss';
-@import '~@fortawesome/fontawesome-free/scss/brands.scss';
- 
-@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
