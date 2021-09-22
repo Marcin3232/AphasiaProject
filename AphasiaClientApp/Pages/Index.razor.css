@@ -1,0 +1,24 @@
+﻿.container{
+    position:relative;
+}
+
+#title {
+    font-family: Roboto Slab;
+    font-style: normal;
+    color: #055961;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 56px;
+    /* or 156% */
+
+    text-align: center;
+    font-feature-settings: 'liga' off;
+}
+#imageAsBackground {
+    position: absolute;
+    left: 1.98%;
+    right: 47.55%;
+    z-index:0;
+    top: 10.74%;
+    bottom: 11.06%;
+}
