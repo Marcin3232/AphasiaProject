@@ -1,16 +1,17 @@
-﻿.btn-custom {
-    left: 5%;
-    right: 5%;
-    top: 0%;
-    bottom: 0%;
-    height:104px;
-    word-wrap:break-word;
-    background: #055961;
-    border: 2px solid #FFFFFF;
-    box-sizing: border-box;
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
-    border-radius: 50px;
-}
+﻿
+    .btn-custom {
+        left: 5%;
+        right: 5%;
+        top: 0%;
+        bottom: 0%;
+        height: 104px;
+        word-wrap: break-word;
+        background: #055961;
+        border: 2px solid #FFFFFF;
+        box-sizing: border-box;
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 50px;
+    }
 
     .btn-custom:hover {
         left: 5%;
@@ -38,4 +39,19 @@
         box-sizing: border-box;
         box-shadow: inset 0px 8px 10px rgba(0, 0, 0, 0.25);
         border-radius: 50px;
+    }
+
+    #customText {
+        left: 15.45%;
+        right: 15.24%;
+        top: 28.85%;
+        bottom: 32.69%;
+        color: white;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 40px;
+        text-align: center;
+        font-feature-settings: 'liga' off;
     }
