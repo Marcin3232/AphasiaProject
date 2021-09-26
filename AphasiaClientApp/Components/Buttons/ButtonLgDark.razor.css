@@ -1,10 +1,8 @@
 ﻿
     .btn-custom {
-        left: 5%;
-        right: 5%;
         top: 0%;
         bottom: 0%;
-        height: 104px;
+        min-height: 104px;
         word-wrap: break-word;
         background: #055961;
         border: 2px solid #FFFFFF;
@@ -14,11 +12,9 @@
     }
 
     .btn-custom:hover {
-        left: 5%;
-        right: 5%;
         top: 0%;
         bottom: 0%;
-        height: 104px;
+        min-height: 104px;
         word-wrap: break-word;
         background: #067079;
         border: 2px solid #FFFFFF;
@@ -28,11 +24,9 @@
     }
 
     .btn-custom:active {
-        left: 5%;
-        right: 5%;
         top: 0%;
         bottom: 0%;
-        height: 104px;
+        min-height: 104px;
         word-wrap: break-word;
         background: #055961;
         border: 2px solid #FFFFFF;

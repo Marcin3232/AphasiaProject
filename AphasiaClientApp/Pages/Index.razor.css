@@ -21,6 +21,11 @@
     bottom: 11.06%;
 }
 
+.button-pos{
+    left:10%;
+    right:10%;
+}
+
 @media (max-width:1680px){
     .img{
         opacity:0.3;

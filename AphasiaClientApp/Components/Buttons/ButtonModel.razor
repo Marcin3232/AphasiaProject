@@ -1,0 +1,53 @@
+﻿@using Models.Enums
+
+@switch (ButtonTypes)
+{
+    case ButtonTypes.ButtonLgLightResponsive:
+        <div class="d-grid gap-2">
+            <button class="btn btn-clight btn-large" type="button">
+                <div class="text-lg text-cdark">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
+    case ButtonTypes.ButtonLgLight:
+        <button class="btn btn-clight btn-large" type="button">
+            <div class="text-lg text-cdark">
+                @Text
+            </div>
+        </button>
+        break;
+    case ButtonTypes.ButtonLgDarkResponsive:
+        <div class="d-grid gap-2">
+            <button class="btn btn-cdark btn-large" type="button">
+                <div class="text-lg text-clight">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
+    case ButtonTypes.ButtonLgDark:
+        <button class="btn btn-cdark btn-large" type="button">
+            <div class="text-center text-lg text-clight">
+                @Text
+            </div>
+        </button>
+        break;
+    case ButtonTypes.ButtonSmLDark:
+        <button class="btn btn-cdark btn-small" type="button">
+            <div class="text-center text-sm text-clight">
+                @Text
+            </div>
+        </button>
+        break;
+    case ButtonTypes.ButtonSmLDarkResponvie:
+        <div class="d-grid gap-2">
+            <button class="btn btn-cdark btn-small" type="button">
+                <div class="text-center text-sm text-clight">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
+}
