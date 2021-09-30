@@ -1,0 +1,20 @@
+﻿@page "/choiceTypeAphasia"
+
+<div class="container">
+    <div class="row justify-content-center">
+        <p class="text-TitleDark" style="margin-top:80px; margin-bottom:40px;">
+            Wybierz program rehabilitacji
+        </p>
+
+        @if (aphasiaTypes.Any())
+        {
+            foreach (var item in aphasiaTypes)
+            {
+                <AphasiaClientApp.Components.Cards.TaskCardModel Title="@item.Title"
+                                                                 ImageUrl="@item.ImageUrl"
+                                                                 Url="@item.Url" />
+            }
+        }
+
+    </div>
+</div>
