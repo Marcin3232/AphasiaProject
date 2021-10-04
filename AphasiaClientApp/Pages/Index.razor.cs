@@ -11,5 +11,10 @@ namespace AphasiaClientApp.Pages
         {
             UriHelper.NavigateTo("/choiceTypeAphasia");
         }
+
+        void Navigation()
+        {
+            UriHelper.NavigateTo("/login");
+        }
     }
 }

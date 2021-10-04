@@ -1,0 +1,9 @@
+﻿.card {
+    background: #DBF4F6;
+    border-radius: 10px;
+}
+
+.text-card-title{
+    margin-top:44px;
+    margin-bottom:60px;
+}

@@ -21,11 +21,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\css\mdb\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\bootstrap\forms\_floating-labels.scss" />
+    <None Include="wwwroot\css\bootstrap\forms\_form-check.scss" />
+    <None Include="wwwroot\css\bootstrap\forms\_form-control.scss" />
+    <None Include="wwwroot\css\bootstrap\forms\_form-range.scss" />
+    <None Include="wwwroot\css\bootstrap\forms\_form-select.scss" />
+    <None Include="wwwroot\css\bootstrap\forms\_form-text.scss" />
+    <None Include="wwwroot\css\bootstrap\forms\_input-group.scss" />
+    <None Include="wwwroot\css\bootstrap\forms\_labels.scss" />
+    <None Include="wwwroot\css\bootstrap\forms\_validation.scss" />
   </ItemGroup>
 
 </Project>

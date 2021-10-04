@@ -1,6 +1,26 @@
-﻿
-
+﻿@page "/login"
+<div class="container">
+    <div class="col align-self-center">
+        <div class="card card-l text-center border-0">
+            <div class="text-card-title">Logowanie</div>
+            <div class="form-outline">
+                <input type="password" id="typePassword" class="form-control" />
+                <label class="form-label" for="typePassword">Password input</label>
+            </div>
+            <div class="input-group">
+                <div class="form-outline">
+                    <input type="search" id="form1" class="form-control" />
+                    <label class="form-label" for="form1">Search</label>
+                </div>
+                <button type="button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
-
+    public string TextValue { get; set; }
+        public double? Amount { get; set; }
 }

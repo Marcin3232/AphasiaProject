@@ -7506,6 +7506,10 @@ textarea.form-control-lg {
     display: none !important; } }
 
 /*dodawanie podstawowych elementow strony*/
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url("font/roboto-slab/RobotoSlab-VariableFont_wght.ttf"); }
+
 .text-Card {
   font-family: Roboto;
   font-style: normal;
@@ -7523,4 +7527,15 @@ textarea.form-control-lg {
   line-height: 56px;
   text-align: center;
   font-feature-settings: 'liga' off;
+  color: #055961; }
+
+.card-l {
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15); }
+
+.text-card-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 32px;
   color: #055961; }
