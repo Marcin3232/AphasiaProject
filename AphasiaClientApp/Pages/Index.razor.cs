@@ -14,7 +14,7 @@ namespace AphasiaClientApp.Pages
 
         void Navigation()
         {
-            UriHelper.NavigateTo("/login");
+            UriHelper.NavigateTo("/Exercise/FinishPage");
         }
     }
 }

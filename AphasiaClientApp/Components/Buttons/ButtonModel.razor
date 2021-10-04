@@ -50,4 +50,22 @@
             </button>
         </div>
         break;
+    case ButtonTypes.ButtonHgWhiteResponsive:
+        <div class="d-grid gap-2">
+            <button @onclick="ButtonCallback" class="btn btn-clight btn-huge" type="button">
+                <div class="text-center text-hg text-cdark">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
+    case ButtonTypes.ButtonHgWhiteBorderResponsive:
+        <div class="d-grid gap-2">
+            <button @onclick="ButtonCallback" class="btn btn-cdark btn-huge" type="button">
+                <div class="text-center text-hg text-clight">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
 }

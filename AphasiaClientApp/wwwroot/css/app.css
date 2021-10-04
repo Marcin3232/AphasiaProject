@@ -5,6 +5,14 @@ html, body {
     background: white;
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
 a, .btn-link {
     color: #0366d6;
 }
