@@ -1,7 +1,7 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: Roboto;
     background: white;
 }
 
@@ -28,11 +28,11 @@ a, .btn-link {
 }
 
 .valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+    outline: 2px solid #26b050;
 }
 
 .invalid {
-    outline: 1px solid red;
+    outline: 2px solid red;
 }
 
 .validation-message {

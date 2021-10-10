@@ -1,26 +1,77 @@
 ﻿@page "/login"
-<div class="container">
-    <div class="col align-self-center">
-        <div class="card card-l text-center border-0">
-            <div class="text-card-title">Logowanie</div>
-            <div class="form-outline">
-                <input type="password" id="typePassword" class="form-control" />
-                <label class="form-label" for="typePassword">Password input</label>
-            </div>
-            <div class="input-group">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" />
-                    <label class="form-label" for="form1">Search</label>
+@using Microsoft.Extensions.Logging
+@using Models.Constant
+@using Models.Enums
+@using Extensions
+
+<div class="field-body">
+    <div class="card card-l border-0">
+        <div class="text-card-title text-center">Logowanie</div>
+        <EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="loginId" class="form-label text-start">Login</label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-person-fill"></i>
+                        <InputText id="name" placeholder="Wpisz login" @bind-Value="exampleModel.Name" class="form-control" />
+                    </div>
+
                 </div>
-                <button type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                </button>
             </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="loginPassw" class="form-label text-start">Hasło</label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-lock-fill"></i>
+                        <InputText type="password" placeholder="Wpisz hasło" @bind-Value="exampleModel.Name" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-forms text-underline" style="margin-top:23px;">
+                <a class="link-text" href="#">Zapomniałeś hasła?</a>
+            </div>
+
+            <div class="positioner">
+                <ButtonModel ButtonTypes="ButtonTypes.ButtonSmLDarkResponvie" EventType="ButtonEventType.Submit" Text="Zaloguj" />
+            </div>
+        </EditForm>
+
+        <div class="positioner-c">
+            <ButtonModel ButtonTypes="ButtonTypes.ImageButtonSmLightResponsive" Text="Użyj konta Google" UrlImage="@ImageUrlConst.GoogleScUrl" />
+        </div>
+        <div class="positioner-c">
+            <ButtonModel ButtonTypes="ButtonTypes.ImageButtonSmLightResponsive" Text="Użyj konta Facebook" UrlImage="@ImageUrlConst.FacebookScUrl" />
+        </div>
+
+        <div class="text-center text-forms" style="margin-top:42px;">
+            Nie masz jeszcze konta?
+        </div>
+        <div class="text-center text-forms text-underline" style="margin-bottom:113px;">
+            <a class="link-text" href="#">Zarejestruj się</a>
         </div>
     </div>
-</div>
+    </div>
 
+
+@* Todo do usunięcia *@
 @code {
-    public string TextValue { get; set; }
-        public double? Amount { get; set; }
+    private ExampleModel exampleModel = new ExampleModel();
+
+    private void HandleValidSubmit()
+    {
+
+        // Process the valid form
+    }
+
+    public class ExampleModel
+    {
+        public string Name { get; set; }
+    }
 }

@@ -20,6 +20,8 @@ namespace AphasiaClientApp.Models.Enums
         ButtonLgLightResponsive,
         ButtonLgDarkResponsive,
         ButtonHgWhiteResponsive,
-        ButtonHgWhiteBorderResponsive
+        ButtonHgWhiteBorderResponsive,
+        ImageButtonSmLightResponsive,
+        ImageButtonSmLight
     }
 }

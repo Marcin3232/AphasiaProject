@@ -4,6 +4,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url(../resource/iconsBootstrap/bootstrap-icons-1.5.0/bootstrap-icons.css);
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -7549,3 +7550,71 @@ textarea.form-control-lg {
   font-size: 36px;
   line-height: 32px;
   color: #055961; }
+
+.form-control {
+  border: 2px solid #595959 !important;
+  box-sizing: border-box !important;
+  border-radius: 24px !important;
+  text-indent: 14px;
+  height: 48px;
+  border-color: #055961 !important; }
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus,
+.form-control:focus {
+  border-color: #055961 !important;
+  outline: 0 none !important; }
+
+.inputbox {
+  margin-bottom: 10px;
+  position: relative;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  font-feature-settings: 'liga' off;
+  color: #000000; }
+
+.inputbox i {
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  color: #055961; }
+
+.field-body {
+  justify-content: center;
+  align-items: center;
+  display: flex; }
+
+.text-forms {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #055961; }
+
+.text-underline {
+  text-decoration-line: underline; }
+
+.text-left-label {
+  margin-left: 12px; }
+
+.link-text {
+  color: #055961 !important; }

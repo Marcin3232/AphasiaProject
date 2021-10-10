@@ -4,7 +4,7 @@
 {
     case ButtonTypes.ButtonLgLightResponsive:
         <div class="d-grid gap-2">
-            <button @onclick="ButtonCallback" class="btn btn-clight btn-large" type="button">
+            <button @onclick="ButtonCallback" class="btn btn-clight btn-large" type="@Type">
                 <div class="text-lg text-cdark">
                     @Text
                 </div>
@@ -12,7 +12,7 @@
         </div>
         break;
     case ButtonTypes.ButtonLgLight:
-        <button @onclick="ButtonCallback" class="btn btn-clight btn-large" type="button">
+        <button @onclick="ButtonCallback" class="btn btn-clight btn-large" type="@Type">
             <div class="text-lg text-cdark">
                 @Text
             </div>
@@ -20,7 +20,7 @@
         break;
     case ButtonTypes.ButtonLgDarkResponsive:
         <div class="d-grid gap-2">
-            <button @onclick="ButtonCallback" class="btn btn-cdark btn-large" type="button">
+            <button @onclick="ButtonCallback" class="btn btn-cdark btn-large" type="@Type">
                 <div class="text-lg text-clight">
                     @Text
                 </div>
@@ -28,14 +28,14 @@
         </div>
         break;
     case ButtonTypes.ButtonLgDark:
-        <button @onclick="ButtonCallback" class="btn btn-cdark btn-large" type="button">
+        <button @onclick="ButtonCallback" class="btn btn-cdark btn-large" type="@Type">
             <div class="text-center text-lg text-clight">
                 @Text
             </div>
         </button>
         break;
     case ButtonTypes.ButtonSmLDark:
-        <button @onclick="ButtonCallback" class="btn btn-cdark btn-small" type="button">
+        <button @onclick="ButtonCallback" class="btn btn-cdark btn-small" type="@Type">
             <div class="text-center text-sm text-clight">
                 @Text
             </div>
@@ -43,7 +43,7 @@
         break;
     case ButtonTypes.ButtonSmLDarkResponvie:
         <div class="d-grid gap-2">
-            <button @onclick="ButtonCallback" class="btn btn-cdark btn-small" type="button">
+            <button @onclick="ButtonCallback" class="btn btn-cdark btn-small" type="@Type">
                 <div class="text-center text-sm text-clight">
                     @Text
                 </div>
@@ -52,7 +52,7 @@
         break;
     case ButtonTypes.ButtonHgWhiteResponsive:
         <div class="d-grid gap-2">
-            <button @onclick="ButtonCallback" class="btn btn-clight btn-huge" type="button">
+            <button @onclick="ButtonCallback" class="btn btn-clight btn-huge" type="@Type">
                 <div class="text-center text-hg text-cdark">
                     @Text
                 </div>
@@ -61,11 +61,29 @@
         break;
     case ButtonTypes.ButtonHgWhiteBorderResponsive:
         <div class="d-grid gap-2">
-            <button @onclick="ButtonCallback" class="btn btn-cdark btn-huge" type="button">
+            <button @onclick="ButtonCallback" class="btn btn-cdark btn-huge" type="@Type">
                 <div class="text-center text-hg text-clight">
                     @Text
                 </div>
             </button>
         </div>
+        break;
+    case ButtonTypes.ImageButtonSmLightResponsive:
+        <div class="d-grid gap-2">
+            <button @onclick="ButtonCallback" class="btn btn-clight btn-small" type="@Type">
+                <img src="@UrlImage" width="32" height="32" align="left" />
+                <div class="text-center text-sm text-cdark">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
+    case ButtonTypes.ImageButtonSmLight:
+        <button @onclick="ButtonCallback" class="btn btn-clight btn-small" type="@Type">
+            <img src="@UrlImage" width="32" height="32" align="left" style="margin-right:25px;" />
+            <div class="text-center text-sm text-cdark">
+                @Text
+            </div>
+        </button>
         break;
 }
