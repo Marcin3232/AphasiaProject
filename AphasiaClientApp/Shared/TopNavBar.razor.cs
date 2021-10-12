@@ -7,5 +7,7 @@ namespace AphasiaClientApp.Shared
 {
     public partial class TopNavBar
     {
+        void Navigation_Login() => UriHelper.NavigateTo("/login");
+
     }
 }
