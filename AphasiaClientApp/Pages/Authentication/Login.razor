@@ -3,11 +3,13 @@
 @using Models.Constant
 @using Models.Enums
 @using Extensions
+@using Models.Auth
+
 
 <div class="field-body">
     <div class="card card-l border-0">
         <div class="text-card-title text-center">Logowanie</div>
-        <EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
+        <EditForm Model="@userLoginModel" OnValidSubmit="@HandleValidSubmit">
             <DataAnnotationsValidator />
             <ValidationSummary />
             <div class="mb-3">
@@ -17,7 +19,7 @@
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-person-fill"></i>
-                        <InputText id="name" placeholder="Wpisz login" @bind-Value="exampleModel.Name" class="form-control" />
+                        <InputText id="name" placeholder="Wpisz login" @bind-Value="userLoginModel.Login" class="form-control" />
                     </div>
 
                 </div>
@@ -29,7 +31,7 @@
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-lock-fill"></i>
-                        <InputText type="password" placeholder="Wpisz hasło" @bind-Value="exampleModel.Name" class="form-control" />
+                        <InputText type="password" placeholder="Wpisz hasło" @bind-Value="userLoginModel.Password" class="form-control" />
                     </div>
                 </div>
             </div>
