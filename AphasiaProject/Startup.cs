@@ -33,7 +33,10 @@ namespace AphasiaProject
             services.ConfigureIdentityUserService();
             services.ConfigureIdentityPasswordService();
             services.ConfigureAuthentication(Configuration);
+            services.AddControllers();
+            services.AddSwaggerGen();
 
+            // do usuniecia pozniuej
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -60,23 +63,27 @@ namespace AphasiaProject
                 app.UseSpaStaticFiles();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c=>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
             app.UseRouting();
             app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                    spa.UseAngularCliServer(npmScript: "start");
-            });
+            //    if (env.IsDevelopment())
+            //        spa.UseAngularCliServer(npmScript: "start");
+            //});
 
         }
     }

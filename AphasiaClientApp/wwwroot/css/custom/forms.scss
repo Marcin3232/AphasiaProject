@@ -1,4 +1,5 @@
-﻿.form-control {
+﻿.form-control,
+.form-select {
     border: 2px solid #595959 !important;
     box-sizing: border-box !important;
     border-radius: 24px !important;
@@ -6,6 +7,26 @@
     height:48px;
     border-color: #055961 !important;
 }
+
+select option {
+    height: 48px !important;
+    border: 2px solid #595959 !important;
+    box-sizing: border-box !important;
+    border-radius: 24px !important;
+    border-color: #055961 !important;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #055961;
+}
+
+.dropdown-item.active {
+    background-color: #055961 !important;
+    color: white !important;
+}
+
 
 textarea:focus,
 input[type="text"]:focus,

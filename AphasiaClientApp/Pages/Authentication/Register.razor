@@ -1,0 +1,143 @@
+﻿@page "/register"
+@using Microsoft.Extensions.Logging
+@using Models.Constant
+@using Models.Enums
+@using Extensions
+
+
+<div class="field-body">
+    <div class="card card-l border-0">
+        <div class="text-card-title text-center">Rejestracja</div>
+        <EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="loginId" class="form-label text-start"><b>Login</b></label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-person-fill"></i>
+                        <InputText id="name" placeholder="Wpisz login" @bind-Value="exampleModel.Name" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="loginId" class="form-label text-start"><b>E-mail</b></label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-at"></i>
+                        <InputText id="name" type="email" placeholder="Wpisz e-mail" @bind-Value="exampleModel.Name" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="loginPassw" class="form-label text-start"><b>Hasło</b></label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-lock-fill"></i>
+                        <InputText type="password" placeholder="Wpisz hasło" @bind-Value="exampleModel.Name" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="loginPassw" class="form-label text-start"><b>Powtórz hasło</b></label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-arrow-repeat"></i>
+                        <InputText type="password" placeholder="Wpisz ponownie hasło" @bind-Value="exampleModel.Name" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="loginPassw" class="form-label text-start"><b>Role</b></label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-ui-radios"></i>
+                        <InputSelect placeholder="Wybierz role" @bind-Value="exampleModel.UserRoles" class="form-select" aria-label="Default select example">
+
+                            @foreach (UserRegisterRoles item in Enum.GetValues(typeof(UserRegisterRoles)))
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        </InputSelect>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <InputCheckbox class="form-check-input" type="checkbox" @bind-Value="exampleModel.IsValid" />
+                    <div class="text-forms">
+                        <label class="form-check-label">
+                            Zapoznałem się z <a class="link-text" href="/regulations">regulaminem</a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <InputCheckbox class="form-check-input" type="checkbox" @bind-Value="exampleModel.IsValid" />
+                    <div class="text-forms">
+                        <label class="form-check-label">
+                            Wyrażam zgodę na przetwarzanie moich danych osobowych
+                            (zgodnie z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych;
+                            tekst jednolity: Dz. U. 2016 r. poz. 922)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+           @* if dodac przy implementowaniu logiki*@
+            <div class="mb-3">
+                <div class="form-check">
+                    <InputCheckbox class="form-check-input" type="checkbox" @bind-Value="exampleModel.IsValid" />
+                    <div class="text-forms">
+                        <label class="form-check-label">
+                            Oświadczam, że posiadam prawo do wykonywania zawodu logopedy
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="positioner">
+                <ButtonModel ButtonTypes="ButtonTypes.ButtonSmLDarkResponvie" EventType="ButtonEventType.Submit" Text="Utwórz konto" />
+            </div>
+            <div class="text-center text-forms" style="margin-top:42px;">
+                Jeśli masz konto
+            </div>
+            <div class="text-center text-forms text-underline" style="margin-bottom:113px;">
+                <a class="link-text" href="/login">Zaloguj się</a>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+
+@* TODO do usunięcia *@
+@code {
+    private ExampleModel exampleModel = new ExampleModel();
+
+    private void HandleValidSubmit()
+    {
+
+        // Process the valid form
+    }
+
+    public class ExampleModel
+    {
+        public string Name { get; set; }
+        public UserRegisterRoles UserRoles { get; set; }
+        public bool IsValid { get; set; }
+    }
+}
+
