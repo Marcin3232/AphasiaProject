@@ -1,36 +1,50 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
+﻿@inject NavigationManager UriHelper 
+
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Afast</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        O aplikacji
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Projekt</a></li>
+                        <li><a class="dropdown-item" href="#">O aplikacji</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        Jak Korzystać
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">FAQ</a></li>
+                        <li><a class="dropdown-item" href="#">Tutoriale</a></li>
+                        <li><a class="dropdown-item" href="#">Logopedzi</a></li>
+                        <li><a class="dropdown-item" href="#">Regulamin</a></li>
+                        <li><a class="dropdown-item" href="#">Instrukcja Obsługi</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Kontakt
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Koordynator Projektu</a></li>
+                        <li><a class="dropdown-item" href="#">Facebook</a></li>
+                        <li><a class="dropdown-item" href="#">Zgłoś błąd</a></li>
+
+                    </ul>
                 </li>
+
+
+
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+                <AphasiaClientApp.Components.Buttons.ButtonModel Text="Zaloguj" ButtonTypes="Models.Enums.ButtonTypes.ButtonSmLDark" ButtonCallback="Navigation_Login"></AphasiaClientApp.Components.Buttons.ButtonModel>
         </div>
     </div>
 </nav>
