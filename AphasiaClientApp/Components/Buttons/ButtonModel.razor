@@ -86,4 +86,13 @@
             </div>
         </button>
         break;
+    case ButtonTypes.ButtonSmLightResponsive:
+        <div class="d-grid gap-2">
+            <button @onclick="ButtonCallback" class="btn btn-clight btn-small" type="@Type">
+                <div class="text-center text-sm text-cdark">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
 }
