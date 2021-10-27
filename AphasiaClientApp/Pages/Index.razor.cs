@@ -1,12 +1,20 @@
-﻿using System;
+﻿
+using Microsoft.AspNetCore.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace AphasiaClientApp.Pages
 {
     public partial class Index
     {
+        protected override void OnInitialized()
+        {
+
+        }
+
         void ButtonNavigationToAphasiaType()
         {
             UriHelper.NavigateTo("/choiceTypeAphasia");
@@ -14,7 +22,7 @@ namespace AphasiaClientApp.Pages
 
         void Navigation()
         {
-            UriHelper.NavigateTo("/login");
+            UriHelper.NavigateTo("/exercises/main_panel");
         }
     }
 }
