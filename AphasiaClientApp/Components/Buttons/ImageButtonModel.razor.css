@@ -1,0 +1,28 @@
+﻿
+.btn-ic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 2px solid #055961;
+    padding: 3px;
+}
+
+.ic-light {
+    background: #FFFFFF;
+}
+
+.ic-current {
+    background: #DBF4F6;
+}
+
+.btn-ic:hover {
+    background: rgba(5, 89, 97, 0.15);
+}
+
+.btn-ic:active {
+    background: rgba(5, 89, 97, 0.3);
+    border: 2px solid #055961;
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
