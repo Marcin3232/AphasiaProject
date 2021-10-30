@@ -1,0 +1,51 @@
+﻿@page "/exercises/main_panel"
+@using Components.Cards
+@using Models.Enums
+
+<style>
+    .navbar {
+        display: none !important;
+    }
+</style>
+
+<div class="nav-exercises">
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex col-4">
+                <div class="col col-pos">
+                    <AphasiaClientApp.Components.Cards.NaviCardExercise Title="zamknij zestaw" NaviType="@NaviTypeImage.Close" />
+                </div>
+                <div class="col col-pos">
+                    <AphasiaClientApp.Components.Cards.NaviCardExercise Title="zamknij" NaviType="@NaviTypeImage.Back" />
+                </div>
+
+            </div>
+            <div class="col-4 d-flex">
+                <AphasiaClientApp.Components.Cards.CenterNaviCardModel TitleExercise="test" TypeTitleExercise=Test/>
+            </div>
+            <div class="col-4 d-flex">
+                    <div class="col col-pos">
+                        <AphasiaClientApp.Components.Cards.NaviCardExercise Title="zamknij" NaviType="@NaviTypeImage.Refresh" />
+                    </div>
+                    <div class="col col-pos">
+                        <AphasiaClientApp.Components.Cards.NaviCardExercise Title="zamknij" NaviType="@NaviTypeImage.Next" />
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>MainPanel</h3>
+
+<div class="footer-exercises">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="exercises-footer-text text-exercises-pos">
+                ćwiczenie
+            </div>
+        </div> 
+    </div>
+</div>
+@code {
+
+}

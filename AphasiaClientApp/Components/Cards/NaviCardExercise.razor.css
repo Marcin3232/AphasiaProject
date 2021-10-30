@@ -1,0 +1,61 @@
+﻿
+.text-navi-card {
+    position: static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    align-content:center;
+    font-feature-settings: 'liga' off;
+    color: #055961;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.text-navi-card-vert{
+    position: static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    font-feature-settings: 'liga' off;
+    color: #055961;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 27px 0px;
+}
+
+.card {
+    background: #DBF4F6;
+}
+
+.card-body {
+    padding: 2px !important;
+}
+
+.btn-nav-exercise {
+    width: 52px;
+    height: 52px;
+    background: #DBF4F6;
+    border-radius: 50%;
+}
+
+.btn-nav-exercise:hover {
+        background: rgba(5, 89, 97, 0.15);
+}
+
+.card:hover .text-navi-card {
+    text-decoration-line: underline;
+}
+
+.btn-nav-exercise:active {
+    width:41px;
+    height:45px;
+    background: rgba(5, 89, 97, 0.3);
+}

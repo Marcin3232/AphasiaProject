@@ -1,0 +1,31 @@
+﻿.text-title-exercise {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #055961;
+}
+
+.text-title-type-exercise {
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 42px;
+    text-align: center;
+    color: #055961;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 8px 0px;
+}
+
+.card {
+    background: #DBF4F6;
+}
+
+.card-body {
+    padding: 2px !important;
+}
