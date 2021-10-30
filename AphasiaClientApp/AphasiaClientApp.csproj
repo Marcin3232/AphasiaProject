@@ -1405,4 +1405,9 @@
     <None Include="wwwroot\resource\iconsBootstrap\bootstrap-icons-1.5.0\zoom-out.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exercises\Services\" />
+    <Folder Include="Exercises\Resources\" />
+  </ItemGroup>
+
 </Project>
