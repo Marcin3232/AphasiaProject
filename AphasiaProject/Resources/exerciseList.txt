@@ -1,0 +1,37 @@
+﻿"Exercise01", // Gesty: tak nie
+"Exercise02", // Zestaw ćwiczeń narządów mowy
+"Exercise05", // Cyfry
+"Exercise07", // Rzeczowniki
+"Exercise08", // Czynności
+"Exercise09", // Co robi? Malarz maluje
+"Exercise10", // Przeciwieństwa
+"Exercise12", // Kolory
+"Exercise13", // Czas: Pory roku
+"Exercise14", // Odnajdywanie Słów: dobór
+"Exercise15", // Określanie czynności
+"Exercise16", // Określenia dla przedmiotów/ osób
+"Exercise17", // Jaka? Jaki? Jakie?
+"Exercise18", // Odmiana wyrazów
+"Exercise19", // Sylaby i słowa
+"Exercise20", // Rozumienie wypowiedzi
+"Exercise21", // Grupowanie
+"Exercise22", // Dźwięki otoczenia
+"Exercise23", // Przestrzeń: gdzie jest?
+"Exercise24", // Szukanie i układanie
+"Exercise25", // Rozbudowa zdań i czytanie
+"Exercise26", // Budowa zdań
+"Exercise27", // Odnajdywanie słów: dobór rzeczownika
+"Exercise28", // Przysłowia
+"Exercise29", // Opis sytuacji
+"Exercise30", // Łączenie zdań
+"Exercise31", // Czas: Kiedy? O której?
+"Exercise32", // Co słyszysz? Głoski, sylaby, słowa
+"Exercise33", // Dni Tygodnia
+"Exercise34", // Miesiące
+"Exercise41", // Powiedzenia
+"Exercise42", // Muzykoterapia
+"Exercise50", // Ćwiczenia obsługi myszy
+
+
+
+

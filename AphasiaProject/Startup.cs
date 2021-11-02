@@ -30,6 +30,7 @@ namespace AphasiaProject
             services.Configure<AppSettings>(Configuration.GetSection("ApplicationSettings"));
 
             services.ConfigureSqlContext(Configuration);
+            services.ConfigureSqlExerciseContext(Configuration);
             services.ConfigureIdentityUserService();
             services.ConfigureIdentityPasswordService();
             services.ConfigureAuthentication(Configuration);

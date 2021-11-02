@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AphasiaProject.Models.DB;
+using AphasiaProject.Models.DB.Exercises;
 using AphasiaProject.Models.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -19,6 +20,10 @@ namespace AphasiaProject.Extensions
     {
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+        public static void ConfigureSqlExerciseContext(this IServiceCollection services, IConfiguration configuration) =>
+            services.AddDbContext<ExerciseDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         public static void ConfigureIdentityUserService(this IServiceCollection services) =>
