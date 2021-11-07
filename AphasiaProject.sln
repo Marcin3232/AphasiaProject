@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AphasiaProject", "AphasiaPr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AphasiaClientApp", "AphasiaClientApp\AphasiaClientApp.csproj", "{4016CDF9-F622-4B7C-9DCE-457FFB0B63E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonExercise", "CommonExercise\CommonExercise.csproj", "{A1F65703-8AB8-4874-A8D8-C50112CE15D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4016CDF9-F622-4B7C-9DCE-457FFB0B63E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4016CDF9-F622-4B7C-9DCE-457FFB0B63E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4016CDF9-F622-4B7C-9DCE-457FFB0B63E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1F65703-8AB8-4874-A8D8-C50112CE15D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F65703-8AB8-4874-A8D8-C50112CE15D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F65703-8AB8-4874-A8D8-C50112CE15D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F65703-8AB8-4874-A8D8-C50112CE15D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

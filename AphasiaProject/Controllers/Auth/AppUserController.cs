@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AphasiaProject.Models.Auth;
 using AphasiaProject.Models.Users;
+using AphasiaProject.Utils;
 using IdentityModel.Client;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
@@ -127,6 +128,13 @@ namespace AphasiaProject.Controllers.Auth
                 }
                 Logger.LogInformation(($"Login failed {model.UserName}"));
                 return BadRequest();
+        }
+
+        [HttpGet]
+        [Route("test")]
+        public async Task Test()
+        {
+            var e = ExerciseNameFillList.ExerciseNameList();
         }
     }
 }

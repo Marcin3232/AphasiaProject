@@ -7,7 +7,7 @@
 "Exercise10", // Przeciwieństwa
 "Exercise12", // Kolory
 "Exercise13", // Czas: Pory roku
-"Exercise14", // Odnajdywanie Słów: dobór
+"Exercise14", // Odnajdywanie Słów: dobór czasownika
 "Exercise15", // Określanie czynności
 "Exercise16", // Określenia dla przedmiotów/ osób
 "Exercise17", // Jaka? Jaki? Jakie?

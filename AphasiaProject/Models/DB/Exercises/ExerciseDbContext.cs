@@ -6,7 +6,7 @@ namespace AphasiaProject.Models.DB.Exercises
 {
     public class ExerciseDbContext : DbContext
     {
-        public ExerciseDbContext(DbContextOptions<ExerciseDbContext> options) : base(options)
+        public ExerciseDbContext(DbContextOptions<ExerciseDbContext> options):base(options)
         {
         }
 

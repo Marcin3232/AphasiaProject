@@ -53,8 +53,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Exercises\" />
-    <Folder Include="Resources\" />
+    <Folder Include="Models\Enums\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommonExercise\CommonExercise.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
