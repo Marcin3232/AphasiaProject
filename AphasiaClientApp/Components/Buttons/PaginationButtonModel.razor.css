@@ -1,4 +1,12 @@
-﻿
+﻿.text-option {
+    position: static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+}
+
 .btn-ic {
     width: 48px;
     height: 48px;
@@ -8,39 +16,25 @@
     padding: 3px;
 }
 
-.btn-nf {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    border: none;
-    padding:3px;
-}
-
 .ic-light {
     background: #FFFFFF;
+}
+
+.ic-active {
+    background: #055961;
 }
 
 .ic-current {
     background: #DBF4F6;
 }
 
-.btn-ic:hover {
+.btn-ic-action:hover {
     background: rgba(5, 89, 97, 0.15);
 }
 
-.btn-nf:hover {
-    background: rgba(5, 89, 97, 0.15);
-}
-
-.btn-ic:active {
+.btn-ic-action:active {
     background: rgba(5, 89, 97, 0.3);
     border: 2px solid #055961;
     box-sizing: border-box;
     box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
 }
-
-.btn-nf:active {
-    background: rgba(5, 89, 97, 0.3);
-}
-
