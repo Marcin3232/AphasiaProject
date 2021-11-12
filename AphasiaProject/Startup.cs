@@ -32,6 +32,7 @@ namespace AphasiaProject
             services.ConfigureSqlContext(Configuration);
             services.ConfigureSqlExerciseContext(Configuration);
             services.ConfigureIdentityUserService();
+            services.ConfigureCors();
             services.ConfigureIdentityPasswordService();
             services.ConfigureAuthentication(Configuration);
             services.AddControllers();
@@ -72,6 +73,7 @@ namespace AphasiaProject
             });
             app.UseRouting();
             app.UseAuthentication();
+            app.UseCors("APIPolicy");
 
             app.UseEndpoints(endpoints =>
             {

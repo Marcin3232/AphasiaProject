@@ -9,10 +9,10 @@ namespace AphasiaClientApp.Models.Enums
     public enum AphasiaTypes
     {
         [Display(Name = "Afazja mieszana")]
-        MixedAphasia,
+        MixedAphasia = 1,
         [Display(Name = "Afazja ruchowa")]
-        MovementAphasia,
+        MovementAphasia = 2,
         [Display(Name = "Afazja czuciowa")]
-        SensoryAphasia
+        SensoryAphasia = 3
     }
 }

@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CommonExercise.Models
 {
-    internal class ExerciseName
+    public class ExerciseName
     {
+        [JsonPropertyName("name")]
         public string Name { get; set; }
+        [JsonPropertyName("description")]
         public string Description { get; set; }
+        [JsonPropertyName("imageSrc")]
         public string ImageSrc { get; set; }
-        public int IdExerciseTask { get; set; }
+        [JsonPropertyName("idExerciseTask")]
+        public string IdExerciseTask { get; set; }
     }
 }

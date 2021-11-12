@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AphasiaProject", "AphasiaPr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AphasiaClientApp", "AphasiaClientApp\AphasiaClientApp.csproj", "{4016CDF9-F622-4B7C-9DCE-457FFB0B63E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonExercise", "CommonExercise\CommonExercise.csproj", "{A1F65703-8AB8-4874-A8D8-C50112CE15D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonExercise", "CommonExercise\CommonExercise.csproj", "{A1F65703-8AB8-4874-A8D8-C50112CE15D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

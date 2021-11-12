@@ -1,0 +1,41 @@
+﻿@page "/choiceAphasiaExercise/{AphasiaTypeId}"
+@using Models.Enums
+
+<div class="container">
+    <div class="row justify-content-center">
+        <p class="text-TitleDark" style="margin-top:80px; margin-bottom:40px;">
+            Wybierz zestaw ćwiczeń
+        </p>
+        @if (exerciseNameList != null)
+        {
+            foreach (var item in exerciseNameList.GetRange((PageIndex-1)*PageElements, MaxCountPagination==PageIndex?(int)((((float)exerciseNameList.Count() / PageElements)% 1) * PageElements):PageElements))
+            {
+                <AphasiaClientApp.Components.Cards.TaskCardModel Title="@item.Name"
+                                                         ImageUrl="@item.ImageSrc"
+                                                         Url="/" />
+            }
+        }
+    </div>
+
+    <div class="row justify-content-center">
+        <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonNonFrame
+                          TypeImage=NaviTypeImage.LeftNaviArrow
+                          IsDisabled=false
+                          SetStyle=@style
+                          ButtonCallback="()=>LeftMove_Click()" />
+
+        @foreach (var item in quantityList)
+        {
+            <PaginationButtonModel Value=item.PageIndex SetStyle=@style IsActive=item.IsCurrent ButtonCallback="()=>Page_Click(item)" />
+        }
+
+        <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonNonFrame
+        TypeImage=NaviTypeImage.RightNaviArrow
+        IsDisabled=false SetStyle=@style
+        ButtonCallback="()=>RightMove_Click()" />
+    </div>
+
+</div>
+@code {
+
+}

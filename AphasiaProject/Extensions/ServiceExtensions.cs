@@ -34,6 +34,12 @@ namespace AphasiaProject.Extensions
                     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
+        public static void ConfigureCors(this IServiceCollection services) => services.AddCors(option => option.AddPolicy(
+             "APIPolicy", builder =>
+             {
+                 builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+             }));
+
         public static void ConfigureIdentityPasswordService(this IServiceCollection services) =>
             services.Configure<IdentityOptions>(options =>
             {

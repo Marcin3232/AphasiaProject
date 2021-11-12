@@ -12,8 +12,5 @@ namespace AphasiaClientApp.Models.Auth
         public string Login { get; set; }
         [Required(ErrorMessage = "Pole jest wymagane")]
         public string Password { get; set; }
-       
-
-        
     }
 }
