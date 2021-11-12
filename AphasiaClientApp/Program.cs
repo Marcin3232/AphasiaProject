@@ -1,3 +1,6 @@
+using AphasiaClientApp.Extensions.RequestMethod;
+using AphasiaClientApp.Models.Constant;
+using AphasiaClientApp.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +24,9 @@ namespace AphasiaClientApp
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             builder.Services.AddMudServices();
+
+            builder.Services.AddScoped<IRequestMethod, RequestMethod>();
+            builder.Services.AddHttpClient<IDbExerciseService, DbExerciseService>(client => client.BaseAddress = new Uri(BaseUriConst.AphasiaServerUri));
 
             await builder.Build().RunAsync();
         }
