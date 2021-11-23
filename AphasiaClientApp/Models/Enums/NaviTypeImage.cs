@@ -33,6 +33,4 @@ namespace AphasiaClientApp.Models.Enums
         public static string PathFile => @"resource/NaviImage/";
         public static string FullPathImage(NaviTypeImage typeImage) => PathFile + typeImage.GetAttribute<DisplayAttribute>().Name;
     }
-
-
 }

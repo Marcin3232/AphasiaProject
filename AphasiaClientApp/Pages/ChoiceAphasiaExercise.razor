@@ -1,5 +1,7 @@
 ﻿@page "/choiceAphasiaExercise/{AphasiaTypeId}"
 @using Models.Enums
+@inject IJSRuntime JsRuntime
+@inject NavigationManager navigationManager
 
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +10,7 @@
         </p>
         @if (exerciseNameList != null)
         {
-            foreach (var item in exerciseNameList.GetRange((PageIndex-1)*PageElements, MaxCountPagination==PageIndex?(int)((((float)exerciseNameList.Count() / PageElements)% 1) * PageElements):PageElements))
+            foreach (var item in exerciseNameList.GetRange((PageIndex - 1) * PageElements, MaxCountPagination == PageIndex ? (int)((((float)exerciseNameList.Count() / PageElements) % 1) * PageElements) : PageElements))
             {
                 <AphasiaClientApp.Components.Cards.TaskCardModel Title="@item.Name"
                                                          ImageUrl="@item.ImageSrc"
@@ -17,7 +19,7 @@
         }
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top:90px; margin-bottom:100px;">
         <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonNonFrame
                           TypeImage=NaviTypeImage.LeftNaviArrow
                           IsDisabled=false
@@ -30,12 +32,10 @@
         }
 
         <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonNonFrame
-        TypeImage=NaviTypeImage.RightNaviArrow
-        IsDisabled=false SetStyle=@style
-        ButtonCallback="()=>RightMove_Click()" />
+                          TypeImage=NaviTypeImage.RightNaviArrow
+                          IsDisabled=false SetStyle=@style
+                          ButtonCallback="()=>RightMove_Click()" />
     </div>
 
 </div>
-@code {
 
-}

@@ -1409,7 +1409,6 @@
 
   <ItemGroup>
     <Folder Include="Exercises\Services\" />
-    <Folder Include="Services\NewFolder\" />
     <Folder Include="wwwroot\resource\default\" />
   </ItemGroup>
 

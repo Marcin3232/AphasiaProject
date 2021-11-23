@@ -1,7 +1,10 @@
-﻿using AphasiaClientApp.Models.Helpers;
+﻿using AphasiaClientApp.Extensions;
+using AphasiaClientApp.Models.Base;
+using AphasiaClientApp.Models.Helpers;
 using AphasiaClientApp.Services;
 using CommonExercise.Models;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +18,12 @@ namespace AphasiaClientApp.Pages
         public string AphasiaTypeId { get; set; }
         [Inject]
         public IDbExerciseService dBExerciseService { get; set; }
+        [Inject]
+        private ISnackbarMessage snackbarMessage { get; set; }
         private int PageIndex { get; set; } = 1;
         private int MaxCountPagination { get; set; } = 5;
         private int CurrentPage { get; set; } = 1;
-        private static readonly string style = "margin-right:21px;margin-left:21px; margin-bottom:100px; margin-top:95px;";
+        private string style = "margin-right:21px;margin-left:21px;";
         private List<PaginationModel> quantityList = new List<PaginationModel>();
         private int PageElements = 4;
 
@@ -26,18 +31,54 @@ namespace AphasiaClientApp.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            if (int.TryParse(AphasiaTypeId, out int idType))
-                exerciseNameList = await dBExerciseService.GetExerciseNameFromAphasiaType(idType);
+            try
+            {
+                await Task.Delay(10);
+                await ChangeStyleByWidth();
 
-            exerciseNameList.ForEach(x => x.ImageSrc = x.ImageSrc+".svg");
+                if (int.TryParse(AphasiaTypeId, out int idType))
+                    exerciseNameList = await dBExerciseService.GetExerciseNameFromAphasiaType(idType);
 
-            MaxCountPagination = MaxPaginationPage(exerciseNameList);
-            quantityList = FillPaginationList(MaxCountPagination);
+                if (exerciseNameList == null)
+                {
+                    snackbarMessage.ShowErrorMode(new ReportErrorModel()
+                    {
+                        Date = DateTime.Now,
+                        Message = "Nie udało się poprawnie pobrać danych z bazy!",
+                    }, true);
+                    navigationManager.NavigateTo("/");
+                    return;
+                }
 
+                exerciseNameList.ForEach(x => x.ImageSrc = x.ImageSrc + ".svg");
+
+                MaxCountPagination = MaxPaginationPage(exerciseNameList);
+                quantityList = FillPaginationList(MaxCountPagination);
+            }
+            catch (Exception ex)
+            {
+                snackbarMessage.ShowErrorMode(new ReportErrorModel()
+                {
+                    Message = ex.Message,
+                }, true);
+                navigationManager.NavigateTo("/");
+            }
             base.OnInitialized();
         }
 
-        private int MaxPaginationPage(List<ExerciseName> list)=> (int)Math.Ceiling((double)list.Count()/PageElements);
+        private async Task ChangeStyleByWidth()
+        {
+            var dimension = await JsRuntime.InvokeAsync<WindowDimension>("getWindowDimensions");
+
+            if (dimension == null)
+                return;
+
+            var width = dimension.Width;
+            if (width <= 640)
+                style = "margin-right:5px;margin-left:5px;";
+        }
+
+        private int MaxPaginationPage(List<ExerciseName> list) => (int)Math.Ceiling((double)list.Count() / PageElements);
 
         private List<PaginationModel> FillPaginationList(int maxCountPagination)
         {
