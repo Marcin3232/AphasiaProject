@@ -12,6 +12,7 @@ namespace AphasiaClientApp.Extensions
     {
         [Inject]
         private ISnackbar snackbar { get; set; }
+        private Variant variant { get; set; } = Variant.Filled;
 
         public SnackbarMessage(ISnackbar snackbar)
         {
@@ -20,13 +21,13 @@ namespace AphasiaClientApp.Extensions
 
         public void Show(string title, string message, StatusType statustype, bool isButton = false, Action<SnackbarOptions> options = null)
         {
-            snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+            snackbar.Configuration.SnackbarVariant = variant;
             snackbar.Add(TextFormatter(title, message), SetSeverity(statustype), SetOptions());
         }
 
         public void ShowErrorMode(ReportErrorModel errorModel, bool isButton)
         {
-            snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+            snackbar.Configuration.SnackbarVariant = variant;
             snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
             snackbar.Add(TextFormatter(ReportErrorModel.Error, ReportErrorModel.BaseMessage), SetSeverity(StatusType.Error), SetErrorOptions(isButton));
         }
@@ -64,7 +65,7 @@ namespace AphasiaClientApp.Extensions
             if (isButton)
             {
                 configuration.Action = ReportErrorModel.ReportError;
-                configuration.ActionColor = Color.Error;
+                configuration.ActionColor = Color.Warning;
                 configuration.ActionVariant = Variant.Outlined;
                 configuration.Onclick = snackbar =>
                 {
