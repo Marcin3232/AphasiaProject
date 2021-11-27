@@ -1,4 +1,5 @@
-﻿using AphasiaClientApp.Extensions;
+﻿using AphasiaClientApp.Components.Modals.LoadModals;
+using AphasiaClientApp.Extensions;
 using AphasiaClientApp.Models.Base;
 using AphasiaClientApp.Models.Helpers;
 using AphasiaClientApp.Services;
@@ -26,7 +27,7 @@ namespace AphasiaClientApp.Pages
         private string style = "margin-right:21px;margin-left:21px;";
         private List<PaginationModel> quantityList = new List<PaginationModel>();
         private int PageElements = 4;
-
+        private LoadingDialogModel dialogLoad = new LoadingDialogModel();
         private List<ExerciseName> exerciseNameList;
 
         protected override async Task OnInitializedAsync()
@@ -34,6 +35,7 @@ namespace AphasiaClientApp.Pages
             try
             {
                 await Task.Delay(10);
+                await dialogLoad.Show();
                 await ChangeStyleByWidth();
 
                 if (int.TryParse(AphasiaTypeId, out int idType))
@@ -62,6 +64,10 @@ namespace AphasiaClientApp.Pages
                     Message = ex.Message,
                 }, true);
                 navigationManager.NavigateTo("/");
+            }
+            finally
+            {
+                await dialogLoad.Close();
             }
             base.OnInitialized();
         }

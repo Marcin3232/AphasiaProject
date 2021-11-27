@@ -1,0 +1,23 @@
+﻿@inherits ComponentBase
+
+@if (showDialog)
+{
+    <CascadingValue Value="this">
+        <div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+            <div class="modal-dialog  modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title" style="margin-top:70px;"><b>Ładowanie...</b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <div class="text-center">
+                                <img src="resource/spinner/spinner_loading.svg" class="img-fluid" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </CascadingValue>
+}

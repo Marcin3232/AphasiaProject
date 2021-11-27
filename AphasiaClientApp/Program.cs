@@ -1,3 +1,5 @@
+using AphasiaClientApp.Components.Modals.LoadModals;
+using AphasiaClientApp.Extensions;
 using AphasiaClientApp.Extensions.RequestMethod;
 using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Services;
@@ -26,6 +28,7 @@ namespace AphasiaClientApp
             builder.Services.AddMudServices();
 
             builder.Services.AddScoped<IRequestMethod, RequestMethod>();
+            builder.Services.AddScoped<ISnackbarMessage, SnackbarMessage>();
             builder.Services.AddHttpClient<IDbExerciseService, DbExerciseService>(client => client.BaseAddress = new Uri(BaseUriConst.AphasiaServerUri));
 
             await builder.Build().RunAsync();
