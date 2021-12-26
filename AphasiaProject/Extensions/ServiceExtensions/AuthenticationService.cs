@@ -1,32 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AphasiaProject.Models.DB;
-using AphasiaProject.Models.DB.Exercises;
+﻿using AphasiaProject.Models.DB;
 using AphasiaProject.Models.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Text;
 
-namespace AphasiaProject.Extensions
+namespace AphasiaProject.Extensions.ServiceExtensions
 {
-    public static class ServiceExtensions
+    public static class AuthenticationService
     {
-        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+        public static void AuthenticationServiceConfig(this IServiceCollection service, IConfiguration configuration)
+        {
+            service.ConfigureIdentityUserService();
+            service.ConfigureIdentityPasswordService();
+            service.ConfigureAuthentication(configuration);
+        }
 
-        public static void ConfigureSqlExerciseContext(this IServiceCollection services, IConfiguration configuration) =>
-            services.AddDbContext<ExerciseDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
-
-        public static void ConfigureIdentityUserService(this IServiceCollection services) =>
+        private static void ConfigureIdentityUserService(this IServiceCollection services) =>
             services.AddIdentity<AppUser, AppRole>(options =>
             {
                 options.User.RequireUniqueEmail = false;
@@ -34,13 +27,7 @@ namespace AphasiaProject.Extensions
                     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
-        public static void ConfigureCors(this IServiceCollection services) => services.AddCors(option => option.AddPolicy(
-             "APIPolicy", builder =>
-             {
-                 builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-             }));
-
-        public static void ConfigureIdentityPasswordService(this IServiceCollection services) =>
+        private static void ConfigureIdentityPasswordService(this IServiceCollection services) =>
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -49,7 +36,7 @@ namespace AphasiaProject.Extensions
                 options.Password.RequireLowercase = true;
             });
 
-        public static void ConfigureAuthentication(this IServiceCollection services, IConfiguration configuration) =>
+        private static void ConfigureAuthentication(this IServiceCollection services, IConfiguration configuration) =>
             services.AddAuthentication(item =>
             {
                 item.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -63,8 +50,8 @@ namespace AphasiaProject.Extensions
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey =
-                        new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(configuration["ApplicationSettings:JWT_Secret"])),
+                         new SymmetricSecurityKey(
+                             Encoding.UTF8.GetBytes(configuration["ApplicationSettings:JWT_Secret"])),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ClockSkew = TimeSpan.Zero
