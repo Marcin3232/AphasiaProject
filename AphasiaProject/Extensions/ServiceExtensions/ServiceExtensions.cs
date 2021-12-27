@@ -1,8 +1,7 @@
-﻿using AphasiaProject.Models.Auth;
+﻿using LoggerService.ConfigureService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Configuration;
 
 namespace AphasiaProject.Extensions.ServiceExtensions
 {
@@ -15,6 +14,7 @@ namespace AphasiaProject.Extensions.ServiceExtensions
             services.AuthenticationServiceConfig(configuration);
             services.AddControllers();
             services.SwaggerServiceConfig();
+            services.ConfigureLoggerService();
 
             // do usuniecia pozniej
             services.AddSpaStaticFiles(configuration =>

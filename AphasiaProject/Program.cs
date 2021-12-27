@@ -1,13 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using NLog.Web;
+using System;
 
 namespace AphasiaProject
 {
@@ -15,19 +10,16 @@ namespace AphasiaProject
     {
         public static void Main(string[] args)
         {
-            var logPath = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
-            NLog.GlobalDiagnosticsContext.Set("LogDirectory", logPath);
-
-            var logger = NLogBuilder.ConfigureNLog("NLog.config").GetCurrentClassLogger();
+            var logger = NLogBuilder.ConfigureNLog("Nlog.config").GetCurrentClassLogger();
 
             try
             {
-                logger.Debug("init main");
+                logger.Debug("Init main");
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
             {
-                logger.Error(ex, "Application stopped due to an error");
+                logger.Error(ex, "ApplicationException stopped due to an error");
                 throw;
             }
             finally

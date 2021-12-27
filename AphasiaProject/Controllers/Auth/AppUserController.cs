@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 using AphasiaProject.Models.Auth;
 using AphasiaProject.Models.Users;
 using AphasiaProject.Utils;
-using IdentityModel.Client;
 using IdentityServer4.Services;
+using LoggerService.Manager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using NLog;
-using ILogger = NLog.ILogger;
 
 namespace AphasiaProject.Controllers.Auth
 {
@@ -25,19 +23,19 @@ namespace AphasiaProject.Controllers.Auth
     [ApiController]
     public class AppUserController : ControllerBase
     {
-        private readonly ILogger<AppUserController> Logger;
+        private readonly ILoggerManager<AppUserController> _logger;
         private readonly UserManager<AppUser> UserManager;
         private readonly SignInManager<AppUser> SignInManager;
         private readonly AppSettings AppSettings;
        
         private readonly IIdentityServerInteractionService ServerInteraction;
 
-        public AppUserController(UserManager<AppUser> appUserManager, SignInManager<AppUser> signInManager, ILogger<AppUserController> logger,
+        public AppUserController(UserManager<AppUser> appUserManager, SignInManager<AppUser> signInManager, ILoggerManager<AppUserController> logger,
             IOptions<AppSettings> appSettings)
         {
             UserManager = appUserManager;
             SignInManager = signInManager;
-            Logger = logger;
+            _logger = logger;
             AppSettings = appSettings.Value;
         }
 
@@ -47,7 +45,7 @@ namespace AphasiaProject.Controllers.Auth
         {
             if (!ModelState.IsValid)
             {
-                Logger.LogError("Bad validation data");
+                _logger.LogError("Bad validation data");
                 return BadRequest(ModelState);
             }
 
@@ -66,7 +64,7 @@ namespace AphasiaProject.Controllers.Auth
 
                 if (!result.Succeeded)
                 {
-                    Logger.LogError(1, $"BadRequest message: {result.Errors}");
+                    _logger.LogError($"BadRequest message: {result.Errors}");
                     return BadRequest(result.Errors);
                 }
 
@@ -76,12 +74,12 @@ namespace AphasiaProject.Controllers.Auth
                 await UserManager.AddClaimAsync(user, new Claim("Email", user.Email));
                 await UserManager.AddClaimAsync(user, new Claim("Role", "Admin"));
 
-                Logger.LogInformation($"Add new user id: {user.Id}");
+                _logger.LogInfo($"Add new user id: {user.Id}");
                 return Ok(new AppRegisterResponseViewModel(user));
             }
             catch (Exception ex)
             {
-                Logger.LogError($"Something went wrong in the {nameof(AppUserController)}. Exception: {ex}");
+                _logger.LogError($"Something went wrong in the {nameof(AppUserController)}. Exception: {ex}");
                 return StatusCode(500, "Inside server problem");
             }
         }
@@ -100,7 +98,7 @@ namespace AphasiaProject.Controllers.Auth
         {
             if (!ModelState.IsValid)
             {
-                Logger.LogError("Bad validation data");
+                _logger.LogError("Bad validation data");
                 return BadRequest(ModelState);
             }
                var user = await UserManager.FindByNameAsync(model.UserName);
@@ -123,10 +121,11 @@ namespace AphasiaProject.Controllers.Auth
                     var securityToken = tokenHandler.CreateToken(tokenDesc);
                     var token = tokenHandler.WriteToken(securityToken);
 
-                    Logger.LogInformation($"User {user.Id} to logged in {DateTime.Now}");
+                    _logger.LogInfo($"User {user.Id} to logged in {DateTime.Now}");
                     return Ok(new { token });
                 }
-                Logger.LogInformation(($"Login failed {model.UserName}"));
+
+                _logger.LogInfo(($"Login failed {model.UserName}"));
                 return BadRequest();
         }
 
