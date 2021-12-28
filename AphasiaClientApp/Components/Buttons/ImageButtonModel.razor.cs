@@ -19,6 +19,8 @@ namespace AphasiaClientApp.Components.Buttons
         public bool IsDisabled { get; set; } = true;
         [Parameter]
         public string SetStyle { get; set; } = "";
+        [Parameter]
+        public string SetType { get; set; } = "ic-light";
 
         private string Type => EventType.GetAttribute<DisplayAttribute>().Name;
         private string ImageSrc => Path.FullPathImage(TypeImage);

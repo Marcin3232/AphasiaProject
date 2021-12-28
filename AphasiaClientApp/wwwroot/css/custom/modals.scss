@@ -3,8 +3,12 @@
 }
 
 .modal-header {
-    justify-content: center !important;
+    justify-content: center;
     border-bottom:none !important;
+}
+
+.modal-footer {
+    border-color: #055961;
 }
 
 .modal-title {

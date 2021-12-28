@@ -14,11 +14,15 @@
     border-radius: 50%;
     box-sizing: border-box;
     border: none;
-    padding:3px;
+    padding: 3px;
 }
 
 .ic-light {
     background: #FFFFFF;
+}
+
+.ic-light-color {
+    background: #DBF4F6;
 }
 
 .ic-current {
@@ -43,4 +47,3 @@
 .btn-nf:active {
     background: rgba(5, 89, 97, 0.3);
 }
-

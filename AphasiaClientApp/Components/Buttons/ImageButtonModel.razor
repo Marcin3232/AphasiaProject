@@ -4,11 +4,11 @@
 {
     case ImageButtonTypes.ButtonFrame:
         <button class="btn-ic ic-light" type="@Type" style="@SetStyle" @onclick=ButtonCallback>
-            <img src="resource/NaviImage/Sound.svg" width=28 height=27 alt="..." />
+            <img src="@ImageSrc" width=28 height=27 alt="..." />
         </button>
         break;
     case ImageButtonTypes.ButtonNonFrame:
-            <button class="btn-nf ic-light" type="@Type" style="@SetStyle" @onclick=ButtonCallback>
+            <button class="btn-nf @SetType" type="@Type" style="@SetStyle" @onclick=ButtonCallback>
                 <img src="@ImageSrc" style="max-width:34px;max-height:34px;" alt="..." />
             </button>
 

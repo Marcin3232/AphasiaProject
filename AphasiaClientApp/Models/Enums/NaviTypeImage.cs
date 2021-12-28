@@ -26,6 +26,26 @@ namespace AphasiaClientApp.Models.Enums
         RightNaviArrow = 6,
         [Display(Name = "LeftNaviArrow.svg")]
         LeftNaviArrow = 7,
+        [Display(Name = "setting-svgrepo-com.svg")]
+        Settings = 8,
+        [Display(Name = "Save.svg")]
+        Save = 9,
+        [Display(Name = "CheckCircle.svg")]
+        CheckCircle = 10,
+        [Display(Name = "CheckCheckbox.svg")]
+        CheckedBox = 11,
+        [Display(Name = "UncheckCheckbox.svg")]
+        UncheckedBox = 12,
+        [Display(Name = "ChartBar.svg")]
+        ChartBar = 13,
+        [Display(Name = "HeadMix.svg")]
+        HeadMix = 14,
+        [Display(Name = "HeadMoto.svg")]
+        HeadMoto = 15,
+        [Display(Name = "HeadSenso.svg")]
+        HeadSenso = 16,
+        [Display(Name = "Play.svg")]
+        Play = 17,
     }
 
     public static class Path
