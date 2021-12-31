@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31808.319
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AphasiaProject", "AphasiaProject\AphasiaProject.csproj", "{13A5518E-90EF-48D0-B82A-54416549F6BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AphasiaProject", "..\AphasiaProject\AphasiaProject.csproj", "{13A5518E-90EF-48D0-B82A-54416549F6BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AphasiaClientApp", "AphasiaClientApp\AphasiaClientApp.csproj", "{4016CDF9-F622-4B7C-9DCE-457FFB0B63E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonExercise", "..\CommonExercise\CommonExercise.csproj", "{A1F65703-8AB8-4874-A8D8-C50112CE15D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonExercise", "CommonExercise\CommonExercise.csproj", "{A1F65703-8AB8-4874-A8D8-C50112CE15D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExerciseResource", "..\ExerciseResource\ExerciseResource.csproj", "{61036F71-8D11-43F2-862E-8028F8DD6CF3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExerciseResource", "ExerciseResource\ExerciseResource.csproj", "{61036F71-8D11-43F2-862E-8028F8DD6CF3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{91754176-1103-4318-9073-D9B62B5DC979}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "..\LoggerService\LoggerService.csproj", "{91754176-1103-4318-9073-D9B62B5DC979}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
