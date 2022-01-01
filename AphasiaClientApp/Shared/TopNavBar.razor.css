@@ -22,7 +22,7 @@ ul.dropdown-menu {
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 0.02em;
-    margin-right:100px;
+    margin-right: 100px;
     font-feature-settings: 'liga' off;
     color: #055961;
 }
@@ -35,4 +35,63 @@ ul.dropdown-menu {
     line-height: 24px;
     font-feature-settings: 'liga' off;
     color: #000000;
+}
+
+.navbar-toggler {
+    color: #055961 !important;
+}
+
+.dropdown-menu {
+    border-color: #055961;
+}
+
+.dropdown-item {
+    border-radius: 5px;
+}
+
+.dropdown-item:hover {
+    background-color: antiquewhite;
+    background-color: #055961;
+    color: white !important;
+    opacity: 70%;
+}
+
+.dropdown-item:active {
+    background-color: #055961;
+    color: white !important;
+    opacity: 90%;
+}
+
+.text-drop:hover {
+    color: white !important;
+}
+
+.text-drop:active {
+    color: white !important;
+}
+
+.navbar-toggler-icon{
+    background-image: url("resource/base/icons8-menu.svg");
+}
+
+.navbar-toggler {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 2px solid #055961;
+    padding: 3px;
+}
+
+.navbar-toggler:hover{
+    background: rgba(5, 89, 97, 0.15);
+}
+
+.navbar-toggler:active {
+    background: rgba(5, 89, 97, 0.3);
+    box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-toggler:focus{
+    box-shadow:none;
 }
