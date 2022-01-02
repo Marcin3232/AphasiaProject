@@ -39,8 +39,12 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Resources\ExerciseResources\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Resources\ExerciseResources\**" />
+    <EmbeddedResource Remove="Resources\ExerciseResources\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Resources\ExerciseResources\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -58,7 +62,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommonExercise\CommonExercise.csproj" />
+    <ProjectReference Include="..\CommonExercise\CommonExercise.csproj">
+      <IncludeAssets></IncludeAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\ExerciseResource\ExerciseResource.csproj" />
     <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
   </ItemGroup>
 
