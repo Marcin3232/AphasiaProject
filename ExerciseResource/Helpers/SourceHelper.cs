@@ -84,7 +84,7 @@ namespace ExerciseResource.Helpers
 
         public static ResourceManager GetResxFile(string exerciseName, string folderName, string fileName)
         {
-            string str = string.Format("AfastResource.Resource.{0}.{1}.{2}", exerciseName, folderName, fileName);
+            string str = string.Format("ExerciseResource.ExerciseResources.{0}.{1}.{2}", exerciseName, folderName, fileName);
 
             ResourceManager rm = new ResourceManager(str, Assembly.GetExecutingAssembly());
 

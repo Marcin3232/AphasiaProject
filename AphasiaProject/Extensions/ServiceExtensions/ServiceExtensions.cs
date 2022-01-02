@@ -15,12 +15,6 @@ namespace AphasiaProject.Extensions.ServiceExtensions
             services.AddControllers();
             services.SwaggerServiceConfig();
             services.ConfigureLoggerService();
-
-            // do usuniecia pozniej
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
         }
 
         public static void SetConfigure(this IApplicationBuilder app)

@@ -1,7 +1,5 @@
-﻿using AphasiaProject.Exercises.Models.Exercise01;
-using AphasiaProject.Models.DB.Exercises;
+﻿using AphasiaProject.Models.DB.Exercises;
 using AphasiaProject.Models.Exercises;
-using AphasiaProject.Models.Exercises17;
 using AphasiaProject.Utils;
 using CommonExercise.Enums;
 using LoggerService.Manager;
