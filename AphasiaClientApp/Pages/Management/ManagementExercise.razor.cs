@@ -15,7 +15,7 @@ namespace AphasiaClientApp.Pages.Management
             Task.Delay(1);
             StateHasChanged();
             return base.OnInitializedAsync();
-
+            
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

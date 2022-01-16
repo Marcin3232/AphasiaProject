@@ -1,0 +1,28 @@
+﻿@using AphasiaClientApp.Models.Enums
+
+@if (showDialog)
+{
+    <div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="justify-content:space-between">
+                    <h4 class="modal-title" style="justify-content:center !important"><b>Zgłoś problem</b></h4>
+                    <p class="text-rigt" style="float:right; justify-content:right;">
+                        <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonNonFrame TypeImage=NaviTypeImage.Close SetType=".ic-light-color" ButtonCallback="()=>Close()" />
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center">
+                        <div class="text-center">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <AphasiaClientApp.Components.Buttons.ButtonModel Text="Anuluj" ButtonTypes="Models.Enums.ButtonTypes.ButtonSmLDark" ButtonCallback="()=>Close()" />
+                    <AphasiaClientApp.Components.Buttons.ButtonModel Text="Wyślij" ButtonTypes="Models.Enums.ButtonTypes.ButtonSmLDark" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

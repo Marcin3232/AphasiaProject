@@ -1,11 +1,4 @@
 ﻿
-using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-
 namespace AphasiaClientApp.Pages
 {
     public partial class Index
@@ -17,12 +10,13 @@ namespace AphasiaClientApp.Pages
 
         void ButtonNavigationToAphasiaType()
         {
+
             UriHelper.NavigateTo("/choiceTypeAphasia");
         }
 
         void Navigation()
         {
-            UriHelper.NavigateTo("/exercises/main_panel");
+            UriHelper.NavigateTo("/management/management_exercise");
         }
     }
 }
