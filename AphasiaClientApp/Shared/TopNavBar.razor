@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="margin-left:10px;"> <img src="/resource/default/parrotLogo.svg" class="img" width="40" height="40"  alt="...">  Afast</a>
+        <a class="navbar-brand" href="#" style="margin-left:10px;"> <img src="/resource/default/parrotLogo.svg" class="img" width="40" height="40" alt="...">  Afast</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,7 +10,7 @@
             <ul class="navbar-nav mx-auto me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="text-nav">O aplikacji</div>
+                        <div class="text-nav"><img src="resource/icons8/navbar/icons8-about.svg" width=20 /> O aplikacji</div>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#<"><div class="text-drop">Projekt</div></a></li>
@@ -19,7 +19,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="text-nav">Jak Korzystać</div>
+                        <div class="text-nav"><img src="resource/icons8/navbar/icons8-user-manual.svg" width=20 /> Jak Korzystać</div>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#"><div class="text-drop">FAQ</div></a></li>
@@ -31,7 +31,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="text-nav"> Kontakt</div>
+                        <div class="text-nav"> <img src="resource/icons8/navbar/icons8-communication.svg" width=20 />  Kontakt</div>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#"><div class="text-drop">Koordynator Projektu</div></a></li>
@@ -40,12 +40,20 @@
 
                     </ul>
                 </li>
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="text-nav"> <img src="resource/icons8/navbar/icons8-settings.svg" width=20 />  Ustawienia</div>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" @onclick="()=>languageSettings.Show()"><div class="text-drop"> Zmień język </div></a></li>
+                    </ul>
+                </li>
 
 
             </ul>
             <AphasiaClientApp.Components.Buttons.ButtonModel Text="Zaloguj się" ButtonTypes="Models.Enums.ButtonTypes.ButtonSmLDark" ButtonCallback="Navigation_Login"></AphasiaClientApp.Components.Buttons.ButtonModel>
-            <AphasiaClientApp.Pages.Other.ReportError @ref="@reportErrorModal"/>
+            <AphasiaClientApp.Pages.Other.ReportError @ref="@reportErrorModal" />
+            <AphasiaClientApp.Pages.Settings.LanguageSettings @ref="@languageSettings"/>
         </div>
     </div>
 </nav>
