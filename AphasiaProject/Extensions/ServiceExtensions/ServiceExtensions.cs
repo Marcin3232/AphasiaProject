@@ -11,6 +11,7 @@ namespace AphasiaProject.Extensions.ServiceExtensions
         {
             services.PostgreSqlServiceConfig(configuration);
             services.ConfigureCors();
+            services.ScopedServiceConfig();
             services.AuthenticationServiceConfig(configuration);
             services.AddControllers();
             services.SwaggerServiceConfig();

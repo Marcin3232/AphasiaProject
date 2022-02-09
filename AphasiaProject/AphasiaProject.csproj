@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="EntityFramework6.Npgsql" Version="6.4.3" />
     <PackageReference Include="IdentityServer4" Version="4.1.2" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
@@ -58,15 +59,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Enums\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CommonExercise\CommonExercise.csproj">
       <IncludeAssets></IncludeAssets>
     </ProjectReference>
     <ProjectReference Include="..\ExerciseResource\ExerciseResource.csproj" />
     <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Enums\" />
   </ItemGroup>
 
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
