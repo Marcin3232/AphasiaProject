@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AphasiaProject.Models.Exercises
 {
-    [Table("ExerciseName")]
-    public class ExerciseNameModel
+    [Table("ExerciseKindName")]
+    public class ExerciseKindNameModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,9 +12,5 @@ namespace AphasiaProject.Models.Exercises
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
-        public string ImageSrc { get; set; }
-
-        [Index(IsUnique = true)]
-        public string IdExerciseTask { get; set; }
     }
 }

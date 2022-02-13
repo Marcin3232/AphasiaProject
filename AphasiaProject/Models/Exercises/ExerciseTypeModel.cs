@@ -3,18 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AphasiaProject.Models.Exercises
 {
-    [Table("ExerciseName")]
-    public class ExerciseNameModel
+    [Table("ExerciseType")]
+    public class ExerciseTypeModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImageSrc { get; set; }
-
-        [Index(IsUnique = true)]
-        public string IdExerciseTask { get; set; }
+        public ExerciseTypeNameModel ExerciseTypeName { get; set; }
     }
 }

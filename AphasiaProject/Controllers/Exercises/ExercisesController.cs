@@ -1,7 +1,9 @@
 ﻿using AphasiaProject.Models.DB.Exercises;
 using AphasiaProject.Models.Exercises;
+using AphasiaProject.Services.Dapper;
 using AphasiaProject.Utils;
 using CommonExercise.Enums;
+using ExerciseResource.Models.Exercise02;
 using LoggerService.Manager;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -33,7 +35,7 @@ namespace AphasiaProject.Controllers.Exercises
 
         [Route("avaibleExerciseFromTypes/{type}")]
         [HttpGet]
-        public async Task<List<ExerciseNameModel>> GetAvaibleExerciseNamesFromType(int type)
+        public List<ExerciseNameModel> GetAvaibleExerciseNamesFromType(int type)
         {
             var avaibleTask = BaseAvaibleAphasiaTaskList.AvaibleExerciseTaskIdList((AphasiaTypes)type);
 
