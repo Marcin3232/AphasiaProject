@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace ExerciseResource.Models.Exercise01
 {
-    public class Exercise17List
+    public class Exercise01ResourcesList
     {
         private const string DirectoryName = "Exercise01";
         private List<Exercise01Resource> exercise01ResourceList = null;
 
-        public Exercise17List()
+        public Exercise01ResourcesList()
         {
             exercise01ResourceList = new List<Exercise01Resource>();
 

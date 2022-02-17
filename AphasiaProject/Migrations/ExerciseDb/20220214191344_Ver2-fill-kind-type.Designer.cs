@@ -3,15 +3,17 @@ using System;
 using AphasiaProject.Models.DB.Exercises;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AphasiaProject.Migrations.ExerciseDb
 {
     [DbContext(typeof(ExerciseDbContext))]
-    partial class ExerciseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220214191344_Ver2-fill-kind-type")]
+    partial class Ver2fillkindtype
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,9 +31,14 @@ namespace AphasiaProject.Migrations.ExerciseDb
                     b.Property<int?>("ExerciseKindNameId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("ExerciseTypeId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ExerciseKindNameId");
+
+                    b.HasIndex("ExerciseTypeId");
 
                     b.ToTable("ExerciseKind");
                 });
@@ -391,23 +398,16 @@ namespace AphasiaProject.Migrations.ExerciseDb
                     b.Property<int>("ExerciseId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("ExerciseKindId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("ExerciseTypeId")
-                        .HasColumnType("integer");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
+
+                    b.Property<int>("KindId")
+                        .HasColumnType("integer");
 
                     b.Property<int?>("PhaseNameId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExerciseKindId");
-
-                    b.HasIndex("ExerciseTypeId");
 
                     b.HasIndex("PhaseNameId");
 
@@ -496,8 +496,8 @@ namespace AphasiaProject.Migrations.ExerciseDb
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
+                    b.Property<string>("Type")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -510,7 +510,13 @@ namespace AphasiaProject.Migrations.ExerciseDb
                         .WithMany()
                         .HasForeignKey("ExerciseKindNameId");
 
+                    b.HasOne("AphasiaProject.Models.Exercises.ExerciseTypeModel", "ExerciseType")
+                        .WithMany()
+                        .HasForeignKey("ExerciseTypeId");
+
                     b.Navigation("ExerciseKindName");
+
+                    b.Navigation("ExerciseType");
                 });
 
             modelBuilder.Entity("AphasiaProject.Models.Exercises.ExerciseModel", b =>
@@ -524,21 +530,9 @@ namespace AphasiaProject.Migrations.ExerciseDb
 
             modelBuilder.Entity("AphasiaProject.Models.Exercises.ExercisePhaseModel", b =>
                 {
-                    b.HasOne("AphasiaProject.Models.Exercises.ExerciseKindModel", "ExerciseKind")
-                        .WithMany()
-                        .HasForeignKey("ExerciseKindId");
-
-                    b.HasOne("AphasiaProject.Models.Exercises.ExerciseTypeModel", "ExerciseType")
-                        .WithMany()
-                        .HasForeignKey("ExerciseTypeId");
-
                     b.HasOne("AphasiaProject.Models.Exercises.ExercisePhaseNameModel", "PhaseName")
                         .WithMany()
                         .HasForeignKey("PhaseNameId");
-
-                    b.Navigation("ExerciseKind");
-
-                    b.Navigation("ExerciseType");
 
                     b.Navigation("PhaseName");
                 });

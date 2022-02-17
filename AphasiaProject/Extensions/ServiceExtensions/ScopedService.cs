@@ -1,4 +1,7 @@
-﻿using AphasiaProject.Services.Dapper;
+﻿using AphasiaProject.Models.DB.Exercises;
+using AphasiaProject.Services.Dapper;
+using AphasiaProject.Services.Exercise;
+using ExerciseResource.Factory;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AphasiaProject.Extensions.ServiceExtensions
@@ -9,6 +12,9 @@ namespace AphasiaProject.Extensions.ServiceExtensions
         {
             service.AddScoped<IDbContext,DbContext>();
             service.AddScoped<IDbRepository,DbRepository>();
+            service.AddScoped<IExerciseDbContext,ExerciseDbContext>();
+            service.AddScoped<IExerciseResourcesFactory,ExerciseResourcesFactory>();
+            service.AddScoped<IExerciseService,ExerciseService>();
         }
     }
 }

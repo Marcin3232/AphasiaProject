@@ -14,7 +14,9 @@ namespace AphasiaProject.Models.Exercises
         [Required]
         public int ExerciseId { get; set; }
         [Required]
-        public int KindId { get; set; }        
+        public ExerciseKindModel ExerciseKind { get; set; }
+        [Required]
+        public ExerciseTypeModel ExerciseType { get; set; }
         public bool IsActive { get; set; }
     }
 }

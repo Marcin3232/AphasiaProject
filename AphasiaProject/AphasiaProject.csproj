@@ -62,6 +62,7 @@
     <ProjectReference Include="..\CommonExercise\CommonExercise.csproj">
       <IncludeAssets></IncludeAssets>
     </ProjectReference>
+    <ProjectReference Include="..\DataBaseQuery\DataBaseQuery.csproj" />
     <ProjectReference Include="..\ExerciseResource\ExerciseResource.csproj" />
     <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
   </ItemGroup>

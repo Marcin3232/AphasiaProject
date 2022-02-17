@@ -3,15 +3,17 @@ using System;
 using AphasiaProject.Models.DB.Exercises;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AphasiaProject.Migrations.ExerciseDb
 {
     [DbContext(typeof(ExerciseDbContext))]
-    partial class ExerciseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220217200948_Change-kind-and-type-relation")]
+    partial class Changekindandtyperelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

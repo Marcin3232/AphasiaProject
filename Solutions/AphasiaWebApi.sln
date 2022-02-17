@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonExercise", "..\Common
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "..\LoggerService\LoggerService.csproj", "{91754176-1103-4318-9073-D9B62B5DC979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExerciseResource", "..\ExerciseResource\ExerciseResource.csproj", "{A2BFB264-0D09-4D52-8584-BCFA067C052F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExerciseResource", "..\ExerciseResource\ExerciseResource.csproj", "{A2BFB264-0D09-4D52-8584-BCFA067C052F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseQuery", "..\DataBaseQuery\DataBaseQuery.csproj", "{ECD45EC8-00B5-4D7B-B625-A90705A15D04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A2BFB264-0D09-4D52-8584-BCFA067C052F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2BFB264-0D09-4D52-8584-BCFA067C052F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2BFB264-0D09-4D52-8584-BCFA067C052F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD45EC8-00B5-4D7B-B625-A90705A15D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD45EC8-00B5-4D7B-B625-A90705A15D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD45EC8-00B5-4D7B-B625-A90705A15D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD45EC8-00B5-4D7B-B625-A90705A15D04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
