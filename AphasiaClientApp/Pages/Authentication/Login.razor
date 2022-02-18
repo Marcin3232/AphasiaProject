@@ -9,7 +9,7 @@
 <div class="field-body" style="margin-top:50px; margin-bottom:60px;">
     <div class="card card-l border-0">
         <div class="text-card-title text-center">Logowanie</div>
-        <EditForm Model="@userLoginModel" OnValidSubmit="@HandleValidSubmit">
+        <EditForm Model="@userLoginModel" OnValidSubmit="ExecuteLogin"> 
             <DataAnnotationsValidator />
             <ValidationSummary />
             <div class="mb-3">
