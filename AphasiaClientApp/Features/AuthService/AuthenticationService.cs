@@ -38,7 +38,7 @@ namespace AphasiaClientApp.Features.AuthService
                 return result;
 
             await _localStorage.SetItemAsync("authToken", result.Token);
-            ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(userForAuthentication.Login);
+            ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(userForAuthentication.UserName);
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", result.Token);
 
             return new AuthResponseDto { IsAuthSuccessful = true };
