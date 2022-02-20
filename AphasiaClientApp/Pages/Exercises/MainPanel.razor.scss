@@ -1,0 +1,21 @@
+﻿@import 'variables';
+
+.col-pos {
+    margin-top: 45px;
+}
+
+.exercises-footer-text {
+    position: absolute;
+    font-family: $family;
+    font-style: normal;
+    font-weight: $sm-line-height;
+    font-size: $sm-size;
+    line-height: $sm-line-height;
+    text-align: center;
+    font-feature-settings: 'liga' off;
+    color: $base-dark-background;
+}
+
+.text-exercises-pos {
+    margin-top: 28px;
+}

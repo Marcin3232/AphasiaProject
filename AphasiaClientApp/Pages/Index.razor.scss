@@ -1,0 +1,59 @@
+﻿@import 'variables';
+
+.container {
+    position: relative;
+}
+
+#title {
+    font-family: $family-slab;
+    font-style: normal;
+    color: $base-dark-background;
+    font-weight: bold;
+    font-size: $h-size;
+    line-height: $l-line-height;
+    text-align: center;
+    font-feature-settings: 'liga' off;
+}
+
+#imageAsBackground {
+    position: absolute;
+    left: 1.98%;
+    right: 47.55%;
+    z-index: 0;
+    top: 10.74%;
+    bottom: 11.06%;
+}
+
+.buttonMargin1 {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.buttonMargin2 {
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+@media (max-width:1680px) {
+    .img {
+        opacity: 0.3;
+    }
+}
+
+@media (max-width:1200px) {
+    .img {
+        height: 85%;
+        width: 85%;
+        opacity: 0.3;
+    }
+
+    .buttonMargin1 {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .buttonMargin2 {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}

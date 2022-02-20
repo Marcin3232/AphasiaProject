@@ -1,0 +1,30 @@
+﻿@import 'variables';
+
+.text-card-title {
+    margin-top: 44px;
+    margin-bottom: 60px;
+}
+
+.card {
+    background: $base-light-background;
+    border-radius: 10px;
+    width: 500px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+
+.positioner {
+    margin-top: 23px;
+    margin-bottom: 58px;
+}
+
+.positioner-c {
+    margin-bottom: 24px;
+}
+
+@media (max-width:520px) {
+    .card {
+        width: 90%;
+    }
+}

@@ -1,11 +1,1 @@
-﻿
-.field-button{
-    margin-bottom:58px;
-}
-
-@media (max-width:992px) {
-    .justify-content-center{
-        margin-left:2px;
-        margin-right:2px;
-    }
-}
+.field-button{margin-bottom:58px}@media(max-width: 992px){.justify-content-center{margin-left:2px;margin-right:2px}}
