@@ -55,7 +55,5 @@
 }
 
 .btn-nav-exercise:active {
-    width:41px;
-    height:45px;
     background: rgba(5, 89, 97, 0.3);
 }

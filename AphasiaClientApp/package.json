@@ -1,0 +1,16 @@
+{
+  "name": "AphasiaClientApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.49.8"
+  },
+  "scripts": {
+    "sass":"sass"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

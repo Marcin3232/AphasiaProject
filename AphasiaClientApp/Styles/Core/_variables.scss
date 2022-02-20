@@ -1,0 +1,12 @@
+﻿@import "color";
+@import "font-size";
+@import "base-size";
+@import "font-base";
+
+$desktop-width: 750px;
+
+@mixin desktop {
+    @media (min-width: $desktop-width) {
+        @content;
+    }
+}
