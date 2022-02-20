@@ -1,0 +1,99 @@
+﻿@import "variables";
+
+.navbar-custom {
+  background-color: $base-light-background !important;
+}
+
+ul.dropdown-menu {
+  background-color: $base-light-background !important;
+}
+
+.tezt-title {
+  font-family: $family !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  font-size: $m-size !important;
+  line-height: $m-line-height !important;
+  color: $base-dark-background;
+}
+
+.text-nav {
+  font-family: $family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: $sm-size;
+  line-height: $sm-line-height;
+  letter-spacing: 0.02em;
+  margin-right: 100px;
+  font-feature-settings: "liga" off;
+  color: $base-dark-background;
+}
+
+.text-drop {
+  font-family: $family;
+  font-style: normal;
+  font-weight: normal;
+  font-size: $sm-size;
+  line-height: $sm-line-height;
+  font-feature-settings: "liga" off;
+  color: $black;
+}
+
+.navbar-toggler {
+  color: $base-dark-background !important;
+}
+
+.dropdown-menu {
+  border-color: $base-dark-background;
+}
+
+.dropdown-item {
+  border-radius: 5px;
+}
+
+.dropdown-item:hover {
+  background-color: antiquewhite;
+  background-color: $base-dark-background;
+  color: $white !important;
+  opacity: 70%;
+}
+
+.dropdown-item:active {
+  background-color: $base-dark-background;
+  color: $white !important;
+  opacity: 90%;
+}
+
+.text-drop:hover {
+  color: $white !important;
+}
+
+.text-drop:active {
+  color: $white !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("resource/base/icons8-menu.svg");
+}
+
+.navbar-toggler {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 2px solid $base-dark-background;
+  padding: 3px;
+}
+
+.navbar-toggler:hover {
+  background: $base-hover-dark;
+}
+
+.navbar-toggler:active {
+  background: $base-activer-dark;
+  box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}

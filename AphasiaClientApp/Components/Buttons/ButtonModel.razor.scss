@@ -1,0 +1,125 @@
+﻿@import "variables";
+
+.btn-clight {
+  word-wrap: break-word;
+  background: $white;
+  border: 2px solid $base-dark-background;
+  box-sizing: border-box;
+}
+
+.btn-cdark {
+  word-wrap: break-word;
+  background: $base-dark-background;
+  border: 2px solid $white;
+  box-sizing: border-box;
+}
+
+.btn-large {
+  min-height: 80px;
+  border-radius: 50px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.btn-huge {
+  min-height: 104px;
+  border-radius: 50px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.btn-small {
+  box-shadow: 0px 2px 2.5px rgba(0, 0, 0, 0.15);
+  border-radius: 25px;
+  margin-left: 23px;
+  margin-right: 23px;
+  min-height: 48px;
+  text-align: center;
+}
+
+.btn-clight:hover {
+  background: #add3d7;
+}
+
+.btn-clight:active {
+  background: $base-active-light;
+  box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.btn-cdark:hover {
+  background: $base-hover-light;
+}
+
+.btn-cdark:active {
+  background: $base-dark-background;
+  box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.btn-cwhite:hover {
+  background-color: $base-hover-dark;
+}
+
+.btn-cwhite:active {
+}
+
+.text-lg {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-size: $sm-size;
+  font-weight: $font-weight;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.text-sm {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-weight: normal;
+  font-size: $ssm-line-height;
+  text-align: center;
+  font-feature-settings: "liga" off;
+}
+
+.text-hg {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-weight: $font-weight;
+  font-size: $ssm-size;
+  line-height: $c-line-height;
+  text-align: center;
+  font-feature-settings: "liga" off;
+}
+
+.text-cdark {
+  color: $black;
+  font-family: $family;
+  font-style: normal;
+}
+
+.text-clight {
+  color: $white;
+  font-family: $family;
+  font-style: normal;
+}
+
+@media (max-width: 1200px) {
+  .text-lg {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+}

@@ -1,0 +1,42 @@
+﻿@import "variables";
+
+.text-option {
+  position: static;
+  font-family: $family;
+  font-style: normal;
+  font-weight: bold;
+  font-size: $m-size;
+  line-height: $m-line-height;
+}
+
+.btn-ic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 2px solid $base-dark-background;
+  padding: 3px;
+}
+
+.ic-light {
+  background: $white;
+}
+
+.ic-active {
+  background: $base-dark-background;
+}
+
+.ic-current {
+  background: $base-light-background;
+}
+
+.btn-ic-action:hover {
+  background: $base-hover-dark;
+}
+
+.btn-ic-action:active {
+  background: $base-activer-dark;
+  border: 2px solid $base-dark-background;
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
+}

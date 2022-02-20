@@ -1435,12 +1435,6 @@
 	</Target>
 
 	<ItemGroup>
-	  <Watch Remove="Styles\Core\_base-size.scss" />
-	  <Watch Remove="Styles\Core\_font-base.scss" />
-	  <Watch Remove="Styles\Core\_font-size.scss" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\CommonExercise\CommonExercise.csproj" />
 	</ItemGroup>
 
