@@ -1,0 +1,62 @@
+﻿@import "variables";
+
+.card {
+  width: 240px;
+  height: 343px;
+  border-color: $base-dark-background;
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.position-center {
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  overflow: auto;
+  margin: auto;
+}
+
+.circle {
+  width: 175px;
+  height: 181px;
+  margin-bottom: 15px;
+  background: $white;
+  border: 2px solid $base-dark-background;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.mini-circle {
+  width: 42px;
+  height: 42px;
+  border: 2px solid $base-dark-background;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  position: relative;
+  margin: 5px;
+}
+
+.text-style {
+  font-family: $family;
+  font-style: normal;
+  font-weight: bold;
+  font-size: $m-size;
+  line-height: $sm-line-height;
+  color: $base-dark-background;
+}
+
+.checked {
+  color: $base-yellow;
+}

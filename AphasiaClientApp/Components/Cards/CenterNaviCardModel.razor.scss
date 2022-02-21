@@ -1,0 +1,33 @@
+﻿@import "variables";
+
+.text-title-exercise {
+  font-family: $family;
+  font-style: normal;
+  font-weight: $font-weight;
+  font-size: $sm-size;
+  line-height: $sm-line-height;
+  letter-spacing: 0.02em;
+  color: $base-dark-background;
+}
+
+.text-title-type-exercise {
+  font-family: $family-slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: $ml-size;
+  line-height: $cl-line-height;
+  text-align: center;
+  color: $base-dark-background;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 8px 0px;
+}
+
+.card {
+  background: $base-light-background;
+}
+
+.card-body {
+  padding: 2px !important;
+}

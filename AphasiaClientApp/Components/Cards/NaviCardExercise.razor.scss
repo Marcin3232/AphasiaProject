@@ -1,0 +1,60 @@
+﻿@import "variables";
+
+.text-navi-card {
+  position: static;
+  font-family: $family;
+  font-style: normal;
+  font-weight: normal;
+  font-size: $lt-size;
+  line-height: $ssm-line-height;
+  text-align: center;
+  align-content: center;
+  font-feature-settings: "liga" off;
+  color: $base-dark-background;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.text-navi-card-vert {
+  position: static;
+  font-family: $family;
+  font-style: normal;
+  font-weight: normal;
+  font-size: $lt-size;
+  line-height: $ssm-line-height;
+  text-align: center;
+  font-feature-settings: "liga" off;
+  color: $base-dark-background;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 27px 0px;
+}
+
+.card {
+  background: $base-light-background;
+}
+
+.card-body {
+  padding: 2px !important;
+}
+
+.btn-nav-exercise {
+  width: 52px;
+  height: 52px;
+  background: $base-light-background;
+  border-radius: 50%;
+}
+
+.btn-nav-exercise:hover {
+  background: $base-hover-dark;
+}
+
+.card:hover .text-navi-card {
+  text-decoration-line: underline;
+}
+
+.btn-nav-exercise:active {
+  background: $base-activer-dark;
+}
