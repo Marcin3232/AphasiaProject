@@ -4,10 +4,10 @@
 }
 
 .text-card-title {
-    font-family: Roboto Slab;
+    font-family: $family-slab;
     font-style: normal;
     font-weight: bold;
-    font-size: 36px;
-    line-height: 32px;
-    color: #055961;
+    font-size: $h-size;
+    line-height: $m-line-height;
+    color: $base-dark-background;
 }
