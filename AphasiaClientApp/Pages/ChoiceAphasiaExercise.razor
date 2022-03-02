@@ -14,7 +14,7 @@
             {
                 <AphasiaClientApp.Components.Cards.TaskCardModel Title="@item.Name"
                                                          ImageUrl="@item.ImageSrc"
-                                                         Url="/" />
+                                                         Url="@("/exercises/main_panel/"+item.IdExerciseTask.ToString())" />
             }
         }
     </div>

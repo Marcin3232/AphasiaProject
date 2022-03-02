@@ -1,5 +1,4 @@
-﻿using AphasiaProject.Models.DB.Exercises;
-using AphasiaProject.Models.Exercises;
+﻿using AphasiaProject.Models.Exercises;
 using AphasiaProject.Models.Helpers;
 using AphasiaProject.Models.ResponseExercise;
 using AphasiaProject.Services.Dapper;
@@ -23,21 +22,21 @@ namespace AphasiaProject.Services.Exercise
             _exerciseResourceFactory = exerciseResourceFactory;
         }
 
-        public Task<List<ExerciseModel>> GetAll()
+        public Task<List<ResponseExerciseModel>> GetAll()
         {
             throw new Exception();
         }
 
         public async Task<ResponseExerciseModel> GetById(int id)
         {
-            var phase = GetExercisePhase(id);
-
-            if (!phase.Any())
-                return null;
-
             var information = GetExerciseInformation(id);
 
             if (information == null)
+                return null;
+
+            var phase = GetExercisePhase(information.ExerciseId);
+
+            if (!phase.Any())
                 return null;
 
             var resource = GetExerciseResource(information.ExerciseTaskId);
@@ -56,7 +55,7 @@ namespace AphasiaProject.Services.Exercise
 
         private ResponseExerciseInformation GetExerciseInformation(int id)
         {
-            var query = $"{ExerciseQuery.QuerySelectExerciseInformationResponse()} WHERE e.\"Id\" = @{nameof(SingleValue<int>.Value)};";
+            var query = $"{ExerciseQuery.QuerySelectExerciseInformationResponse()} WHERE e.\"ExerciseNameId\" = @{nameof(SingleValue<int>.Value)};";
             return Task.FromResult(_repository.Get<ResponseExerciseInformation>(query, new SingleValue<int>() { Value = id })).Result.FirstOrDefault();
         }
 

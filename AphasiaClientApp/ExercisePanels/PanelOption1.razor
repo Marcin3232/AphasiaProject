@@ -1,0 +1,15 @@
+﻿@using AphasiaClientApp.Models.Enums
+@inject IJSRuntime JsRuntime
+
+@if (show)
+{
+    <div class="row justify-content-center margin-panel">
+        <img class="exerciseOneImg" src="@ModelList[Counter]?.Picture" />
+        <p></p>
+        <ImageButtonModel TypeImage=@NaviTypeImage.Sound
+                      ButtonCallback=@OnPlaySound />
+        <TextFrame Text="@ModelList[Counter]?.Word"></TextFrame>
+        <audio id="sound" src="@ModelList[Counter]?.WordSound" />
+    </div>
+
+}

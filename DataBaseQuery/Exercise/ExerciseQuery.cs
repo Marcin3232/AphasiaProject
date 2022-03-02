@@ -23,7 +23,8 @@ namespace DataBaseQuery.Exercise
             $"etn.\"Name\" as TypeName, " +
             $"etn.\"Description\" as TypeDescription, " +
             $"etn.\"Type\" as Type, " +
-            $"epn.\"Description\" as PhaseDescription " +
+            $"epn.\"Description\" as PhaseDescription, " +
+            $"ekn.\"SoundSrc\" as SoundSrc " +
             $"FROM \"ExercisePhase\" as ep " +
             $"JOIN \"ExercisePhaseName\" as epn on epn.\"Id\" = ep.\"PhaseNameId\" " +
             $"JOIN \"ExerciseKind\" as ek on  ek.\"Id\" = ep.\"ExerciseKindId\" " +

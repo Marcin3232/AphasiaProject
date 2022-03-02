@@ -17,6 +17,8 @@ namespace AphasiaClientApp.Components.Cards
         public bool IsVertical { get; set; }
         [Parameter]
         public NaviTypeImage NaviType { get; set; }
+        [Parameter]
+        public EventCallback ClickCallback { get; set; }
         private string _imageUrl => Path.PathFile + NaviType.GetAttribute<DisplayAttribute>().Name;
 
     }

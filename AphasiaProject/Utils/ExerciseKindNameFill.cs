@@ -10,7 +10,7 @@ namespace AphasiaProject.Utils
         private static List<ExerciseKindNameModel> CreateList()
         {
             var temp= new List<ExerciseKindNameModel>();
-            temp.Add(new ExerciseKindNameModel() { Id = 1, Kind =1, Name = "Posłuchaj i Zapamiętaj", Description = "..." });
+            temp.Add(new ExerciseKindNameModel() { Id = 1, Kind =1, Name = "Posłuchaj i Zapamiętaj", Description = "...", SoundSrc= "sound/instructions/listen_and_remember" });
             return temp;
         }
     }

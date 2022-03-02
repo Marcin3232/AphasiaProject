@@ -1,0 +1,18 @@
+﻿<div class="footer-exercises">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="exercises-footer-text text-exercises-pos">
+                ćwiczenie
+                @if (Exercise != null)
+                {
+                    foreach (var item in Exercise.Phases)
+                    {
+                        <b class="b-position">
+                            <PaginationButtonModel Value=item.Order IsActive=item.IsDone ButtonCallback="()=>OnClick(item)"/>
+                        </b>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

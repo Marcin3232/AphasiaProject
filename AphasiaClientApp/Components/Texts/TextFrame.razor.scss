@@ -1,0 +1,24 @@
+﻿@import "variables";
+
+.cardFrame {
+    width: 178px;
+    min-height: 48px;
+    border: 2px solid $base-dark-background;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background: $white;
+    word-break: break-word;
+    margin-left: 5px;
+}
+
+.text-formater {
+    color: $black;
+    font-family: $family-slab;
+    font-style: normal;
+    font-weight: 500;
+    font-size: $m-size;
+    line-height: $m-line-height;
+    text-align: center;
+    vertical-align: central;
+    margin-top: 4px;
+}

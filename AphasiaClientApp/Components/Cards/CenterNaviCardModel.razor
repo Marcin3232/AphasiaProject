@@ -1,4 +1,7 @@
-﻿<div class="col d-flex justify-content-center">
+﻿@using Models.Enums
+@inject IJSRuntime JsRuntime
+
+<div class="col d-flex justify-content-center">
     <div class="card text-center border-0">
         <div class="card-body text-center">
             <div class="text-title-exercise" style="margin-top:15px;margin-bottom:8px;">
@@ -7,7 +10,11 @@
             <div class="text-title-type-exercise" style="margin-bottom:10px;">
                 @TypeTitleExercise
             </div>
-            <NaviCardExercise IsVertical=true Title="test" NaviType="Models.Enums.NaviTypeImage.Sound"/>
+            <NaviCardExercise IsVertical=true Title=""
+                              NaviType="NaviTypeImage.Sound"
+                              ClickCallback="()=>PlaySound(idCommandSound)" />
         </div>
     </div>
+
+    <audio id=@idCommandSound src="@ListenCommandPatch" />
 </div>

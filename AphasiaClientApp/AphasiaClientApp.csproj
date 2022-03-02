@@ -6,10 +6,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Remove="compilerconfig.json" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.2" />
@@ -1412,6 +1408,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Services\NavigationService\" />
 		<Folder Include="wwwroot\resource\default\" />
 	</ItemGroup>
 
@@ -1423,11 +1420,6 @@
 	<ItemGroup>
 		<ComponentScssFiles Include="**/*/*.scss" Exclude="node_modules/**;wwwroot/**;Styles/**" />
 	</ItemGroup>
-
-	<Target Name="CompileComponentSass" BeforeTargets="CompileGlobalSass">
-		<Message Text="Compiling Component SCSS files" Importance="high" />
-		<Exec Condition="!$([System.Text.RegularExpressions.Regex]::IsMatch('%(ComponentScssFiles.Identity)', `.*[/\\]_.*`))" Command="npm run sass -- --style=compressed --no-source-map --load-path=Styles/Core %(ComponentScssFiles.Identity) %(relativedir)%(filename).css" />
-	</Target>
 
 	<Target Name="CompileGlobalSass" BeforeTargets="Compile">
 		<Message Text="Compiling global SCSS file" Importance="high" />

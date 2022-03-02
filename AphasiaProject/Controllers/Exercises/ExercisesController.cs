@@ -58,7 +58,7 @@ namespace AphasiaProject.Controllers.Exercises
         {
             try
             {
-                var result = _exerciseService.GetById(id);
+                var result = _exerciseService.GetById(id).Result;
                 return result == null ? NotFound() : Ok(result);
             }
             catch (Exception ex)

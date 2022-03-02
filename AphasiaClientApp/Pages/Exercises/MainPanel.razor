@@ -1,6 +1,8 @@
-﻿@page "/exercises/main_panel"
-@using Components.Cards
+﻿@page "/exercises/main_panel/{id:int}"
+@using AphasiaClientApp.Extensions.Navigation
 @using Models.Enums
+
+@inject Navigation Navigation
 
 <style>
     .navbar {
@@ -13,39 +15,45 @@
         <div class="row">
             <div class="col d-flex col-4">
                 <div class="col col-pos">
-                    <AphasiaClientApp.Components.Cards.NaviCardExercise Title="zamknij zestaw" NaviType="@NaviTypeImage.Close" />
+                    <NaviCardExercise Title="zamknij zestaw"
+                                      NaviType="@NaviTypeImage.Close"
+                                      ClickCallback="()=>(dialogExit.Show())" />
                 </div>
                 <div class="col col-pos">
-                    <AphasiaClientApp.Components.Cards.NaviCardExercise Title="zamknij" NaviType="@NaviTypeImage.Back" />
+                    <NaviCardExercise Title="Cofnij"
+                                      NaviType="@NaviTypeImage.Back"
+                                      ClickCallback="Back" />
                 </div>
 
             </div>
             <div class="col-4 d-flex">
-                <AphasiaClientApp.Components.Cards.CenterNaviCardModel TitleExercise="test" TypeTitleExercise=Test/>
+                <CenterNaviCardModel @ref=@centerNavi
+                                     TitleExercise="@Exercise?.ExerciseInformation.Name"
+                                     TypeTitleExercise=@Exercise?.Phases.FirstOrDefault(x=>x.IsCurrent)?.KindName
+                                     ListenCommandSrc=@Exercise?.Phases.FirstOrDefault(x=>x.IsCurrent)?.SoundSrc />
             </div>
             <div class="col-4 d-flex">
-                    <div class="col col-pos">
-                        <AphasiaClientApp.Components.Cards.NaviCardExercise Title="zamknij" NaviType="@NaviTypeImage.Refresh" />
-                    </div>
-                    <div class="col col-pos">
-                        <AphasiaClientApp.Components.Cards.NaviCardExercise Title="zamknij" NaviType="@NaviTypeImage.Next" />
-                    </div>
+                <div class="col col-pos">
+                    <NaviCardExercise Title="Powtórz"
+                                      NaviType="@NaviTypeImage.Refresh"
+                                      ClickCallback="Refresh" />
+                </div>
+                <div class="col col-pos">
+                    <NaviCardExercise Title="Dalej"
+                                      NaviType="@NaviTypeImage.Next"
+                                      ClickCallback="Next" />
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<h3>MainPanel</h3>
+<PanelOption1 @ref="@panelOption1" Counter=@counter
+              PlaySound=@playSound/>
 
-<div class="footer-exercises">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="exercises-footer-text text-exercises-pos">
-                ćwiczenie
-            </div>
-        </div> 
-    </div>
-</div>
-@code {
+<ExerciseFooter Exercise=@Exercise
+                EventCallback=@OnFooterAction />
 
-}
+<LoadingDialogModel @ref="@dialogLoad" />
+<CloseExercisesModal @ref="@dialogExit"
+                     OnClose="OnCloseExerciseDialog" />

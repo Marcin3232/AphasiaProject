@@ -15,6 +15,7 @@
         public string TypeName { get; set; }
         public string TypeDescription { get; set; }
         public int Type { get; set; }
-        public string PhaseDescription { get; set; }        
+        public string PhaseDescription { get; set; }   
+        public string SoundSrc { get;set; }
     }
 }

@@ -18,7 +18,7 @@ namespace AphasiaClientApp.Extensions.RequestMethod
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, path);
                 var response = await httpClient.SendAsync(request);
-
+                
                 if(response.IsSuccessStatusCode)
                     return await JsonSerializer.DeserializeAsync<T>(await response.Content.ReadAsStreamAsync());
 

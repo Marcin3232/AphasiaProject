@@ -7,5 +7,6 @@ namespace AphasiaClientApp.Services
     public interface IDbExerciseService
     {
         Task<List<ExerciseName>> GetExerciseNameFromAphasiaType(int type);
+        Task<Exercise> GetExercise(int id);
     }
 }

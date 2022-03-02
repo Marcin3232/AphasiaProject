@@ -19,5 +19,8 @@ namespace AphasiaClientApp.Services
 
         public async Task<List<ExerciseName>> GetExerciseNameFromAphasiaType(int type) =>
             await _requestMethod.Get<List<ExerciseName>>($"/api/exercises/avaibleExerciseFromTypes/{type}", _httpClient);
+
+        public async Task<Exercise> GetExercise(int id) =>
+            await _requestMethod.Get<Exercise>($"/api/Exercises/{id}", _httpClient);
     }
 }

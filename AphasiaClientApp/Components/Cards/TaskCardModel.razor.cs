@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AphasiaClientApp.Extensions.Navigation;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,9 @@ namespace AphasiaClientApp.Components.Cards
         public string Url { get; set; }
         [Parameter]
         public string ImageUrl { get; set; }
+        [Inject]
+        private Navigation navigation { get; set; }
+
+        private void Navigate()=>navigation.NavigateTo(Url);
     }
 }
