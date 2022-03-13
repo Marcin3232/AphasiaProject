@@ -9,17 +9,6 @@ namespace AphasiaProject.Models.Auth
     public class AppRegisterRequestViewModel
     {
         [Required]
-        [StringLength(64,MinimumLength=3)]
-        [Display(Name="FirstName")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [StringLength(64, MinimumLength = 3)]
-        [Display(Name = "Surname")]
-        public string Surname { get; set; }
-        
-        public string Name { get; set; }
-        [Required]
         [StringLength(64, MinimumLength = 3)]
         [Display(Name = "Login")]
         public string Login { get; set; }
@@ -34,5 +23,9 @@ namespace AphasiaProject.Models.Auth
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "Role")]
+        public string Role { get; set; }
     }
 }

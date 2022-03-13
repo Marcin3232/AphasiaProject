@@ -11,12 +11,7 @@ namespace AphasiaProject.Models.Users
     {
         [PersonalData]
         [Column(TypeName = "varchar(100)")]
-        public string FirstName { get; set; }
-
-        [PersonalData]
-        [Column(TypeName = "varchar(100)")]
-        public string Surname { get; set; }
-
+        public string Role { get; set; }
         public DateTime CreateDateTime { get; set; }
         public bool IsActive { get; set; }
     }

@@ -1,7 +1,9 @@
-﻿using AphasiaClientApp.Features.AuthProviders;
+﻿ using AphasiaClientApp.Extensions.RequestMethod;
+using AphasiaClientApp.Features.AuthProviders;
 using AphasiaClientApp.Models.Auth;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -16,14 +18,32 @@ namespace AphasiaClientApp.Features.AuthService
         private readonly JsonSerializerOptions _options;
         private readonly AuthenticationStateProvider _authStateProvider;
         private readonly ILocalStorageService _localStorage;
-
-        public AuthenticationService(HttpClient client, AuthenticationStateProvider authStateProvider, ILocalStorageService localStorage)
+        private readonly IRequestMethod _requestMethod;
+        public AuthenticationService(IRequestMethod requestMethod, HttpClient client, AuthenticationStateProvider authStateProvider, ILocalStorageService localStorage)
         {
             _client = client;
             _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             _authStateProvider = authStateProvider;
             _localStorage = localStorage;
+            _requestMethod = requestMethod;
         }
+
+      
+    
+        public async Task<RegisterResponseDto> Register(UserRegistrationModel model) 
+        {
+            //await _requestMethod.Post<UserRegistrationModel, RegisterResponseDto>($"/api/userControllers/register", _client,model);
+            var content = JsonSerializer.Serialize(model);
+            var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
+            var registerResult = await _client.PostAsync("/api/userControllers/register", bodyContent);
+            var registerContent = await registerResult.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<RegisterResponseDto>(registerContent, _options);
+            if (!registerResult.IsSuccessStatusCode)
+                return result;
+
+            return new RegisterResponseDto { IsSuccessful = true };
+        }
+ 
 
         public async Task<AuthResponseDto> Login(UserLoginModel userForAuthentication)
         {
@@ -38,7 +58,9 @@ namespace AphasiaClientApp.Features.AuthService
                 return result;
 
             await _localStorage.SetItemAsync("authToken", result.Token);
-            ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(userForAuthentication.UserName);
+
+
+            ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(result.Token);
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", result.Token);
 
             return new AuthResponseDto { IsAuthSuccessful = true };
@@ -47,13 +69,9 @@ namespace AphasiaClientApp.Features.AuthService
         public async Task Logout()
         {
             await _localStorage.RemoveItemAsync("authToken");
+            await _localStorage.RemoveItemAsync("refreshToken");
             ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
             _client.DefaultRequestHeaders.Authorization = null;
-        }
-
-        Task IAuthenticationService.Logout()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
