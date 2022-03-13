@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AphasiaProject.Models.Auth;
 using AphasiaProject.Models.Users;
-using AphasiaProject.Utils;
 using IdentityServer4.Services;
 using LoggerService.Manager;
 using Microsoft.AspNetCore.Identity;
@@ -117,6 +116,13 @@ namespace AphasiaProject.Controllers.Auth
 
             _logger.LogInfo(($"Login failed {model.UserName}"));
             return BadRequest();
+        }
+        private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
+        {
+            var tokenOptions = new JwtSecurityToken(
+                claims: claims,
+                signingCredentials: signingCredentials);
+            return tokenOptions;
         }
 
     }
