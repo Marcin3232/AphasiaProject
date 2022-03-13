@@ -1,5 +1,4 @@
-﻿using AphasiaProject.Models.Exercises;
-using AphasiaProject.Models.Helpers;
+﻿using AphasiaProject.Models.Helpers;
 using AphasiaProject.Models.ResponseExercise;
 using AphasiaProject.Services.Dapper;
 using DataBaseQuery.Exercise;

@@ -1,6 +1,6 @@
-﻿using AphasiaProject.Models.DB.Exercises;
-using AphasiaProject.Services.Dapper;
+﻿using AphasiaProject.Services.Dapper;
 using AphasiaProject.Services.Exercise;
+using DataBaseProject.Context;
 using ExerciseResource.Factory;
 using Microsoft.Extensions.DependencyInjection;
 

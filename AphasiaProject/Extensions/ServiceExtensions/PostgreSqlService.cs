@@ -1,5 +1,5 @@
 ﻿using AphasiaProject.Models.DB;
-using AphasiaProject.Models.DB.Exercises;
+using DataBaseProject.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

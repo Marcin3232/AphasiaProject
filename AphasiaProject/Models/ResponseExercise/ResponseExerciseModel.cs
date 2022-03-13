@@ -1,5 +1,4 @@
-﻿using AphasiaProject.Models.Exercises;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AphasiaProject.Models.ResponseExercise
 {

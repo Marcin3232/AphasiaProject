@@ -1,11 +1,8 @@
-﻿using AphasiaProject.Models.DB.Exercises;
-using AphasiaProject.Models.Exercises;
-using AphasiaProject.Services.Dapper;
-using AphasiaProject.Services.Exercise;
-using AphasiaProject.Utils;
+﻿using AphasiaProject.Services.Exercise;
 using CommonExercise.Enums;
-using ExerciseResource.Factory;
-using ExerciseResource.Models.Exercise02;
+using DataBaseProject.Context;
+using DataBaseProject.Data.Exercises;
+using DataBaseProject.Models.Exercise;
 using LoggerService.Manager;
 using Microsoft.AspNetCore.Mvc;
 using System;

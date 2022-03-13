@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AphasiaProject.Models.Auth;
 using AphasiaProject.Models.Users;
-using AphasiaProject.Utils;
 using IdentityServer4.Services;
 using LoggerService.Manager;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -127,13 +122,6 @@ namespace AphasiaProject.Controllers.Auth
 
                 _logger.LogInfo(($"Login failed {model.UserName}"));
                 return BadRequest();
-        }
-
-        [HttpGet]
-        [Route("test")]
-        public async Task Test()
-        {
-            var e = ExerciseNameFillList.ExerciseNameList();
         }
     }
 }
