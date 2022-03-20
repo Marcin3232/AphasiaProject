@@ -44,5 +44,6 @@ namespace DataBaseQuery.Exercise
             $"en.\"IdExerciseTask\" as ExerciseTaskId " +
             $"FROM \"Exercise\" as e " +
             $"JOIN \"ExerciseName\" as en on en.\"Id\" = e.\"ExerciseNameId\" ";
+
     }
 }

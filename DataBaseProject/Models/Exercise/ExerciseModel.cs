@@ -15,5 +15,7 @@ namespace DataBaseProject.Models.Exercise
         [Required]
         public int IdUser { get; set; }
         public bool IsActive { get; set; }
+        public AphasiaModel Aphasia { get; set; }
+        public int Order { get; set; }
     }
 }

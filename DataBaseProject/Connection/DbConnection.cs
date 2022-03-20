@@ -46,7 +46,7 @@ namespace DataBaseProject.Connection
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{DateTime.Now} || ERROR: Cannot open connection to RCP");
+                Console.WriteLine($"{DateTime.Now} || ERROR: Cannot open connection to Db");
                 exception = ex.ToString();
                 var exExist = GetCodeEx(ex.Data) is string;
                 result = exExist ? (string?)GetCodeEx(ex.Data) : "error";

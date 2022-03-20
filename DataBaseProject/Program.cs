@@ -1,7 +1,30 @@
-﻿using System.Text;
+﻿using DataBaseProject.Connection;
+using DataBaseProject.InitEntity;
+using DataBaseProject.Services;
+using System.Text;
 
-StringBuilder builder = new();
-builder.AppendLine("Hello");
-builder.AppendLine("World!");
+Console.WriteLine("Aphasia Database");
+Console.WriteLine($"{DateTime.Now}");
 
-Console.WriteLine(builder.ToString());
+var db = new DbConnection();
+var conn = db.Connection();
+
+if (conn == null)
+{
+    AppStop();
+    return;
+}
+
+var entity = new Entity();
+
+if (!entity.Initialize())
+{
+    AppStop();
+    return;
+}
+
+var fillData = new FillExerciseDbService();
+fillData.Fill();
+
+static string AppStop() =>
+    $"{DateTime.Now} || Application Stoped!";

@@ -6,13 +6,23 @@ namespace DataBaseProject.Data.Exercises
 {
     public class ExerciseTypeNameData
     {
-        public static List<ExerciseTypeNameModel> GetFilled() => CreateList();
-        public static ExerciseTypeNameModel GetTypeName(int id) => GetFilled().FirstOrDefault(x => x.Id == id);
-        private static List<ExerciseTypeNameModel> CreateList()
+        public List<ExerciseTypeNameModel> GetFilled() => CreateList();
+        public ExerciseTypeNameModel GetTypeName(int id) => GetFilled().FirstOrDefault(x => x.Id == id);
+        private List<ExerciseTypeNameModel> CreateList()
         {
             var temp = new List<ExerciseTypeNameModel>();
-            temp.Add(new ExerciseTypeNameModel() { Id = 1, Type = 1, Name = "Powtórz", Description = "..." });
+            temp.Add(Create(1, 1, "Powtórz", "..."));
+            temp.Add(Create(2, 2, "Wskaż obrazek", "..."));
+            temp.Add(Create(3, 3, "Nazwij", "..."));
             return temp;
         }
+
+        private ExerciseTypeNameModel Create(int id, int type, string name, string desc) => new ExerciseTypeNameModel()
+        {
+            Id = id,
+            Type = type,
+            Name = name,
+            Description = desc
+        };
     }
 }

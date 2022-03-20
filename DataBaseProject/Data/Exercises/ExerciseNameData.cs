@@ -13,8 +13,10 @@ namespace DataBaseProject.Data.Exercises
     internal class ExerciseNameData
     {
         private static readonly string filePath = "Resources/exerciseList.txt";
-
         private bool VerifyFileExist() => File.Exists(filePath);
+
+        public ExerciseNameModel GetName(string id) => ExerciseNameList()
+            .Where(x => x.IdExerciseTask == id).FirstOrDefault()!;
 
         public static List<ExerciseNameModel> ExerciseNameList()
         {

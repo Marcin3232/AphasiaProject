@@ -3,15 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseProject.Models.Exercise
 {
-    [Table("ExerciseKindName")]
-    public class ExerciseKindNameModel
+    [Table("Aphasia")]
+    public class AphasiaModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int Kind { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string SoundSrc { get; set; }
+        public bool IsActive { get; set; }  
+        public int AphasiaType { get; set; }
+        public int UserId { get; set; }
     }
 }

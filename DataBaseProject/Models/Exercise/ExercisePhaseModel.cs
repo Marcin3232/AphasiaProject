@@ -9,14 +9,13 @@ namespace DataBaseProject.Models.Exercise
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
         public ExercisePhaseNameModel PhaseName { get; set; }
-        [Required]
         public int ExerciseId { get; set; }
-        [Required]
         public ExerciseKindModel ExerciseKind { get; set; }
-        [Required]
         public ExerciseTypeModel ExerciseType { get; set; }
         public bool IsActive { get; set; }
+        public int Repeat { get; set; } = 1;
+        public bool IsSoundEveryStep { get; set; } = false;
+        public bool IsHelper { get; set; } = false;
     }
 }

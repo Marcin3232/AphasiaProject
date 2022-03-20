@@ -9,7 +9,6 @@ namespace DataBaseProject.Models.Exercise
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
         public ExerciseTypeNameModel ExerciseTypeName { get; set; }
     }
 }

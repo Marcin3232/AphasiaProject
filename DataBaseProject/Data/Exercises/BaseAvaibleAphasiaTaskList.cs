@@ -21,14 +21,15 @@ namespace DataBaseProject.Data.Exercises
                     return null;
             }
         }
-        public static List<AvaibleBaseExercise> AvaibleExerciseTaskIdList(AphasiaTypes aphasiaTypes)
+
+        public static List<AvailableBaseExercise> AvaibleExerciseTaskIdList(AphasiaTypes aphasiaTypes)
         {
             var filePath = FilePath(aphasiaTypes);
 
             if (!File.Exists(filePath))
                 return null;
 
-            var list = new List<AvaibleBaseExercise>();
+            var list = new List<AvailableBaseExercise>();
             var linse = File.ReadAllLines(filePath);
             int increment = 1;
             foreach (var line in linse)
@@ -39,7 +40,7 @@ namespace DataBaseProject.Data.Exercises
                 var exerciseTaskId = line.Split(";");
                 for (int i = 0; i < exerciseTaskId.Length; i++)
                 {
-                    list.Add(new AvaibleBaseExercise()
+                    list.Add(new AvailableBaseExercise()
                     {
                         AphasiaType = aphasiaTypes,
                         Id = increment,

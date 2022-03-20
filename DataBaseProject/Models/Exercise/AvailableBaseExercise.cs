@@ -2,7 +2,7 @@
 
 namespace DataBaseProject.Models.Exercise
 {
-    public class AvaibleBaseExercise
+    public class AvailableBaseExercise
     {
         public int Id { get; set; }
         public string IdExerciseTask { get; set; }
