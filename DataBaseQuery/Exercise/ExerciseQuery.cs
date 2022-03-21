@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace DataBaseQuery.Exercise
 {
     public class ExerciseQuery
@@ -24,7 +19,10 @@ namespace DataBaseQuery.Exercise
             $"etn.\"Description\" as TypeDescription, " +
             $"etn.\"Type\" as Type, " +
             $"epn.\"Description\" as PhaseDescription, " +
-            $"ekn.\"SoundSrc\" as SoundSrc " +
+            $"ekn.\"SoundSrc\" as SoundSrc, " +
+            $"ep.\"Repeat\" as Repeat, " +
+            $"ep.\"IsSoundEveryStep\" as IsSoundEveryStep, " +
+            $"ep.\"IsHelper\" as IsHelper  " +
             $"FROM \"ExercisePhase\" as ep " +
             $"JOIN \"ExercisePhaseName\" as epn on epn.\"Id\" = ep.\"PhaseNameId\" " +
             $"JOIN \"ExerciseKind\" as ek on  ek.\"Id\" = ep.\"ExerciseKindId\" " +

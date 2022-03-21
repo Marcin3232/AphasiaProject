@@ -1,18 +1,14 @@
 ﻿using DataBaseProject.Models.Const;
 using DataBaseProject.Models.Exercise;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+
 
 namespace DataBaseProject.Data.Exercises
 {
-    internal class ExerciseNameData
+    public class ExerciseNameData
     {
-        private static readonly string filePath = "Resources/exerciseList.txt";
+        private static readonly string filePath = "../../../Resources/exerciseList.txt";
         private bool VerifyFileExist() => File.Exists(filePath);
 
         public ExerciseNameModel GetName(string id) => ExerciseNameList()

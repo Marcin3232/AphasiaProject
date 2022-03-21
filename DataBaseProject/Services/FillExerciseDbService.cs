@@ -7,71 +7,39 @@ using DataBaseProject.Utils;
 using DataBaseQuery.Exercise;
 using DataBaseQuery.ModelHelper;
 using Npgsql;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataBaseProject.Services
 {
-    public class FillExerciseDbService
+    internal class FillExerciseDbService
     {
         public void Fill()
         {
+            var exerciseData = new ExerciseData();
+            var exerciseNames = ExerciseNameData.ExerciseNameList();
+            var exercises = exerciseData.GetFilled();
             using (var context = new ExerciseDbContext())
             {
-                var phaseData = new ExercisePhaseData();
-                phaseData.GetFilled().ForEach(x =>
+                exerciseNames.ForEach(x =>
                 {
-                    InsertOrUpdatePhaseName(context, x);
-                    InsertOrUpdateKindName(context, x);
-                    InsertOrUpdateTypeName(context, x);
-                    InsertOrUpdateKindName(context, x);
-                    InsertOrUpdateType(context, x);
-                    InsertOrUpdateKind(context, x);
-                    context.SaveChanges();
-                    InsertOrUpdatePhase(context, x);
+                    InsertOrUpdateExerciseName(context, x).GetAwaiter().GetResult();
                 });
-                Console.WriteLine($"{DateTime.Now} || INFO: Finish exercise phase.");
 
+                Console.WriteLine($"{DateTime.Now} || INFO: Finish exercise name.");
+
+
+                exercises.ForEach(x =>
+                {
+                    InsertOrUpdateExercise(context, x).GetAwaiter().GetResult();
+                });
+
+                Console.WriteLine($"{DateTime.Now} || INFO: Finish exercises.");
             }
         }
 
-        private void InsertOrUpdatePhaseName(ExerciseDbContext context, ExercisePhaseModel phase)
+        private async Task InsertOrUpdateExerciseName(ExerciseDbContext context, ExerciseNameModel name)
         {
-            if (!context.ExercisePhaseNames.Any(y => y.Id == phase.PhaseName.Id))
-                context.Add(phase.PhaseName);
-        }
-
-        private void InsertOrUpdateKindName(ExerciseDbContext context, ExercisePhaseModel phase)
-        {
-            if (!context.ExerciseKindNames.Any(y => y.Id == phase.ExerciseKind.ExerciseKindName.Id))
-                context.Add(phase.ExerciseKind.ExerciseKindName);
-        }
-
-        private void InsertOrUpdateTypeName(ExerciseDbContext context, ExercisePhaseModel phase)
-        {
-            if (!context.ExerciseTypeNames.Any(y => y.Id == phase.ExerciseType.ExerciseTypeName.Id))
-                context.Add(phase.ExerciseType.ExerciseTypeName);
-        }
-
-        private void InsertOrUpdateType(ExerciseDbContext context, ExercisePhaseModel phase)
-        {
-            if (!context.ExerciseType.Any(y => y.Id == phase.ExerciseType.Id))
-                context.Add(phase.ExerciseType);
-        }
-
-        private void InsertOrUpdateKind(ExerciseDbContext context, ExercisePhaseModel phase)
-        {
-            if (!context.ExerciseKind.Any(y => y.Id == phase.ExerciseKind.Id))
-                context.Add(phase.ExerciseKind);
-        }
-
-        private async void InsertOrUpdatePhase(ExerciseDbContext context, ExercisePhaseModel phase)
-        {
-            var helper = CreatePhase(phase);
+            var helper = CreateName(name);
 
             using (IDbConnection conn = new NpgsqlConnection(ConnectionString.Get(DbConnectionsString.DbAphasia)))
             {
@@ -79,59 +47,117 @@ namespace DataBaseProject.Services
                 using var transaction = conn.BeginTransaction();
                 try
                 {
-                    if (context.ExercisePhase.Any(y => y.Id == phase.Id))
+                    if (context.ExerciseNames.Any(y => y.Id == name.Id))
                     {
                         var result = await conn.ExecuteAsync(
-                            ExerciseAddOrUpdateQuery.UpdateExercisePhase(),
+                            ExerciseNameAddOrUpdateQuery.UpdateExerciseName(),
                             helper, transaction, commandType: CommandType.Text);
 
                         if (result == 0)
                         {
-                            Console.WriteLine($"{DateTime.Now} || ERROR: Cant update phase. Phase id: {phase.Id}");
+                            Console.WriteLine($"{DateTime.Now} || ERROR: Cant update exercise name. Name id: {name.Id}");
                             transaction.Rollback();
                         }
                         else
                         {
-                            Console.WriteLine($"{DateTime.Now} || INFO: Finish update phase. Id:{phase.Id}");
+                            Console.WriteLine($"{DateTime.Now} || INFO: Finish update exercise name. Id:{name.Id}");
                             transaction.Commit();
                         }
                     }
                     else
                     {
-                        var result = await conn.ExecuteScalarAsync<int>(ExerciseAddOrUpdateQuery.InsertExercisePhase(),
+                        var result = await conn.ExecuteScalarAsync<int>(ExerciseNameAddOrUpdateQuery.InsertExerciseName(),
                             helper, transaction, commandType: CommandType.Text);
                         if (result == 0)
                         {
-                            Console.WriteLine($"{DateTime.Now} || ERROR: Cant insert phase. Phase id: {phase.Id}");
+                            Console.WriteLine($"{DateTime.Now} || ERROR: Cant insert exercise name. Name id: {name.Id}");
                             transaction.Commit();
                         }
                         else
                         {
-                            Console.WriteLine($"{DateTime.Now} || INFO: Finish insert phase. Id:{phase.Id}");
+                            Console.WriteLine($"{DateTime.Now} || INFO: Finish insert exercise name. Id:{name.Id}");
                             transaction.Commit();
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{DateTime.Now} || ERROR: cant insert or update phase.");
+                    Console.WriteLine($"{DateTime.Now} || ERROR: cant insert or update exercise name.");
                     Console.WriteLine($"{DateTime.Now} || ERROR DESC: {ex}");
-                    transaction.Commit();
+                    transaction.Rollback();
                 }
             }
         }
 
-        private ExercisePhaseModelHelper CreatePhase(ExercisePhaseModel phase) => new ExercisePhaseModelHelper()
+        private async Task InsertOrUpdateExercise(ExerciseDbContext context, ExerciseModel exercise)
         {
-            Id = phase.Id,
-            PhaseNameId = phase.PhaseName.Id,
-            ExerciseId = phase.ExerciseId,
-            ExerciseKindId = phase.ExerciseKind.Id,
-            ExerciseTypeId = phase.ExerciseType.Id,
-            IsActive = phase.IsActive,
-            Repeat = phase.Repeat,
-            IsSoundEveryStep = phase.IsSoundEveryStep,
-            IsHelper = phase.IsHelper,
+            var helper = CreateExercise(exercise);
+
+            using (IDbConnection conn = new NpgsqlConnection(ConnectionString.Get(DbConnectionsString.DbAphasia)))
+            {
+                DbConnection.Open(conn);
+                using var transaction = conn.BeginTransaction();
+                try
+                {
+                    if (context.Exercises.Any(y => y.Id == exercise.Id))
+                    {
+                        var result = await conn.ExecuteAsync(
+                            ExerciseAddOrUpdateQuery.InsertExercise(),
+                            helper, transaction, commandType: CommandType.Text);
+
+                        if (result == 0)
+                        {
+                            Console.WriteLine($"{DateTime.Now} || ERROR: Cant update exercise. Id: {exercise.Id}");
+                            transaction.Rollback();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{DateTime.Now} || INFO: Finish update exercise. Id:{exercise.Id}");
+                            transaction.Commit();
+                        }
+                    }
+                    else
+                    {
+                        var result = await conn.ExecuteScalarAsync<int>(ExerciseAddOrUpdateQuery.InsertExercise(),
+                            helper, transaction, commandType: CommandType.Text);
+                        if (result == 0)
+                        {
+                            Console.WriteLine($"{DateTime.Now} || ERROR: Cant insert exercise. Id: {exercise.Id}");
+                            transaction.Commit();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{DateTime.Now} || INFO: Finish insert exercise. Id:{exercise.Id}");
+                            transaction.Commit();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{DateTime.Now} || ERROR: cant insert or update exercise.");
+                    Console.WriteLine($"{DateTime.Now} || ERROR DESC: {ex}");
+                    transaction.Rollback();
+                }
+            }
+        }
+
+        private ExerciseNameModelHelper CreateName(ExerciseNameModel name) => new ExerciseNameModelHelper()
+        {
+            Id = name.Id,
+            Name = name.Name,
+            Description = name.Description,
+            ImageSrc = name.ImageSrc,
+            IdExerciseTask = name.IdExerciseTask,
+        };
+
+        private ExerciseModelHelper CreateExercise(ExerciseModel exercise) => new ExerciseModelHelper()
+        {
+            Id = exercise.Id,
+            ExerciseNameId = exercise.ExerciseName.Id,
+            IdUser = exercise.IdUser,
+            IsActive = exercise.IsActive,
+            Order = exercise.Order,
+            AphasiaId = exercise.Aphasia ==null ? null : exercise.Aphasia.Id,
         };
     }
 }

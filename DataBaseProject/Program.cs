@@ -23,8 +23,12 @@ if (!entity.Initialize())
     return;
 }
 
-var fillData = new FillExerciseDbService();
-fillData.Fill();
+var fillPhaseData = new FillExercisePhaseDbService();
+var fillExerciseData = new FillExerciseDbService();
+fillPhaseData.Fill();
+fillExerciseData.Fill();
+
+Console.WriteLine($"{DateTime.Now} || INFO: Finish database app.");
 
 static string AppStop() =>
     $"{DateTime.Now} || Application Stoped!";

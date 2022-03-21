@@ -36,11 +36,7 @@ namespace DataBaseProject.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ExerciseModel>();
-            //modelBuilder.Entity<ExercisePhaseNameModel>().HasData(ExercisePhaseNameFill.GetFilled());
-            //modelBuilder.Entity<ExerciseKindNameModel>().HasData(ExerciseKindNameFill.GetFilled());
-            ////    modelBuilder.Entity<ExerciseTypeNameFill>().HasData(ExerciseTypeNameFill.GetFilled());
-            ////    modelBuilder.Entity<ExerciseTypeFill>().HasData(ExerciseTypeFill.GetFilled());
-            //modelBuilder.Entity<ExerciseNameModel>().HasData(ExerciseNameFillList.ExerciseNameList());
+                
         }
     }
 }

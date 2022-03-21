@@ -4,10 +4,9 @@ namespace DataBaseProject.Data.Exercises
 {
     public class ExerciseData
     {
-
-        private List<ExerciseModel> GetFilled() => CreateList();
-        private ExercisePhaseData _exercisePhaseData = new ExercisePhaseData();
         private ExerciseNameData _exerciseNameData = new ExerciseNameData();
+        
+        public List<ExerciseModel> GetFilled() => CreateList();
 
         private List<ExerciseModel> CreateList()
         {
