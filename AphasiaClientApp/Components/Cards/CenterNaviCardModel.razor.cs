@@ -12,13 +12,17 @@ namespace AphasiaClientApp.Components.Cards
         public string TypeTitleExercise { get; set; }
         [Parameter]
         public string ListenCommandSrc { get; set; }
+        [Parameter]
+        public bool ShowHelper { get; set; } = false;
+        [Parameter]
+        public EventCallback<bool> HelperCallback { get; set; }
 
-        private string ListenCommandPatch => "/"+ListenCommandSrc +".mp3";
+        private string ListenCommandPatch => $"/{ListenCommandSrc}.mp3";
         private string idCommandSound = "commandSound";
 
-        public async Task<int> Initialize()
+        protected override Task OnInitializedAsync()
         {
-            return await PlaySound(idCommandSound);
+            return base.OnInitializedAsync();
         }
 
         private async Task<int> PlaySound(string sound)
@@ -26,5 +30,7 @@ namespace AphasiaClientApp.Components.Cards
             await Task.Delay(10);
             return await JsRuntime.InvokeAsync<int>("PlaySound", sound);
         }
+
+        private async Task OnHelperClick() => await HelperCallback.InvokeAsync(true);
     }
 }

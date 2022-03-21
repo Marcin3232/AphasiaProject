@@ -10,9 +10,18 @@
             <div class="text-title-type-exercise" style="margin-bottom:10px;">
                 @TypeTitleExercise
             </div>
-            <NaviCardExercise IsVertical=true Title=""
-                              NaviType="NaviTypeImage.Sound"
-                              ClickCallback="()=>PlaySound(idCommandSound)" />
+            <div class="line">
+                <NaviCardExercise IsVertical=true Title=""
+                                  NaviType="NaviTypeImage.Sound"
+                                  ClickCallback="()=>PlaySound(idCommandSound)" />
+                @if (ShowHelper)
+                {
+                    <NaviCardExercise IsVertical=true Title=""
+                                  NaviType="NaviTypeImage.Helper"
+                                  ClickCallback="OnHelperClick" />
+                }
+            </div>
+
         </div>
     </div>
 

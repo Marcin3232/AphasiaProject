@@ -3,12 +3,25 @@
 .cardFrame {
     width: 178px;
     min-height: 48px;
-    border: 2px solid $base-dark-background;
     box-sizing: border-box;
     border-radius: 24px;
-    background: $white;
     word-break: break-word;
     margin-left: 5px;
+}
+
+.bcn {
+    border: 2px solid $base-dark-background;
+    background: $white;
+}
+
+.bcg {
+    border: 2px solid $base-dark-green;
+    background: $base-light-green;
+}
+
+.bcr {
+    border: 2px solid $base-dark-red;
+    background: $base-light-red;
 }
 
 .text-formater {
