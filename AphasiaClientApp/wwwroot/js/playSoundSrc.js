@@ -1,6 +1,7 @@
-﻿window.PlaySound = async function (sound) {
+﻿window.PlaySoundSrc = async function (src) {
+    var audio = new Audio(src);
+    audio.type = 'audio/mp3';
     try {
-        var audio = document.getElementById(sound);
         await audio.play();
         var time = parseInt(audio.duration * 1000);
         return time;
@@ -10,3 +11,4 @@
         return 0;
     }
 };
+

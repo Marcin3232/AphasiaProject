@@ -1,15 +1,15 @@
-﻿using AphasiaClientApp.Components.Cards;
-using AphasiaClientApp.Components.Modals;
+﻿using AphasiaClientApp.Components.Modals;
 using AphasiaClientApp.Components.Modals.LoadModals;
 using AphasiaClientApp.ExercisePanels;
 using AphasiaClientApp.Extensions;
+using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Services;
 using CommonExercise.Enums;
+using CommonExercise.ExerciseHistoryManager;
 using CommonExercise.ExercisePanel;
 using CommonExercise.Models;
-using CommonExercise.Models.ExerciseResource;
-using CommonExercise.Utils;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,19 +27,23 @@ namespace AphasiaClientApp.Pages.Exercises
         [Inject]
         private ISnackbarMessage snackbarMessage { get; set; }
         private Exercise Exercise { get; set; }
+        public List<ExerciseHistory> ExerciseHistory { get; set; }
+        private ExercisePhase ExercisePhaseCurrent => Exercise?.Phases.FirstOrDefault(x => x.IsCurrent);
+        private HistoryResultDetails HistoryResultDetails => ExerciseHistory?
+            .FirstOrDefault(x => x.ExercisePhaseId == ExercisePhaseCurrent.Id)?.HistoryResultDetails;
 
         private int maxCounter;
         private int counter = 0;
         private bool playSound = false;
-
+        private bool goNext = false;
         private bool panelPresentation = true;
 
         #region componenty
 
         private LoadingDialogModel dialogLoad = new LoadingDialogModel();
         private CloseExercisesModal dialogExit = new CloseExercisesModal();
-        private CenterNaviCardModel centerNavi = new CenterNaviCardModel();
         private PanelOption1 panelOption1 = new PanelOption1();
+        private PanelIndicate panelIndicate = new PanelIndicate();
 
         #endregion
 
@@ -47,7 +51,6 @@ namespace AphasiaClientApp.Pages.Exercises
         {
             await Task.Delay(10);
             await dialogLoad.Show();
-
             // TODO: dokonczyć
             //if (HasValue(Id))
             //{
@@ -55,41 +58,42 @@ namespace AphasiaClientApp.Pages.Exercises
             //}
 
             Exercise = await dBExerciseService.GetExercise((int)Id);
+            ExerciseHistory = HistoryManager.Initialize(Exercise);
             NumericPhase(Exercise);
             await dialogLoad.Close();
+            panelPresentation = true;
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (!firstRender && panelPresentation)
             {
+                await Task.Delay(100);
                 await StartNewPanel();
             }
+            await base.OnAfterRenderAsync(firstRender);
         }
 
         private bool HasValue(object item) => item != null;
 
-        private async Task ShowPanel(ExercisePhase phase)
+        private async Task ShowPanel(bool show = true)
         {
-            if (!Enum.IsDefined(typeof(ExerciseType), phase.Type))
+            if (!Enum.IsDefined(typeof(ExerciseType), ExercisePhaseCurrent?.Type))
             {
                 // TODO: dokonczyc błąd => notification i do menu glownego
             }
 
-            var type = (ExerciseType)phase.Type;
+            var type = (ExerciseType)ExercisePhaseCurrent?.Type;
             Clear();
+            await panelOption1.Close();
+            await panelIndicate.Close();
             switch (GetExercisePanel(type))
             {
                 case ExercisePanelOption.PanelOption1:
-
-                    var tempList = PanelOption1Normalizer
-                        .Get(Exercise.ExerciseInformation.ExerciseTaskId,
-                        Exercise.ExerciseResource, Exercise.Phases.FirstOrDefault(x => x.IsCurrent == true).Repeat);
-                    maxCounter = tempList.Count;
-                    await panelOption1.Show(tempList);
+                    maxCounter = await panelOption1.Show(Exercise);
                     break;
                 case ExercisePanelOption.PanelIndicate:
-
+                    maxCounter = await panelIndicate.Show(Exercise);
                     break;
                 case ExercisePanelOption.Default:
                     // TODO: dokonczyć blad notification i do menu glownego
@@ -125,16 +129,19 @@ namespace AphasiaClientApp.Pages.Exercises
         {
             if (action)
             {
-               StartNewPanel();
+                await StartNewPanel();
             }
         }
 
         private async Task Next()
         {
+            goNext = false;
             if (counter == maxCounter - 1)
             {
                 if (NextPhase(true))
+                {
                     return; //TODO zamykanie cwiczenia
+                }
 
                 await StartNewPanel();
                 return;
@@ -145,11 +152,14 @@ namespace AphasiaClientApp.Pages.Exercises
 
         private async Task Back()
         {
-            if (Exercise.Phases.FirstOrDefault(x => x.Order == 1).Order == 1 && counter == 0)
+            goNext = false;
+            if (Exercise.Phases.FirstOrDefault(x => x.IsCurrent).Order == 1 && counter == 0)
                 return;
 
             if (counter == 0)
             {
+                if (NextPhase())
+                    return;
                 await StartNewPanel();
                 return;
             }
@@ -196,17 +206,51 @@ namespace AphasiaClientApp.Pages.Exercises
             playSound = false;
         }
 
+        private void TimerHistory()
+        {
+            Exercise.Phases.ForEach(item =>
+            {
+                if (item.IsCurrent)
+                    HistoryManager.Start(ExerciseHistory, item);
+                else
+                    HistoryManager.End(ExerciseHistory, item);
+            });
+        }
+
         private async Task StartNewPanel()
         {
             await Task.Delay(10);
-            var delayTime = await centerNavi.Initialize();
+            var src = $"/{Exercise.Phases.FirstOrDefault(x => x.IsCurrent)?.SoundSrc}.mp3";
+            var delayTime = await JsRuntime.InvokeAsync<int>("PlaySoundSrc", src);
             await Task.Delay(delayTime);
             playSound = true;
-            await ShowPanel(Exercise.Phases.FirstOrDefault(x => x.IsCurrent));
+            await ShowPanel();
+            TimerHistory();
             panelPresentation = false;
         }
 
-        private async Task SetMaxCounter(int max) => maxCounter = max;
-        private async Task SetSoundPlay(bool play) => playSound = play;
+        private async Task OnHelperClick()
+        {
+            var type = (ExerciseType)ExercisePhaseCurrent?.Type;
+
+            switch (GetExercisePanel(type))
+            {
+                case ExercisePanelOption.PanelIndicate:
+                    await panelIndicate.ShowTip();
+                    break;
+                case ExercisePanelOption.Default:
+                    break;
+            }
+            StateHasChanged();
+        }
+
+        private async Task OnGoNext(bool action)
+        {
+
+            goNext = action;
+            if (goNext)
+                await SoundService.PlaySrc(GoNext.GoNextSrc());
+
+        }
     }
 }

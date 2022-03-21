@@ -1,7 +1,10 @@
 ﻿@page "/exercises/main_panel/{id:int}"
 @using AphasiaClientApp.Extensions.Navigation
+@using AphasiaClientApp.Models.Constant
+@using AphasiaClientApp.Utils.Js.Sounds
 @using Models.Enums
-
+@inject IJSRuntime JsRuntime
+@inject ISoundService SoundService
 @inject Navigation Navigation
 
 <style>
@@ -27,10 +30,11 @@
 
             </div>
             <div class="col-4 d-flex">
-                <CenterNaviCardModel @ref=@centerNavi
-                                     TitleExercise="@Exercise?.ExerciseInformation.Name"
-                                     TypeTitleExercise=@Exercise?.Phases.FirstOrDefault(x=>x.IsCurrent)?.KindName
-                                     ListenCommandSrc=@Exercise?.Phases.FirstOrDefault(x=>x.IsCurrent)?.SoundSrc />
+                <CenterNaviCardModel TitleExercise="@Exercise?.ExerciseInformation.Name"
+                                     TypeTitleExercise="@(goNext?GoNext.MoveOn() : ExercisePhaseCurrent?.KindName)"
+                                     ListenCommandSrc="@(goNext?GoNext.GoNextSrc() : ExercisePhaseCurrent?.SoundSrc)"
+                                     ShowHelper="ExercisePhaseCurrent!=null?(bool)ExercisePhaseCurrent.IsHelper : false"
+                                     HelperCallback="OnHelperClick" />
             </div>
             <div class="col-4 d-flex">
                 <div class="col col-pos">
@@ -48,8 +52,20 @@
     </div>
 </div>
 
+
 <PanelOption1 @ref="@panelOption1" Counter=@counter
-              PlaySound=@playSound/>
+              PlaySound=@playSound />
+
+
+<CascadingValue Value="this">
+    <PanelIndicate @ref=@panelIndicate Counter=@counter
+                   PlaySound=@playSound
+                   HistoryDetails=@HistoryResultDetails
+                   IndicateCallback=@OnGoNext/>
+</CascadingValue>
+
+
+@*<ExerciseProgressbar CurrentTask=@counter MaxTask=@maxCounter/>*@
 
 <ExerciseFooter Exercise=@Exercise
                 EventCallback=@OnFooterAction />

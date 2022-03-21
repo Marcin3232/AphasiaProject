@@ -8,7 +8,11 @@
         <p></p>
         <ImageButtonModel TypeImage=@NaviTypeImage.Sound
                       ButtonCallback=@OnPlaySound />
-        <TextFrame Text="@ModelList[Counter]?.Word"></TextFrame>
+
+        @if (ShowFrameText())
+        {
+            <TextFrame Text="@ModelList[Counter]?.Word"></TextFrame>
+        }
         <audio id="sound" src="@ModelList[Counter]?.WordSound" />
     </div>
 

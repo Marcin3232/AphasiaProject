@@ -1,5 +1,29 @@
-﻿<h3>PanelIndicate</h3>
+﻿@using AphasiaClientApp.Models.Enums
+@using AphasiaClientApp.Utils.Js.Sounds
+@inject ISoundService Sound
 
-@code {
+@if (show)
+{
+    <div class="row justify-content-center margin-panel">
+        @if (ModelList.Any() || ModelList != null)
+        {
+            @foreach (var item in ModelList)
+            {
+                <div class="col-md-auto text-center">
+                    <div class="card-frame @item.ColorIndicate" style="@ExecutePointerEvent" @onclick="()=>OnClickIndicate(item)">
+                        <img class="exerciseTwoImg" src="@item.Picture[0]" />
+                    </div>
 
+                    <p></p>
+                    <div class="oneline">
+                        <ImageButtonModel TypeImage="@NaviTypeImage.Sound"
+                              ButtonCallback="()=>OnPlaySound(item)" />
+                        <TextFrame Text="@item.Word" />
+                    </div>
+                    <audio id="@item.Word" src="@item.WordSound" />
+                </div>
+            }
+        }
+    </div>
+    //   <audio id="sound" src="@ModelList[Counter]?.WordSound" />
 }

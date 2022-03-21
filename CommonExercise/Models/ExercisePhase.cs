@@ -36,10 +36,14 @@ namespace CommonExercise.Models
         public string SoundSrc { get; set; }
         [JsonPropertyName("repeat")]
         public int Repeat { get; set; } = 3;
+        [JsonPropertyName("isSoundEveryStep")]
+        public bool IsSoundEveryStep { get; set; }
+        [JsonPropertyName("isHelper")]
+        public bool? IsHelper { get; set; } = true;
         [JsonPropertyName("order")]
         public int Order { get; set; }
         public bool IsDone { get; set; }
         public bool IsCurrent { get; set; }
- 
+
     }
 }
