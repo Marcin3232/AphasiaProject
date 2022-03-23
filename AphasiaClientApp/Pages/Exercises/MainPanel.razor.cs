@@ -151,6 +151,7 @@ namespace AphasiaClientApp.Pages.Exercises
                 await StartNewPanel();
                 return;
             }
+            await IsPlayTitle();
             playSound = true;
             counter++;
         }
@@ -168,6 +169,7 @@ namespace AphasiaClientApp.Pages.Exercises
                 await StartNewPanel();
                 return;
             }
+            await IsPlayTitle();
             playSound = true;
             counter--;
         }
@@ -225,13 +227,24 @@ namespace AphasiaClientApp.Pages.Exercises
         private async Task StartNewPanel()
         {
             await Task.Delay(10);
-            var src = $"/{Exercise.Phases.FirstOrDefault(x => x.IsCurrent)?.SoundSrc}.mp3";
-            var delayTime = await JsRuntime.InvokeAsync<int>("PlaySoundSrc", src);
-            await Task.Delay(delayTime);
+            await PlayTitle();
             playSound = true;
             await ShowPanel();
             TimerHistory();
             panelPresentation = false;
+        }
+
+        private async Task PlayTitle()
+        {
+            var src = $"/{Exercise.Phases.FirstOrDefault(x => x.IsCurrent)?.SoundSrc}.mp3";
+            var delayTime = await JsRuntime.InvokeAsync<int>("PlaySoundSrc", src);
+            await Task.Delay(delayTime);
+        }
+
+        private async Task IsPlayTitle()
+        {
+            if (ExercisePhaseCurrent.IsSoundEveryStep)
+                await PlayTitle();
         }
 
         private async Task OnHelperClick()
