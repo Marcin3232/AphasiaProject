@@ -1425,7 +1425,7 @@
 		<Message Text="Compiling global SCSS file" Importance="high" />
 		<Exec Command="npm run sass -- --style=compressed Styles:wwwroot/css" />
 	</Target>
-
+	
 	<ItemGroup>
 		<ProjectReference Include="..\CommonExercise\CommonExercise.csproj" />
 	</ItemGroup>
@@ -1439,10 +1439,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Update="ExercisePanels\PanelIndicate.razor">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	  </Content>
+	  <Content Update="ExercisePanels\PanelOption1.razor">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<EmbeddedResource Update="Shared\ResourceFiles\Resource.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resource.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
-
 </Project>

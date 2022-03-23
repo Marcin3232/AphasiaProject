@@ -31,5 +31,6 @@ namespace ExerciseResource.Factory
             var model = new Exercise02ResourcesList();
             return random ? model.GetRandomValues() : model.GetValues();
         }
+
     }
 }

@@ -14,6 +14,7 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(1, 1, "Powtórz", "..."));
             temp.Add(Create(2, 2, "Wskaż obrazek", "..."));
             temp.Add(Create(3, 3, "Nazwij", "..."));
+            temp.Add(Create(4, 4, "Film", "..."));
             return temp;
         }
 

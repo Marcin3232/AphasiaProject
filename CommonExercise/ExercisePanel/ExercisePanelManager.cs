@@ -14,6 +14,7 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.SingleImageTextRepeat,ExercisePanelOption.PanelOption1 },
                 {ExerciseType.Naming,ExercisePanelOption.PanelOption1 },
                 {ExerciseType.IndicateImage,ExercisePanelOption.PanelIndicate },
+                {ExerciseType.Films,ExercisePanelOption.PanelFilm },
             };
     }
 }

@@ -14,6 +14,7 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(2, 2, "Powtórz", "...", "sound/instructions/repeat"));
             temp.Add(Create(3, 3, "Wskaż", "...", "sound/instructions/point"));
             temp.Add(Create(4, 4, "Nazwij", "...", "sound/instructions/name"));
+            temp.Add(Create(5, 5, "Ćwicz ze mną", "...", "sound/instructions/practise_with_me"));
             return temp;
         }
 

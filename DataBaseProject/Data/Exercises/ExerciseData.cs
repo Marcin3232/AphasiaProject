@@ -5,13 +5,14 @@ namespace DataBaseProject.Data.Exercises
     public class ExerciseData
     {
         private ExerciseNameData _exerciseNameData = new ExerciseNameData();
-        
+
         public List<ExerciseModel> GetFilled() => CreateList();
 
         private List<ExerciseModel> CreateList()
         {
             var temp = new List<ExerciseModel>();
             temp.Add(Create(1, _exerciseNameData.GetName("01"), 0, true, null, 0));
+            temp.Add(Create(2, _exerciseNameData.GetName("02"), 0, true, null, 0));
             return temp;
         }
 

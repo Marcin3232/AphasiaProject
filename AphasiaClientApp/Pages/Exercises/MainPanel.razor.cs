@@ -44,6 +44,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private CloseExercisesModal dialogExit = new CloseExercisesModal();
         private PanelOption1 panelOption1 = new PanelOption1();
         private PanelIndicate panelIndicate = new PanelIndicate();
+        private PanelFilm panelFilm = new PanelFilm();
 
         #endregion
 
@@ -87,6 +88,7 @@ namespace AphasiaClientApp.Pages.Exercises
             Clear();
             await panelOption1.Close();
             await panelIndicate.Close();
+            await panelFilm.Close();
             switch (GetExercisePanel(type))
             {
                 case ExercisePanelOption.PanelOption1:
@@ -94,6 +96,9 @@ namespace AphasiaClientApp.Pages.Exercises
                     break;
                 case ExercisePanelOption.PanelIndicate:
                     maxCounter = await panelIndicate.Show(Exercise);
+                    break;
+                case ExercisePanelOption.PanelFilm:
+                    maxCounter = await panelFilm.Show(Exercise);
                     break;
                 case ExercisePanelOption.Default:
                     // TODO: dokonczyć blad notification i do menu glownego

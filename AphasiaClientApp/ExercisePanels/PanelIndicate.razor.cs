@@ -144,7 +144,7 @@ namespace AphasiaClientApp.ExercisePanels
             {
                 HistoryDetails.WrongClicks++;
                 StateHasChanged();
-                await Task.Delay(000);
+                await Task.Delay(3000);
                 model.ColorIndicate = SetBackgroundColors(ColorType.Normal);
             }
 

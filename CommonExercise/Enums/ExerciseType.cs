@@ -5,5 +5,6 @@
         SingleImageTextRepeat = 1,
         IndicateImage = 2,
         Naming = 3,
+        Films = 4,
     }
 }
