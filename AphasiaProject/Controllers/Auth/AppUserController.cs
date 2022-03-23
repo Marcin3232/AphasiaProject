@@ -91,8 +91,7 @@ namespace AphasiaProject.Controllers.Auth
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login(AppLoginViewModel model)
-        {
+        public async Task<IActionResult> Login(AppLoginViewModel model)        {
             if (!ModelState.IsValid)
             {
                 _logger.LogError("Bad validation data");
@@ -106,6 +105,7 @@ namespace AphasiaProject.Controllers.Auth
                 var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256);
                 var claims = new List<Claim>()
                 {
+                    new Claim("Id",user.Id.ToString()),
                     new Claim(ClaimTypes.Name,user.Email),
                     new Claim(ClaimTypes.Role,user.Role),
                 };

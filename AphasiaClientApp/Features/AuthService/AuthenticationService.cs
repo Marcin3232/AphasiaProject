@@ -58,7 +58,7 @@ namespace AphasiaClientApp.Features.AuthService
                 return result;
 
             await _localStorage.SetItemAsync("authToken", result.Token);
-
+            await _localStorage.SetItemAsync("therapistId", JwtParser.doctorId);
 
             ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(result.Token);
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", result.Token);
@@ -69,7 +69,6 @@ namespace AphasiaClientApp.Features.AuthService
         public async Task Logout()
         {
             await _localStorage.RemoveItemAsync("authToken");
-            await _localStorage.RemoveItemAsync("refreshToken");
             ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
             _client.DefaultRequestHeaders.Authorization = null;
         }

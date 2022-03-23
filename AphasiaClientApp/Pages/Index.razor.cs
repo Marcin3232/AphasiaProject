@@ -16,7 +16,7 @@ namespace AphasiaClientApp.Pages
 
         void Navigation()
         {
-            UriHelper.NavigateTo("/management/management_exercise");
+            UriHelper.NavigateTo("/management/mainPanel");
         }
     }
 }

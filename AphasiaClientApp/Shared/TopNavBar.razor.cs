@@ -13,6 +13,6 @@ namespace AphasiaClientApp.Shared
         private LanguageSettings languageSettings = new LanguageSettings();
 
         void Navigation_Login() => UriHelper.NavigateTo("/login");
-
+        void Navigation_Logout() => UriHelper.NavigateTo("/logout");
     }
 }

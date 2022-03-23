@@ -1,0 +1,55 @@
+﻿@import "variables";
+
+.btn-custom {
+    top: 0%;
+    bottom: 0%;
+    min-height: 400px;
+    min-width: 400px;
+    word-wrap: break-word;
+    background: $base-dark-background;
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 50px;
+}
+
+.btn-custom:hover {
+    top: 0%;
+    bottom: 0%;
+    min-height: 400px;
+    min-width: 400px;
+    word-wrap: break-word;
+    background: $base-hover-s-dark;
+    border: 2px solid $white;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 50px;
+}
+
+.btn-custom:active {
+    top: 0%;
+    bottom: 0%;
+    min-height: 400px;
+    min-width: 400px;
+    word-wrap: break-word;
+    background: $base-dark-background;
+    border: 2px solid $white;
+    box-sizing: border-box;
+    box-shadow: inset 0px 8px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}
+
+#customText {
+  left: 15.45%;
+  right: 15.24%;
+  top: 28.85%;
+  bottom: 32.69%;
+  color: $white;
+  font-family: $family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: $l-size;
+  line-height: $c-line-height;
+  text-align: center;
+  font-feature-settings: "liga" off;
+}

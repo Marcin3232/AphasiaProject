@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace AphasiaClientApp.Features
 {
-    public static class JwtParser
+    public class JwtParser
     {
+
+        public static string doctorId;
         public static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
         {
             var claims = new List<Claim>();
@@ -18,15 +20,15 @@ namespace AphasiaClientApp.Features
 
             var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
 
+          
             ExtractRolesFromJWT(claims, keyValuePairs);
-
             claims.AddRange(keyValuePairs.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString())));
-
             return claims;
         }
 
         private static void ExtractRolesFromJWT(List<Claim> claims, Dictionary<string, object> keyValuePairs)
         {
+            ExtractIdFromJWT(claims, keyValuePairs);
             keyValuePairs.TryGetValue(ClaimTypes.Role, out object roles);
             if (roles != null)
             {
@@ -44,6 +46,15 @@ namespace AphasiaClientApp.Features
                 }
                 keyValuePairs.Remove(ClaimTypes.Role);
             }
+        }
+        private static void ExtractIdFromJWT(List<Claim> claims, Dictionary<string, object> keyValuePairs)
+        { 
+            keyValuePairs.TryGetValue("Id", out object id);
+            if (id != null)
+            {
+               doctorId = id.ToString().Trim().TrimStart('[').TrimEnd(']').Split(',')[0].ToString();
+            }
+            doctorId = "Error";
         }
 
         private static byte[] ParseBase64WithoutPadding(string base64)
