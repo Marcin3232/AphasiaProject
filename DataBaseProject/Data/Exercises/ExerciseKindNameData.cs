@@ -1,4 +1,5 @@
-﻿using DataBaseProject.Models.Exercise;
+﻿using CommonExercise.Enums;
+using DataBaseProject.Models.Exercise;
 using System.Collections.Generic;
 
 namespace DataBaseProject.Data.Exercises
@@ -10,11 +11,14 @@ namespace DataBaseProject.Data.Exercises
         private List<ExerciseKindNameModel> CreateList()
         {
             var temp = new List<ExerciseKindNameModel>();
-            temp.Add(Create(1, 1, "Posłuchaj i Zapamiętaj", "...", "sound/instructions/listen_and_remember"));
-            temp.Add(Create(2, 2, "Powtórz", "...", "sound/instructions/repeat"));
-            temp.Add(Create(3, 3, "Wskaż", "...", "sound/instructions/point"));
-            temp.Add(Create(4, 4, "Nazwij", "...", "sound/instructions/name"));
-            temp.Add(Create(5, 5, "Ćwicz ze mną", "...", "sound/instructions/practise_with_me"));
+            temp.Add(Create(1, (int)ExerciseKind.ListenAndRemember, "Posłuchaj i Zapamiętaj", "...", "sound/instructions/listen_and_remember"));
+            temp.Add(Create(2, (int)ExerciseKind.Repeat, "Powtórz", "...", "sound/instructions/repeat"));
+            temp.Add(Create(3, (int)ExerciseKind.Indicate, "Wskaż", "...", "sound/instructions/point"));
+            temp.Add(Create(4, (int)ExerciseKind.Naming, "Nazwij", "...", "sound/instructions/name"));
+            temp.Add(Create(5, (int)ExerciseKind.PractiseWithMe, "Ćwicz ze mną", "...", "sound/instructions/practise_with_me"));
+            temp.Add(Create(6, (int)ExerciseKind.CountToTen, "Liczymy do dziesięciu", "...", "sound/instructions/count_to_ten"));
+            temp.Add(Create(7, (int)ExerciseKind.RepeatAfterEachItem, "Powtórz po każdym elemencie", "...", "sound/instructions/repeat_each_element"));
+            temp.Add(Create(8, (int)ExerciseKind.ArrangeInTurn, "Ułóż po kolei", "...", "sound/instructions/place_in_order"));
             return temp;
         }
 

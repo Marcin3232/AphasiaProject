@@ -13,6 +13,7 @@ namespace DataBaseProject.Data.Exercises
             var temp = new List<ExerciseModel>();
             temp.Add(Create(1, _exerciseNameData.GetName("01"), 0, true, null, 0));
             temp.Add(Create(2, _exerciseNameData.GetName("02"), 0, true, null, 0));
+            temp.Add(Create(3, _exerciseNameData.GetName("05"), 0, true, null, 0));
             return temp;
         }
 
