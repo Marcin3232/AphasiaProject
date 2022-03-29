@@ -25,6 +25,7 @@ namespace CommonExercise.Enums
         RepeatAfterEachItem = 7,
         [Display(Name = "Arrange in turn")]
         ArrangeInTurn = 8,
-
+        [Display(Name = "Days of the week")]
+        DaysOfWeek = 9,
     }
 }

@@ -13,20 +13,27 @@ namespace CommonExercise.Utils
             switch (exerciseTaskId)
             {
                 case "05":
-                    List<Exercise05_33_34Resource> tempList = ExerciseResourceConverter.
-                        ExerciseResource<Exercise05_33_34Resource>(resource);
-                    tempList.ForEach(temp => model.Add(new PanelEnumerationModel()
-                    {
-                        Text = temp.Text,
-                        Number = temp.Number,
-                        SoundSrc = temp.SoundSrc,
-                    }));
-        
-                    return MultiplierDictionary.Multiply<List<PanelEnumerationModel>>(model,repeat);
+                    return Get05_33_34(exerciseTaskId,resource,repeat,model);
+                case "33":
+                    return Get05_33_34(exerciseTaskId, resource, repeat, model);
                 default:
                     return new Dictionary<int, List<PanelEnumerationModel>>();
             }
         }
 
+        private static Dictionary<int, List<PanelEnumerationModel>> Get05_33_34(string exerciseTaskId,
+            dynamic resource, int repeat, List<PanelEnumerationModel> model)
+        {
+            List<Exercise05_33_34Resource> tempList = ExerciseResourceConverter.
+                ExerciseResource<Exercise05_33_34Resource>(resource);
+            tempList.ForEach(temp => model.Add(new PanelEnumerationModel()
+            {
+                Text = temp.Text,
+                Number = temp.Number,
+                SoundSrc = temp.SoundSrc,
+            }));
+
+            return MultiplierDictionary.Multiply<List<PanelEnumerationModel>>(model, repeat);
+        }
     }
 }
