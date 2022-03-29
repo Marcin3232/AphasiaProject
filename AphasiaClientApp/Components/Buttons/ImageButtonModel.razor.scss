@@ -1,12 +1,14 @@
 ﻿@import "variables";
 
 .btn-ic {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: 2px solid $base-dark-background;
-  padding: 3px;
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 2px solid $base-dark-background;
+    padding: 3px;
 }
 
 .btn-nf {

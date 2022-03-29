@@ -4,6 +4,8 @@
     {
         Normal = 0,
         Green = 1,
-        Red =2,
+        Red = 2,
+        Light = 3,
+        LightEmpty = 4,
     }
 }

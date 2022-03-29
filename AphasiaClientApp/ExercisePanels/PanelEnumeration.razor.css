@@ -1,0 +1,11 @@
+﻿.margin-panel {
+    margin-top: 5px;
+}
+
+.row {
+    --bs-gutter-x: 0 !important;
+}
+
+.empty-space{
+    height:48px;
+}

@@ -15,6 +15,9 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.Naming,ExercisePanelOption.PanelOption1 },
                 {ExerciseType.IndicateImage,ExercisePanelOption.PanelIndicate },
                 {ExerciseType.Films,ExercisePanelOption.PanelFilm },
+                {ExerciseType.Enumeration,ExercisePanelOption.PanelEnumeration},
+                {ExerciseType.EnumerationRepeat,ExercisePanelOption.PanelEnumeration },
+                {ExerciseType.ArrangeInTurn,ExercisePanelOption.PanelEnumeration },
             };
     }
 }

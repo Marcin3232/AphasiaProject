@@ -1,0 +1,90 @@
+﻿@using AphasiaClientApp.Models.Enums
+@using AphasiaClientApp.Utils.Js.Sounds
+@using CommonExercise.Enums
+@using CommonExercise.Utils
+@inject ISoundService Sound
+
+@if (show)
+{
+    <div style="margin-top:20px;">
+        @if (Phase.Type == (int)ExerciseType.ArrangeInTurn)
+        {
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    @foreach (var item in ModelList)
+                    {
+
+                        <div class="row justify-content-center margin-panel">
+                            <div class="col-6 text-center">
+                                @if (item.IsShow)
+                                {
+                                    <div class="oneline" style="width:90%;">
+                                        <ImageButtonModel TypeImage=@NaviTypeImage.Sound
+                                          ButtonCallback="()=>OnPlaySound(item)" />
+                                        <TextFrame Text=@item.Text
+                                   Color=@SetColor(item)
+                                   IsResponsive=true
+                                   IsClickable=!item.IsActive
+                                   ClickCallback="()=>OnSelected(item)" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="empty-space">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+
+                        <audio id="@item.Text" src="@item.SoundSrc" />
+                    }
+                </div>
+                <div class="col-6">
+                    @foreach (var itemEnum in ModelEnumerationList)
+                    {
+
+                        <div class="row justify-content-center margin-panel">
+                            <div class="col-6 text-center">
+                                <div class="oneline" style="width:90%;">
+                                    <ImageButtonModel TypeImage=@NaviTypeImage.Sound
+                                          ButtonCallback="()=>OnPlaySound(itemEnum)" />
+                                    <TextFrame Text=@SetText(itemEnum)
+                                   Color=@SetEmptyColor(itemEnum)
+                                   IsClickable=@IsClickableEnumeration(itemEnum)
+                                   ClickCallback="()=>OnChoice(itemEnum)"
+                                   IsResponsive=true />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <audio id="@itemEnum.Text" src="@itemEnum.SoundSrc" />
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in ModelList)
+            {
+                if (item.IsShow)
+                {
+                    <div class="row justify-content-center margin-panel">
+                        <div class="col-6 text-center">
+                            <div class="oneline" style="width:90%;">
+                                <ImageButtonModel TypeImage=@NaviTypeImage.Sound
+                                  ButtonCallback="()=>OnPlaySound(item)" />
+                                <TextFrame Text=@item.Text
+                           Color=@SetColor(item)
+                           IsResponsive=true />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <audio id="@item.Text" src="@item.SoundSrc" />
+            }
+        }
+    </div>
+}

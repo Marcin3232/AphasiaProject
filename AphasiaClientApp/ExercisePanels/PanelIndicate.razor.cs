@@ -1,4 +1,5 @@
-﻿using AphasiaClientApp.Models.Enums;
+﻿using AphasiaClientApp.Models.Constant;
+using AphasiaClientApp.Models.Enums;
 using AphasiaClientApp.Pages.Exercises;
 using CommonExercise.ExerciseResourceProjection;
 using CommonExercise.Models;
@@ -28,8 +29,6 @@ namespace AphasiaClientApp.ExercisePanels
         private bool isFinish { get; set; } = false;
         private bool show { get; set; } = false;
         private string ExecutePointerEvent { get; set; }
-        private static string _correctSrc() => "/sound/instructions/correct.mp3";
-        private static string _tryAgainSrc() => "/sound/instructions/try_again.mp3";
 
         protected override Task OnInitializedAsync()
         {
@@ -159,8 +158,8 @@ namespace AphasiaClientApp.ExercisePanels
 
         private static Dictionary<bool, string> _indicateResult = new Dictionary<bool, string>()
         {
-            { true, _correctSrc() },
-            { false, _tryAgainSrc() }
+            { true, BaseInstruction.CorrectSrc() },
+            { false, BaseInstruction.TryAgainSrc() }
         };
     }
 }

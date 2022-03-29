@@ -7,16 +7,24 @@ using System.Threading.Tasks;
 
 namespace CommonExercise.Enums
 {
-    public enum  ExerciseKind
+    public enum ExerciseKind
     {
         [Display(Name = "Listen and remember")]
         ListenAndRemember = 1,
         [Display(Name = "Repeat")]
         Repeat = 2,
-        [Display(Name ="Indicate")]
+        [Display(Name = "Indicate")]
         Indicate = 3,
-        [Display(Name ="Naming")]
-        Naming = 4, 
+        [Display(Name = "Naming")]
+        Naming = 4,
+        [Display(Name = "Practise with me")]
+        PractiseWithMe = 5,
+        [Display(Name = "We count to ten")]
+        CountToTen = 6,
+        [Display(Name = "Repeat after each item")]
+        RepeatAfterEachItem = 7,
+        [Display(Name = "Arrange in turn")]
+        ArrangeInTurn = 8,
 
     }
 }

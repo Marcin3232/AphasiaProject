@@ -53,18 +53,22 @@
 </div>
 
 
-<PanelOption1 @ref="@panelOption1" Counter=@counter
-              PlaySound=@playSound />
-
 
 <CascadingValue Value="this">
+    <PanelOption1 @ref="@panelOption1" Counter=@counter
+                  PlaySound=@playSound />
     <PanelIndicate @ref=@panelIndicate Counter=@counter
                    PlaySound=@playSound
                    HistoryDetails=@HistoryResultDetails
                    IndicateCallback=@OnGoNext />
-
     <PanelFilm @ref=@panelFilm Counter=@counter
                PlaySound=@playSound />
+    <PanelEnumeration @ref=@panelEnumeration
+                      Counter=@counter
+                      EnumerationCallback=@OnGoNext
+                      HistoryDetails=@HistoryResultDetails
+                      Cts=@cts
+                      CancelCallback=@OnCancel />
 </CascadingValue>
 
 

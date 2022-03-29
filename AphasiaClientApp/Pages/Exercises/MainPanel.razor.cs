@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AphasiaClientApp.Pages.Exercises
@@ -32,6 +33,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private HistoryResultDetails HistoryResultDetails => ExerciseHistory?
             .FirstOrDefault(x => x.ExercisePhaseId == ExercisePhaseCurrent.Id)?.HistoryResultDetails;
 
+        private CancellationTokenSource cts = new CancellationTokenSource();
         private int maxCounter;
         private int counter = 0;
         private bool playSound = false;
@@ -45,6 +47,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private PanelOption1 panelOption1 = new PanelOption1();
         private PanelIndicate panelIndicate = new PanelIndicate();
         private PanelFilm panelFilm = new PanelFilm();
+        private PanelEnumeration panelEnumeration = new PanelEnumeration();
 
         #endregion
 
@@ -85,10 +88,7 @@ namespace AphasiaClientApp.Pages.Exercises
             }
 
             var type = (ExerciseType)ExercisePhaseCurrent?.Type;
-            Clear();
-            await panelOption1.Close();
-            await panelIndicate.Close();
-            await panelFilm.Close();
+
             switch (GetExercisePanel(type))
             {
                 case ExercisePanelOption.PanelOption1:
@@ -100,10 +100,22 @@ namespace AphasiaClientApp.Pages.Exercises
                 case ExercisePanelOption.PanelFilm:
                     maxCounter = await panelFilm.Show(Exercise);
                     break;
+                case ExercisePanelOption.PanelEnumeration:
+                    maxCounter = await panelEnumeration.Show(Exercise);
+                    break;
                 case ExercisePanelOption.Default:
                     // TODO: dokonczyć blad notification i do menu glownego
                     break;
             }
+        }
+
+        private async Task ClearPage()
+        {
+            Clear();
+            await panelOption1.Close();
+            await panelIndicate.Close();
+            await panelFilm.Close();
+            await panelEnumeration.Close();
         }
 
         private ExercisePanelOption GetExercisePanel(ExerciseType type) =>
@@ -134,12 +146,16 @@ namespace AphasiaClientApp.Pages.Exercises
         {
             if (action)
             {
+                cts.Cancel();
+                await Task.Delay(10);
                 await StartNewPanel();
             }
         }
 
         private async Task Next()
         {
+            cts.Cancel();
+            await Task.Delay(10);
             goNext = false;
             if (counter == maxCounter - 1)
             {
@@ -158,6 +174,8 @@ namespace AphasiaClientApp.Pages.Exercises
 
         private async Task Back()
         {
+            cts.Cancel();
+            await Task.Delay(10);
             goNext = false;
             if (Exercise.Phases.FirstOrDefault(x => x.IsCurrent).Order == 1 && counter == 0)
                 return;
@@ -227,6 +245,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private async Task StartNewPanel()
         {
             await Task.Delay(10);
+            await ClearPage();
             await PlayTitle();
             playSound = true;
             await ShowPanel();
@@ -256,6 +275,9 @@ namespace AphasiaClientApp.Pages.Exercises
                 case ExercisePanelOption.PanelIndicate:
                     await panelIndicate.ShowTip();
                     break;
+                case ExercisePanelOption.PanelEnumeration:
+                    await panelEnumeration.ShowTip();
+                    break;
                 case ExercisePanelOption.Default:
                     break;
             }
@@ -270,5 +292,9 @@ namespace AphasiaClientApp.Pages.Exercises
                 await SoundService.PlaySrc(GoNext.GoNextSrc());
 
         }
+
+        private void OnCancel(bool action) =>
+            cts = new CancellationTokenSource();
+
     }
 }
