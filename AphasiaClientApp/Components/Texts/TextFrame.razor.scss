@@ -1,12 +1,20 @@
 ﻿@import "variables";
 
 .cardFrame {
-    width: 178px;
-    min-height: 48px;
     box-sizing: border-box;
     border-radius: 24px;
     word-break: break-word;
     margin-left: 5px;
+}
+
+.state-size {
+    width: 178px;
+    min-height: 48px;
+}
+
+.auto-size {
+    width: 100%;
+    min-height: 48px;
 }
 
 .bcn {
@@ -22,6 +30,30 @@
 .bcr {
     border: 2px solid $base-dark-red;
     background: $base-light-red;
+}
+
+.bcl {
+    border: 2px solid $base-dark-background;
+    background: $base-light-background;
+}
+
+.bcle {
+    border: 2px dotted $base-dark-background;
+    background: $base-light-background;
+}
+
+.bcn-action:hover {
+    background: $base-hover-dark;
+}
+
+.bcn-action:active {
+    background: $base-activer-dark;
+    border: 2px solid $base-dark-background;
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.bcn-action {
 }
 
 .text-formater {
