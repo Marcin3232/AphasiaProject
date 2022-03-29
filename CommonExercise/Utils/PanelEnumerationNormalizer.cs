@@ -16,6 +16,8 @@ namespace CommonExercise.Utils
                     return Get05_33_34(exerciseTaskId,resource,repeat,model);
                 case "33":
                     return Get05_33_34(exerciseTaskId, resource, repeat, model);
+                case "34":
+                    return Get05_33_34(exerciseTaskId, resource, repeat, model);
                 default:
                     return new Dictionary<int, List<PanelEnumerationModel>>();
             }

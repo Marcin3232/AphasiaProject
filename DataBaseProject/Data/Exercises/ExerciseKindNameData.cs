@@ -20,6 +20,7 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(7, (int)ExerciseKind.RepeatAfterEachItem, "Powtórz po każdym elemencie", "...", "sound/instructions/repeat_each_element"));
             temp.Add(Create(8, (int)ExerciseKind.ArrangeInTurn, "Ułóż po kolei", "...", "sound/instructions/place_in_order"));
             temp.Add(Create(9, (int)ExerciseKind.DaysOfWeek, "Dni tygodnia", "...", "sound/instructions/week_days"));
+            temp.Add(Create(10, (int)ExerciseKind.Month, "Miesiące", "...", "sound/instructions/month"));
             return temp;
         }
 

@@ -27,5 +27,7 @@ namespace CommonExercise.Enums
         ArrangeInTurn = 8,
         [Display(Name = "Days of the week")]
         DaysOfWeek = 9,
+        [Display(Name = "Month")]
+        Month = 10,
     }
 }
