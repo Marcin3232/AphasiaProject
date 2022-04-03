@@ -5,9 +5,12 @@
 @if (show)
 {
     <div class="row justify-content-center margin-panel">
-        @if (ModelList.Any() || ModelList != null)
+        @if (IndicateList.Any() || IndicateList != null)
         {
-            @foreach (var item in ModelList)
+            <h3 class="exercise-title text-center" style="margin-bottom:10px;">
+                @(IsPlayDesc() ? IndicateList.FirstOrDefault(x=>x.IsIndicate)?.Desctiption : "")
+            </h3>
+            @foreach (var item in IndicateList)
             {
                 <div class="col-md-auto text-center">
                     <div class="card-frame @item.ColorIndicate" style="@ExecutePointerEvent" @onclick="()=>OnClickIndicate(item)">
@@ -20,10 +23,10 @@
                               ButtonCallback="()=>OnPlaySound(item)" />
                         <TextFrame Text="@item.Word" />
                     </div>
-                    <audio id="@item.Word" src="@item.WordSound" />
+                    <audio id=@item.Word src=@item.WordSound />
+                    <audio id=@item.Desctiption src=@item.DescriptionSound/>
                 </div>
             }
         }
     </div>
-    //   <audio id="sound" src="@ModelList[Counter]?.WordSound" />
 }

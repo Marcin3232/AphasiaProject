@@ -20,7 +20,7 @@ namespace AphasiaClientApp.ExercisePanels
         private bool show { get; set; } = false;
         private PanelFilmModel ModelList { get; set; }
         private ExercisePhase Phase { get; set; }
-        private string VideoSrc => $"https://www.youtube.com/embed/{GetVideo()}?playlist={GetVideo()}&loop=1&rel=0";
+        private string VideoSrc => $"https://www.youtube.com/embed/{GetVideo()}?playlist={GetVideo()}&loop=1&autoplay=1&controls=0&rel=0";
 
         protected override Task OnInitializedAsync() => base.OnInitializedAsync();
 

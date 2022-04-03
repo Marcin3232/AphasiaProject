@@ -4,6 +4,9 @@
 @if (show)
 {
     <div class="row justify-content-center margin-panel">
+        <h3 class="exercise-title text-center" style="margin-bottom:10px;">
+            @(IsPlayDesc() ? Model?.Desctiption : "")
+        </h3>
         <img class="exerciseOneImg" src="@ModelList[Counter]?.Picture" />
         <p></p>
         <ImageButtonModel TypeImage=@NaviTypeImage.Sound
@@ -11,9 +14,11 @@
 
         @if (ShowFrameText())
         {
-            <TextFrame Text="@ModelList[Counter]?.Word"></TextFrame>
+            <TextFrame Text="@Model?.Word"></TextFrame>
         }
-        <audio id="sound" src="@ModelList[Counter]?.WordSound" />
+
+        <audio id="sound" src="@Model?.WordSound" />
+        <audio id="descSound" src=@Model?.DescriptionSound />
     </div>
 
 }

@@ -29,5 +29,9 @@ namespace CommonExercise.Enums
         DaysOfWeek = 9,
         [Display(Name = "Month")]
         Month = 10,
+        [Display(Name ="Reapeat, what it is")]
+        ReapeatWhatItIs = 11,
+        [Display(Name ="Indicate where")]
+        IndicateWhere=12,
     }
 }

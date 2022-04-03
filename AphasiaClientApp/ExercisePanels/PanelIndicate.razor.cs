@@ -1,6 +1,6 @@
 ﻿using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Models.Enums;
-using AphasiaClientApp.Pages.Exercises;
+using CommonExercise.Enums;
 using CommonExercise.ExerciseResourceProjection;
 using CommonExercise.Models;
 using CommonExercise.Utils;
@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace AphasiaClientApp.ExercisePanels
@@ -25,10 +24,13 @@ namespace AphasiaClientApp.ExercisePanels
         public EventCallback<bool> IndicateCallback { get; set; }
 
         private List<PanelIndicateModel> ModelList { get; set; }
+        private List<PanelIndicateModel> IndicateList { get; set; } = new List<PanelIndicateModel>();
+        private ExercisePhase _exercisePhase { get; set; }
         private int lastCount { get; set; } = -1;
         private bool isFinish { get; set; } = false;
         private bool show { get; set; } = false;
         private string ExecutePointerEvent { get; set; }
+        private int imageCount = 2;
 
         protected override Task OnInitializedAsync()
         {
@@ -39,19 +41,19 @@ namespace AphasiaClientApp.ExercisePanels
         {
             await Task.Delay(10);
             int repeat = exercise.Phases.FirstOrDefault(x => x.IsCurrent == true).Repeat;
-
+            _exercisePhase = exercise.Phases.FirstOrDefault(x => x.IsCurrent == true);
             ModelList = PnaleIndicateNormalizer
                 .Get(exercise.ExerciseInformation.ExerciseTaskId,
                 exercise.ExerciseResource);
             show = true;
             lastCount = -1;
             StateHasChanged();
-            return repeat;
+            return ModelList.Count > 2 ? (ModelList.Count * repeat) : repeat;
         }
 
         public async Task ShowTip()
         {
-            var model = ModelList.FirstOrDefault(x => x.IsIndicate);
+            var model = IndicateList.FirstOrDefault(x => x.IsIndicate);
             if (isFinish)
                 return;
             await Task.Delay(200);
@@ -81,11 +83,17 @@ namespace AphasiaClientApp.ExercisePanels
                 if (Counter != lastCount)
                 {
                     Reset();
-                    ExecutePointerEvent = "";
                     lastCount = Counter;
+                    ExecutePointerEvent = "";
+
+                    IndicateList = InitIndicateList();
                     RandomizeList();
                     PlaySound = false;
-                    await Sound.Play(ModelList.FirstOrDefault(x => x.IsIndicate)?.Word);
+
+                    if (IsPlayDesc())
+                        await OnPlayDescSound();
+
+                    await Sound.Play(IndicateList.FirstOrDefault(x => x.IsIndicate)?.Word);
                 }
                 await base.OnAfterRenderAsync(firstRender);
             }
@@ -106,17 +114,38 @@ namespace AphasiaClientApp.ExercisePanels
         private void Reset()
         {
             isFinish = false;
-            ModelList.ForEach(x =>
+            IndicateList.ForEach(x =>
             {
                 x.ColorIndicate = SetBackgroundColors(ColorType.Normal);
                 ExecutePointerEvent = "";
             });
         }
 
+        private List<PanelIndicateModel> InitIndicateList()
+        {
+            var list = new List<PanelIndicateModel>();
+            if (!ModelList.Any() || ModelList is null)
+                return new List<PanelIndicateModel>();
+
+            if (ModelList.Count == 2)
+                return ModelList;
+
+            for (int i = 0; i < imageCount; i++)
+            {
+                var tempList = ModelList.Where(x => list.Any(y => y.Word != x.Word)).ToList();
+                if (tempList.Any())
+                    list.Add(tempList[new Random().Next(0, tempList.Count)]);
+                else
+                    list.Add(ModelList[new Random().Next(0, ModelList.Count)]);
+            }
+
+            return list;
+        }
+
         private void RandomizeList()
         {
-            ModelList.ForEach(x => x.IsIndicate = false);
-            ModelList[new Random().Next(0, ModelList.Count)].IsIndicate = true;
+            IndicateList.ForEach(x => x.IsIndicate = false);
+            IndicateList[new Random().Next(0, IndicateList.Count)].IsIndicate = true;
             StateHasChanged();
         }
 
@@ -156,10 +185,26 @@ namespace AphasiaClientApp.ExercisePanels
             await Sound.Play(model.Word);
         }
 
+        private async Task OnPlayDescSound()
+        {
+            await Task.Delay(10);
+            var delay = await Sound.Play(IndicateList.FirstOrDefault(x => x.IsIndicate)?.Desctiption);
+            await Task.Delay(delay);
+        }
+
         private static Dictionary<bool, string> _indicateResult = new Dictionary<bool, string>()
         {
             { true, BaseInstruction.CorrectSrc() },
             { false, BaseInstruction.TryAgainSrc() }
+        };
+
+        private bool IsPlayDesc() => !string.IsNullOrEmpty(ModelList.FirstOrDefault()?.Desctiption)
+            && IsAccessDesc(_exercisePhase);
+
+        private bool IsAccessDesc(ExercisePhase exercise) => exercise.Kind switch
+        {
+            (int)ExerciseKind.Indicate => true,
+            _ => false
         };
     }
 }

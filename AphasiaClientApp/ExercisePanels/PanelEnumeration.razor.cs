@@ -70,7 +70,7 @@ namespace AphasiaClientApp.ExercisePanels
 
             if (!ModelList.Any(x => x.IsActive))
             {
-                foreach(var x in ModelEnumerationList)
+                foreach (var x in ModelEnumerationList)
                 {
                     var temp = ModelList.First(y => y.Number == x.Number);
                     if (temp.IsShow)
