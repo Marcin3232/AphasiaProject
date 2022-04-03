@@ -5,6 +5,7 @@ using ExerciseResource.Models.Exercise05;
 using ExerciseResource.Models.Exercise07;
 using ExerciseResource.Models.Exercise33;
 using ExerciseResource.Models.Exercise34;
+using ExerciseResource.Models.Exercise08;
 
 namespace ExerciseResource.Factory
 {
@@ -23,6 +24,8 @@ namespace ExerciseResource.Factory
                     return Exercise05ResourceList(random);
                 case "07":
                     return Exercise07ResourceList(random);
+                case "08":
+                    return Exercise08ResourceList(random);
                 case "33":
                     return Exercise33ResourceList(random);
                 case "34":
@@ -53,6 +56,12 @@ namespace ExerciseResource.Factory
         private List<Exercise07Resource> Exercise07ResourceList(bool random)
         {
             var model = new Exercise07ResourcesList();
+            return random ? model.GetRandomValues() : model.GetValues();
+        }
+
+        private List<Exercise08Resource> Exercise08ResourceList(bool random)
+        {
+            var model = new Exercise08ResourcesList();
             return random ? model.GetRandomValues() : model.GetValues();
         }
 

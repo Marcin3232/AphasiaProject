@@ -23,6 +23,9 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(10, (int)ExerciseKind.Month, "Miesiące", "...", $"{BasePath()}month"));
             temp.Add(Create(11, (int)ExerciseKind.ReapeatWhatItIs, "Powtórz, co to?", "...", $"{BasePath()}repeat_what_is_it"));
             temp.Add(Create(12, (int)ExerciseKind.IndicateWhere, "Wskaż, gdzie?", "...", $"{BasePath()}point_where"));
+            temp.Add(Create(13, (int)ExerciseKind.RepeatWhatHeDoes, "Powtórz, co robi", "...", $"{BasePath()}repeat_what_does"));
+            temp.Add(Create(14, (int)ExerciseKind.SayWhatDoes, "Powiedz, co robi", "...", $"{BasePath()}repeat_what_does"));
+            temp.Add(Create(15, (int)ExerciseKind.MatchCaptionToPicture, "Dopasuj podpis do fotografii", "...", $"{BasePath()}match_caption_to_picture"));
             return temp;
         }
 

@@ -29,9 +29,15 @@ namespace CommonExercise.Enums
         DaysOfWeek = 9,
         [Display(Name = "Month")]
         Month = 10,
-        [Display(Name ="Reapeat, what it is")]
+        [Display(Name = "Reapeat, what it is")]
         ReapeatWhatItIs = 11,
-        [Display(Name ="Indicate where")]
-        IndicateWhere=12,
+        [Display(Name = "Indicate where")]
+        IndicateWhere = 12,
+        [Display(Name = "Repeat what he does")]
+        RepeatWhatHeDoes = 13,
+        [Display(Name ="Say what does")]
+        SayWhatDoes = 14,
+        [Display(Name = "Match caption to picture")]
+        MatchCaptionToPicture=15,
     }
 }
