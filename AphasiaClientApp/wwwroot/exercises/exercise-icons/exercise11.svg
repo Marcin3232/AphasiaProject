@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 85 85" enable-background="new 0 0 85 85" xml:space="preserve">
-<path fill="#FFFFFF" d="M96.2,39.9H82.4V29.5v-4.9h-4.9H66.7V13.4h-77.8v27.3h77.8V29.5h10.9v10.4v4.9v10.8H66.7V44.4h-77.8v27.3
-	h77.8V60.5h15.8V60v-4.5V44.8h13.8V39.9z M62.6,35.8H-7.1V18.3h69.8V35.8z M62.6,66.8H-7.1V49.3h69.8V66.8z"/>
+<svg id="Component_2_1" data-name="Component 2 – 1" xmlns="http://www.w3.org/2000/svg" width="163.71" height="113.98" viewBox="0 0 163.71 113.98">
+  <path id="Vector_13_" data-name="Vector (13)" d="M9.21,10.171C15.21-.087,26.157,3.4,34.02,3.119c9.343-.339,18.572-.711,27.9-1.274,9.36-.565,17.906.842,27.159,1.29,11.551.559,22.5-2.911,34.006-2.9,10.165.008,22.392,2,30.342,6.733,14.687,8.736,11.782,24.508,5.5,35.5-5.007,8.763-11.91,19.524-9.33,29.249,1.416,5.341,7.184,9.374,5.322,15-5.7,17.2-26.832,30.012-52.485,27.079-7.45-.851-34.175-3.535-42.246-5.209-22.7-4.708-37.743-14.678-41.3-31.736C16.472,65.278,1.826,53.391.486,41.908-.526,33.252,4.619,18.021,9.21,10.171Z" transform="translate(-0.357 -0.234)" fill="#c1dee6" fill-rule="evenodd"/>
+  <path id="exercise11" d="M96.2,39.9H82.4V24.6H66.7V13.4H-11.1V40.7H66.7V29.5H77.6V55.6H66.7V44.4H-11.1V71.7H66.7V60.5H82.5V44.8H96.3V39.9ZM62.6,35.8H-7.1V18.3H62.7V35.8Zm0,31H-7.1V49.3H62.7V66.8Z" transform="translate(51.1 6.874)"/>
 </svg>
