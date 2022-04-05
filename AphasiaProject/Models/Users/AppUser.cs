@@ -14,5 +14,9 @@ namespace AphasiaProject.Models.Users
         public string Role { get; set; }
         public DateTime CreateDateTime { get; set; }
         public bool IsActive { get; set; }
+        public int TherapistId { get; set; }    
+
+
+       
     }
 }

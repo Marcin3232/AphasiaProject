@@ -51,7 +51,14 @@
 
 
             </ul>
-            <AphasiaClientApp.Components.Buttons.ButtonModel Text="Zaloguj się" ButtonTypes="Models.Enums.ButtonTypes.ButtonSmLDark" ButtonCallback="Navigation_Login"></AphasiaClientApp.Components.Buttons.ButtonModel>
+                <Microsoft.AspNetCore.Components.Authorization.AuthorizeView Roles ="SpeechTherapist,Caregiver,Patient">
+                    <Authorized>
+                         <AphasiaClientApp.Components.Buttons.ButtonModel Text="Wyloguj się" ButtonTypes="Models.Enums.ButtonTypes.ButtonSmLDark" ButtonCallback="Navigation_Logout"></AphasiaClientApp.Components.Buttons.ButtonModel>
+                    </Authorized>
+                    <NotAuthorized>
+                         <AphasiaClientApp.Components.Buttons.ButtonModel Text="Zaloguj się" ButtonTypes="Models.Enums.ButtonTypes.ButtonSmLDark" ButtonCallback="Navigation_Login"></AphasiaClientApp.Components.Buttons.ButtonModel>
+                    </NotAuthorized>
+                </Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
             <AphasiaClientApp.Pages.Other.ReportError @ref="@reportErrorModal" />
             <AphasiaClientApp.Pages.Settings.LanguageSettings @ref="@languageSettings"/>
         </div>

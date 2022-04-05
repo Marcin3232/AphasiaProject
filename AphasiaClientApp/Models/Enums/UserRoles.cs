@@ -29,4 +29,11 @@ namespace AphasiaClientApp.Models.Enums
 		[Display(Name = "Pacjent")]
 		Patient = 4,
 	}
+	public enum UserPersonalRoles
+    {
+		[Display(Name = "Opiekun")]
+		Guardian = 1,
+		[Display(Name = "Logopeda")]
+		SpeechTherapist = 2,
+	}
 }

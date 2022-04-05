@@ -2,12 +2,14 @@
 @using AphasiaClientApp.Models.Enums
 @inject NavigationManager UriHelper
  <div class="container">
+     <AphasiaClientApp.Components.Banners.BannerPanel></AphasiaClientApp.Components.Banners.BannerPanel>
         <div class="row">
+            
             <div class="col-xl-6">
-                <div class="center-block demo-content"><AphasiaClientApp.Components.Buttons.ButtonLgDarkMainPanelPatients ButtonCallback="ButtonNavigateToYourPatientsPanels"/></div>
+                <div class="center-block demo-content"><AphasiaClientApp.Components.Buttons.ButtonLgDarkMainPanelPatients ButtonCallback="ButtonNavigateToYourPatientsPanels" Text="Twoi pacjenci"/></div>
             </div>
           <div class="col-xl-6">
-                <div class="center-block demo-content "><AphasiaClientApp.Components.Buttons.ButtonLgDarkMainPanelPersonal ButtonCallback="ButtonNavigateToYourDataChangePanel"/></div>
+                <div class="center-block demo-content "><AphasiaClientApp.Components.Buttons.ButtonLgDarkMainPanelPatients ButtonCallback="ButtonNavigateToYourDataChangePanel" Text="Twój Panel"/></div>
             </div>
         </div>
    </div>

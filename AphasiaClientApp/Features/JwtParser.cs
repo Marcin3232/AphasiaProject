@@ -11,6 +11,7 @@ namespace AphasiaClientApp.Features
     {
 
         public static string doctorId;
+        public static string doctorEmail;
         public static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
         {
             var claims = new List<Claim>();
@@ -29,6 +30,7 @@ namespace AphasiaClientApp.Features
         private static void ExtractRolesFromJWT(List<Claim> claims, Dictionary<string, object> keyValuePairs)
         {
             ExtractIdFromJWT(claims, keyValuePairs);
+            ExtractNameFromJWT(claims, keyValuePairs);
             keyValuePairs.TryGetValue(ClaimTypes.Role, out object roles);
             if (roles != null)
             {
@@ -54,7 +56,16 @@ namespace AphasiaClientApp.Features
             {
                doctorId = id.ToString().Trim().TrimStart('[').TrimEnd(']').Split(',')[0].ToString();
             }
-            doctorId = "Error";
+            
+        }
+        private static void ExtractNameFromJWT(List<Claim> claims, Dictionary<string, object> keyValuePairs)
+        {
+            keyValuePairs.TryGetValue(ClaimTypes.Name, out object id);
+            if (id != null)
+            {
+                doctorEmail = id.ToString().Trim().TrimStart('[').TrimEnd(']').Split(',')[0].ToString();
+            }
+           
         }
 
         private static byte[] ParseBase64WithoutPadding(string base64)

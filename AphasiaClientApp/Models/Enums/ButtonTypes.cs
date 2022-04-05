@@ -22,6 +22,10 @@ namespace AphasiaClientApp.Models.Enums
         ButtonHgWhiteResponsive,
         ButtonHgWhiteBorderResponsive,
         ImageButtonSmLightResponsive,
-        ImageButtonSmLight
+        ImageButtonSmLight,
+        ButtonSmLDarkPDChangePassword,
+        ButtonSmLDarkPDResetPassword,
+        ButtonSmLDarkRemoveAccount,
+
     }
 }

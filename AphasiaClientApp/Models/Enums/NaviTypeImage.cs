@@ -46,6 +46,8 @@ namespace AphasiaClientApp.Models.Enums
         HeadSenso = 16,
         [Display(Name = "Play.svg")]
         Play = 17,
+        [Display(Name ="PatientAdd.svg")]
+        PatientAdd = 18,
     }
 
     public static class Path

@@ -27,6 +27,7 @@ namespace AphasiaClientApp.Features.AuthProviders
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             var token = await _localStorage.GetItemAsync<string>("authToken");
+           
             if (string.IsNullOrWhiteSpace(token))
                 return _anonymous;
 

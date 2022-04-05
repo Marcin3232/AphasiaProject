@@ -95,4 +95,34 @@
             </button>
         </div>
         break;
+
+    case ButtonTypes.ButtonSmLDarkPDChangePassword:
+      <div class="d-grid gap-2">
+            <button @onclick="ButtonCallback" class="btn btn-cdark btn-small" type="@Type"data-toggle="modal" data-target="#ChangePassword">
+                <div class="text-center text-sm text-clight">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
+
+  case ButtonTypes.ButtonSmLDarkPDResetPassword:
+     <div class="d-grid gap-2">
+            <button @onclick="ButtonCallback" class="btn btn-cdark btn-small" type="@Type"data-toggle="modal" data-target="#ResetPassword">
+                <div class="text-center text-sm text-clight">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
+
+  case ButtonTypes.ButtonSmLDarkRemoveAccount:
+      <div class="d-grid gap-2">
+            <button @onclick="ButtonCallback" class="btn btn-cdark btn-small" type="@Type"data-toggle="modal" data-target="#RemoveAccount">
+                <div class="text-center text-sm text-clight">
+                    @Text
+                </div>
+            </button>
+        </div>
+        break;
 }

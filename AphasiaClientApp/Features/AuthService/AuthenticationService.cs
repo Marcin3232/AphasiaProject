@@ -59,6 +59,7 @@ namespace AphasiaClientApp.Features.AuthService
 
             await _localStorage.SetItemAsync("authToken", result.Token);
             await _localStorage.SetItemAsync("therapistId", JwtParser.doctorId);
+            await _localStorage.SetItemAsync("therapistEmail", JwtParser.doctorEmail);
 
             ((AuthStateProvider)_authStateProvider).NotifyUserAuthentication(result.Token);
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", result.Token);

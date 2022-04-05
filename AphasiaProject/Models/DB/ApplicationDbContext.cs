@@ -18,8 +18,8 @@ namespace AphasiaProject.Models.DB
         {
         }
 
-        public Microsoft.EntityFrameworkCore.DbSet<AppUser> Users { get; set; }
-
+        public Microsoft.EntityFrameworkCore.DbSet<AppUser> Users { get; set; } 
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

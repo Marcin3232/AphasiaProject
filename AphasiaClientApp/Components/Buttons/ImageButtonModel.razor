@@ -3,7 +3,7 @@
 @switch (ImageButtonType)
 {
     case ImageButtonTypes.ButtonFrame:
-        <button class="btn-ic ic-light" type="@Type" style="@SetStyle" @onclick=ButtonCallback>
+        <button class="btn-ic @SetType" type="@Type" style="@SetStyle" @onclick=ButtonCallback>
             <img src="@ImageSrc" width=28 height=27 alt="..." />
         </button>
         break;

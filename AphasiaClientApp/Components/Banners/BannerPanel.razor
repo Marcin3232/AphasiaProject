@@ -1,0 +1,26 @@
+﻿@using Models.Enums
+@inject NavigationManager navigationManager
+<div class="card">
+    <div class="card-body bannerPanel">
+        <p class="card-text">
+
+            @if (@currentUrl == "management/mainPanel")
+            {
+                <img src="resource/background/papuga.svg" class="img img-fluid" id="bannerParrotImage" alt="Parot image" />
+                <div class="pageDetails online">
+                    <div class="text-center  yourPatientText"><h2>Panel terapeuty @currentUser</h2></div>
+                </div>
+
+            }
+            @if (@currentUrl == "yourPatients")
+            {
+                <img src="resource/background/papuga.svg" class="img img-fluid" id="bannerParrotImage" alt="Parot image" />
+                <div class="text-center oneline yourPatientText"><h2>Twoi Pacjenci</h2></div>
+                <div id="addPatient" class="oneline patientSearch">
+                    <input class="form-control" type="text" value="Wyszukaj..." id="patientSearch" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
+                </div>
+            }
+        </p>
+    </div>
+</div>
