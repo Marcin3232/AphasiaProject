@@ -34,6 +34,11 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(18, _exercisePhaseNameData.GetPhaseName(2), 6, _exerciseKindData.GetKind(11), _exerciseTypeData.GetType(1), true, 1, false, false));
             temp.Add(Create(19, _exercisePhaseNameData.GetPhaseName(3), 6, _exerciseKindData.GetKind(3), _exerciseTypeData.GetType(2), true, 1, false, true));
             temp.Add(Create(20, _exercisePhaseNameData.GetPhaseName(5), 6, _exerciseKindData.GetKind(12), _exerciseTypeData.GetType(2), true, 1, false, true));
+            temp.Add(Create(21, _exercisePhaseNameData.GetPhaseName(1), 7, _exerciseKindData.GetKind(1), _exerciseTypeData.GetType(1), true, 1, false, false));
+            temp.Add(Create(22, _exercisePhaseNameData.GetPhaseName(2), 7, _exerciseKindData.GetKind(13), _exerciseTypeData.GetType(1), true, 1, false, false));
+            temp.Add(Create(23, _exercisePhaseNameData.GetPhaseName(3), 7, _exerciseKindData.GetKind(3), _exerciseTypeData.GetType(2), true, 1, true, true));
+            temp.Add(Create(24, _exercisePhaseNameData.GetPhaseName(4), 7, _exerciseKindData.GetKind(14), _exerciseTypeData.GetType(3), true, 1, false, false));
+            temp.Add(Create(25, _exercisePhaseNameData.GetPhaseName(5), 7, _exerciseKindData.GetKind(15), _exerciseTypeData.GetType(8), true, 1, true, true));
             return temp;
         }
 

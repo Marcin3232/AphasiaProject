@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="21063.648" height="25868.531" viewBox="0 0 21063.648 25868.531">
-  <g id="layer2" transform="translate(-184.834 -825.456)">
+<svg id="Component_1_1" data-name="Component 1 – 1" xmlns="http://www.w3.org/2000/svg" width="33239.992" height="32080" viewBox="0 0 33239.992 32080">
+  <path id="Vector_13_" data-name="Vector (13)" d="M1797.875,2797.194C3016.115-89.985,5238.793,892.561,6835.391,812.261c1897.107-95.368,3770.892-200.028,5664.074-358.553,1900.447-159.066,3635.688,237.11,5514.328,363.154C20359.182,974.3,22582.566-2.467,24918.492.24,26982.4,2.586,29465.023,564.323,31079.3,1895.317,34061.352,4354.2,33471.453,8793.154,32195.6,11887.7c-1016.709,2466.368-2418.3,5494.933-1894.389,8232.163,287.58,1503.242,1458.66,2638.334,1080.609,4220.865-1156.346,4840.559-5448.078,8447-10656.713,7621.457-1512.564-239.635-6938.871-994.867-8577.8-1466.129C7537.373,29170.928,4483.86,26364.834,3762,21563.92,3272.428,18307.068,298.619,14961.276,26.46,11729.441-178.849,9293.363,865.782,5006.35,1797.875,2797.194Z" transform="translate(-0.357 -0.234)" fill="#c1dee6" fill-rule="evenodd"/>
+  <g id="layer2" transform="translate(7090.885 1835.3)">
     <rect id="rect3346" width="19302.6" height="15218.1" rx="3613.57" transform="translate(1181.38 5857.78)" fill="none" stroke="#000" stroke-width="1432.48"/>
     <path id="path4172" d="M13555.6,5801.1l4439.7-4676.4" fill="none" stroke="#000" stroke-width="869.244" fill-rule="evenodd"/>
     <path id="path4172-3" d="M7995.65,5738.62,3369.78,1246.38" fill="none" stroke="#000" stroke-width="869.244" fill-rule="evenodd"/>
@@ -12,6 +13,6 @@
     <ellipse id="path4253-6-7-8" cx="236.78" cy="177.585" rx="236.78" ry="177.585" transform="translate(13496.42 19535.615)" fill="none" stroke="#000" stroke-width="502.356"/>
     <ellipse id="path4253-6-7-0" cx="236.78" cy="177.585" rx="236.78" ry="177.585" transform="translate(15005.92 19535.615)" fill="none" stroke="#000" stroke-width="502.356"/>
     <rect id="rect4164" width="7115.71" height="711.571" rx="178.201" transform="translate(15972.59 20914.936) rotate(45)" fill="none" stroke="#000" stroke-width="345.496"/>
-    <rect id="rect4164-1" width="7115.742" height="711.574" rx="178.202" transform="translate(5963.887 21418.059) rotate(135)" fill="none" stroke="#000" stroke-width="345.498"/>
+    <rect id="rect4164-1" width="7115.74" height="711.574" rx="178.202" transform="translate(5963.887 21418.059) rotate(135)" fill="none" stroke="#000" stroke-width="345.498"/>
   </g>
 </svg>

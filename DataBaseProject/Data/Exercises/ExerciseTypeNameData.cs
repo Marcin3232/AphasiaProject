@@ -19,6 +19,7 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(5, (int)ExerciseType.Enumeration, "Wyliczanie", "..."));
             temp.Add(Create(6, (int)ExerciseType.EnumerationRepeat, "Powtórz po kolei", "..."));
             temp.Add(Create(7, (int)ExerciseType.ArrangeInTurn, "Ułóż po kolei", "..."));
+            temp.Add(Create(8, (int)ExerciseType.MatchCaptionToPicture, "Dopowanie tekstu do obrazka", "..."));
             return temp;
         }
 
