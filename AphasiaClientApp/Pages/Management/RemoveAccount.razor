@@ -1,5 +1,30 @@
-﻿<h3>RemoveAccount</h3>
+﻿@using AphasiaClientApp.Models.Enums
 
-@code {
+@if (showDialog)
+{
+    <div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="justify-content:space-between">
+                    <h4 class="modal-title" style="justify-content:center !important"><b> <img src="resource/icons8/other/icons8-globe-512.png" id="img-title" width=48/>Usuń Konto</b></h4>
+                    <p class="text-rigt" style="float:right; justify-content:right;">
+                        <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonNonFrame TypeImage=NaviTypeImage.Close SetType=".ic-light-color" ButtonCallback="()=>Close()" />
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center">
+                        <div class="text-center">
 
+                            Usunięcie konta spowoduje stratę wszystkich pacjentów. 
+                            <pre style="justify-content:center"><h3><b>Czy jesteś pewien ?</b></h3></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <AphasiaClientApp.Components.Buttons.ButtonModel Text="Anuluj" ButtonTypes="ButtonTypes.ButtonSmLDarkResponvie" ButtonCallback="()=>Close()" />
+                    <AphasiaClientApp.Components.Buttons.ButtonModel Text="Usuń" ButtonTypes="ButtonTypes.ButtonSmLDarkResponvie" ButtonCallback="()=>RemovePersonalAccount()" />
+                </div>
+            </div>
+        </div>
+    </div>
 }

@@ -1,4 +1,5 @@
 ﻿using AphasiaClientApp.Models.MainPanel;
+using AphasiaClientApp.Pages.Other;
 using System.Threading.Tasks;
 
 namespace AphasiaClientApp.Pages.Management
@@ -6,7 +7,8 @@ namespace AphasiaClientApp.Pages.Management
     public partial class PersonalData
     {
         public PersonalDataModel personalDataModel = new PersonalDataModel();
-
+        public RemoveAccount removeAccount = new RemoveAccount();
+        private ReportError reportErrorModal = new ReportError();
         public async Task ExecutePersonalDataChange()
         {
 

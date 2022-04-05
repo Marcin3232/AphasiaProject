@@ -1,5 +1,6 @@
 ﻿using AphasiaClientApp.Extensions;
 using AphasiaClientApp.Models.Enums;
+using AphasiaClientApp.Pages.Management;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace AphasiaClientApp.Components.Buttons
 {
     public partial class ButtonModel
     {
+        public RemoveAccount removeAccount = new RemoveAccount();
+
         [Parameter]
         public ButtonTypes ButtonTypes { get; set; }
         [Parameter]

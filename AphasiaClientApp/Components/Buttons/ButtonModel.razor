@@ -114,15 +114,17 @@
                 </div>
             </button>
         </div>
+
         break;
 
   case ButtonTypes.ButtonSmLDarkRemoveAccount:
       <div class="d-grid gap-2">
-            <button @onclick="ButtonCallback" class="btn btn-cdark btn-small" type="@Type"data-toggle="modal" data-target="#RemoveAccount">
+            <button @onclick="()=>removeAccount.Show()" class="btn btn-cdark btn-small" type="@Type"data-toggle="modal" data-target="#RemoveAccount">
                 <div class="text-center text-sm text-clight">
                     @Text
                 </div>
             </button>
         </div>
+    <AphasiaClientApp.Pages.Management.RemoveAccount @ref="@removeAccount"/>
         break;
 }
