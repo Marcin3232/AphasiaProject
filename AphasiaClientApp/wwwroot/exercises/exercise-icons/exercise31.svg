@@ -1,75 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Creator: CorelDRAW X7 -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xml:space="preserve"
-   width="215.9mm"
-   height="279.4mm"
-   version="1.1"
-   style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-   viewBox="0 0 21590 27940"
-   enable-background="new 0 0 127.6 127.6"
-   id="svg2"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="exercise31.svg"><metadata
-   id="metadata14"><rdf:RDF><cc:Work
-       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><sodipodi:namedview
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="1366"
-   inkscape:window-height="706"
-   id="namedview12"
-   showgrid="false"
-   inkscape:zoom="0.47676769"
-   inkscape:cx="26.000481"
-   inkscape:cy="458.43149"
-   inkscape:window-x="-8"
-   inkscape:window-y="-8"
-   inkscape:window-maximized="1"
-   inkscape:current-layer="svg2" />
- <defs
-   id="defs4">
-  <style
-   type="text/css"
-   id="style6">
-   <![CDATA[
-    .fil0 {fill:white}
-   ]]>
-  </style>
- </defs>
- 
-<circle
-   style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2429.05371094;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-   id="path4144"
-   cx="10803.072"
-   cy="13526.038"
-   r="9532.9053" /><rect
-   style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:19.53499985;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-   id="rect4364"
-   width="1934.3856"
-   height="8242.5381"
-   x="10031.124"
-   y="5573.1719"
-   ry="967.19281" /><rect
-   style="clip-rule:evenodd;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:19.53499985;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   id="rect4364-3"
-   width="1934.3792"
-   height="6425.4932"
-   x="-13815.716"
-   y="10329.07"
-   ry="967.18958"
-   transform="matrix(0,-1,1,0,0,0)" /></svg>
+<svg id="Component_1_1" data-name="Component 1 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="560.869" height="464.128" viewBox="0 0 560.869 464.128">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="547" height="393" transform="translate(3462 244)" stroke="#000" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <path id="Vector_14_" data-name="Vector (14)" d="M87.834,109.617c-11.365-15.653-.158-42.176,6.827-52.881,16-24.535,43.407-36.531,73.888-41.483,27-4.386,50.845-1.371,77.926-1.393,29.27-.024,56.343-6.865,84.83-10.037C382.653-1.9,485.046-9.057,507.344,46.732c15.041,37.628-1.186,75.941-12.116,112.759-11.084,37.346-9.4,66.91,4.791,103.036,10.11,25.729,17.676,51.564,21.9,78.618,14.65,93.875-124,106.052-198.69,110.129-28.01,1.525-55.979-1.658-83.571-2.614-29.647-1.03-55.646,14.887-85.647,15.434-27.9.51-63.044-4.925-90.393-10.361-27.8-5.522-40.076-26.337-48.458-48.624-15.771-41.941-25.5-70.261,3.23-109.375,27.76-37.8,44.543-80.324,64.647-121.446C92.928,154.052,97.732,123.248,87.834,109.617Z" fill="#c1dee6" fill-rule="evenodd"/>
+  <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(-3448.131 -194.707)" clip-path="url(#clip-path)">
+    <g id="exercise31" transform="translate(3537.982 193.198)">
+      <circle id="path4144" cx="174.294" cy="174.294" r="174.294" transform="translate(23.223 73.007)" fill="none" stroke="#000" stroke-width="44.411"/>
+      <rect id="rect4364" width="35.367" height="150.702" rx="17.684" transform="translate(183.403 101.897)"/>
+      <rect id="rect4364-3" width="35.367" height="117.48" rx="17.684" transform="translate(188.851 252.598) rotate(-90)"/>
+    </g>
+  </g>
+</svg>

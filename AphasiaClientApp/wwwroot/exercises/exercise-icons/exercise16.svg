@@ -1,82 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Creator: CorelDRAW X7 -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xml:space="preserve"
-   width="904.96552mm"
-   height="601.18335mm"
-   version="1.1"
-   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   viewBox="0 0 90496.554 60118.337"
-   enable-background="new 0 0 127.6 127.6"
-   id="svg2"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="exercise16.svg"><metadata
-   id="metadata14"><rdf:RDF><cc:Work
-       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="1366"
-   inkscape:window-height="706"
-   id="namedview12"
-   showgrid="false"
-   fit-margin-top="150"
-   fit-margin-left="0"
-   fit-margin-right="0"
-   fit-margin-bottom="150"
-   inkscape:zoom="0.16856283"
-   inkscape:cx="1798.6675"
-   inkscape:cy="1036.9953"
-   inkscape:window-x="-8"
-   inkscape:window-y="-8"
-   inkscape:window-maximized="1"
-   inkscape:current-layer="svg2" />
- <defs
-   id="defs4">
-  <style
-   type="text/css"
-   id="style6">
-   <![CDATA[
-    .fil0 {fill:white}
-   ]]>
-  </style>
- </defs>
- 
-<circle
-   style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:2540.00002058;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-   id="path4142"
-   cx="13549.388"
-   cy="41169.176"
-   r="3218.8232" /><path
-   style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:2540.00002058;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-   d="m 5902.5782,41249.917 -5445.93199,0 0,-10595.889 5135.21459,-8894.452 12682.4552,0 0,12209.367 C 6376.1375,31245.977 5902.5782,41249.917 5902.5782,41249.917 Z"
-   id="path4173"
-   inkscape:connector-curvature="0" /><path
-   style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:2540.00002058;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-   d="m 24575.362,15544.292 0,19254.277 65464.544,0 0,-7701.711 z"
-   id="path4175"
-   inkscape:connector-curvature="0" /><circle
-   style="clip-rule:evenodd;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:2540.00002058;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   id="path4142-9"
-   cx="81835.914"
-   cy="41169.188"
-   r="3218.8232" /><circle
-   style="clip-rule:evenodd;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:2540.00002058;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   id="path4142-4"
-   cx="71120.492"
-   cy="41169.188"
-   r="3218.8232" /></svg>
+<svg id="Component_3_1" data-name="Component 3 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="718.526" height="430" viewBox="0 0 718.526 430">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3" data-name="Rectangle 3" width="563" height="430" transform="translate(2287 86)" stroke="#000" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <path id="Vector_14_" data-name="Vector (14)" d="M120.673,72.966c-15.614-10.419-.217-28.074,9.38-35.2,21.982-16.332,59.636-24.316,101.513-27.613,37.1-2.92,69.854-.912,107.06-.928,40.213-.016,77.408-4.569,116.546-6.681,70.544-3.806,211.219-8.574,241.853,28.562,20.665,25.047-1.63,50.55-16.646,75.057-15.228,24.859-12.917,44.538,6.582,68.585,13.89,17.126,24.284,34.323,30.086,52.332,20.127,62.487-170.357,70.593-272.975,73.307-38.482,1.015-76.908-1.1-114.816-1.74-40.732-.686-76.451,9.909-117.669,10.274-38.327.34-86.614-3.278-124.188-6.9-38.2-3.676-55.059-17.531-66.575-32.366C-.841,241.741-14.2,222.89,25.264,196.854c38.138-25.16,61.2-53.467,88.817-80.839C127.672,102.543,134.271,82.039,120.673,72.966Z" transform="translate(0 47.08)" fill="#c1dee6" fill-rule="evenodd"/>
+  <g id="Mask_Group_3" data-name="Mask Group 3" transform="translate(-2177.5 -86)" clip-path="url(#clip-path)">
+    <g id="exercise16" transform="translate(2291.971 118.61)">
+      <circle id="path4142" cx="19.671" cy="19.671" r="19.671" transform="translate(63.134 231.929)" fill="none" stroke="#000" stroke-width="15.523"/>
+      <path id="path4173" d="M36.073,252.094H2.791V187.338l31.383-54.357h77.508V207.6C38.967,190.956,36.073,252.094,36.073,252.094Z" fill="none" stroke="#000" stroke-width="15.523" fill-rule="evenodd"/>
+      <path id="path4175" d="M150.19,95v117.67H550.268V165.6Z" fill="none" stroke="#000" stroke-width="15.523" fill-rule="evenodd"/>
+      <circle id="path4142-9" cx="19.671" cy="19.671" r="19.671" transform="translate(480.459 231.929)" fill="none" stroke="#000" stroke-width="15.523"/>
+      <circle id="path4142-4" cx="19.671" cy="19.671" r="19.671" transform="translate(414.973 231.929)" fill="none" stroke="#000" stroke-width="15.523"/>
+    </g>
+  </g>
+</svg>
