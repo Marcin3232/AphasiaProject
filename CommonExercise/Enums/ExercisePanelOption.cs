@@ -7,5 +7,6 @@
         PanelIndicate = 2,
         PanelFilm = 3,
         PanelEnumeration = 4,
+        PanelMatch = 5,
     }
 }

@@ -1,0 +1,50 @@
+﻿@using AphasiaClientApp.Models.Constant
+@using AphasiaClientApp.Models.Enums
+@using AphasiaClientApp.Utils.Js.Sounds
+@inject ISoundService Sound
+
+@if (show)
+{
+    <div class="container">
+
+        @if (panelMatchList.Any() || panelMatchList != null)
+        {
+            <div class="row justify-content-center margin-panel">
+                <div class="col-4 c-center text-center">
+                    @foreach (var item in panelMatchList)
+                    {
+                        <div style="display:flex;">
+                            <ImageButtonModel TypeImage=@NaviTypeImage.Sound
+                                  ButtonCallback="()=>OnPlaySound(item)" />
+                            <TextFrame Text=@item.Word
+                           IsResponsive=true
+                           Color=@ColorTypeIsCorrect.SetWhiteWithDotted(item.IsCorrect)
+                           IsClickable=!isFinish
+                           ClickCallback="()=> OnClickMatch(item)" />
+                        </div>
+                        <p></p>
+                        <audio id=@item.Word src=@item.WordSound />
+                    }
+                </div>
+                <div class="col text-center">
+                    @foreach (var item in panelMatchList)
+                    {
+                        if (item.IsMatch)
+                        {
+                            <img src=@item.Picture class="img-fluid" alt="...">
+                            <div class="text-center bottom-image-desc" style="display: flex;">
+
+                                <ImageButtonModel TypeImage="@NaviTypeImage.Sound"
+                                  ButtonCallback="()=>OnPlaySound(item)" />
+                                @if (item.IsCorrect is true)
+                                {
+                                    <TextFrame Text=@item.Word IsResponsive=false />
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}

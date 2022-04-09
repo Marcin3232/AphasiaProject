@@ -7,5 +7,6 @@
         Red = 2,
         Light = 3,
         LightEmpty = 4,
+        NormalEmpty = 5,
     }
 }

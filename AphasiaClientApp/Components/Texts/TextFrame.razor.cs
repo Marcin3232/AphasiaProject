@@ -25,6 +25,7 @@ namespace AphasiaClientApp.Components.Texts
             ColorType.Red => " bcr ",
             ColorType.Light => " bcl ",
             ColorType.LightEmpty => " bcle ",
+            ColorType.NormalEmpty => " bcne ",
             _ => " ",
         };
 
@@ -38,6 +39,8 @@ namespace AphasiaClientApp.Components.Texts
                 switch (color)
                 {
                     case ColorType.Normal:
+                        return " bcn-action ";
+                    case ColorType.NormalEmpty:
                         return " bcn-action ";
                     default:
                         return " ";

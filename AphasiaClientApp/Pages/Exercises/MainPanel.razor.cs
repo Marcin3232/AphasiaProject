@@ -48,6 +48,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private PanelIndicate panelIndicate = new PanelIndicate();
         private PanelFilm panelFilm = new PanelFilm();
         private PanelEnumeration panelEnumeration = new PanelEnumeration();
+        private PanelMatch panelMatch = new PanelMatch();
 
         #endregion
 
@@ -103,6 +104,9 @@ namespace AphasiaClientApp.Pages.Exercises
                 case ExercisePanelOption.PanelEnumeration:
                     maxCounter = await panelEnumeration.Show(Exercise);
                     break;
+                case ExercisePanelOption.PanelMatch:
+                    maxCounter = await panelMatch.Show(Exercise);
+                    break;
                 case ExercisePanelOption.Default:
                     // TODO: dokonczyć blad notification i do menu glownego
                     break;
@@ -116,6 +120,7 @@ namespace AphasiaClientApp.Pages.Exercises
             await panelIndicate.Close();
             await panelFilm.Close();
             await panelEnumeration.Close();
+            await panelMatch.Close();
         }
 
         private ExercisePanelOption GetExercisePanel(ExerciseType type) =>
@@ -277,6 +282,9 @@ namespace AphasiaClientApp.Pages.Exercises
                     break;
                 case ExercisePanelOption.PanelEnumeration:
                     await panelEnumeration.ShowTip();
+                    break;
+                case ExercisePanelOption.PanelMatch:
+                    await panelMatch.ShwoTip();
                     break;
                 case ExercisePanelOption.Default:
                     break;

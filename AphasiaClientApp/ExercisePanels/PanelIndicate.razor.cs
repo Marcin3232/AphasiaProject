@@ -156,7 +156,7 @@ namespace AphasiaClientApp.ExercisePanels
 
             isFinish = model.IsIndicate;
 
-            if (_indicateResult.TryGetValue(model.IsIndicate, out var result))
+            if (CorrectAgainAnswer.Result().TryGetValue(model.IsIndicate, out var result))
                 await Sound.PlaySrc(result);
             model.ColorIndicate = model.IsIndicate ? SetBackgroundColors(ColorType.Green)
                 : SetBackgroundColors(ColorType.Red);
@@ -191,12 +191,6 @@ namespace AphasiaClientApp.ExercisePanels
             var delay = await Sound.Play(IndicateList.FirstOrDefault(x => x.IsIndicate)?.Desctiption);
             await Task.Delay(delay);
         }
-
-        private static Dictionary<bool, string> _indicateResult = new Dictionary<bool, string>()
-        {
-            { true, BaseInstruction.CorrectSrc() },
-            { false, BaseInstruction.TryAgainSrc() }
-        };
 
         private bool IsPlayDesc() => !string.IsNullOrEmpty(ModelList.FirstOrDefault()?.Desctiption)
             && IsAccessDesc(_exercisePhase);
