@@ -9,6 +9,7 @@
         Enumeration = 5,
         EnumerationRepeat = 6,
         ArrangeInTurn = 7,
-        MatchCaptionToPicture=8,
+        MatchCaptionToPicture = 8,
+        MatchImageToImage = 9,
     }
 }

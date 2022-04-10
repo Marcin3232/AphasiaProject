@@ -39,5 +39,7 @@ namespace CommonExercise.Enums
         SayWhatDoes = 14,
         [Display(Name = "Match caption to picture")]
         MatchCaptionToPicture=15,
+        [Display(Name = "Match the color to the photo")]
+        MatchColorToPhoto = 16,
     }
 }
