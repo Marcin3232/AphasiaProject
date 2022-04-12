@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AphasiaClientApp.ExercisePanels
+namespace AphasiaClientApp.ExercisePanels.PanelIndicate
 {
     public partial class PanelIndicate : ComponentBase
     {
@@ -48,7 +48,7 @@ namespace AphasiaClientApp.ExercisePanels
             show = true;
             lastCount = -1;
             StateHasChanged();
-            return ModelList.Count > 2 ? (ModelList.Count * repeat) : repeat;
+            return ModelList.Count > 2 ? ModelList.Count * repeat : repeat;
         }
 
         public async Task ShowTip()

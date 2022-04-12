@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace AphasiaClientApp.ExercisePanels
+namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
 {
     public partial class PanelMatch
     {
@@ -39,7 +39,7 @@ namespace AphasiaClientApp.ExercisePanels
             show = true;
             lastCount = -1;
             StateHasChanged();
-            return modelList.Count > 2 ? (modelList.Count * repeat) : repeat;
+            return modelList.Count > 2 ? modelList.Count * repeat : repeat;
         }
 
         protected override Task OnInitializedAsync() => base.OnInitializedAsync();

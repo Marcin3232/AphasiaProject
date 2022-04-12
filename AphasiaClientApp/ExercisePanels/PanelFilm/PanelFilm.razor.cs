@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace AphasiaClientApp.ExercisePanels
+namespace AphasiaClientApp.ExercisePanels.PanelFilm
 {
     public partial class PanelFilm
     {
@@ -30,7 +30,7 @@ namespace AphasiaClientApp.ExercisePanels
             int repeat = Phase.Repeat;
             ModelList = PanelFilmNormalizer
                 .Get(exercise.ExerciseInformation.ExerciseTaskId,
-                exercise.ExerciseResource,repeat);
+                exercise.ExerciseResource, repeat);
             show = true;
             var srcList = ModelList.VideosSrc[Phase.PhaseNameId];
             StateHasChanged();

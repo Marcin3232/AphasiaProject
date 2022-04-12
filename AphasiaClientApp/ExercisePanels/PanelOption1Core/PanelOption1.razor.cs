@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AphasiaClientApp.ExercisePanels
+namespace AphasiaClientApp.ExercisePanels.PanelOption1Core
 {
     public partial class PanelOption1 : ComponentBase
     {
@@ -57,7 +57,7 @@ namespace AphasiaClientApp.ExercisePanels
                     PlaySound = false;
 
                     if (IsPlayDesc())
-                       await OnPlayDescSound();
+                        await OnPlayDescSound();
 
                     await OnPlaySound();
                     StateHasChanged();

@@ -1,6 +1,10 @@
 ﻿using AphasiaClientApp.Components.Modals;
 using AphasiaClientApp.Components.Modals.LoadModals;
-using AphasiaClientApp.ExercisePanels;
+using AphasiaClientApp.ExercisePanels.PanelEnumeration;
+using AphasiaClientApp.ExercisePanels.PanelFilm;
+using AphasiaClientApp.ExercisePanels.PanelIndicate;
+using AphasiaClientApp.ExercisePanels.PanelMatchCore;
+using AphasiaClientApp.ExercisePanels.PanelOption1Core;
 using AphasiaClientApp.Extensions;
 using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Services;

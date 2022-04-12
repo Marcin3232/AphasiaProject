@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace AphasiaClientApp.ExercisePanels
+namespace AphasiaClientApp.ExercisePanels.PanelEnumeration
 {
     public partial class PanelEnumeration
     {
