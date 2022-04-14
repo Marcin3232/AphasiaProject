@@ -1,4 +1,5 @@
-﻿using AphasiaClientApp.Models.Constant;
+﻿using AphasiaClientApp.ExercisePanels.BasePanelFunc;
+using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Models.Enums;
 using CommonExercise.Enums;
 using CommonExercise.ExerciseResourceProjection;
@@ -57,11 +58,11 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
             if (isFinish)
                 return;
             await Task.Delay(200);
-            model.ColorIndicate = SetBackgroundColors(ColorType.Green);
+            model.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Green);
             HistoryDetails.TipClicks++;
             StateHasChanged();
             await Task.Delay(3000);
-            model.ColorIndicate = SetBackgroundColors(ColorType.Normal);
+            model.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Normal);
         }
 
         public Task Close()
@@ -103,20 +104,12 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
             }
         }
 
-        private string SetBackgroundColors(ColorType color) => color switch
-        {
-            ColorType.Normal => " bcn ",
-            ColorType.Green => " bcg ",
-            ColorType.Red => " bcr ",
-            _ => " "
-        };
-
         private void Reset()
         {
             isFinish = false;
             IndicateList.ForEach(x =>
             {
-                x.ColorIndicate = SetBackgroundColors(ColorType.Normal);
+                x.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Normal);
                 ExecutePointerEvent = "";
             });
         }
@@ -158,8 +151,8 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
 
             if (CorrectAgainAnswer.Result().TryGetValue(model.IsIndicate, out var result))
                 await Sound.PlaySrc(result);
-            model.ColorIndicate = model.IsIndicate ? SetBackgroundColors(ColorType.Green)
-                : SetBackgroundColors(ColorType.Red);
+            model.ColorIndicate = model.IsIndicate ? ColorHelper.GetBackgroundColors(ColorType.Green)
+                : ColorHelper.GetBackgroundColors(ColorType.Red);
             ExecutePointerEvent = model.IsIndicate ? "pointer-events: none; " : "";
 
             if (model.IsIndicate)
@@ -173,7 +166,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
                 HistoryDetails.WrongClicks++;
                 StateHasChanged();
                 await Task.Delay(3000);
-                model.ColorIndicate = SetBackgroundColors(ColorType.Normal);
+                model.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Normal);
             }
 
             await IndicateCallback.InvokeAsync(model.IsIndicate);

@@ -19,6 +19,7 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.EnumerationRepeat,ExercisePanelOption.PanelEnumeration },
                 {ExerciseType.ArrangeInTurn,ExercisePanelOption.PanelEnumeration },
                 {ExerciseType.MatchCaptionToPicture,ExercisePanelOption.PanelMatch },
+                {ExerciseType.MatchImageToImage,ExercisePanelOption.PanelMatch },
             };
     }
 }

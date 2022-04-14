@@ -18,6 +18,8 @@ namespace CommonExercise.Utils
                     return Get07(resource, repeat, model);
                 case "08":
                     return Get08(resource, repeat, model);
+                case "12":
+                    return Get12(resource, repeat, model);
                 default:
                     return model;
             }
@@ -69,6 +71,22 @@ namespace CommonExercise.Utils
                     Word = x.Verb,
                     WordSound = x.VerbSoundSrc,
                     Picture = x.PictureSrc,
+                });
+            });
+            return MultiplierList.Multiply<PanelOption1Model>(model, repeat);
+        }
+
+        private static List<PanelOption1Model> Get12(dynamic resource, int repeat, List<PanelOption1Model> model)
+        {
+            List<Exercise12Resource> tempList = ExerciseResourceConverter
+                    .ExerciseResource<Exercise12Resource>(resource);
+            tempList.ForEach(x =>
+            {
+                model.Add(new PanelOption1Model()
+                {
+                    Word = x.Name,
+                    WordSound = x.NameSoundScr,
+                    Picture = x.BlobScr,
                 });
             });
             return MultiplierList.Multiply<PanelOption1Model>(model, repeat);

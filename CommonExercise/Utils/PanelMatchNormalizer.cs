@@ -1,10 +1,6 @@
 ﻿using CommonExercise.ExerciseResourceProjection;
 using CommonExercise.Models.ExerciseResource;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommonExercise.Utils
 {
@@ -18,6 +14,8 @@ namespace CommonExercise.Utils
             {
                 case "08":
                     return Get08(resource);
+                case "12":
+                    return Get12(resource);
                 default:
                     return model;
             }
@@ -35,6 +33,27 @@ namespace CommonExercise.Utils
                     Word = x.Verb,
                     WordSound = x.VerbSoundSrc,
                     Picture = x.PictureSrc,
+                });
+            });
+            return model;
+        }
+
+        private static List<PanelMatchModel> Get12(dynamic resource)
+        {
+            var model = new List<PanelMatchModel>();
+            List<Exercise12Resource> tempList = ExerciseResourceConverter
+                    .ExerciseResource<Exercise12Resource>(resource);
+            tempList.ForEach(x =>
+            {
+                model.Add(new PanelMatchModel()
+                {
+                    Word = x.Name,
+                    WordSound = x.NameSoundScr,
+                    Desctiption = x.PictureSoundSrc,
+                    DescriptionSound = x.PictureSoundSrc,
+                    Picture = x.PictureSrc,
+                    PictureSecond = x.BlobScr,
+
                 });
             });
             return model;

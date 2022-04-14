@@ -10,22 +10,44 @@
         @if (panelMatchList.Any() || panelMatchList != null)
         {
             <div class="row justify-content-center margin-panel">
-                <div class="col-4 c-center text-center">
-                    @foreach (var item in panelMatchList)
-                    {
-                        <div style="display:flex;">
-                            <ImageButtonModel TypeImage=@NaviTypeImage.Sound
+                @switch (PanelModeService.Get(exercisePhase))
+                {
+                    case PanelMode.Text:
+                        <div class="col-4 c-center text-center">
+                            @foreach (var item in panelMatchList)
+                            {
+                                <div style="display:flex;">
+                                    <ImageButtonModel TypeImage=@NaviTypeImage.Sound
                                   ButtonCallback="()=>OnPlaySound(item)" />
-                            <TextFrame Text=@item.Word
+                                    <TextFrame Text=@item.Word
                            IsResponsive=true
                            Color=@ColorTypeIsCorrect.SetWhiteWithDotted(item.IsCorrect)
                            IsClickable=!isFinish
                            ClickCallback="()=> OnClickMatch(item)" />
+                                </div>
+                                <p></p>
+                                <audio id=@item.Word src=@item.WordSound />
+                            }
                         </div>
-                        <p></p>
-                        <audio id=@item.Word src=@item.WordSound />
-                    }
-                </div>
+                        break;
+                    case PanelMode.Image:
+                        <div class="col-6 row-direction text-center">
+
+                            @foreach (var item in panelMatchList)
+                            {
+                                <div class="column-direction">
+                                    <div class="card-frame @item.ColorIndicate" style="@executePointerEvent"
+                                    @onclick="()=> OnClickMatch(item)">
+                                        <img class="exerciseTwoImg" src="@item.PictureSecond" />
+                                    </div>
+                                </div>
+                                <audio id=@item.Word src=@item.WordSound />
+                                <audio id=@item.Desctiption src=@item.DescriptionSound />
+                            }
+                        </div>
+                        break;
+                }
+
                 <div class="col text-center">
                     @foreach (var item in panelMatchList)
                     {

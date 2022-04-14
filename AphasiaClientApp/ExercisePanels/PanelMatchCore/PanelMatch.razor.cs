@@ -1,4 +1,6 @@
-﻿using AphasiaClientApp.Models.Constant;
+﻿using AphasiaClientApp.ExercisePanels.BasePanelFunc;
+using AphasiaClientApp.Models.Constant;
+using AphasiaClientApp.Models.Enums;
 using CommonExercise.ExerciseResourceProjection;
 using CommonExercise.Models;
 using CommonExercise.Utils;
@@ -26,8 +28,9 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
         private bool show { get; set; } = false;
         private bool isFinish { get; set; } = false;
         private int lastCount { get; set; } = -1;
+        private string executePointerEvent { get; set; }
         private ExercisePhase exercisePhase;
-        private int textCount = 3;
+        private int textCount => GetMatchItem();
 
         public async Task<int> Show(Exercise exercise)
         {
@@ -76,10 +79,12 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
             var model = panelMatchList.FirstOrDefault(x => x.IsMatch);
 
             await Task.Delay(200);
+            model.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Green);
             model.IsCorrect = true;
             HistoryDetails.TipClicks++;
             StateHasChanged();
             await Task.Delay(3000);
+            model.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Normal);
             model.IsCorrect = null;
         }
 
@@ -93,7 +98,20 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
         private void Reset()
         {
             isFinish = false;
-            panelMatchList.ForEach(x => x.IsCorrect = null);
+            executePointerEvent = string.Empty;
+            panelMatchList.ForEach(x =>
+            {
+                x.IsCorrect = null;
+                x.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Normal);            
+            });
+        }
+
+        private int GetMatchItem()
+        {
+            if (!modelList.Any())
+                return 0;
+            var counter = modelList.Distinct().Count();
+            return counter <= 4 ? counter : 3;
         }
 
         private List<PanelMatchModel> InitMatchList()
@@ -127,7 +145,10 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
         private async Task OnPlaySound(PanelMatchModel model)
         {
             await Task.Delay(10);
-            await Sound.Play(model.Word);
+            if (PanelMode.Text == PanelModeService.Get(exercisePhase))
+                await Sound.Play(model.Word);
+            else
+                await Sound.Play(model.Desctiption);
         }
 
         private async Task OnClickMatch(PanelMatchModel model)
@@ -143,7 +164,11 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
 
             if (CorrectAgainAnswer.Result().TryGetValue(model.IsMatch, out var result))
                 await Sound.PlaySrc(result);
+
+            model.ColorIndicate = model.IsMatch ? ColorHelper.GetBackgroundColors(ColorType.Green)
+                : ColorHelper.GetBackgroundColors(ColorType.Red);
             model.IsCorrect = model.IsMatch;
+            executePointerEvent = model.IsMatch ? "pointer-events:none;" : "";
 
             if (model.IsMatch)
             {
@@ -157,6 +182,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
                 HistoryDetails.WrongClicks++;
                 StateHasChanged();
                 await Task.Delay(3000);
+                model.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Normal);
                 model.IsCorrect = null;
             }
 

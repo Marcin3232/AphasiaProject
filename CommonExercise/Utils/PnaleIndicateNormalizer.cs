@@ -15,7 +15,9 @@ namespace CommonExercise.Utils
                 case "07":
                     return Get07(resource);
                 case "08":
-                    return Get08(resource); 
+                    return Get08(resource);
+                case "12":
+                    return Get12(resource);
                 default:
                     return new List<PanelIndicateModel>();
             }
@@ -52,9 +54,9 @@ namespace CommonExercise.Utils
                     WordSound = x.NounSoundSrc,
                     WordInstructionSound = x.DescrSoundSrc,
                     Picture = new string[] { x.PictureSrc },
-                    Desctiption=x.Description,
-                    DescriptionSound=x.DescrSoundSrc,
-                    QuestionSoundSrc=x.QuestionSoundSrc,
+                    Desctiption = x.Description,
+                    DescriptionSound = x.DescrSoundSrc,
+                    QuestionSoundSrc = x.QuestionSoundSrc,
                 });
             });
             return model;
@@ -72,6 +74,23 @@ namespace CommonExercise.Utils
                     Word = x.Verb,
                     WordSound = x.VerbSoundSrc,
                     Picture = new string[] { x.PictureSrc },
+                });
+            });
+            return model;
+        }
+
+        private static List<PanelIndicateModel> Get12(dynamic resource)
+        {
+            var model = new List<PanelIndicateModel>();
+            List<Exercise12Resource> tempList = ExerciseResourceConverter
+                    .ExerciseResource<Exercise12Resource>(resource);
+            tempList.ForEach(x =>
+            {
+                model.Add(new PanelIndicateModel()
+                {
+                    Word = x.Name,
+                    WordSound = x.NameSoundScr,
+                    Picture = new string[] { x.BlobScr },
                 });
             });
             return model;
