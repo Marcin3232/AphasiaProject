@@ -58,7 +58,7 @@ namespace ExerciseResource.Helpers
                 var data = File.ReadAllBytes(pathToFiles[i]);
 
                 src[i] = string.Format("data:{0};base64,{1}", type,
-                    data);
+                    Convert.ToBase64String(data));
             }
 
             return src;

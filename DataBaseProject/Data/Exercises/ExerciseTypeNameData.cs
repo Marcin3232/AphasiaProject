@@ -21,6 +21,8 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(7, (int)ExerciseType.ArrangeInTurn, "Ułóż po kolei", "..."));
             temp.Add(Create(8, (int)ExerciseType.MatchCaptionToPicture, "Dopowanie tekstu do obrazka", "..."));
             temp.Add(Create(9, (int)ExerciseType.MatchImageToImage, "Dopasuj obrazek do obrazka", "..."));
+            temp.Add(Create(10, (int)ExerciseType.MusicListen, "Posłuchaj i zapamiętaj", "..."));
+            temp.Add(Create(11, (int)ExerciseType.MusicReapeat, "Powtórz odtworzone nagranie", "..."));
             return temp;
         }
 

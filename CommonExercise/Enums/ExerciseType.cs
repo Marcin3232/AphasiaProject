@@ -11,5 +11,7 @@
         ArrangeInTurn = 7,
         MatchCaptionToPicture = 8,
         MatchImageToImage = 9,
+        MusicListen = 10,
+        MusicReapeat=11,
     }
 }
