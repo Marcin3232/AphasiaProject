@@ -4,6 +4,7 @@ using AphasiaClientApp.ExercisePanels.PanelEnumeration;
 using AphasiaClientApp.ExercisePanels.PanelFilm;
 using AphasiaClientApp.ExercisePanels.PanelIndicate;
 using AphasiaClientApp.ExercisePanels.PanelMatchCore;
+using AphasiaClientApp.ExercisePanels.PanelMusicCore;
 using AphasiaClientApp.ExercisePanels.PanelOption1Core;
 using AphasiaClientApp.Extensions;
 using AphasiaClientApp.Models.Constant;
@@ -17,7 +18,6 @@ using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -53,6 +53,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private PanelFilm panelFilm = new PanelFilm();
         private PanelEnumeration panelEnumeration = new PanelEnumeration();
         private PanelMatch panelMatch = new PanelMatch();
+        private PanelMusic panelMusic = new PanelMusic();
 
         #endregion
 
@@ -110,6 +111,9 @@ namespace AphasiaClientApp.Pages.Exercises
                     break;
                 case ExercisePanelOption.PanelMatch:
                     maxCounter = await panelMatch.Show(Exercise);
+                    break;
+                case ExercisePanelOption.PanelMusic:
+                    maxCounter = await panelMusic.Show(Exercise);
                     break;
                 case ExercisePanelOption.Default:
                     // TODO: dokonczyć blad notification i do menu glownego

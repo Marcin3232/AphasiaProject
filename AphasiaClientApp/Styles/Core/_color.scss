@@ -16,3 +16,17 @@ $base-light-green: #d9f5e4;
 $base-dark-green: #0e4e33;
 $base-light-red: #f8d5cb;
 $base-dark-red: #c30000;
+
+$color-piano-border: #160801;
+$color-piano-white-key-border: #bbb;
+$color-piano-white-key-border-active-1: #777;
+$color-piano-white-key-border-active-2: #999;
+$gradient-piano: linear-gradient(10deg, #000000 0%, #414141 74%);
+$gradient-piano-key-white: linear-gradient(to bottom, #eee 0%, #fff 100%);
+$gradient-piano-key-white-active: linear-gradient(
+  to bottom,
+  #fff 0%,
+  #e9e9e9 100%
+);
+$gradient-piano-key-black: linear-gradient(45deg, #222 0%, #555 100%);
+$gradient-piano-key-black-active: linear-gradient(to right, #444 0%, #222 100%);

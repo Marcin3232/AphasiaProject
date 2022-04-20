@@ -8,5 +8,6 @@
         PanelFilm = 3,
         PanelEnumeration = 4,
         PanelMatch = 5,
+        PanelMusic = 6,
     }
 }

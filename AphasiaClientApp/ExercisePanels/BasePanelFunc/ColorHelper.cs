@@ -9,6 +9,7 @@ namespace AphasiaClientApp.ExercisePanels.BasePanelFunc
             ColorType.Normal => " bcn ",
             ColorType.Green => " bcg ",
             ColorType.Red => " bcr ",
+            ColorType.Light => " bcl ",
             _ => " "
         };
 

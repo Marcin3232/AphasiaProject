@@ -20,6 +20,8 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.ArrangeInTurn,ExercisePanelOption.PanelEnumeration },
                 {ExerciseType.MatchCaptionToPicture,ExercisePanelOption.PanelMatch },
                 {ExerciseType.MatchImageToImage,ExercisePanelOption.PanelMatch },
+                {ExerciseType.MusicReapeat,ExercisePanelOption.PanelMusic },
+                {ExerciseType.MusicListen,ExercisePanelOption.PanelMusic },
             };
     }
 }

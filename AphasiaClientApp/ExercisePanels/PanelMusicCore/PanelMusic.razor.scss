@@ -1,0 +1,112 @@
+﻿@import "variables";
+
+* {
+    box-sizing: border-box
+}
+
+.table {
+    display: table;
+    margin: 0 auto;
+}
+
+.row {
+    --bs-gutter-x: 0 !important;
+}
+
+ul {
+    height: 26.875em;
+    width: 100%;
+    margin: 2em auto;
+    padding-top: 2.5rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    position: relative;
+    border: 1px solid $color-piano-border;
+    border-radius: 1em;
+    background: $gradient-piano;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style: disc inside none;
+    display: inline;
+    position: relative;
+    float: left
+}
+
+ul .white {
+    height: 24rem;
+    width: 12em;
+    z-index: 1;
+    border-left: 1px solid $color-piano-white-key-border;
+    border-bottom: 1px solid $color-piano-white-key-border;
+    border-radius: 0 0 5px 5px;
+    box-shadow: -1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
+}
+
+ul .white:active {
+    border-top: 1px solid $color-piano-white-key-border-active-1;
+    border-left: 1px solid $color-piano-white-key-border-active-2;
+    border-bottom: 1px solid $color-piano-white-key-border-active-2;
+    box-shadow: 2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+    background: $gradient-piano-key-white-active;
+}
+
+.black {
+    height: 14rem;
+    width: 5em;
+    margin: 0 0 0 -2.3em;
+    z-index: 2;
+    border: 1px solid $black;
+    border-radius: 0 0 3px 3px;
+    box-shadow: -1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
+    background: $gradient-piano-key-black;
+}
+
+.black:active {
+    box-shadow: -1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
+    background: $gradient-piano-key-black-active;
+}
+
+
+ul li:first-child {
+    border-radius: 5px 0 5px 5px
+}
+
+ul li:last-child {
+    border-radius: 0 5px 5px 5px
+}
+
+
+.m-bcw {
+    background: $gradient-piano-key-white !important;
+}
+
+.m-bcg {
+    background: $base-light-green !important;
+}
+
+.m-bcr {
+    background: $base-light-red !important;
+}
+
+.m-bcn {
+    background: $base-light-background !important;
+    box-shadow: inset 1px 5px 12px 15px rgb(0 0 0 / 25%);
+}
+
+
+.m-bcna {
+    background: $gradient-piano-key-white !important
+}
+
+.m-bcna:hover {
+    background: $base-light-background !important;
+}
+
+.m-bcna:active {
+    background: $base-light-background !important;
+    box-shadow: inset 1px 5px 12px 15px rgb(0 0 0 / 25%);
+}

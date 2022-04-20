@@ -1,0 +1,35 @@
+﻿@using AphasiaClientApp.Models.Enums
+@using AphasiaClientApp.Utils.Js.Sounds
+@inject ISoundService Sound
+
+@if (show)
+{
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <ul class="text-center  justify-content-center d-flex">
+                @for (int i = 0; i < model?.SoundSrcList.Count; i++)
+                {
+                    var idHelper = i;
+
+                    <li class="white @model?.SoundSrcList[i].ColorBg"
+                style="@PanelMusicStyle.SetMarginKey(i)
+                @PanelMusicStyle.SetPointer(exercisePhase.Type)"
+                @onclick="()=>OnClickKey(idHelper)"></li>
+                    if (i != model.SoundSrcList.Count - 1)
+                    {
+                        <li class="black"></li>
+                    }
+                }
+            </ul>
+        </div>
+
+    </div>
+    <div class="row justify-content-center" style="margin-top:3.8rem;">
+        @if (PanelMusicOption.IsRepeatMode(exercisePhase))
+        {
+            <ImageButtonModel TypeImage="@NaviTypeImage.Sound" ButtonCallback="ShowTip" />
+        }
+    </div>
+
+
+}
