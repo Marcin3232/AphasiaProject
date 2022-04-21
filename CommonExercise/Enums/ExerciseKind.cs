@@ -41,5 +41,9 @@ namespace CommonExercise.Enums
         MatchCaptionToPicture=15,
         [Display(Name = "Match the color to the photo")]
         MatchColorToPhoto = 16,
+        [Display(Name = "Indicate the photos on which")]
+        IndicatePhotosOnWhich = 17,
+        [Display(Name = "Name what the person in the photo is doing")]
+        NamingWhatPersonPhotoDo = 17,
     }
 }

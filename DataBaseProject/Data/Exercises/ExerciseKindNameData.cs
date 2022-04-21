@@ -27,6 +27,8 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(14, (int)ExerciseKind.SayWhatDoes, "Powiedz, co robi", "...", $"{BasePath()}repeat_what_does"));
             temp.Add(Create(15, (int)ExerciseKind.MatchCaptionToPicture, "Dopasuj podpis do fotografii", "...", $"{BasePath()}match_caption_to_picture"));
             temp.Add(Create(16, (int)ExerciseKind.MatchColorToPhoto, "Dopasuj kolor do zdjęcia", "...", $"{BasePath()}match_color_to_picture"));
+            temp.Add(Create(17, (int)ExerciseKind.IndicatePhotosOnWhich, "Wskaż fotografie na której", "...", $"{BasePath()}point_the_picture_where"));
+            temp.Add(Create(18, (int)ExerciseKind.NamingWhatPersonPhotoDo, "Nazwij co robi osoba na fotografii", "...", $"{BasePath()}name_what_does_a_person_in_the_picture"));
             return temp;
         }
 

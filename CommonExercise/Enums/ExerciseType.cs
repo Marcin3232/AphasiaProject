@@ -13,5 +13,8 @@
         MatchImageToImage = 9,
         MusicListen = 10,
         MusicReapeat=11,
+        SingleImageThreeSoundTextRepeat = 12,
+        SingleImageTwoSoundWithBreakTextRepeat = 13,
+        NamingWithSound = 14,
     }
 }
