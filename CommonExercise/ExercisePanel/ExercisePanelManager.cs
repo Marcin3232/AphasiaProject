@@ -22,6 +22,9 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.MatchImageToImage,ExercisePanelOption.PanelMatch },
                 {ExerciseType.MusicReapeat,ExercisePanelOption.PanelMusic },
                 {ExerciseType.MusicListen,ExercisePanelOption.PanelMusic },
+                {ExerciseType.SingleImageThreeSoundTextRepeat,ExercisePanelOption.PanelOption1},
+                {ExerciseType.SingleImageTwoSoundWithBreakTextRepeat,ExercisePanelOption.PanelOption1},
+                {ExerciseType.NamingWithSound,ExercisePanelOption.PanelOption1},
             };
     }
 }

@@ -1,24 +1,30 @@
 ﻿@using AphasiaClientApp.Models.Enums
+@using AphasiaClientApp.Utils.Js.Sounds
+@inject ISoundService Sound
 @inject IJSRuntime JsRuntime
 
 @if (show)
 {
     <div class="row justify-content-center margin-panel">
         <h3 class="exercise-title text-center" style="margin-bottom:10px;">
-            @(IsPlayDesc() ? Model?.Desctiption : "")
+            @(IsPlayDesc() ? Model?.Description : "")
         </h3>
         <img class="exerciseOneImg" src="@ModelList[Counter]?.Picture" />
         <p></p>
         <ImageButtonModel TypeImage=@NaviTypeImage.Sound
-                      ButtonCallback=@OnPlaySound />
+                      ButtonCallback=@OnPlaySoundClick />
 
-        @if (ShowFrameText())
+        @if (isShowFrameText)
         {
-            <TextFrame Text="@Model?.Word"></TextFrame>
+            <div class="col-2 text-center">
+                <TextFrame IsResponsive=true Text="@textShow"></TextFrame>
+            </div>
         }
 
-        <audio id="sound" src="@Model?.WordSound" />
-        <audio id="descSound" src=@Model?.DescriptionSound />
+        <audio id=@Model?.Word src="@Model?.WordSound" />
+        <audio id=@Model?.Description src=@Model?.DescriptionSound />
+        <audio id=@Model?.Sentence src=@Model?.VerbSoundSrc />
+        <audio id=@Model?.Verb src=@Model?.VerbSoundSrc />
     </div>
 
 }

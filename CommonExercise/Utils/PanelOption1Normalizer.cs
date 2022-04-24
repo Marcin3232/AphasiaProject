@@ -18,6 +18,8 @@ namespace CommonExercise.Utils
                     return Get07(resource, repeat, model);
                 case "08":
                     return Get08(resource, repeat, model);
+                case "09":
+                    return Get09(resource, repeat, model);
                 case "12":
                     return Get12(resource, repeat, model);
                 default:
@@ -52,7 +54,7 @@ namespace CommonExercise.Utils
                     Word = x.Noun,
                     WordSound = x.NounSoundSrc,
                     Picture = x.PictureSrc,
-                    Desctiption = x.Description,
+                    Description = x.Description,
                     DescriptionSound = x.DescrSoundSrc,
                     QuestionSoundSrc = x.QuestionSoundSrc,
                 });
@@ -70,6 +72,27 @@ namespace CommonExercise.Utils
                 {
                     Word = x.Verb,
                     WordSound = x.VerbSoundSrc,
+                    Picture = x.PictureSrc,
+                });
+            });
+            return MultiplierList.Multiply<PanelOption1Model>(model, repeat);
+        }
+
+        private static List<PanelOption1Model> Get09(dynamic resource, int repeat, List<PanelOption1Model> model)
+        {
+            List<Exercise09Resource> tempList = ExerciseResourceConverter
+                    .ExerciseResource<Exercise09Resource>(resource);
+            tempList.ForEach(x =>
+            {
+                model.Add(new PanelOption1Model()
+                {
+                    Word = x.Noun,
+                    WordSound = x.NounSoundSrc,
+                    Sentence= x.Sentence,
+                    SentenceSoundSrc = x.SentenceSoundSrc,
+                    Verb = x.Verb,
+                    VerbSoundSrc = x.VerbSoundSrc,
+                    QuestionSoundSrc = x.QuestionSoundSrc,
                     Picture = x.PictureSrc,
                 });
             });
