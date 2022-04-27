@@ -45,5 +45,11 @@ namespace CommonExercise.Enums
         IndicatePhotosOnWhich = 17,
         [Display(Name = "Name what the person in the photo is doing")]
         NamingWhatPersonPhotoDo = 17,
+        [Display(Name = "Speak with me season names")]
+        SpeakSeasonName = 18,
+        [Display(Name ="Match signature to season")]
+        MatchSignatureToSeason = 19,
+        [Display(Name ="Finish sentence")]
+        FinishSentecne = 20,
     }
 }

@@ -26,6 +26,8 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(12, (int)ExerciseType.SingleImageThreeSoundTextRepeat, "Powtórz z trzema ścieżkami dźwiekowymi", "..."));
             temp.Add(Create(13, (int)ExerciseType.SingleImageTwoSoundWithBreakTextRepeat, "Powtórz z dwoma ścieżkami dźwiekowymi i z przerwą pomiędzy nimi", ".."));
             temp.Add(Create(14, (int)ExerciseType.NamingWithSound, "Nazwij z odtworzeniem ścieżki dźwiekowej i pojawieniem się tekstu po przerwie", "..."));
+            temp.Add(Create(15, (int)ExerciseType.MatchCaptionToPictureCaptionUnderMode, "Dopasowanie tekstu do obrazka tekst pod obraziem", "..."));
+            temp.Add(Create(16, (int)ExerciseType.MatchCaptionToPictureWithSound, "Dopasowanie tekstu do obrazka z opisem dźwiękowym", "..."));
             return temp;
         }
 

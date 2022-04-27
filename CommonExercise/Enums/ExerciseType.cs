@@ -16,5 +16,7 @@
         SingleImageThreeSoundTextRepeat = 12,
         SingleImageTwoSoundWithBreakTextRepeat = 13,
         NamingWithSound = 14,
+        MatchCaptionToPictureCaptionUnderMode=15,
+        MatchCaptionToPictureWithSound=16,
     }
 }
