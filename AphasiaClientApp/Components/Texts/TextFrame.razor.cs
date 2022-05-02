@@ -17,6 +17,8 @@ namespace AphasiaClientApp.Components.Texts
         public bool IsClickable { get; set; } = false;
         [Parameter]
         public EventCallback ClickCallback { get; set; }
+        [Parameter]
+        public string SetStyle { get; set; } = "";
 
         private string SetBackgroundColors(ColorType color) => color switch
         {
@@ -30,7 +32,7 @@ namespace AphasiaClientApp.Components.Texts
         };
 
         private string SetResponsive(bool isResponsive) => isResponsive ? "auto-size" : "state-size";
-        private string SetPointer => IsClickable ? "cursor:pointer" : " ";
+        private string SetPointer => IsClickable ? "cursor:pointer; " : " ";
 
         private string SetAction(ColorType color)
         {

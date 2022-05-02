@@ -3,7 +3,6 @@ using CommonExercise.ExerciseResourceProjection;
 using CommonExercise.Models;
 using CommonExercise.Utils;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,6 +65,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelOption1Core
                 {
                     PlaySound = false;
                     lastCount = Counter;
+                    textShow = string.Empty;
 
                     if (IsPlayDesc())
                         await OnPlayDescSound();
@@ -88,7 +88,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelOption1Core
 
             blocker = true;
             await Task.Delay(10);
-            var delay = await JsRuntime.InvokeAsync<int>("PlaySound", "descSound");
+            var delay = await Sound.PlayAsync(Model?.Description);
             await Task.Delay(delay);
             blocker = false;
         }
@@ -105,21 +105,21 @@ namespace AphasiaClientApp.ExercisePanels.PanelOption1Core
                 case ExerciseType.SingleImageThreeSoundTextRepeat:
                     textShow = Model?.Word;
                     StateHasChanged();
-                    await Task.Delay(await Sound.PlaySrc(Model?.WordSound));
-                    await Task.Delay(await Sound.PlaySrc(Model?.QuestionSoundSrc));
+                    await Task.Delay(await Sound.PlaySrcAsync(Model?.WordSound));
+                    await Task.Delay(await Sound.PlaySrcAsync(Model?.QuestionSoundSrc));
                     textShow = Model?.Sentence;
                     StateHasChanged();
-                    await Task.Delay(await Sound.PlaySrc(Model?.VerbSoundSrc));
+                    await Task.Delay(await Sound.PlaySrcAsync(Model?.VerbSoundSrc));
                     await Task.Delay(1000);
                     await NextCallback.InvokeAsync(true);
                     break;
                 case ExerciseType.SingleImageTwoSoundWithBreakTextRepeat:
-                    textShow = Model?.Word;
+                    textShow = Model?.FirstText;
                     StateHasChanged();
-                    await Task.Delay(await Sound.PlaySrc(Model?.SentenceSoundSrc));
+                    await Task.Delay(await Sound.PlaySrcAsync(Model?.FirstSoundSrc));
                     await Task.Delay(2000);
-                    textShow = Model?.Sentence;
-                    await Task.Delay(await Sound.PlaySrc(Model?.VerbSoundSrc));
+                    textShow = Model?.SecondText;
+                    await Task.Delay(await Sound.PlaySrcAsync(Model?.SecondSoundSrc));
                     StateHasChanged();
                     await Task.Delay(1000);
                     await NextCallback.InvokeAsync(true);
@@ -131,14 +131,14 @@ namespace AphasiaClientApp.ExercisePanels.PanelOption1Core
                     textShow = Model?.Sentence;
                     isShowFrameText = true;
                     StateHasChanged();
-                    await Task.Delay(await Sound.PlaySrc(Model?.VerbSoundSrc));
+                    await Task.Delay(await Sound.PlaySrcAsync(Model?.VerbSoundSrc));
                     await Task.Delay(1000);
                     await NextCallback.InvokeAsync(true);
                     break;
                 default:
                     textShow = Model?.Word;
                     StateHasChanged();
-                    await Task.Delay(await Sound.PlaySrc(Model?.WordSound));
+                    await Task.Delay(await Sound.PlaySrcAsync(Model?.WordSound));
                     await Task.Delay(1000);
                     await NextCallback.InvokeAsync(true);
                     break;
@@ -152,7 +152,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelOption1Core
                 return;
             blocker = true;
             await Task.Delay(10);
-            await Task.Delay(await Sound.Play(textShow));
+            await Task.Delay(await Sound.PlayAsync(textShow));
             blocker = false;
         }
 

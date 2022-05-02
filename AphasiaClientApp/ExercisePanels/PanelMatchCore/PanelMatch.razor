@@ -13,7 +13,7 @@
                 @switch (PanelModeService.Get(exercisePhase))
                 {
                     case PanelMode.Text:
-                        <div class="col-4 c-center text-center">
+                        <div class="col-4 @PanelExtension.SetColPosition(exercisePhase) c-center text-center">
                             @foreach (var item in panelMatchList)
                             {
                                 <div style="display:flex;">
@@ -26,7 +26,20 @@
                            ClickCallback="()=> OnClickMatch(item)" />
                                 </div>
                                 <p></p>
-                                <audio id=@item.Word src=@item.WordSound />
+                            }
+                        </div>
+                        break;
+                    case PanelMode.TextUnder:
+                        <div class="col-12 order-2 text-center" style="display:flex;margin-top: 0.625rem;">
+                            @foreach (var item in panelMatchList)
+                            {
+                                <ImageButtonModel TypeImage=@NaviTypeImage.Sound
+                              ButtonCallback="()=>OnPlaySound(item)" SetStyle=" margin-left:0.75rem;" />
+                                <TextFrame Text=@item.Word SetStyle=" margin-right:0.75rem;"
+                       IsResponsive=true
+                       Color=@ColorTypeIsCorrect.SetWhiteWithDotted(item.IsCorrect)
+                       IsClickable=!isFinish
+                       ClickCallback="()=> OnClickMatch(item)" />
                             }
                         </div>
                         break;
@@ -37,7 +50,7 @@
                             {
                                 <div class="column-direction">
                                     <div class="card-frame @item.ColorIndicate" style="@executePointerEvent"
-                                    @onclick="()=> OnClickMatch(item)">
+                     @onclick="()=> OnClickMatch(item)">
                                         <img class="exerciseTwoImg" src="@item.PictureSecond" />
                                     </div>
                                 </div>
@@ -48,7 +61,7 @@
                         break;
                 }
 
-                <div class="col text-center">
+                <div class="col @PanelExtension.SetColPosition(exercisePhase,true) text-center">
                     @foreach (var item in panelMatchList)
                     {
                         if (item.IsMatch)
@@ -56,11 +69,23 @@
                             <img src=@item.Picture class="img-fluid" alt="...">
                             <div class="text-center bottom-image-desc" style="display: flex;">
 
-                                <ImageButtonModel TypeImage="@NaviTypeImage.Sound"
-                                  ButtonCallback="()=>OnPlaySound(item)" />
-                                @if (item.IsCorrect is true)
+                                @switch (PanelModeService.GetTask(exercisePhase))
                                 {
-                                    <TextFrame Text=@item.Word IsResponsive=false />
+                                    case PanelTaskMode.HelperTask:
+                                        <ImageButtonModel TypeImage="@NaviTypeImage.Sound"
+                                  ButtonCallback="()=>OnPlaySound(item)" />
+                                        @if (item.IsCorrect is true)
+                                        {
+                                            <TextFrame Text=@item.Word IsResponsive=false />
+                                        }
+                                        break;
+                                    case PanelTaskMode.WorkTask:
+                                        <ImageButtonModel TypeImage="@NaviTypeImage.Sound"
+                                  ButtonCallback="()=>OnPlaySound(item,true)" />
+                                        <TextFrame Text=@item.Desctiption IsResponsive=true />
+                                        break;
+                                    default:
+                                        break;
                                 }
                             </div>
                         }

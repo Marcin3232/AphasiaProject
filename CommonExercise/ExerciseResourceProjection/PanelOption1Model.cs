@@ -12,5 +12,9 @@
         public string VerbSoundSrc { get; set; }
         public string Sentence { get; set; }
         public string SentenceSoundSrc { get; set; }
+        public string FirstText { get; set; }
+        public string SecondText { get; set; }
+        public string FirstSoundSrc { get; set; }
+        public string SecondSoundSrc { get; set; }
     }
 }

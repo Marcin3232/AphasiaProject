@@ -31,6 +31,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
         private string executePointerEvent { get; set; }
         private ExercisePhase exercisePhase;
         private int textCount => GetMatchItem();
+        private bool blocker = false;
 
         public async Task<int> Show(Exercise exercise)
         {
@@ -61,6 +62,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
 
                     panelMatchList = InitMatchList();
                     RandomizeList();
+                    await OnPlayTaskSound();
                     PlaySound = false;
                 }
                 await base.OnAfterRenderAsync(firstRender);
@@ -102,7 +104,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
             panelMatchList.ForEach(x =>
             {
                 x.IsCorrect = null;
-                x.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Normal);            
+                x.ColorIndicate = ColorHelper.GetBackgroundColors(ColorType.Normal);
             });
         }
 
@@ -142,20 +144,37 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
             StateHasChanged();
         }
 
-        private async Task OnPlaySound(PanelMatchModel model)
+        private async Task OnPlayTaskSound()
         {
+            blocker = true;
+            if (PanelTaskMode.WorkTask == PanelModeService.GetTask(exercisePhase))
+            {
+                await Task.Delay(10);
+                var model = modelList.FirstOrDefault(x => x.IsMatch);
+                await Task.Delay(await Sound.PlaySrcAsync(model?.DescriptionSound));
+            }
+            blocker = false;
+        }
+
+        private async Task OnPlaySound(PanelMatchModel model, bool playTask = false)
+        {
+            if (blocker)
+                return;
+
             await Task.Delay(10);
-            if (PanelMode.Text == PanelModeService.Get(exercisePhase))
-                await Sound.Play(model.Word);
+            if (playTask)
+                await Sound.PlaySrcAsync(model.DescriptionSound);
+            else if (PanelExtension.IsPlayName(exercisePhase))
+                await Sound.PlaySrcAsync(model.WordSound);
             else
-                await Sound.Play(model.Desctiption);
+                await Sound.PlaySrcAsync(model.DescriptionSound);
         }
 
         private async Task OnClickMatch(PanelMatchModel model)
         {
             await Task.Delay(10);
 
-            if (isFinish)
+            if (isFinish || blocker)
                 return;
 
             HistoryDetails.Answers++;
@@ -163,7 +182,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
             isFinish = model.IsMatch;
 
             if (CorrectAgainAnswer.Result().TryGetValue(model.IsMatch, out var result))
-                await Sound.PlaySrc(result);
+                await Sound.PlaySrcAsync(result);
 
             model.ColorIndicate = model.IsMatch ? ColorHelper.GetBackgroundColors(ColorType.Green)
                 : ColorHelper.GetBackgroundColors(ColorType.Red);

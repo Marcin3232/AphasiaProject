@@ -4,7 +4,10 @@ namespace AphasiaClientApp.Utils.Js.Sounds
 {
     public interface ISoundService
     {
-        Task<int> Play(string id);
-        Task<int> PlaySrc(string src);
+        Task<int> PlayAsync(string id);
+        Task<int> PlaySrcAsync(string src);
+        int Play(string id);
+        int PlaySrc(string src);
+        Task StopPlayAnyAudios();
     }
 }

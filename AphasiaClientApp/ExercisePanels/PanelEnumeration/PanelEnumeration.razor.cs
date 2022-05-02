@@ -143,7 +143,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelEnumeration
         private async Task OnPlaySound(PanelEnumerationModel model)
         {
             await Task.Delay(10);
-            await Sound.Play(model.Text);
+            await Sound.PlayAsync(model.Text);
         }
 
         private List<PanelEnumerationModel> GetModel()
@@ -211,14 +211,14 @@ namespace AphasiaClientApp.ExercisePanels.PanelEnumeration
                 selected.IsShow = false;
                 selected.IsActive = false;
                 HistoryDetails.CorrectAnswers++;
-                await Sound.PlaySrc(BaseInstruction.CorrectSrc());
+                await Sound.PlaySrcAsync(BaseInstruction.CorrectSrc());
                 StateHasChanged();
             }
             else
             {
                 model.IsShow = true;
                 model.IsCorrect = false;
-                await Sound.PlaySrc(BaseInstruction.TryAgainSrc());
+                await Sound.PlaySrcAsync(BaseInstruction.TryAgainSrc());
                 HistoryDetails.WrongClicks++;
                 StateHasChanged();
                 await Task.Delay(timeBreak);

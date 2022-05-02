@@ -5,7 +5,7 @@
                 ćwiczenie
                 @if (Exercise != null)
                 {
-                    foreach (var item in Exercise.Phases)
+                    foreach (var item in Exercise.Phases.OrderBy(x=>x.Order))
                     {
                         <b class="b-position">
                             <PaginationButtonModel Value=item.Order IsActive=item.IsDone ButtonCallback="()=>OnClick(item)"/>

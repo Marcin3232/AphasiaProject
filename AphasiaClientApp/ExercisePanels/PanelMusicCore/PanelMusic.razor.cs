@@ -185,7 +185,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMusicCore
             item.ColorBg = ColorHelper.GetColor(ColorType.Light);
             await Task.Delay(100);
             StateHasChanged();
-            var timer = await Sound.PlaySrc(item.SoundSrc);
+            var timer = await Sound.PlaySrcAsync(item.SoundSrc);
             await Task.Delay(timer);
             item.ColorBg = ColorHelper.GetColor(ColorType.Normal);
             StateHasChanged();
@@ -242,8 +242,8 @@ namespace AphasiaClientApp.ExercisePanels.PanelMusicCore
 
             model.ColorBg = ColorHelper.GetColor(ColorType.Red);
             StateHasChanged();
-            await Task.Delay(await Sound.PlaySrc(model.SoundSrc));
-            await Sound.PlaySrc(SoundTaskHelper.GetSoundSrc(SoundSrc.TryAgain));
+            await Task.Delay(await Sound.PlaySrcAsync(model.SoundSrc));
+            await Sound.PlaySrcAsync(SoundTaskHelper.GetSoundSrc(SoundSrc.TryAgain));
             await Task.Delay(2000);
             model.ColorBg = ColorHelper.GetColor(ColorType.LightEmpty);
             ClearAnswer();
@@ -255,8 +255,8 @@ namespace AphasiaClientApp.ExercisePanels.PanelMusicCore
             model.ColorBg = ColorHelper.GetColor(ColorType.Green);
             model.IsCorrect = true;
             StateHasChanged();
-            await Task.Delay(await Sound.PlaySrc(model.SoundSrc));
-            await Sound.PlaySrc(SoundTaskHelper.GetSoundSrc(SoundSrc.Correct));
+            await Task.Delay(await Sound.PlaySrcAsync(model.SoundSrc));
+            await Sound.PlaySrcAsync(SoundTaskHelper.GetSoundSrc(SoundSrc.Correct));
             await Task.Delay(500);
         }
 

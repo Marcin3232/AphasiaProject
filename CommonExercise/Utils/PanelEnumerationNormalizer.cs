@@ -6,14 +6,16 @@ namespace CommonExercise.Utils
 {
     public class PanelEnumerationNormalizer
     {
-        public static Dictionary<int,List<PanelEnumerationModel>> Get(string exerciseTaskId, dynamic resource, int repeat)
+        public static Dictionary<int, List<PanelEnumerationModel>> Get(string exerciseTaskId, dynamic resource, int repeat)
         {
             var model = new List<PanelEnumerationModel>();
 
             switch (exerciseTaskId)
             {
                 case "05":
-                    return Get05_33_34(exerciseTaskId,resource,repeat,model);
+                    return Get05_33_34(exerciseTaskId, resource, repeat, model);
+                case "13":
+                    return Get13(resource, repeat, model);
                 case "33":
                     return Get05_33_34(exerciseTaskId, resource, repeat, model);
                 case "34":
@@ -21,6 +23,26 @@ namespace CommonExercise.Utils
                 default:
                     return new Dictionary<int, List<PanelEnumerationModel>>();
             }
+        }
+
+        private static Dictionary<int, List<PanelEnumerationModel>> Get13(dynamic resource,
+            int repeat, List<PanelEnumerationModel> model)
+        {
+            List<Exercise13Resource> tempList = ExerciseResourceConverter.
+                ExerciseResource<Exercise13Resource>(resource);
+            var numerator = 1;
+            tempList.ForEach(temp =>
+            {
+                model.Add(new PanelEnumerationModel()
+                {
+                    Text = temp.Name,
+                    Number = numerator,
+                    SoundSrc = temp.NameSoundSrc
+                });
+                numerator++;
+            });
+
+            return MultiplierDictionary.Multiply<List<PanelEnumerationModel>>(model, repeat);
         }
 
         private static Dictionary<int, List<PanelEnumerationModel>> Get05_33_34(string exerciseTaskId,

@@ -16,6 +16,8 @@ namespace CommonExercise.Utils
                     return Get08(resource);
                 case "12":
                     return Get12(resource);
+                case "13":
+                    return Get13(resource);
                 default:
                     return model;
             }
@@ -54,6 +56,25 @@ namespace CommonExercise.Utils
                     Picture = x.PictureSrc,
                     PictureSecond = x.BlobScr,
 
+                });
+            });
+            return model;
+        }
+
+        private static List<PanelMatchModel> Get13(dynamic resource)
+        {
+            var model = new List<PanelMatchModel>();
+            List<Exercise13Resource> tempList = ExerciseResourceConverter
+                    .ExerciseResource<Exercise13Resource>(resource);
+            tempList.ForEach(x =>
+            {
+                model.Add(new PanelMatchModel()
+                {
+                    Word = x.Name,
+                    WordSound = x.NameSoundSrc,
+                    DescriptionSound = x.SentenceSoundSrc,
+                    Desctiption = x.SentenceString,
+                    Picture = x.PictureSrc,
                 });
             });
             return model;

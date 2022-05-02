@@ -25,6 +25,8 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.SingleImageThreeSoundTextRepeat,ExercisePanelOption.PanelOption1},
                 {ExerciseType.SingleImageTwoSoundWithBreakTextRepeat,ExercisePanelOption.PanelOption1},
                 {ExerciseType.NamingWithSound,ExercisePanelOption.PanelOption1},
+                {ExerciseType.MatchCaptionToPictureCaptionUnderMode,ExercisePanelOption.PanelMatch},
+                {ExerciseType.MatchCaptionToPictureWithDescSound, ExercisePanelOption.PanelMatch },
             };
     }
 }

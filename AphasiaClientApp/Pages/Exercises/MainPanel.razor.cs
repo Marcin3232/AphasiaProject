@@ -81,7 +81,6 @@ namespace AphasiaClientApp.Pages.Exercises
                 await Task.Delay(100);
                 await StartNewPanel();
             }
-            await base.OnAfterRenderAsync(firstRender);
         }
 
         private bool HasValue(object item) => item != null;
@@ -269,7 +268,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private async Task PlayTitle()
         {
             var src = $"/{Exercise.Phases.FirstOrDefault(x => x.IsCurrent)?.SoundSrc}.mp3";
-            var delayTime = await JsRuntime.InvokeAsync<int>("PlaySoundSrc", src);
+            var delayTime = await SoundService.PlaySrcAsync(src);
             await Task.Delay(delayTime);
         }
 
@@ -305,7 +304,7 @@ namespace AphasiaClientApp.Pages.Exercises
 
             goNext = action;
             if (goNext)
-                await SoundService.PlaySrc(GoNext.GoNextSrc());
+                await SoundService.PlaySrcAsync(GoNext.GoNextSrc());
 
         }
 

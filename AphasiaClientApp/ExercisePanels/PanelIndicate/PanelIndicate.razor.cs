@@ -94,7 +94,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
                     if (IsPlayDesc())
                         await OnPlayDescSound();
 
-                    await Sound.Play(IndicateList.FirstOrDefault(x => x.IsIndicate)?.Word);
+                    await Sound.PlayAsync(IndicateList.FirstOrDefault(x => x.IsIndicate)?.Word);
                 }
                 await base.OnAfterRenderAsync(firstRender);
             }
@@ -150,7 +150,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
             isFinish = model.IsIndicate;
 
             if (CorrectAgainAnswer.Result().TryGetValue(model.IsIndicate, out var result))
-                await Sound.PlaySrc(result);
+                await Sound.PlaySrcAsync(result);
             model.ColorIndicate = model.IsIndicate ? ColorHelper.GetBackgroundColors(ColorType.Green)
                 : ColorHelper.GetBackgroundColors(ColorType.Red);
             ExecutePointerEvent = model.IsIndicate ? "pointer-events: none; " : "";
@@ -175,13 +175,13 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
         private async Task OnPlaySound(PanelIndicateModel model)
         {
             await Task.Delay(10);
-            await Sound.Play(model.Word);
+            await Sound.PlayAsync(model.Word);
         }
 
         private async Task OnPlayDescSound()
         {
             await Task.Delay(10);
-            var delay = await Sound.Play(IndicateList.FirstOrDefault(x => x.IsIndicate)?.Desctiption);
+            var delay = await Sound.PlayAsync(IndicateList.FirstOrDefault(x => x.IsIndicate)?.Desctiption);
             await Task.Delay(delay);
         }
 

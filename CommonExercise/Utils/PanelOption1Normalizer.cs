@@ -22,6 +22,8 @@ namespace CommonExercise.Utils
                     return Get09(resource, repeat, model);
                 case "12":
                     return Get12(resource, repeat, model);
+                case "13":
+                    return Get13(resource, repeat, model);
                 default:
                     return model;
             }
@@ -88,11 +90,15 @@ namespace CommonExercise.Utils
                 {
                     Word = x.Noun,
                     WordSound = x.NounSoundSrc,
-                    Sentence= x.Sentence,
+                    Sentence = x.Sentence,
                     SentenceSoundSrc = x.SentenceSoundSrc,
                     Verb = x.Verb,
                     VerbSoundSrc = x.VerbSoundSrc,
                     QuestionSoundSrc = x.QuestionSoundSrc,
+                    FirstSoundSrc = x.SentenceSoundSrc,
+                    SecondSoundSrc = x.VerbSoundSrc,
+                    FirstText = x.Noun,
+                    SecondText = x.Sentence,
                     Picture = x.PictureSrc,
                 });
             });
@@ -110,6 +116,30 @@ namespace CommonExercise.Utils
                     Word = x.Name,
                     WordSound = x.NameSoundScr,
                     Picture = x.BlobScr,
+                });
+            });
+            return MultiplierList.Multiply<PanelOption1Model>(model, repeat);
+        }
+
+        private static List<PanelOption1Model> Get13(dynamic resource, int repeat, List<PanelOption1Model> model)
+        {
+            List<Exercise13Resource> tempList = ExerciseResourceConverter
+                    .ExerciseResource<Exercise13Resource>(resource);
+            tempList.ForEach(x =>
+            {
+                model.Add(new PanelOption1Model()
+                {
+                    Word = x.Name,
+                    WordSound = x.NameSoundSrc,
+                    Sentence = x.SentenceString,
+                    SentenceSoundSrc = x.SentenceSoundSrc,
+                    Verb = x.Name,
+                    VerbSoundSrc = x.NameSoundSrc,
+                    FirstSoundSrc=x.SentenceSoundSrc,
+                    SecondSoundSrc=x.NameSoundSrc,
+                    FirstText = x.SentenceString,
+                    SecondText=x.Name,              
+                    Picture = x.PictureSrc
                 });
             });
             return MultiplierList.Multiply<PanelOption1Model>(model, repeat);
