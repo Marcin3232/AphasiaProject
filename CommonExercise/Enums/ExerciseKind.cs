@@ -51,5 +51,7 @@ namespace CommonExercise.Enums
         MatchSignatureToSeason = 19,
         [Display(Name ="Finish sentence")]
         FinishSentecne = 20,
+        [Display(Name = "Find pair")]
+        FindPair =21,
     }
 }

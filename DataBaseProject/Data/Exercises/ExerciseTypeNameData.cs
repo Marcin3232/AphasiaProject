@@ -28,6 +28,11 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(14, (int)ExerciseType.NamingWithSound, "Nazwij z odtworzeniem ścieżki dźwiekowej i pojawieniem się tekstu po przerwie", "..."));
             temp.Add(Create(15, (int)ExerciseType.MatchCaptionToPictureCaptionUnderMode, "Dopasowanie tekstu do obrazka tekst pod obraziem", "..."));
             temp.Add(Create(16, (int)ExerciseType.MatchCaptionToPictureWithDescSound, "Dopasowanie tekstu do obrazka z opisem dźwiękowym", "..."));
+            temp.Add(Create(17, (int)ExerciseType.FindPairLevelOne, "Znajdź parę poziom 1", "..."));
+            temp.Add(Create(18, (int)ExerciseType.FindPairLevelTwo, "Znajdź parę poziom 2", "..."));
+            temp.Add(Create(19, (int)ExerciseType.FindPairLevelThree, "Znajdź parę poziom 3", "..."));
+            temp.Add(Create(20, (int)ExerciseType.FindPairLevelFour, "Znajdź parę poziom 4", "..."));
+            temp.Add(Create(21, (int)ExerciseType.FindPairLevelFive, "Znajdź parę poziom 5", "..."));
             return temp;
         }
 

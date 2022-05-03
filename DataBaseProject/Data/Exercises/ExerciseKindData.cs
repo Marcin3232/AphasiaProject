@@ -33,6 +33,7 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(19, _exerciseKindNameData.GetKindName(19)));
             temp.Add(Create(20, _exerciseKindNameData.GetKindName(20)));
             temp.Add(Create(21, _exerciseKindNameData.GetKindName(21)));
+            temp.Add(Create(22, _exerciseKindNameData.GetKindName(22)));
             return temp;
         }
 

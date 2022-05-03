@@ -44,9 +44,7 @@ namespace ExerciseResource.Helpers
             var data = File.ReadAllBytes(pathToFiles
                 .Single(x => Path.GetFileNameWithoutExtension(x) == name));
 
-            string src = string.Format("data:{0};base64,{1}", type,
-                Convert.ToBase64String(data));
-
+            string src = $"data:{type};base64,{ Convert.ToBase64String(data)}";
             return src;
         }
 
@@ -57,8 +55,7 @@ namespace ExerciseResource.Helpers
             {
                 var data = File.ReadAllBytes(pathToFiles[i]);
 
-                src[i] = string.Format("data:{0};base64,{1}", type,
-                    Convert.ToBase64String(data));
+                src[i] = $"data:{type};base64,{Convert.ToBase64String(data)}";
             }
 
             return src;
@@ -74,9 +71,7 @@ namespace ExerciseResource.Helpers
             for (int i = 0; i < coutFile; i++)
             {
                 var data = File.ReadAllBytes(pathsToFile[i]);
-
-                srcs[i] = string.Format("data:{0};base64,{1}", type,
-                    data);
+                srcs[i] = $"data:{type};base64,{Convert.ToBase64String(data)}";
             }
 
             return srcs;
@@ -84,10 +79,8 @@ namespace ExerciseResource.Helpers
 
         public static ResourceManager GetResxFile(string exerciseName, string folderName, string fileName)
         {
-            string str = string.Format("ExerciseResource.ExerciseResources.{0}.{1}.{2}", exerciseName, folderName, fileName);
-
+            string str = $"ExerciseResource.ExerciseResources.{exerciseName}.{folderName}.{fileName}";
             ResourceManager rm = new ResourceManager(str, Assembly.GetExecutingAssembly());
-
             return rm;
         }
     }
