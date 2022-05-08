@@ -9,5 +9,6 @@
         PanelEnumeration = 4,
         PanelMatch = 5,
         PanelMusic = 6,
+        PanelFindPairGame = 7,
     }
 }

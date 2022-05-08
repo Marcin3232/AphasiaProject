@@ -1,0 +1,18 @@
+﻿@using AphasiaClientApp.Utils.Js.Sounds
+@inject ISoundService Sound
+
+@if (show)
+{
+    <div class="container">
+        <div class="row centering-position align-items-center">
+
+
+            @foreach (var item in cardList)
+            {
+                <div class="col-@SetColInLine() align-self-center">
+                    <MemoryCard IsFlipped=@item.Flipped ImgSrc=@item.ImgSrc ClickCallback="()=>Flip(item)" />
+                </div>
+            }
+        </div>
+    </div>
+}

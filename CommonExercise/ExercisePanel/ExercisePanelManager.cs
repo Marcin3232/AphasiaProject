@@ -27,6 +27,11 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.NamingWithSound,ExercisePanelOption.PanelOption1},
                 {ExerciseType.MatchCaptionToPictureCaptionUnderMode,ExercisePanelOption.PanelMatch},
                 {ExerciseType.MatchCaptionToPictureWithDescSound, ExercisePanelOption.PanelMatch },
+                {ExerciseType.FindPairLevelOne, ExercisePanelOption.PanelFindPairGame },
+                {ExerciseType.FindPairLevelTwo, ExercisePanelOption.PanelFindPairGame },
+                {ExerciseType.FindPairLevelThree, ExercisePanelOption.PanelFindPairGame },
+                {ExerciseType.FindPairLevelFour, ExercisePanelOption.PanelFindPairGame },
+                {ExerciseType.FindPairLevelFive, ExercisePanelOption.PanelFindPairGame },
             };
     }
 }

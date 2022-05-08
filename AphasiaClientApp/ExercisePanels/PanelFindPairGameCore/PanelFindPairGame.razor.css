@@ -1,0 +1,21 @@
+﻿.container-fluid{
+    height: calc(100% - 100px);
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.container {
+    height: calc(100% - 100px);
+}
+
+.centering-position {
+    margin-top: 10px;
+    position: relative;
+    width: auto;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

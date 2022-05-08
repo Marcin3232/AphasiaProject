@@ -1,0 +1,11 @@
+﻿<div class="memory-card @ActionCardActive()" @onclick=@ClickCallback style="@SetPointer() @SetFlipp() @RemoveBackground()">
+    <div class="card-inner">
+        <div class="front align-self-center" style="@SetFlipp()">
+            @if (IsFlipped)
+            {
+                <img src=@ImgSrc alt="..." class="img-fluid" />
+            }
+        </div>
+        <div class="back"></div>
+    </div>
+</div>

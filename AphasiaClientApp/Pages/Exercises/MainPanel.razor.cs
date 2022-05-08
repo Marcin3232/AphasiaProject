@@ -2,6 +2,7 @@
 using AphasiaClientApp.Components.Modals.LoadModals;
 using AphasiaClientApp.ExercisePanels.PanelEnumeration;
 using AphasiaClientApp.ExercisePanels.PanelFilm;
+using AphasiaClientApp.ExercisePanels.PanelFindPairGameCore;
 using AphasiaClientApp.ExercisePanels.PanelIndicate;
 using AphasiaClientApp.ExercisePanels.PanelMatchCore;
 using AphasiaClientApp.ExercisePanels.PanelMusicCore;
@@ -14,7 +15,6 @@ using CommonExercise.ExerciseHistoryManager;
 using CommonExercise.ExercisePanel;
 using CommonExercise.Models;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,12 +34,12 @@ namespace AphasiaClientApp.Pages.Exercises
         private Exercise Exercise { get; set; }
         public List<ExerciseHistory> ExerciseHistory { get; set; }
         private ExercisePhase ExercisePhaseCurrent => Exercise?.Phases.FirstOrDefault(x => x.IsCurrent);
-        private HistoryResultDetails HistoryResultDetails => ExerciseHistory?
+        public HistoryResultDetails HistoryResultDetails => ExerciseHistory?
             .FirstOrDefault(x => x.ExercisePhaseId == ExercisePhaseCurrent.Id)?.HistoryResultDetails;
 
-        private CancellationTokenSource cts = new CancellationTokenSource();
+        public CancellationTokenSource cts = new CancellationTokenSource();
         private int maxCounter;
-        private int counter = 0;
+        public int Counter { get; set; } = 0;
         private bool playSound = false;
         private bool goNext = false;
         private bool panelPresentation = true;
@@ -54,6 +54,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private PanelEnumeration panelEnumeration = new PanelEnumeration();
         private PanelMatch panelMatch = new PanelMatch();
         private PanelMusic panelMusic = new PanelMusic();
+        private PanelFindPairGame panelFindPairGame = new PanelFindPairGame();
 
         #endregion
 
@@ -114,6 +115,9 @@ namespace AphasiaClientApp.Pages.Exercises
                 case ExercisePanelOption.PanelMusic:
                     maxCounter = await panelMusic.Show(Exercise);
                     break;
+                case ExercisePanelOption.PanelFindPairGame:
+                    maxCounter = await panelFindPairGame.Show(Exercise);
+                    break;
                 case ExercisePanelOption.Default:
                     // TODO: dokonczyć blad notification i do menu glownego
                     break;
@@ -128,6 +132,7 @@ namespace AphasiaClientApp.Pages.Exercises
             await panelFilm.Close();
             await panelEnumeration.Close();
             await panelMatch.Close();
+            await panelFindPairGame.Close();
         }
 
         private ExercisePanelOption GetExercisePanel(ExerciseType type) =>
@@ -169,7 +174,7 @@ namespace AphasiaClientApp.Pages.Exercises
             cts.Cancel();
             await Task.Delay(10);
             goNext = false;
-            if (counter == maxCounter - 1)
+            if (Counter == maxCounter - 1)
             {
                 if (NextPhase(true))
                 {
@@ -181,7 +186,7 @@ namespace AphasiaClientApp.Pages.Exercises
             }
             await IsPlayTitle();
             playSound = true;
-            counter++;
+            Counter++;
         }
 
         private async Task Back()
@@ -189,10 +194,10 @@ namespace AphasiaClientApp.Pages.Exercises
             cts.Cancel();
             await Task.Delay(10);
             goNext = false;
-            if (Exercise.Phases.FirstOrDefault(x => x.IsCurrent).Order == 1 && counter == 0)
+            if (Exercise.Phases.FirstOrDefault(x => x.IsCurrent).Order == 1 && Counter == 0)
                 return;
 
-            if (counter == 0)
+            if (Counter == 0)
             {
                 if (NextPhase())
                     return;
@@ -201,7 +206,7 @@ namespace AphasiaClientApp.Pages.Exercises
             }
             await IsPlayTitle();
             playSound = true;
-            counter--;
+            Counter--;
         }
 
         private Task Refresh()
@@ -238,7 +243,7 @@ namespace AphasiaClientApp.Pages.Exercises
 
         private void Clear()
         {
-            counter = 0;
+            Counter = 0;
             maxCounter = 0;
             playSound = false;
         }
@@ -292,6 +297,9 @@ namespace AphasiaClientApp.Pages.Exercises
                     break;
                 case ExercisePanelOption.PanelMatch:
                     await panelMatch.ShwoTip();
+                    break;
+                case ExercisePanelOption.PanelFindPairGame:
+                    await panelFindPairGame.ShowTip();
                     break;
                 case ExercisePanelOption.Default:
                     break;

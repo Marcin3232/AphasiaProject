@@ -55,31 +55,32 @@
 
 
 <CascadingValue Value="this">
-    <PanelOption1 @ref="@panelOption1" Counter=@counter
-                  PlaySound=@playSound 
-                  NextCallback=@OnGoNext/>
-    <PanelIndicate @ref=@panelIndicate Counter=@counter
+    <PanelOption1 @ref="@panelOption1" Counter=@Counter
+                  PlaySound=@playSound
+                  NextCallback=@OnGoNext />
+    <PanelIndicate @ref=@panelIndicate Counter=@Counter
                    PlaySound=@playSound
                    HistoryDetails=@HistoryResultDetails
                    IndicateCallback=@OnGoNext />
-    <PanelFilm @ref=@panelFilm Counter=@counter
+    <PanelFilm @ref=@panelFilm Counter=@Counter
                PlaySound=@playSound />
     <PanelEnumeration @ref=@panelEnumeration
-                      Counter=@counter
+                      Counter=@Counter
                       EnumerationCallback=@OnGoNext
                       HistoryDetails=@HistoryResultDetails
                       Cts=@cts
                       CancelCallback=@OnCancel />
     <PanelMatch @ref=@panelMatch
-                Counter=@counter
+                Counter=@Counter
                 PlaySound=@playSound
                 MatchCallback=@OnGoNext
                 HistoryDetails=@HistoryResultDetails />
     <PanelMusic @ref=@panelMusic
-                Counter=@counter
+                Counter=@Counter
                 NextCallback=@OnGoNext
                 Cts=@cts
-                HistoryDetails=@HistoryResultDetails/>
+                HistoryDetails=@HistoryResultDetails />
+    <PanelFindPairGame @ref=@panelFindPairGame NextCallback=@OnGoNext />
 </CascadingValue>
 
 
