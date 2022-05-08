@@ -69,6 +69,15 @@ namespace AphasiaClientApp.Pages.Exercises
             //}
 
             Exercise = await dBExerciseService.GetExercise((int)Id);
+
+            if(Exercise == null)
+            {
+                snackbarMessage.Show("Ostrzeżenie", "Ćwiczenie chwilowo niedostępne.", Models.Enums.StatusType.Warning,false,null);
+                await Task.Delay(1000);
+                Navigation.NavigateBack();
+                return;
+            }
+
             ExerciseHistory = HistoryManager.Initialize(Exercise);
             NumericPhase(Exercise);
             await dialogLoad.Close();

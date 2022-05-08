@@ -22,6 +22,7 @@ namespace AphasiaClientApp.Extensions
         public void Show(string title, string message, StatusType statustype, bool isButton = false, Action<SnackbarOptions> options = null)
         {
             snackbar.Configuration.SnackbarVariant = variant;
+            snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
             snackbar.Add(TextFormatter(title, message), SetSeverity(statustype), SetOptions());
         }
 
