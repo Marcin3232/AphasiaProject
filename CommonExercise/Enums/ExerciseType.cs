@@ -23,5 +23,7 @@
         FindPairLevelThree = 19,
         FindPairLevelFour = 20,
         FindPairLevelFive = 21,
+        ImageTextAndTextAroundDescWithImage = 22,
+        ImageAndTextAroundDescWithImageNamingWithoutText = 23,
     }
 }

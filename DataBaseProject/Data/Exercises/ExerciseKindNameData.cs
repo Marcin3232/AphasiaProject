@@ -33,6 +33,8 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(20, (int)ExerciseKind.MatchSignatureToSeason, "Dopasuj podpis do pory roku", "...", $"{BasePath()}match_signature_to_season"));
             temp.Add(Create(21, (int)ExerciseKind.FinishSentecne, "Dokończ zdanie", "...", $"{BasePath()}finish_sentence2"));
             temp.Add(Create(22, (int)ExerciseKind.FindPair, "Znajdź parę", "...", $"{BasePath()}find_couple"));
+            temp.Add(Create(23, (int)ExerciseKind.RepeatAndRemember, "Powtórz i zapamiętaj", "...", $"{BasePath()}repeat_and_remember"));
+            temp.Add(Create(24, (int)ExerciseKind.SayWhatCanBeDone, "Powiedz, co można zrobić z...", "...", string.Empty));
             return temp;
         }
 

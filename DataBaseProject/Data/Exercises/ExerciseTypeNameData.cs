@@ -33,6 +33,8 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(19, (int)ExerciseType.FindPairLevelThree, "Znajdź parę poziom 3", "..."));
             temp.Add(Create(20, (int)ExerciseType.FindPairLevelFour, "Znajdź parę poziom 4", "..."));
             temp.Add(Create(21, (int)ExerciseType.FindPairLevelFive, "Znajdź parę poziom 5", "..."));
+            temp.Add(Create(22, (int)ExerciseType.ImageTextAndTextAroundDescWithImage, "Opis przedmiotu, Opis go obrazkami i dźwiekiem", "..."));
+            temp.Add(Create(23, (int)ExerciseType.ImageAndTextAroundDescWithImageNamingWithoutText, "Opis przedmiotu, opis obrazkami, nazywanie", "..."));
             return temp;
         }
 

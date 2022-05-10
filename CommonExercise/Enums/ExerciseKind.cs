@@ -53,5 +53,9 @@ namespace CommonExercise.Enums
         FinishSentecne = 20,
         [Display(Name = "Find pair")]
         FindPair =21,
+        [Display(Name = "Repeat and remember")]
+        RepeatAndRemember =22,
+        [Display(Name ="Say what can be done")]
+        SayWhatCanBeDone = 23,
     }
 }
