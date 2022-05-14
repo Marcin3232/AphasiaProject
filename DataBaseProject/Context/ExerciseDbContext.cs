@@ -30,7 +30,7 @@ namespace DataBaseProject.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseNpgsql("Server=localhost;Port=5400;Database=Aphasia;User Id=postgres;Password=niewiem123456789;");
+                optionsBuilder.UseNpgsql("Server=157.158.62.62;Port=5432;Database=marcopi308;User Id=marcopi308;Password=marcopi308;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
