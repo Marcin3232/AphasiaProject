@@ -1,5 +1,4 @@
-﻿
-namespace CommonExercise.ExerciseResourceProjection
+﻿namespace CommonExercise.ExerciseResourceProjection
 {
     public class PanelFindPairModel
     {

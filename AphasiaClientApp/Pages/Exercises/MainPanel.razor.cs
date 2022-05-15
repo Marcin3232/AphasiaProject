@@ -7,6 +7,7 @@ using AphasiaClientApp.ExercisePanels.PanelIndicate;
 using AphasiaClientApp.ExercisePanels.PanelMatchCore;
 using AphasiaClientApp.ExercisePanels.PanelMusicCore;
 using AphasiaClientApp.ExercisePanels.PanelOption1Core;
+using AphasiaClientApp.ExercisePanels.PanelOption2Core;
 using AphasiaClientApp.Extensions;
 using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Services;
@@ -55,6 +56,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private PanelMatch panelMatch = new PanelMatch();
         private PanelMusic panelMusic = new PanelMusic();
         private PanelFindPairGame panelFindPairGame = new PanelFindPairGame();
+        private PanelOption2 panelOption2 = new PanelOption2();
 
         #endregion
 
@@ -70,9 +72,9 @@ namespace AphasiaClientApp.Pages.Exercises
 
             Exercise = await dBExerciseService.GetExercise((int)Id);
 
-            if(Exercise == null)
+            if (Exercise == null)
             {
-                snackbarMessage.Show("Ostrzeżenie", "Ćwiczenie chwilowo niedostępne.", Models.Enums.StatusType.Warning,false,null);
+                snackbarMessage.Show("Ostrzeżenie", "Ćwiczenie chwilowo niedostępne.", Models.Enums.StatusType.Warning, false, null);
                 await Task.Delay(1000);
                 Navigation.NavigateBack();
                 return;
@@ -127,6 +129,9 @@ namespace AphasiaClientApp.Pages.Exercises
                 case ExercisePanelOption.PanelFindPairGame:
                     maxCounter = await panelFindPairGame.Show(Exercise);
                     break;
+                case ExercisePanelOption.PanelOption2:
+                    maxCounter = await panelOption2.Show(Exercise);
+                    break;
                 case ExercisePanelOption.Default:
                     // TODO: dokonczyć blad notification i do menu glownego
                     break;
@@ -142,6 +147,7 @@ namespace AphasiaClientApp.Pages.Exercises
             await panelEnumeration.Close();
             await panelMatch.Close();
             await panelFindPairGame.Close();
+            await panelOption2.Close();
         }
 
         private ExercisePanelOption GetExercisePanel(ExerciseType type) =>
@@ -180,7 +186,7 @@ namespace AphasiaClientApp.Pages.Exercises
 
         private async Task Next()
         {
-            cts.Cancel();
+            cts.Cancel(true);
             await Task.Delay(10);
             goNext = false;
             if (Counter == maxCounter - 1)

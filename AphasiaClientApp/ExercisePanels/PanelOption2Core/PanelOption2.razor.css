@@ -1,0 +1,49 @@
+.container-fluid {
+    height: calc(100% - 100px)
+}
+
+.centering-position {
+    margin-top: 10px;
+    position: relative;
+    width: auto;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+
+.border-unvisible {
+    border-radius: 40px;
+    margin: 5px;
+    padding: 15px;
+    border: 3px solid white;
+}
+
+.border-img {
+    border-radius: 40px;
+    margin: 5px;
+    padding: 15px;
+    border: 3px solid #055961;
+}
+
+#descMainImage {
+    margin-top: .6rem;
+    margin-bottom: .6rem
+}
+
+#descImg {
+    margin-right: 5px;
+    margin-bottom: 5px
+}
+
+#mainImage{
+    margin-bottom: 0.6rem;
+}
+
+h3 {
+    font-family: Roboto;
+    font-size: 24px;
+    color: #000
+}

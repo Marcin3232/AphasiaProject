@@ -1,0 +1,53 @@
+﻿@using AphasiaClientApp.Models.Enums
+@using AphasiaClientApp.Utils.Js.Sounds
+@inject ISoundService Sound
+
+@if (show)
+{
+    <div class="container-fluid">
+        <div class="row centering-position align-items-center">
+            <div class="col-6 order-2 align-self-center">
+                <img id="mainImage" src=@Model.PictureSrc alt="..." class="img-fluid" />
+                @if (PanelOption2Extension.OnShowDesc(exercisePhase))
+                {
+                    <div style="display:flex;margin-left:10%;margin-right:10%; margin-bottom:10px;">
+                        <ImageButtonModel TypeImage=@NaviTypeImage.Sound
+                                  ButtonCallback="()=>PlayButtonSound(Model.MainInstructionSoundSrc)" />
+
+                        <TextFrame IsResponsive=true Text="@Model.MainText" />
+
+                    </div>
+                    <h3 id="descMainImage">
+
+                        @DescMainImage()
+                    </h3>
+                }
+            </div>
+            @if (isShowDesc)
+            {
+                <div class="col-2 order-1 align-self-center">
+                    @foreach (var item in Model.DescModels.GetRange(0, 3))
+                    {
+                        <div class=@PanelOption2Extension.OnShowBorder(item.IsShowBorder)>
+                            <div class="oneline">
+                                <img id="descImg" src=@item.TextPictureSrc alt="..." class="img-fluid" />
+                                <ImageButtonModel TypeImage=@NaviTypeImage.Sound ButtonCallback="()=>PlayButtonSound(item.TextSoundSrc)" />
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-2 order-3 align-self-center">
+                    @foreach (var item in Model.DescModels.GetRange(3, 3))
+                    {
+                        <div class=@PanelOption2Extension.OnShowBorder(item.IsShowBorder)>
+                            <div class="oneline">
+                                <img id="descImg" src=@item.TextPictureSrc alt="..." class="img-fluid" />
+                                <ImageButtonModel TypeImage=@NaviTypeImage.Sound ButtonCallback="()=>PlayButtonSound(item.TextSoundSrc)" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}

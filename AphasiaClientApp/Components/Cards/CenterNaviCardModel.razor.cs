@@ -28,7 +28,7 @@ namespace AphasiaClientApp.Components.Cards
         private async Task<int> PlaySound(string sound)
         {
             await Task.Delay(10);
-            return await Sound.PlayAsync(sound);
+            return string.IsNullOrEmpty(sound) ? 10 : await Sound.PlayAsync(sound);
         }
 
         private async Task OnHelperClick() => await HelperCallback.InvokeAsync(true);

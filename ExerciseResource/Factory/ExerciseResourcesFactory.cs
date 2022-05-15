@@ -113,7 +113,7 @@ namespace ExerciseResource.Factory
         private List<Exercise14Resource> Exercise14ResourceList(bool random)
         {
             var model = new Exercise14ResourcesList();
-            return random ? model.GetRandomValues() : model.GetValues();
+            return model.GetRandomValues().GetRange(0, 1);
         }
 
         private List<Exercise24Resource> Exercise24ResourceList()

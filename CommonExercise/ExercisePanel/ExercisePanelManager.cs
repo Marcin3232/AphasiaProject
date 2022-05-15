@@ -32,6 +32,8 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.FindPairLevelThree, ExercisePanelOption.PanelFindPairGame },
                 {ExerciseType.FindPairLevelFour, ExercisePanelOption.PanelFindPairGame },
                 {ExerciseType.FindPairLevelFive, ExercisePanelOption.PanelFindPairGame },
+                {ExerciseType.ImageTextAndTextAroundDescWithImage,ExercisePanelOption.PanelOption2 },
+                {ExerciseType.ImageAndTextAroundDescWithImageNamingWithoutText,ExercisePanelOption.PanelOption2 },
             };
     }
 }
