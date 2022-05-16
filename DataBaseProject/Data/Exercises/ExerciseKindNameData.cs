@@ -35,6 +35,8 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(22, (int)ExerciseKind.FindPair, "Znajdź parę", "...", $"{BasePath()}find_couple"));
             temp.Add(Create(23, (int)ExerciseKind.RepeatAndRemember, "Powtórz i zapamiętaj", "...", $"{BasePath()}repeat_and_remember"));
             temp.Add(Create(24, (int)ExerciseKind.SayWhatCanBeDone, "Powiedz, co można zrobić z...", "...", string.Empty));
+            temp.Add(Create(25, (int)ExerciseKind.IndicateWhatDoes, "Wskaż, co robi", "...", $"{BasePath()}point_what_does_he_do"));
+            temp.Add(Create(26, (int)ExerciseKind.MatchAnswer, "Dopasuj odpowiedź", "...", $"{BasePath()}match_answer"));
             return temp;
         }
 

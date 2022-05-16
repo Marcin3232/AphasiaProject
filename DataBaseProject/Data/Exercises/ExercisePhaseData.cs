@@ -60,6 +60,10 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(44, _exercisePhaseNameData.GetPhaseName(1), 14, _exerciseKindData.GetKind(1), _exerciseTypeData.GetType(22), true, 1, false, false));
             temp.Add(Create(45, _exercisePhaseNameData.GetPhaseName(2), 14, _exerciseKindData.GetKind(23), _exerciseTypeData.GetType(22), true, 1, false, false));
             temp.Add(Create(46, _exercisePhaseNameData.GetPhaseName(3), 14, _exerciseKindData.GetKind(24), _exerciseTypeData.GetType(23), true, 1, false, false));
+            temp.Add(Create(47, _exercisePhaseNameData.GetPhaseName(1), 15, _exerciseKindData.GetKind(1), _exerciseTypeData.GetType(1), true, 1, false, false));
+            temp.Add(Create(48, _exercisePhaseNameData.GetPhaseName(2), 15, _exerciseKindData.GetKind(2), _exerciseTypeData.GetType(1), true, 1, false, false));
+            temp.Add(Create(49, _exercisePhaseNameData.GetPhaseName(3), 15, _exerciseKindData.GetKind(25), _exerciseTypeData.GetType(24), true, 1, true, true));
+            temp.Add(Create(50,_exercisePhaseNameData.GetPhaseName(4),15,_exerciseKindData.GetKind(26),_exerciseTypeData.GetType(25), true, 1, true, true));
             return temp;
         }
 

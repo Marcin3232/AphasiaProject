@@ -25,5 +25,7 @@
         FindPairLevelFive = 21,
         ImageTextAndTextAroundDescWithImage = 22,
         ImageAndTextAroundDescWithImageNamingWithoutText = 23,
+        MatchCaptionToImageWithoutHelpSound = 24,
+        MatchTwoAnswer = 25,
     }
 }

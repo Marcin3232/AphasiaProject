@@ -35,10 +35,10 @@ namespace CommonExercise.Enums
         IndicateWhere = 12,
         [Display(Name = "Repeat what he does")]
         RepeatWhatHeDoes = 13,
-        [Display(Name ="Say what does")]
+        [Display(Name = "Say what does")]
         SayWhatDoes = 14,
         [Display(Name = "Match caption to picture")]
-        MatchCaptionToPicture=15,
+        MatchCaptionToPicture = 15,
         [Display(Name = "Match the color to the photo")]
         MatchColorToPhoto = 16,
         [Display(Name = "Indicate the photos on which")]
@@ -47,15 +47,19 @@ namespace CommonExercise.Enums
         NamingWhatPersonPhotoDo = 17,
         [Display(Name = "Speak with me season names")]
         SpeakSeasonName = 18,
-        [Display(Name ="Match signature to season")]
+        [Display(Name = "Match signature to season")]
         MatchSignatureToSeason = 19,
-        [Display(Name ="Finish sentence")]
+        [Display(Name = "Finish sentence")]
         FinishSentecne = 20,
         [Display(Name = "Find pair")]
-        FindPair =21,
+        FindPair = 21,
         [Display(Name = "Repeat and remember")]
-        RepeatAndRemember =22,
-        [Display(Name ="Say what can be done")]
+        RepeatAndRemember = 22,
+        [Display(Name = "Say what can be done")]
         SayWhatCanBeDone = 23,
+        [Display(Name = "Indicate what he does")]
+        IndicateWhatDoes = 24,
+        [Display(Name = "Match answer")]
+        MatchAnswer = 25,
     }
 }
