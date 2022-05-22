@@ -1,5 +1,6 @@
 ﻿using CommonExercise.ExerciseResourceProjection;
 using CommonExercise.Models.ExerciseResource;
+using System;
 using System.Collections.Generic;
 
 namespace CommonExercise.Utils
@@ -24,6 +25,8 @@ namespace CommonExercise.Utils
                     return Get12(resource, repeat, model);
                 case "13":
                     return Get13(resource, repeat, model);
+                case "15":
+                    return Get15(resource, repeat, model);
                 default:
                     return model;
             }
@@ -135,11 +138,27 @@ namespace CommonExercise.Utils
                     SentenceSoundSrc = x.SentenceSoundSrc,
                     Verb = x.Name,
                     VerbSoundSrc = x.NameSoundSrc,
-                    FirstSoundSrc=x.SentenceSoundSrc,
-                    SecondSoundSrc=x.NameSoundSrc,
+                    FirstSoundSrc = x.SentenceSoundSrc,
+                    SecondSoundSrc = x.NameSoundSrc,
                     FirstText = x.SentenceString,
-                    SecondText=x.Name,              
+                    SecondText = x.Name,
                     Picture = x.PictureSrc
+                });
+            });
+            return MultiplierList.Multiply<PanelOption1Model>(model, repeat);
+        }
+
+        private static List<PanelOption1Model> Get15(dynamic resource, int repeat, List<PanelOption1Model> model)
+        {
+            List<Exercise15Resource> tempList = ExerciseResourceConverter
+                .ExerciseResource<Exercise15Resource>(resource);
+            tempList.ForEach(x =>
+            {
+                model.Add(new PanelOption1Model()
+                {
+                    Word = x.MainExpression.Text,
+                    WordSound = x.MainExpression.SoundSrc,
+                    Picture = x.PicturesSrcs[new Random().Next(0, x.PicturesSrcs.Length)],
                 });
             });
             return MultiplierList.Multiply<PanelOption1Model>(model, repeat);

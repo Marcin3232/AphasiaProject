@@ -24,6 +24,7 @@
 
 	<ItemGroup>
 		<None Include="compilerconfig.json" />
+		<None Include="ExercisePanels\PanelMusicCore\PanelMusic.razor" />
 		<None Include="wwwroot\css\bootstrap\forms\_floating-labels.scss" />
 		<None Include="wwwroot\css\bootstrap\forms\_form-check.scss" />
 		<None Include="wwwroot\css\bootstrap\forms\_form-control.scss" />
@@ -1439,23 +1440,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Update="ExercisePanels\PanelIndicate.razor">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	  </Content>
-	  <Content Update="ExercisePanels\PanelOption1.razor">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
 		<EmbeddedResource Update="Shared\ResourceFiles\Resource.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resource.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
-	
-	<Target Name="CompileComponentSass" BeforeTargets="CompileGlobalSass">
-		<Message Text="Compiling Component SCSS files" Importance="high" />
-		<Exec Condition="!$([System.Text.RegularExpressions.Regex]::IsMatch('%(ComponentScssFiles.Identity)', .*[/\\]_.*))" Command="npm run sass -- --style=compressed --no-source-map --load-path=Styles/Core %(ComponentScssFiles.Identity) %(relativedir)%(filename).css" />
-	</Target>
+
 </Project>

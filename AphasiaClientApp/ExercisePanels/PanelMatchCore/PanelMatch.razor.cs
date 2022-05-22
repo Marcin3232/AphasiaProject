@@ -73,7 +73,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
             }
         }
 
-        public async Task ShwoTip()
+        public async Task ShowTip()
         {
             if (isFinish)
                 return;
@@ -113,7 +113,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
             if (!modelList.Any())
                 return 0;
             var counter = modelList.Distinct().Count();
-            return counter <= 4 ? counter : 3;
+            return counter <= 4 ? counter : PanelModeService.GetAnswersCount(exercisePhase);
         }
 
         private List<PanelMatchModel> InitMatchList()

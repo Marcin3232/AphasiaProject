@@ -148,6 +148,7 @@ namespace AphasiaClientApp.Pages.Exercises
             await panelMatch.Close();
             await panelFindPairGame.Close();
             await panelOption2.Close();
+            await panelMusic.Close();
         }
 
         private ExercisePanelOption GetExercisePanel(ExerciseType type) =>
@@ -311,7 +312,7 @@ namespace AphasiaClientApp.Pages.Exercises
                     await panelEnumeration.ShowTip();
                     break;
                 case ExercisePanelOption.PanelMatch:
-                    await panelMatch.ShwoTip();
+                    await panelMatch.ShowTip();
                     break;
                 case ExercisePanelOption.PanelFindPairGame:
                     await panelFindPairGame.ShowTip();
