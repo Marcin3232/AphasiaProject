@@ -1,0 +1,83 @@
+﻿@using AphasiaClientApp.Utils.Js.Sounds
+@using AphasiaClientApp.Models.Enums
+@inject ISoundService Sound
+
+@if (show)
+{
+    <div class="container">
+        <div class="row justify-content-center centering-position margin-panel">
+            <div class="col-6 order-1 center text-left">
+                <img class="img-fluid" src=@model.PicturesSrcs />
+            </div>
+
+            <div class="col-6 order-2 center text-left" style="text-align:left;">
+                <div class="row oneline centering-position">
+
+                    @for (int i = 0; i < model.Part.Count; i++)
+                    {
+                        var idHelper = i;
+                        @if (!string.IsNullOrEmpty(model.Part[idHelper]))
+                        {
+                            <div class="col text-center">
+                                <h2 id="text-desc">
+                                   <b> @model.Part[idHelper] </b> 
+                                </h2>
+                            </div>
+                        }
+
+                        @if (i <= model.Answer.Count - 1)
+                        {
+                            <div class="col text-center">
+                                <TextFrame IsResponsive=true
+                               IsClickable=@PanelExtension.IsClickableSelected(model.Answer[idHelper])
+                               Color=@PanelExtension.SetAnswerColor(@model.Answer[idHelper])
+                               ClickCallback="()=>OnMark(model.Answer[idHelper])"
+                               Text=@PanelExtension.ShowText(model.Answer[idHelper])
+                               SetStyle=@SetOnelineText() />
+                            </div>
+                        }
+                    }
+                    <ImageButtonModel TypeImage="@NaviTypeImage.Sound"
+                                  ButtonCallback="()=>OnPlaySound(model.Main.SoundSrc)" />
+                </div>
+                @for (int i = 0; i < model.Answer.Count; i++)
+                {
+                    var idHelper = i;
+                    <div class="row" id="answer-row">
+                        <div class="col oneline" style="text-align: left;">
+                            @if (i <= model.Question.Count - 1)
+                            {
+
+                                <TextFrame IsResponsive=true
+                               Text=@model.Question[idHelper].Text
+                               SetStyle=@SetOnelineText() />
+
+                                <ImageButtonModel TypeImage="@NaviTypeImage.Sound"
+                                      ButtonCallback="()=>OnPlaySound(model.Question[idHelper].SoundSrc)" />
+                            }
+                        </div>
+                        <div class="col" style="text-align: right;">
+                            @if (i <= model.Selected.Count - 1)
+                            {
+                                <TextFrame IsResponsive=true
+                               Text=@PanelExtension.ShowText(model.Selected[idHelper])
+                               IsClickable=@PanelExtension.IsClickableMark(model.Selected[idHelper])
+                               ClickCallback="()=>OnSelect(model.Selected[idHelper])"
+                               Color=@PanelExtension.SetAnswerColor(@model.Selected[idHelper])
+                               SetStyle=@SetOnelineText() />
+                            }
+                        </div>
+                        <div class="col-1" style="text-align: left;">
+                            @if (i <= model.Selected.Count - 1)
+                            {
+
+                                <ImageButtonModel TypeImage="@NaviTypeImage.Sound"
+                                      ButtonCallback="()=>OnPlaySound(model.Selected[idHelper].SoundSrc)" />
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

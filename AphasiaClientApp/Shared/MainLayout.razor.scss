@@ -5,6 +5,12 @@
     display: flex;
     height: calc(100vh - 100px);
     flex-direction: column;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 .main {

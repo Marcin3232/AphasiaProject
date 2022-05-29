@@ -5,6 +5,7 @@ using AphasiaClientApp.ExercisePanels.PanelFilm;
 using AphasiaClientApp.ExercisePanels.PanelFindPairGameCore;
 using AphasiaClientApp.ExercisePanels.PanelIndicate;
 using AphasiaClientApp.ExercisePanels.PanelMatchCore;
+using AphasiaClientApp.ExercisePanels.PanelMatchSentenceCore;
 using AphasiaClientApp.ExercisePanels.PanelMusicCore;
 using AphasiaClientApp.ExercisePanels.PanelOption1Core;
 using AphasiaClientApp.ExercisePanels.PanelOption2Core;
@@ -57,6 +58,7 @@ namespace AphasiaClientApp.Pages.Exercises
         private PanelMusic panelMusic = new PanelMusic();
         private PanelFindPairGame panelFindPairGame = new PanelFindPairGame();
         private PanelOption2 panelOption2 = new PanelOption2();
+        private PanelMatchSentence panelMatchSentence = new PanelMatchSentence();
 
         #endregion
 
@@ -132,6 +134,9 @@ namespace AphasiaClientApp.Pages.Exercises
                 case ExercisePanelOption.PanelOption2:
                     maxCounter = await panelOption2.Show(Exercise);
                     break;
+                case ExercisePanelOption.PanelMatchSentence:
+                    maxCounter = await panelMatchSentence.Show(Exercise);
+                    break;
                 case ExercisePanelOption.Default:
                     // TODO: dokonczyć blad notification i do menu glownego
                     break;
@@ -149,6 +154,7 @@ namespace AphasiaClientApp.Pages.Exercises
             await panelFindPairGame.Close();
             await panelOption2.Close();
             await panelMusic.Close();
+            await panelMatchSentence.Close();
         }
 
         private ExercisePanelOption GetExercisePanel(ExerciseType type) =>
@@ -316,6 +322,9 @@ namespace AphasiaClientApp.Pages.Exercises
                     break;
                 case ExercisePanelOption.PanelFindPairGame:
                     await panelFindPairGame.ShowTip();
+                    break;
+                case ExercisePanelOption.PanelMatchSentence:
+                    await panelMatchSentence.ShowTip();
                     break;
                 case ExercisePanelOption.Default:
                     break;

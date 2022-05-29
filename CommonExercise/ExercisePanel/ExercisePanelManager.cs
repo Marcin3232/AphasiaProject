@@ -35,6 +35,7 @@ namespace CommonExercise.ExercisePanel
                 {ExerciseType.ImageTextAndTextAroundDescWithImage,ExercisePanelOption.PanelOption2 },
                 {ExerciseType.ImageAndTextAroundDescWithImageNamingWithoutText,ExercisePanelOption.PanelOption2 },
                 {ExerciseType.MatchCaptionToImageWithoutHelpSoundLeft2option,ExercisePanelOption.PanelMatch },
+                {ExerciseType.MatchTwoAnswer,ExercisePanelOption.PanelMatchSentence },
             };
     }
 }
