@@ -61,5 +61,9 @@ namespace CommonExercise.Enums
         IndicateWhatDoes = 24,
         [Display(Name = "Match answer")]
         MatchAnswer = 25,
+        [Display(Name = "Point where")]
+        PointWhere = 26,
+        [Display(Name = "Match the two terms with the photo")]
+        MatchTwoTermsWithPhoto = 27,
     }
 }

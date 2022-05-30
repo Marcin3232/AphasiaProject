@@ -27,5 +27,8 @@
         ImageAndTextAroundDescWithImageNamingWithoutText = 23,
         MatchCaptionToImageWithoutHelpSoundLeft2option = 24,
         MatchTwoAnswer = 25,
+        ThreeImageTextRepeat = 26,
+        IndicateThreeImage = 27,
+        MatchTwoTermsToPhoto = 28,
     }
 }

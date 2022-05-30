@@ -37,6 +37,9 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(23, (int)ExerciseType.ImageAndTextAroundDescWithImageNamingWithoutText, "Opis przedmiotu, opis obrazkami, nazywanie", "..."));
             temp.Add(Create(24, (int)ExerciseType.ImageAndTextAroundDescWithImageNamingWithoutText, "Dopasuj opis do obrazka, bez przycisku dźwięku", "..."));
             temp.Add(Create(25, (int)ExerciseType.MatchTwoAnswer, "Dopasuj 2 odpowiedzi do obrazka", "..."));
+            temp.Add(Create(26, (int)ExerciseType.ThreeImageTextRepeat, "Powtórz 3 określenia", "..."));
+            temp.Add(Create(27, (int)ExerciseType.IndicateThreeImage, "Wskaż gdzie pomiędzy 3 obrazkami", "..."));
+            temp.Add(Create(28, (int)ExerciseType.MatchTwoTermsToPhoto, "Dopasuj dwa określenia do fotografii", "..."));
             return temp;
         }
 
