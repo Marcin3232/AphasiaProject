@@ -1,5 +1,6 @@
 ﻿using DataBaseProject.Models.Exercise;
 using DataBaseProject.Models.ExerciseHistory;
+using DataBaseProject.Models.UserExercise;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseProject.Context
@@ -25,6 +26,9 @@ namespace DataBaseProject.Context
         public DbSet<AphasiaModel> Aphasia { get; set; }
         public DbSet<ExerciseHistoryModel> ExerciseHistories { get; set; }
         public DbSet<HistoryResultDetailsModel> HistoryResultDetails { get; set; }
+        public DbSet<UserAphasiaModel> UserAphasias { get; set; }
+        public DbSet<UserExerciseModel> UserExercises { get; set; }
+        public DbSet<UserPhaseExerciseModel> PhaseExercises { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,7 +40,7 @@ namespace DataBaseProject.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ExerciseModel>();
-                
+
         }
     }
 }
