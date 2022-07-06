@@ -1432,17 +1432,11 @@
 		<Exec Command="npm run sass -- --style=compressed Styles:wwwroot/css" />
 	</Target> 
 
-	<ItemGroup>
-	  <Content Remove="wwwroot\file.ts" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\CommonExercise\CommonExercise.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <TypeScriptCompile Include="wwwroot\file.ts" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Update="Shared\ResourceFiles\Resource.Designer.cs">

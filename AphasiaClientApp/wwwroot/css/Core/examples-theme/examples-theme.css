@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a    \2577 \a 20 \2502  @include threads-update-property('border', $examples-border-data);\a    \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   Styles\\Core\\examples-theme\\examples-theme.scss 20:1  root stylesheet";
+  content: "Error: Undefined mixin.\a    \2577 \a 20 \2502  @include threads-update-property('border', $examples-border-data);\d\a    \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   Styles\\Core\\examples-theme\\examples-theme.scss 20:1  root stylesheet";
 }
