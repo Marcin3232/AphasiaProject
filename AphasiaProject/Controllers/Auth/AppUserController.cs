@@ -102,7 +102,8 @@ namespace AphasiaProject.Controllers.Auth
             if (user != null && await UserManager.CheckPasswordAsync(user, model.Password))
             {
 
-                var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256);
+                var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettings.JWT_Secret))
+                    , SecurityAlgorithms.HmacSha256);
                 var claims = new List<Claim>()
                 {
                     new Claim("Id",user.Id.ToString()),

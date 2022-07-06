@@ -1,6 +1,7 @@
 ﻿@import "variables";
 
 .card {
+    position:relative;
   width: 240px;
   height: 343px;
   border-color: $base-dark-background;
@@ -12,6 +13,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.grid-square {
+    display: inline-block;
+    background-color: #fff;
+    border: solid 1px rgb(0,0,0,0.2);
+    padding: 10px;
+    margin: 12px;
 }
 
 .position-center {

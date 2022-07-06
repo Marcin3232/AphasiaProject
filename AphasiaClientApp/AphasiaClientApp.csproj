@@ -12,6 +12,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.2" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.2" />
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="MudBlazor" Version="6.0.6" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
@@ -1409,6 +1413,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="npm_packages\" />
 		<Folder Include="Services\NavigationService\" />
 		<Folder Include="wwwroot\resource\default\" />
 	</ItemGroup>
@@ -1425,11 +1430,13 @@
 	<Target Name="CompileGlobalSass" BeforeTargets="Compile">
 		<Message Text="Compiling global SCSS file" Importance="high" />
 		<Exec Command="npm run sass -- --style=compressed Styles:wwwroot/css" />
-	</Target>
+	</Target> 
+
 
 	<ItemGroup>
 		<ProjectReference Include="..\CommonExercise\CommonExercise.csproj" />
 	</ItemGroup>
+
 
 	<ItemGroup>
 		<Compile Update="Shared\ResourceFiles\Resource.Designer.cs">
@@ -1446,4 +1453,10 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
-</Project>
+  <Target Name="CompileComponentSass" BeforeTargets="CompileGlobalSass">
+    <Message Text="Compiling Component SCSS files" Importance="high" />
+    <Exec Condition="!$([System.Text.RegularExpressions.Regex]::IsMatch('%(ComponentScssFiles.Identity)', .*[/\\]_.*))" Command="npm run sass -- --style=compressed --no-source-map --load-path=Styles/Core %(ComponentScssFiles.Identity) %(relativedir)%(filename).css" />
+  </Target>
+
+  </Project>
+
