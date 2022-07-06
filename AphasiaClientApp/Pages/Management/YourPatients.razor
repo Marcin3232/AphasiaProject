@@ -1,4 +1,28 @@
 ﻿@page "/yourPatients"
+@using Models.Enums
+<div class="container">
+    <AphasiaClientApp.Components.Banners.BannerPanel></AphasiaClientApp.Components.Banners.BannerPanel>
 
 
-<AphasiaClientApp.Components.Banners.BannerPanel></AphasiaClientApp.Components.Banners.BannerPanel>
+    <ul class="list-group">
+        <li class="list-group-item">
+           
+                <div class="patientItemImage oneline">
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />     
+                </div>
+                <div class="patientItemText oneline" >Test</div>
+               @* <div class="patientItemText">Test</div>*@
+                <div class="patientItemActions text-right">
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
+                </div>
+
+ 
+        </li>
+        
+    </ul>
+
+</div>
+

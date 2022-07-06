@@ -3,6 +3,9 @@
     public partial class MainPanel
     {
 
+        public string currentEmail;
+        public string currentRole; 
+
         protected override void OnInitialized()
         {
 
