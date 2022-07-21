@@ -3,6 +3,7 @@ using AphasiaClientApp.Extensions.RequestMethod;
 using AphasiaClientApp.Utils.Js.Sounds;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Storages;
 
 namespace AphasiaClientApp.AppSettings.Settings
 {
@@ -13,6 +14,7 @@ namespace AphasiaClientApp.AppSettings.Settings
             builder.Services.AddScoped<IRequestMethod, RequestMethod>();
             builder.Services.AddScoped<ISnackbarMessage, SnackbarMessage>();
             builder.Services.AddScoped<ISoundService, SoundService>();
+            builder.AddStorageService();
         }
     }
 }
