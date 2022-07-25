@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="ExerciseResources\Exercise02\CwNarzadowArtykulacyjnych\Cz1\Link3.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

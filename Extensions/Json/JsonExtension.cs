@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 
 namespace Extensions.Json
 {
@@ -8,7 +8,7 @@ namespace Extensions.Json
         {
             try
             {
-                return JsonConvert.DeserializeObject<T>(data);
+                return JsonSerializer.Deserialize<T>(data);
             }
             catch (NullReferenceException ex)
             {
@@ -21,7 +21,7 @@ namespace Extensions.Json
         {
             try
             {
-                return JsonConvert.DeserializeObject<T>(Base64.Base64.Decode(data));
+                return JsonSerializer.Deserialize<T>(Base64.Base64.Decode(data));
             }
             catch (NullReferenceException ex)
             {
@@ -31,9 +31,9 @@ namespace Extensions.Json
         }
 
         public static string Serialize(T data) =>
-            JsonConvert.SerializeObject(data);
+            JsonSerializer.Serialize(data);
 
         public static string Serialize64(T data) =>
-            Base64.Base64.Encode(JsonConvert.SerializeObject(data));
+            Base64.Base64.Encode(JsonSerializer.Serialize(data));
     }
 }

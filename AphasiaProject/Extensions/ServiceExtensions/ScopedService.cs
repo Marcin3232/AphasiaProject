@@ -10,11 +10,12 @@ namespace AphasiaProject.Extensions.ServiceExtensions
     {
         public static void ScopedServiceConfig(this IServiceCollection service)
         {
-            service.AddScoped<IDbContext,DbContext>();
-            service.AddScoped<IDbRepository,DbRepository>();
-            service.AddScoped<IExerciseDbContext,ExerciseDbContext>();
-            service.AddScoped<IExerciseResourcesFactory,ExerciseResourcesFactory>();
-            service.AddScoped<IExerciseService,ExerciseService>();
+            service.AddScoped<IDbContext, DbContext>();
+            service.AddScoped<IDbRepository, DbRepository>();
+            service.AddScoped<IExerciseDbContext, ExerciseDbContext>();
+            service.AddScoped<IExerciseResourcesFactory, ExerciseResourcesFactory>();
+            service.AddScoped<IExerciseService, ExerciseService>();
+            service.AddScoped<IExerciseResultHistoryService, ExerciseResultHistoryService>();
         }
     }
 }

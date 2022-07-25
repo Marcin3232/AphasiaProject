@@ -2,8 +2,8 @@
 
 public interface IStorageService
 {
-    void ClearAll();
+    Task ClearAll();
     Task<T?> Get<T>(string key);
-    void Remove(string key);
-    void Save<T>(string key, T value);
+    Task Remove(string key);
+    Task Save<T>(string key, T value);
 }

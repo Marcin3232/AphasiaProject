@@ -17,18 +17,23 @@ public class StorageService : IStorageService
     public async Task<T?> Get<T>(string key)
     {
         var temp = await _localStorage.GetItemAsync<string>(Base64.Encode(key));
-        return JsonExtension<T?>.Deserialize64(temp);
+        return temp == null ? default(T) : JsonExtension<T?>.Deserialize64(temp);
     }
 
-    public void Save<T>(string key, T value)
+    public async Task Save<T>(string key, T value)
     {
+        try
+        {
+            await Remove(Base64.Encode(key));
+        }
+        catch(Exception e) { }
         var prepareValue = JsonExtension<T>.Serialize64(value);
-        _localStorage.SetItemAsync(Base64.Encode(key), Base64.Encode(prepareValue));
+        await _localStorage.SetItemAsync(Base64.Encode(key), prepareValue);
     }
 
-    public async void Remove(string key) =>
+    public async Task Remove(string key) =>
         await _localStorage.RemoveItemAsync(Base64.Encode(key));
 
-    public async void ClearAll() => await _localStorage.ClearAsync();
+    public async Task ClearAll() => await _localStorage.ClearAsync();
 
 }

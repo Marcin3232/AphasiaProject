@@ -1,6 +1,5 @@
 ﻿using ExerciseResource.Models.Exercise02;
 using ExerciseResource.Models.Exercise01;
-using System.Collections.Generic;
 using ExerciseResource.Models.Exercise05;
 using ExerciseResource.Models.Exercise07;
 using ExerciseResource.Models.Exercise33;
@@ -14,6 +13,7 @@ using ExerciseResource.Models.Exercise13;
 using ExerciseResource.Models.Exercise24;
 using ExerciseResource.Models.Exercise14;
 using ExerciseResource.Models.Exercise15;
+using System.Collections.Generic;
 
 namespace ExerciseResource.Factory
 {
