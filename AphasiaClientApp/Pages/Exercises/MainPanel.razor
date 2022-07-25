@@ -1,4 +1,5 @@
 ﻿@page "/exercises/main_panel/{id:int}"
+@page "/exercises/main_panel/{id:int}/{idUser:int}"
 @using AphasiaClientApp.Extensions.Navigation
 @using AphasiaClientApp.Models.Constant
 @using AphasiaClientApp.Utils.Js.Sounds
@@ -95,5 +96,5 @@
                 EventCallback=@OnFooterAction />
 
 <LoadingDialogModel @ref="@dialogLoad" />
-<CloseExercisesModal @ref="@dialogExit"
+<CloseExercisesModal @ref="@dialogExit"   
                      OnClose="OnCloseExerciseDialog" />

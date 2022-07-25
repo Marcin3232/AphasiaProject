@@ -12,10 +12,13 @@ using AphasiaClientApp.ExercisePanels.PanelOption2Core;
 using AphasiaClientApp.Extensions;
 using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Services;
+using AphasiaClientApp.Services.ExerciseResultHistoryServices;
 using CommonExercise.Enums;
 using CommonExercise.ExerciseHistoryManager;
 using CommonExercise.ExercisePanel;
 using CommonExercise.Models;
+using Extensions.Base64;
+using Extensions.Json;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -29,10 +32,14 @@ namespace AphasiaClientApp.Pages.Exercises
     {
         [Parameter]
         public int? Id { get; set; }
+        [Parameter]
+        public int? IdUser { get; set; } = 0;
         [Inject]
         public IDbExerciseService dBExerciseService { get; set; }
         [Inject]
         private ISnackbarMessage snackbarMessage { get; set; }
+        [Inject]
+        private IExerciseResultHistoryService _exerciseResultHistoryService { get; set; }
         private Exercise Exercise { get; set; }
         public List<ExerciseHistory> ExerciseHistory { get; set; }
         private ExercisePhase ExercisePhaseCurrent => Exercise?.Phases.FirstOrDefault(x => x.IsCurrent);
@@ -40,6 +47,7 @@ namespace AphasiaClientApp.Pages.Exercises
             .FirstOrDefault(x => x.ExercisePhaseId == ExercisePhaseCurrent.Id)?.HistoryResultDetails;
 
         public CancellationTokenSource cts = new CancellationTokenSource();
+
         private int maxCounter;
         public int Counter { get; set; } = 0;
         private bool playSound = false;
@@ -66,13 +74,18 @@ namespace AphasiaClientApp.Pages.Exercises
         {
             await Task.Delay(10);
             await dialogLoad.Show();
-            // TODO: dokonczyć
-            //if (HasValue(Id))
-            //{
-            //    return;
-            //}
+            await Task.Delay(100);
 
-            Exercise = await dBExerciseService.GetExercise((int)Id);
+            var exerciseResult = await _exerciseResultHistoryService.GetLast(Base64.Encode($"{Id}{IdUser}"));
+
+            if (exerciseResult != null)
+                Exercise = JsonExtension<Exercise>.Deserialize64(exerciseResult.JsonValue);
+            if (Exercise == null)
+            {
+                Exercise = await dBExerciseService.GetExercise((int)Id);
+                NumericPhase(Exercise);
+            }
+
 
             if (Exercise == null)
             {
@@ -82,8 +95,16 @@ namespace AphasiaClientApp.Pages.Exercises
                 return;
             }
 
-            ExerciseHistory = HistoryManager.Initialize(Exercise);
-            NumericPhase(Exercise);
+            if (ExerciseHistory == null)
+                ExerciseHistory = HistoryManager.Initialize(Exercise);
+            else
+            {
+                var historyResult = await _exerciseResultHistoryService.GetLast(Base64.Encode($"{Id}{IdUser}History"));
+                if (historyResult != null)
+                    ExerciseHistory = JsonExtension<List<ExerciseHistory>>.Deserialize64(historyResult.JsonValue);
+            }
+
+
             await dialogLoad.Close();
             panelPresentation = true;
         }
@@ -160,13 +181,29 @@ namespace AphasiaClientApp.Pages.Exercises
         private ExercisePanelOption GetExercisePanel(ExerciseType type) =>
             ExercisePanelManager.GetPanel(type);
 
-        private void OnCloseExerciseDialog(bool result)
+        private async Task OnCloseExerciseDialog(bool result)
         {
-            if (result)
+            if (!result) return;
+
+            await dialogLoad.Show();
+            await Task.Delay(10);
+            await _exerciseResultHistoryService.Insert(new ExerciseResultHistory()
             {
-                // TODO zapisywanie settingsow
-                Navigation.NavigateBack();
-            }
+                Id = 0,
+                Key = Base64.Encode($"{Id}{IdUser}"),
+                JsonValue = JsonExtension<Exercise>.Serialize64(Exercise),
+                CreateTime = DateTime.Now
+            });
+            await _exerciseResultHistoryService.Insert(new ExerciseResultHistory()
+            {
+                Id = 0,
+                Key = Base64.Encode($"{Id}{IdUser}History"),
+                JsonValue = JsonExtension<List<ExerciseHistory>>.Serialize64(ExerciseHistory),
+                CreateTime = DateTime.Now
+            });
+
+            await dialogLoad.Close();
+            Navigation.NavigateBack();
         }
 
         private void NumericPhase(Exercise exercise)
@@ -343,6 +380,5 @@ namespace AphasiaClientApp.Pages.Exercises
 
         private void OnCancel(bool action) =>
             cts = new CancellationTokenSource();
-
     }
 }

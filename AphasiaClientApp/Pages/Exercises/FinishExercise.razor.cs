@@ -1,12 +1,16 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AphasiaClientApp.Pages.Exercises
+namespace AphasiaClientApp.Pages.Exercises;
+
+public partial class FinishExercise
 {
-    public partial class FinishExercise
-    {
-        void Finish_callback() => UriHelper.NavigateTo("/");
-    }
+    [Parameter]
+    public string Id { get; set; }
+    [Parameter]
+    public string IdUser { get; set; }
+    void Finish_callback() => UriHelper.NavigateTo("/");
 }
