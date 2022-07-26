@@ -54,12 +54,41 @@ public class ExerciseResultHistoryController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> Insert(ExerciseResultHistory model)
+    public async Task<ActionResult> InsertOrUpdate(ExerciseResultHistory model)
     {
         try
         {
-            var result = _resultHistoryService.Insert(model).Result;
+            var exist = _resultHistoryService.GetLast(model.Key);
+            int result;
+
+            if (exist == null)
+            {
+                _logger.LogInfo($"[INSERT][EXERCISE_HISTORY_RESULT][VALUE][${model.Key}|{model.CreateTime}");
+                result = _resultHistoryService.Insert(model).Result;
+            }
+            else
+            {
+                _logger.LogInfo($"[UPDATE][EXERCISE_HISTORY_RESULT][VALUE][${model.Key}|{model.CreateTime}");
+                model.UpdateTime = DateTime.Now;
+                result = _resultHistoryService.Update(model).Result;
+            }
             return result == 0 ? NotFound() : Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex.ToString());
+            return Problem(ex.ToString());
+        }
+    }
+
+    [HttpPost("delete/{key}")]
+    public async Task<ActionResult> Delete(string key)
+    {
+        try
+        {
+            var result = _resultHistoryService.Delete(key).Result;
+            _logger.LogInfo($"[DELETE][EXERCISE_HISTORY_RESULT][VALUE][${key}");
+            return result == null ? NotFound() : Ok(result);
         }
         catch (Exception ex)
         {

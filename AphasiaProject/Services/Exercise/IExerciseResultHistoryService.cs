@@ -9,5 +9,7 @@ namespace AphasiaProject.Services.Exercise
         List<ExerciseResultHistory> GetAll();
         ExerciseResultHistory GetLast(string key);
         Task<int> Insert(ExerciseResultHistory model);
+        Task<int> Update(ExerciseResultHistory model);
+        Task<int> Delete(string key);
     }
 }

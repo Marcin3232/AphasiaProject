@@ -27,4 +27,11 @@ public class ExerciseResultHistoryService : IExerciseResultHistoryService
 
     public async Task<int> Insert(ExerciseResultHistory model) =>
         await _repository.ExecuteAsync(ExerciseResultHistoryQuery.QueryInsertExerciseResultHistory(), model);
+
+    public async Task<int> Update(ExerciseResultHistory model) =>
+        await _repository.ExecuteAsync(ExerciseResultHistoryQuery.QueryUpdateExerciseResultHistory(), model);
+
+    public async Task<int> Delete(string key) =>
+        await _repository.ExecuteAsync(ExerciseResultHistoryQuery.QueryDeleteExerciseResultHisotry(),
+            new { Key = key });
 }

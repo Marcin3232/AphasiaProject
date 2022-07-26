@@ -17,6 +17,8 @@ public class ExerciseResultHistory
     public string JsonValue { get; set; } = string.Empty;
     [Required]
     public DateTime CreateTime { get; set; }
+    public DateTime? UpdateTime { get; set; } = null;
+    public bool IsDeleted { get; set; } = false;
 
 }
 
