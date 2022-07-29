@@ -13,6 +13,13 @@
             </button>
 
         break;
+    case ImageButtonTypes.ButtonRemovePatient:
+    <button class="btn-nf @SetType" type="@Type" style="@SetStyle" @onclick="()=>removePatientModal.Show()">
+                <img src="@ImageSrc" style="max-width:34px;max-height:34px;" alt="..." />
+            </button>
+          
+     <AphasiaClientApp.Components.Modals.Management.RemovePatientModal @ref="@removePatientModal"/>
+      break;
     default:
         break;
 }

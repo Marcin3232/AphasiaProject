@@ -26,6 +26,7 @@ namespace AphasiaClientApp.Models.Enums
         ButtonSmLDarkPDChangePassword,
         ButtonSmLDarkPDResetPassword,
         ButtonSmLDarkRemoveAccount,
+        ButtomSmLDarkRemovePatient,
 
     }
 }

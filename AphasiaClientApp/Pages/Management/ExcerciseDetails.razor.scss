@@ -1,0 +1,27 @@
+﻿.excercise-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 30px;
+    margin-top: 30px;
+}
+.excercise-actions > *{
+    margin-bottom: 30px
+}
+.phase-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    justify-content: center;
+    grid-gap: 45px;
+}
+.main{
+    display: flex;
+    align-items:center;
+}
+.container {
+    margin-top:300px;
+    @media screen and (max-width: 1200px) {
+      margin-top : 50px;
+    }
+}

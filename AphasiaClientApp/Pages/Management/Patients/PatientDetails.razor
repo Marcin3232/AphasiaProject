@@ -1,0 +1,44 @@
+﻿@page "/yourPatients/patientDetails"
+@using Models.Enums
+@inject NavigationManager UriHelper
+
+<div class="field-body" style="margin-top:50px; margin-bottom:60px;">
+    <div class="card card-l border-0">
+        <div class="text-card-title text-center">Edytuj Konto Pacjenta</div>
+        <EditForm Model="@patientDetailsModel" OnValidSubmit="ExecutePersonalDataChange"> 
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="email" class="form-label text-start"><b>E-mail</b></label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-person-fill"></i>
+                        <InputText id="email" placeholder="Email" @bind-Value="patientDetailsModel.Email" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+             <div class="mb-3">
+                <div class="form-group">
+                    <div class="text-forms text-left-label">
+                        <label for="name" class="form-label text-start"><b>Imię</b></label>
+                    </div>
+                    <div class="inputbox">
+                        <i class="bi bi-person-fill"></i>
+                        <InputText id="name" placeholder="Imię" @bind-Value="patientDetailsModel.Name" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="positioner">
+                <ButtonModel ButtonTypes="ButtonTypes.ButtonSmLDarkResponvie" EventType="ButtonEventType.Submit" Text="Zapisz" />
+            </div>
+         </EditForm>
+           <div class="text-card-title text-center">Dodatkowe: </div>
+            <div class="positioner">
+           <ButtonModel ButtonTypes="ButtonTypes.ButtonSmLDarkPDChangePassword" Text="Zmien Hasło" ButtonCallback=ButtonNavigationToChangePassword/>
+         </div>
+    </div>
+</div>

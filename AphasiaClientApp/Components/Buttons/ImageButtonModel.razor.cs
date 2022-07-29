@@ -1,4 +1,5 @@
-﻿using AphasiaClientApp.Extensions;
+﻿using AphasiaClientApp.Components.Modals.Management;
+using AphasiaClientApp.Extensions;
 using AphasiaClientApp.Models.Enums;
 using Microsoft.AspNetCore.Components;
 using System.ComponentModel.DataAnnotations;
@@ -7,6 +8,9 @@ namespace AphasiaClientApp.Components.Buttons
 {
     public partial class ImageButtonModel
     {
+
+        public RemovePatientModal removePatientModal = new RemovePatientModal();
+
         [Parameter]
         public ImageButtonTypes ImageButtonType { get; set; } = ImageButtonTypes.ButtonFrame;
         [Parameter]

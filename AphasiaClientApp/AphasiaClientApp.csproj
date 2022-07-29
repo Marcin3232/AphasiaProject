@@ -1431,8 +1431,7 @@
 	<Target Name="CompileGlobalSass" BeforeTargets="Compile">
 		<Message Text="Compiling global SCSS file" Importance="high" />
 		<Exec Command="npm run sass -- --style=compressed Styles:wwwroot/css" />
-	</Target> 
-
+	</Target>
 
 	<ItemGroup>
 		<ProjectReference Include="..\CommonExercise\CommonExercise.csproj" />

@@ -1,0 +1,18 @@
+﻿@page "/management/management_exercise/excerciseDetails"
+@using AphasiaClientApp.Models.Enums
+@inject NavigationManager UriHelper
+
+<div class="container">
+    <div class="excercise-actions">
+        <div class="center-block demo-content "><AphasiaClientApp.Components.Buttons.ButtonLgDarkMainPanelPatients ButtonCallback="SaveAsync" Text="Zapisz"/></div>
+        <div class="center-block demo-content "><AphasiaClientApp.Components.Buttons.ButtonLgDarkMainPanelPatients ButtonCallback="RedirectToExcercisePreview" Text="Podgląd Ćwiczenia"/></div>
+        <div class="center-block demo-content "><AphasiaClientApp.Components.Buttons.ButtonLgDarkMainPanelPatients ButtonCallback="RedirectToResults" Text="Wyniki"/></div>
+    </div>
+    <div class="phase-buttons">
+        <AphasiaClientApp.Components.Buttons.SwitchButton PhaseName="Nauczanie"/>
+         <AphasiaClientApp.Components.Buttons.SwitchButton PhaseName="Czytanie"/>
+          <AphasiaClientApp.Components.Buttons.SwitchButton PhaseName="Zapamiętywanie"/>
+           <AphasiaClientApp.Components.Buttons.SwitchButton PhaseName="Powtarzanie"/>
+    </div>
+
+</div>
