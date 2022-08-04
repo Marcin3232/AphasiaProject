@@ -1,4 +1,5 @@
 ﻿using AphasiaClientApp.Models.Management;
+using Microsoft.AspNetCore.Components;
 
 namespace AphasiaClientApp.Pages.Management.Patients
 {
@@ -6,6 +7,8 @@ namespace AphasiaClientApp.Pages.Management.Patients
     {
         PatientDetailsModel patientDetailsModel = new PatientDetailsModel();
 
+        [Parameter]
+        public string PatientId { get; set; } = "0";
 
         public void ExecutePersonalDataChange()
         {

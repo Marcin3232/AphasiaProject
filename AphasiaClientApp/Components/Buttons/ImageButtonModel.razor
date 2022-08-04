@@ -1,4 +1,6 @@
 ﻿@using Models.Enums
+@inject NavigationManager UriHelper;
+
 
 @switch (ImageButtonType)
 {
@@ -8,18 +10,29 @@
         </button>
         break;
     case ImageButtonTypes.ButtonNonFrame:
-            <button class="btn-nf @SetType" type="@Type" style="@SetStyle" @onclick=ButtonCallback>
-                <img src="@ImageSrc" style="max-width:34px;max-height:34px;" alt="..." />
-            </button>
+        <button class="btn-nf @SetType" type="@Type" style="@SetStyle" @onclick=ButtonCallback>
+            <img src="@ImageSrc" style="max-width:34px;max-height:34px;" alt="..." />
+        </button>
 
         break;
     case ImageButtonTypes.ButtonRemovePatient:
-    <button class="btn-nf @SetType" type="@Type" style="@SetStyle" @onclick="()=>removePatientModal.Show()">
-                <img src="@ImageSrc" style="max-width:34px;max-height:34px;" alt="..." />
-            </button>
-          
-     <AphasiaClientApp.Components.Modals.Management.RemovePatientModal @ref="@removePatientModal"/>
-      break;
+        <button class="btn-nf @SetType" type="@Type" style="@SetStyle" @onclick="()=>removePatientModal.Show()">
+            <img src="@ImageSrc" style="max-width:34px;max-height:34px;" alt="..." />
+        </button>
+
+        <AphasiaClientApp.Components.Modals.Management.RemovePatientModal @ref="@removePatientModal" />
+        break;
+
+    case ImageButtonTypes.ButtonRedirectPaitent:
+        <button class="btn-ic @SetType" type="@Type" style="@SetStyle" @onclick=RedirectToPatientExcercisePage>
+            <img src="@ImageSrc" width=28 height=27 alt="..." />
+        </button>
+        break;
+    case ImageButtonTypes.ButtonRedirectPaitentToDetails:
+        <button class="btn-ic @SetType" type="@Type" style="@SetStyle" @onclick=RedirectToPatientDetailsPage>
+            <img src="@ImageSrc" width=28 height=27 alt="..." />
+        </button>
+        break;
     default:
         break;
 }

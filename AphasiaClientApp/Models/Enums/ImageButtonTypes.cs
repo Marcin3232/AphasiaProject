@@ -5,5 +5,7 @@
         ButtonFrame = 0,
         ButtonNonFrame = 1,
         ButtonRemovePatient=2,
+        ButtonRedirectPaitent=3,
+        ButtonRedirectPaitentToDetails = 4,
     }
 }

@@ -6,24 +6,22 @@
 
 
     <ul class="list-group">
-        <li class="list-group-item">
-           
+            @for (int i = 0; i < patientModelList.Count; i++)
+            {
+
+            <li class="list-group-item">
                 <div class="patientItemImage oneline">
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />    
-                    <div class="patientItemText" >Test</div> 
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
+                    <div class="patientItemText">@patientModelList[i].Name</div>
                 </div>
-         
                 <div class="patientItemActions text-right">
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRedirectPaitent SetPatientID="@patientModelList[i].Id" TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
                     <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" ButtonCallback="ButtonNavigationToPatientsDetails"/>
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRedirectPaitentToDetails SetPatientID="@patientModelList[i].Id" TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
                     <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRemovePatient TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
                 </div>
-
- 
-        </li>
-        
-    </ul>
-
+            </li>
+            }
+        </ul>
 </div>
 
