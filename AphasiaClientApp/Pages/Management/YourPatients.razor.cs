@@ -14,12 +14,12 @@ namespace AphasiaClientApp.Pages.Management
         protected override void OnInitialized()
         {
             PatientModel patientModel = new PatientModel();
-            patientModel.Id = "test";
-            patientModel.Name = "testowy";
+            patientModel.Id = "1";
+            patientModel.Name = "Tomasz C";
             patientModelList.Add(patientModel);
             PatientModel patientModel1 = new PatientModel();
-            patientModel1.Id = "test1";
-            patientModel1.Name = "testowy";
+            patientModel1.Id = "2";
+            patientModel1.Name = "Marcin O";
             patientModelList.Add(patientModel1);
         }
 

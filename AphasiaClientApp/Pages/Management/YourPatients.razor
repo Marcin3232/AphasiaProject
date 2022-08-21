@@ -11,14 +11,14 @@
 
             <li class="list-group-item">
                 <div class="patientItemImage oneline">
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.CheckCircle SetType="ic-light" />
                     <div class="patientItemText">@patientModelList[i].Name</div>
                 </div>
                 <div class="patientItemActions text-right">
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRedirectPaitent SetPatientID="@patientModelList[i].Id" TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRedirectPaitentToDetails SetPatientID="@patientModelList[i].Id" TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRemovePatient TypeImage=NaviTypeImage.PatientAdd SetType="ic-dark" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRedirectPaitent SetPatientID="@patientModelList[i].Id" TypeImage=NaviTypeImage.LeftNaviArrow SetType="ic-light" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.Helper SetType="ic-light" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRedirectPaitentToDetails SetPatientID="@patientModelList[i].Id" TypeImage=NaviTypeImage.Refresh SetType="ic-light" />
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRemovePatient TypeImage=NaviTypeImage.UncheckedBox SetType="ic-light" />
                 </div>
             </li>
             }

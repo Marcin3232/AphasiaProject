@@ -11,6 +11,9 @@ namespace AphasiaClientApp.Components.Cards
         [Parameter]
         public int CardId { get; set; } = 1;
         [Parameter]
+        public string ExName { get; set; }
+ 
+        [Parameter]
         public EventCallback ButtonCallback { get; set; }
         [Parameter]
         public double Mark { get; set; } = 3.56;

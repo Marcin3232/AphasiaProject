@@ -187,14 +187,14 @@ namespace AphasiaClientApp.Pages.Exercises
 
             await dialogLoad.Show();
             await Task.Delay(10);
-            await _exerciseResultHistoryService.Insert(new ExerciseResultHistory()
+            await _exerciseResultHistoryService.Insert(new Services.ExerciseResultHistoryServices.ExerciseResultHistory()
             {
                 Id = 0,
                 Key = Base64.Encode($"{Id}{IdUser}"),
                 JsonValue = JsonExtension<Exercise>.Serialize64(Exercise),
                 CreateTime = DateTime.Now
             });
-            await _exerciseResultHistoryService.Insert(new ExerciseResultHistory()
+            await _exerciseResultHistoryService.Insert(new Services.ExerciseResultHistoryServices.ExerciseResultHistory()
             {
                 Id = 0,
                 Key = Base64.Encode($"{Id}{IdUser}History"),
