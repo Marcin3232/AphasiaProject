@@ -9,5 +9,6 @@ namespace AphasiaClientApp.Services.ExerciseResultHistoryServices
         Task<List<ExerciseResultHistory>> GetAll();
         Task<ExerciseResultHistory> GetLast(string key);
         Task<int> Insert(ExerciseResultHistory model);
+        Task<int> Delete(string key);
     }
 }

@@ -18,13 +18,13 @@ namespace AphasiaClientApp.Extensions.RequestMethod
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, path);
                 var response = await httpClient.SendAsync(request);
-                
-                if(response.IsSuccessStatusCode)
+
+                if (response.IsSuccessStatusCode)
                     return await JsonSerializer.DeserializeAsync<T>(await response.Content.ReadAsStreamAsync());
 
                 return default;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
@@ -32,12 +32,12 @@ namespace AphasiaClientApp.Extensions.RequestMethod
             }
         }
 
-        public async  Task<TResult> Post<T, TResult>(string path, HttpClient httpClient, T data)
+        public async Task<TResult> Post<T, TResult>(string path, HttpClient httpClient, T data)
         {
             try
             {
-            var request = new HttpRequestMessage(HttpMethod.Post, path);
-            request.Content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
+                var request = new HttpRequestMessage(HttpMethod.Post, path);
+                request.Content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 
                 using var response = await httpClient.SendAsync(request);
 
@@ -55,6 +55,32 @@ namespace AphasiaClientApp.Extensions.RequestMethod
                 Debug.WriteLine(ex.StackTrace);
                 throw new Exception(ex.Message);
             }
+        }
+
+        public async Task<TResult> Delete<T, TResult>(string path, HttpClient httpClient, T data)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Delete, path);
+                request.Content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
+
+                using var response = await httpClient.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+                    throw new Exception(error["message"]);
+                }
+
+                return await response.Content.ReadFromJsonAsync<TResult>();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+                throw new Exception(ex.Message);
+            }
+
         }
     }
 }

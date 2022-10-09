@@ -1,5 +1,8 @@
-﻿@page "/Exercise/FinishPage"
+﻿@page "/Exercise/FinishPage/{id:int}"
+@page "/Exercise/FinishPage/{id:int}/{idUser:int}"
+@using AphasiaClientApp.Extensions.Navigation
 @inject NavigationManager UriHelper
+@inject Navigation Navigation
 
 <style>
     body {
@@ -22,11 +25,11 @@
             </div>
 
             <div class="field-button">
-                <ButtonModel Text="Powtórz ten zestaw" ButtonTypes="Models.Enums.ButtonTypes.ButtonHgWhiteBorderResponsive" />
+                <ButtonModel Text="Powtórz ten zestaw" ButtonTypes="Models.Enums.ButtonTypes.ButtonHgWhiteBorderResponsive" ButtonCallback="Repeat_callback" />
             </div>
 
             <div class="field-button">
-                <ButtonModel Text="Wróć do ćwiczenia" ButtonTypes="Models.Enums.ButtonTypes.ButtonHgWhiteBorderResponsive" />
+                <ButtonModel Text="Wróć do ćwiczenia" ButtonTypes="Models.Enums.ButtonTypes.ButtonHgWhiteBorderResponsive" ButtonCallback="GoBack_callback"/>
             </div>
 
         </div>

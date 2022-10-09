@@ -1,5 +1,6 @@
 ﻿using AphasiaProject.Services.Exercise;
 using CommonExercise.Models;
+using CommonExercise.Models.Request;
 using LoggerService.Manager;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -81,13 +82,13 @@ public class ExerciseResultHistoryController : ControllerBase
         }
     }
 
-    [HttpPost("delete/{key}")]
-    public async Task<ActionResult> Delete(string key)
+    [HttpPost("delete")]
+    public async Task<ActionResult> Delete(RequestKey key)
     {
         try
         {
-            var result = _resultHistoryService.Delete(key).Result;
-            _logger.LogInfo($"[DELETE][EXERCISE_HISTORY_RESULT][VALUE][${key}");
+            var result = _resultHistoryService.Delete(key.Key).Result;
+            _logger.LogInfo($"[DELETE][EXERCISE_HISTORY_RESULT][VALUE][${key.Key}");
             return result == null ? NotFound() : Ok(result);
         }
         catch (Exception ex)

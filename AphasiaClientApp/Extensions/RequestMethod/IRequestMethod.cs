@@ -7,5 +7,6 @@ namespace AphasiaClientApp.Extensions.RequestMethod
     {
         Task<T> Get<T>(string path, HttpClient httpClient);
         Task<TResult> Post<T, TResult>(string path, HttpClient httpClient, T data);
+        Task<TResult> Delete<T, TResult>(string path, HttpClient httpClient, T data);
     }
 }

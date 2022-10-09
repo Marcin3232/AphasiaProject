@@ -14,10 +14,12 @@ using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Services;
 using AphasiaClientApp.Services.ExerciseResultHistoryServices;
 using CommonExercise.Enums;
+using CommonExercise.Enums.Keys;
 using CommonExercise.ExerciseHistoryManager;
 using CommonExercise.ExercisePanel;
 using CommonExercise.Models;
 using Extensions.Base64;
+using Extensions.Exercise;
 using Extensions.Json;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -31,9 +33,9 @@ namespace AphasiaClientApp.Pages.Exercises
     public partial class MainPanel
     {
         [Parameter]
-        public int? Id { get; set; }
+        public int Id { get; set; }
         [Parameter]
-        public int? IdUser { get; set; } = 0;
+        public int IdUser { get; set; } = 0;
         [Inject]
         public IDbExerciseService dBExerciseService { get; set; }
         [Inject]
@@ -76,7 +78,8 @@ namespace AphasiaClientApp.Pages.Exercises
             await dialogLoad.Show();
             await Task.Delay(100);
 
-            var exerciseResult = await _exerciseResultHistoryService.GetLast(Base64.Encode($"{Id}{IdUser}"));
+            var exerciseResult = await _exerciseResultHistoryService
+                .GetLast(Base64.Encode(KeyExtension.Generate(Id, IdUser, ExerciseKey.History)));
 
             if (exerciseResult != null)
                 Exercise = JsonExtension<Exercise>.Deserialize64(exerciseResult.JsonValue);
@@ -99,7 +102,8 @@ namespace AphasiaClientApp.Pages.Exercises
                 ExerciseHistory = HistoryManager.Initialize(Exercise);
             else
             {
-                var historyResult = await _exerciseResultHistoryService.GetLast(Base64.Encode($"{Id}{IdUser}History"));
+                var historyResult = await _exerciseResultHistoryService
+                    .GetLast(Base64.Encode(KeyExtension.Generate(Id, IdUser, ExerciseKey.HistoryResult)));
                 if (historyResult != null)
                     ExerciseHistory = JsonExtension<List<ExerciseHistory>>.Deserialize64(historyResult.JsonValue);
             }
@@ -187,21 +191,7 @@ namespace AphasiaClientApp.Pages.Exercises
 
             await dialogLoad.Show();
             await Task.Delay(10);
-            await _exerciseResultHistoryService.Insert(new Services.ExerciseResultHistoryServices.ExerciseResultHistory()
-            {
-                Id = 0,
-                Key = Base64.Encode($"{Id}{IdUser}"),
-                JsonValue = JsonExtension<Exercise>.Serialize64(Exercise),
-                CreateTime = DateTime.Now
-            });
-            await _exerciseResultHistoryService.Insert(new Services.ExerciseResultHistoryServices.ExerciseResultHistory()
-            {
-                Id = 0,
-                Key = Base64.Encode($"{Id}{IdUser}History"),
-                JsonValue = JsonExtension<List<ExerciseHistory>>.Serialize64(ExerciseHistory),
-                CreateTime = DateTime.Now
-            });
-
+            await SaveCurrentHistory();
             await dialogLoad.Close();
             Navigation.NavigateBack();
         }
@@ -237,7 +227,12 @@ namespace AphasiaClientApp.Pages.Exercises
             {
                 if (NextPhase(true))
                 {
-                    return; //TODO zamykanie cwiczenia
+                    await dialogLoad.Show();
+                    await Task.Delay(10);
+                    await SaveCurrentHistory();
+                    await dialogLoad.Close();
+                    Navigation.NavigateTo($"/Exercise/FinishPage/{Id}/{IdUser}");
+                    return;
                 }
 
                 await StartNewPanel();
@@ -380,5 +375,23 @@ namespace AphasiaClientApp.Pages.Exercises
 
         private void OnCancel(bool action) =>
             cts = new CancellationTokenSource();
+
+        private async Task SaveCurrentHistory()
+        {
+            await _exerciseResultHistoryService.Insert(new Services.ExerciseResultHistoryServices.ExerciseResultHistory()
+            {
+                Id = 0,
+                Key = Base64.Encode(KeyExtension.Generate(Id, IdUser, ExerciseKey.History)),
+                JsonValue = JsonExtension<Exercise>.Serialize64(Exercise),
+                CreateTime = DateTime.Now
+            });
+            await _exerciseResultHistoryService.Insert(new Services.ExerciseResultHistoryServices.ExerciseResultHistory()
+            {
+                Id = 0,
+                Key = Base64.Encode(KeyExtension.Generate(Id, IdUser, ExerciseKey.HistoryResult)),
+                JsonValue = JsonExtension<List<ExerciseHistory>>.Serialize64(ExerciseHistory),
+                CreateTime = DateTime.Now
+            });
+        }
     }
 }

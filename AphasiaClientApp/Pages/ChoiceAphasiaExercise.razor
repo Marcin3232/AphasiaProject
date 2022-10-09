@@ -14,7 +14,7 @@
             {
                 <AphasiaClientApp.Components.Cards.TaskCardModel Title="@item.Name"
                                                          ImageUrl="@item.ImageSrc"
-                                                         Url="@("/exercises/main_panel/"+item.Id.ToString())" />
+                                                         Url="@($"/exercises/main_panel/{item.Id}/{0}")" /> //todo Tomek idUsera po logowaniu
             }
         }
     </div>

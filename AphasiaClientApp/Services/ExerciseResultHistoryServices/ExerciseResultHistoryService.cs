@@ -1,5 +1,5 @@
 ﻿using AphasiaClientApp.Extensions.RequestMethod;
-using CommonExercise.Models;
+using CommonExercise.Models.Request;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -26,5 +26,8 @@ public class ExerciseResultHistoryService : IExerciseResultHistoryService
 
     public async Task<int> Insert(ExerciseResultHistory model) =>
         await _requestMethod.Post<ExerciseResultHistory, int>("/api/ExerciseResultHistory", _httpClient, model);
+
+    public async Task<int> Delete(string key) =>
+        await _requestMethod.Post<RequestKey, int>("/api/ExerciseResultHistory/delete", _httpClient, new RequestKey() { Key=key} );
 }
 
