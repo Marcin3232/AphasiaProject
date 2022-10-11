@@ -45,6 +45,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Auth\PersonalDetailsModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="C:\Users\Marcin\.nuget\packages\nlog.config\4.7.11\contentFiles\any\any\NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

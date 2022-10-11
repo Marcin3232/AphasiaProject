@@ -4,12 +4,14 @@ const path = require("path")
 
 module.exports = {
     mode: "development" ,
-    entry: [
-    "./index.js"
-    ],
+    entry: {
+        foo: './index.js',
+        bar: './index2.js'
+    },
+
     output: {
-        path: path.resolve(__dirname, "wwwroot"),
-        filename: "BlazorApp.js"
+        path: path.join(__dirname, 'wwwroot'),
+        filename: '[name].bundle.js', // Hacky way to force webpack   to have multiple output folders vs multiple files per one path
     },
 
     module: {

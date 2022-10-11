@@ -11,8 +11,8 @@ namespace AphasiaClientApp.Pages.Management
         public string PatientId { get; set; } = "0";
 
         //lista pobirana z bazy;
-        [Inject]
-        IJSRuntime JsRuntime { get; set; }
+        //[Inject]
+        //IJSRuntime JsRuntime { get; set; }
 
         protected override Task OnInitializedAsync()
         {

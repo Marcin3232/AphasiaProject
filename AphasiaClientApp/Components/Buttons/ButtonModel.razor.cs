@@ -24,6 +24,11 @@ namespace AphasiaClientApp.Components.Buttons
         public ButtonEventType EventType { get; set; } = ButtonEventType.Button;
         [Parameter]
         public string UrlImage { get; set; }
+
+
+        [Parameter]
+        public string Id { get; set; }
+
         [Parameter]
         public EventCallback ButtonCallback { get; set; }
 

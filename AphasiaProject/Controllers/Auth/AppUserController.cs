@@ -15,6 +15,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using AphasiaProject.Controllers.Auth;
+using System.Text.Json.Serialization;
+using CommonExercise.Models.User;
 
 namespace AphasiaProject.Controllers.Auth
 {
@@ -126,5 +129,54 @@ namespace AphasiaProject.Controllers.Auth
             return tokenOptions;
         }
 
+
+
+
+        [HttpPost("edit/personalData/{userid}")]
+        [Produces("application/json")]
+        public async Task<ActionResult> POSTEditPersonalData(int userid, UserPersonalDetailModel model)
+        {
+            return null;
+        }
+
+        [HttpPost("edit/password/{userid}")]
+        [Produces("application/json")]
+        public async Task<ActionResult> POSTEditPassword(int userid, PasswordModel model)
+        {
+            return null;
+        }
+
+
+
     }
+
+    public class PasswordModel
+    {
+        [JsonPropertyName("passOld")]
+        public string PassOld { get; set; }
+
+        [JsonPropertyName("passNew")]
+        public string PassNew { get; set; }
+    }
+
+    //public class PersonalDetailsModel
+    //{
+    //    [JsonPropertyName("city")]
+    //    public string City { get; set; }
+
+    //    [JsonPropertyName("email")]
+    //    public string Email { get; set; }
+
+    //    [JsonPropertyName("houseNbr")]
+    //    public int HouseNbr { get; set; }
+
+    //    [JsonPropertyName("phoneNumber")]
+    //    public int PhoneNumberd { get; set; }
+
+    //    [JsonPropertyName("postalCode")]
+    //    public string PostalCode { get; set; }
+
+    //    [JsonPropertyName("street")]
+    //    public string Street { get; set; }
+    //}
 }

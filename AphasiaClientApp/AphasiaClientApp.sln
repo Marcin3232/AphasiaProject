@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storages.Contract", "..\Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions", "..\Extensions\Extensions.csproj", "{36C811F1-1ABB-416C-957E-6DAB3694DA4C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonExercise", "..\CommonExercise\CommonExercise.csproj", "{4C64EB5C-A988-4EEC-9596-E3AF5FDD25EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{36C811F1-1ABB-416C-957E-6DAB3694DA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36C811F1-1ABB-416C-957E-6DAB3694DA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36C811F1-1ABB-416C-957E-6DAB3694DA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C64EB5C-A988-4EEC-9596-E3AF5FDD25EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C64EB5C-A988-4EEC-9596-E3AF5FDD25EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C64EB5C-A988-4EEC-9596-E3AF5FDD25EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C64EB5C-A988-4EEC-9596-E3AF5FDD25EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

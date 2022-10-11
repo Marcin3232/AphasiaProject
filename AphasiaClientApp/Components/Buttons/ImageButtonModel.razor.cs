@@ -27,6 +27,12 @@ namespace AphasiaClientApp.Components.Buttons
         public string SetType { get; set; } = "ic-light";
 
         [Parameter]
+        public string SetClickType { get; set; }
+        [Parameter]
+        public string Id { get; set; }
+
+
+        [Parameter]
         public string SetPatientID { get; set; }
 
         private string Type => EventType.GetAttribute<DisplayAttribute>().Name;
@@ -34,11 +40,11 @@ namespace AphasiaClientApp.Components.Buttons
 
         public void RedirectToPatientExcercisePage()
         {
-            UriHelper.NavigateTo("/management/"+SetPatientID+"/management_exercise");
+            UriHelper.NavigateTo("/management/"+SetPatientID+"/management_exercise",true);
         }
         public void RedirectToPatientDetailsPage()
         {
-            UriHelper.NavigateTo("/yourPatients/patientDetails/"+SetPatientID);
+            UriHelper.NavigateTo("/yourPatients/patientDetails/"+SetPatientID,true);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace AphasiaClientApp.Pages.Management
 
         void ButtonNavigationToPatientsDetails()
         {
-            UriHelper.NavigateTo("/yourPatients/patientDetails");
+            UriHelper.NavigateTo("/yourPatients/patientDetails",true);
         }
     }
 }

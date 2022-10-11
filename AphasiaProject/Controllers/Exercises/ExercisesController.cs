@@ -1,5 +1,6 @@
 ﻿using AphasiaProject.Services.Exercise;
 using CommonExercise.Enums;
+using CommonExercise.Models;
 using DataBaseProject.Context;
 using DataBaseProject.Data.Exercises;
 using DataBaseProject.Models.Exercise;
@@ -9,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace AphasiaProject.Controllers.Exercises
 {
     [Route("api/[controller]")]
@@ -63,6 +63,21 @@ namespace AphasiaProject.Controllers.Exercises
                 _logger.LogError(ex.ToString());
                 return Problem(ex.ToString());
             }
+        }
+
+
+        //Excercise management
+        [HttpGet("excercise/{userid}")]
+        public async Task<ActionResult> GetExcerciseForManagement(int userid)
+        {
+            return null;
+        }
+
+        [HttpPost("excercise/{userid}")]
+        [Produces("application/json")]
+        public async Task<ActionResult> POSTExcerciseForManagement(int userid, List<ExcerciseCartManagementModel> model)
+        {
+            return null;
         }
     }
 }

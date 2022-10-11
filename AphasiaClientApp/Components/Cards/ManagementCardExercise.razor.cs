@@ -9,10 +9,14 @@ namespace AphasiaClientApp.Components.Cards
         [Parameter]
         public string ImageUrl { get; set; }
         [Parameter]
-        public int CardId { get; set; } = 1;
+        public int Order { get; set; }
+        [Parameter]
+        public int UserExId { get; set; }
         [Parameter]
         public string ExName { get; set; }
- 
+        [Parameter]
+        public string Disabled { get; set; } = "false";
+
         [Parameter]
         public EventCallback ButtonCallback { get; set; }
         [Parameter]

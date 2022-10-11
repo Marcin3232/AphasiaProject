@@ -22,7 +22,7 @@ namespace AphasiaClientApp.Pages.Management
         void ButtonNavigateToYourDataChangePanel()
         {
 
-            UriHelper.NavigateTo("/yourPersonalDataPanel");
+            UriHelper.NavigateTo("/yourPersonalDataPanel",true);
         }
     }
 }
