@@ -53,7 +53,7 @@ $("#buttonSaveExcerciseHistory").click(function(){
 
 //User management
 
-
+let id = window.localStorage.getItem('therapistId').split('')
 $("#personaldDataSumbit").click(function(){
 	let userData = {
 		"email" : $('#email').val(),
@@ -63,7 +63,10 @@ $("#personaldDataSumbit").click(function(){
 		"postalCode" : $('#postalCode').val(),
 		"city": $('#city').val()
 	}
-    let url = urlContext+"api/userControllers/edit/personalData/"+3
+	
+	console.log(id)
+    let url = urlContext+"api/userControllers/edit/personalData/"+id[1]+id[2]
+
 	restRequest("POST",url,JSON.stringify(userData))
 })
 
@@ -72,7 +75,7 @@ $("#changePassword").click(function(){
 		"passOld" : $('#OldPassword').val(),
 		"passNew" : $('#NewPassword').val()
 	}
-    let url = urlContext+"api/userControllers/edit/password/"+3
+    let url = urlContext+"api/userControllers/edit/password/"+id[1]+id[2]
 	restRequest("POST",url,JSON.stringify(userData))
 })
 

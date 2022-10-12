@@ -15,9 +15,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using AphasiaProject.Controllers.Auth;
 using System.Text.Json.Serialization;
 using CommonExercise.Models.User;
+using AphasiaProject.Services.User;
 
 namespace AphasiaProject.Controllers.Auth
 {
@@ -32,13 +32,16 @@ namespace AphasiaProject.Controllers.Auth
 
         private readonly IIdentityServerInteractionService ServerInteraction;
 
+        private readonly IUserActionService _userActionService;
+
         public AppUserController(UserManager<AppUser> appUserManager, SignInManager<AppUser> signInManager, ILoggerManager<AppUserController> logger,
-            IOptions<AppSettings> appSettings)
+            IOptions<AppSettings> appSettings, IUserActionService userActionService)
         {
             UserManager = appUserManager;
             SignInManager = signInManager;
             _logger = logger;
             AppSettings = appSettings.Value;
+            _userActionService = userActionService;
         }
 
         [HttpPost]
@@ -132,32 +135,54 @@ namespace AphasiaProject.Controllers.Auth
 
 
 
+        [HttpGet("edit/personalData/{userid}")]
+        [Produces("application/json")]
+        public async Task<ActionResult> GETEditPersonalData(int userid)
+        {
+            try
+            {
+                var result = _userActionService.GetUserData(userid);
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
+        }
+
         [HttpPost("edit/personalData/{userid}")]
         [Produces("application/json")]
         public async Task<ActionResult> POSTEditPersonalData(int userid, UserPersonalDetailModel model)
         {
-            return null;
+            model.Id = Convert.ToInt32(userid);
+            try
+            {
+                var result = _userActionService.UpdateUserPersonalData(model);
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
         }
 
         [HttpPost("edit/password/{userid}")]
         [Produces("application/json")]
         public async Task<ActionResult> POSTEditPassword(int userid, PasswordModel model)
         {
-            return null;
+           model.Id = userid;
+           var user = await UserManager.FindByIdAsync(userid.ToString());
+           await UserManager.ChangePasswordAsync(user, model.PassOld, model.PassNew);
+            return (Ok("ok"));
         }
 
 
 
     }
 
-    public class PasswordModel
-    {
-        [JsonPropertyName("passOld")]
-        public string PassOld { get; set; }
 
-        [JsonPropertyName("passNew")]
-        public string PassNew { get; set; }
-    }
 
     //public class PersonalDetailsModel
     //{

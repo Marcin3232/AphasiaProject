@@ -45,7 +45,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\Auth\PersonalDetailsModel.cs" />
+    <None Remove="Services\User\IUserActionService.cs" />
+    <None Remove="Services\User\UserActionService.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -73,5 +73,15 @@ namespace AphasiaClientApp.Features.AuthService
             ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
             _client.DefaultRequestHeaders.Authorization = null;
         }
+
+        public async Task<EditPersonalDataDto> GetPersonalData(string a)
+        {
+            
+            var registerResult = await _client.GetAsync("/api/userControllers/edit/personalData/"+a);
+            var registerContent = await registerResult.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<EditPersonalDataDto>(registerContent, _options);
+            return result;
+        }
+
     }
 }

@@ -1,7 +1,11 @@
-﻿using AphasiaClientApp.Models.MainPanel;
+﻿using AphasiaClientApp.Features.AuthService;
+using AphasiaClientApp.Models.Auth;
+using AphasiaClientApp.Models.MainPanel;
 using AphasiaClientApp.Pages.Other;
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace AphasiaClientApp.Pages.Management
@@ -11,13 +15,26 @@ namespace AphasiaClientApp.Pages.Management
 
         [Inject]
         IJSRuntime JsRuntime { get; set; }
+        [Inject]
+        public IAuthenticationService AuthenticationService { get; set; }
+
+        [Inject]
+        private ILocalStorageService _localStorage { get; set; }
 
         public PersonalDataModel personalDataModel = new PersonalDataModel();
         private ReportError reportErrorModal = new ReportError();
-      
-        protected override Task OnInitializedAsync()
+        public EditPersonalDataDto PersonalDataDto = new EditPersonalDataDto();
+        protected override async Task<Task> OnInitializedAsync()
         {
-            Task.Delay(1);
+         
+            var a = await _localStorage.GetItemAsync<string>("therapistId");
+
+            PersonalDataDto  =await AuthenticationService.GetPersonalData(a);
+
+           
+            
+
+
             StateHasChanged();
             return base.OnInitializedAsync();
 

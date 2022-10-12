@@ -7,6 +7,9 @@ namespace AphasiaClientApp.Features.AuthService
     {
         Task<AuthResponseDto> Login(UserLoginModel userForAuthentication);
         Task<RegisterResponseDto> Register(UserRegistrationModel userRegistrationModel);
+
+        Task<EditPersonalDataDto> GetPersonalData(string id);
+
         Task Logout();
     }
 }

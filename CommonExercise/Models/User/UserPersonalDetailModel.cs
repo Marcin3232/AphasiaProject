@@ -9,6 +9,9 @@ namespace CommonExercise.Models.User
 {
     public class UserPersonalDetailModel
     {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
         [JsonPropertyName("city")]
         public string City { get; set; }
 
@@ -16,10 +19,10 @@ namespace CommonExercise.Models.User
         public string Email { get; set; }
 
         [JsonPropertyName("houseNbr")]
-        public int HouseNbr { get; set; }
+        public string HouseNbr { get; set; }
 
         [JsonPropertyName("phoneNumber")]
-        public int PhoneNumberd { get; set; }
+        public string PhoneNumber { get; set; }
 
         [JsonPropertyName("postalCode")]
         public string PostalCode { get; set; }
