@@ -11,8 +11,19 @@ namespace DataBaseQuery.User
     {
 
 
+        public static string QuerryGetPatients() =>
+        $"SELECT " +
+        $"\"{nameof(PatientModel.Id)}\", " +
+        $"\"{nameof(PatientModel.UserName)}\", " +
+        $"\"{nameof(PatientModel.IsActive)}\" " +
+        $"FROM \"AspNetUsers\"" +
+           $"WHERE " +
+           $"\"TherapistId\" = @Key ";
 
-     public static string QuerryGetPersonalDetails() =>
+
+
+
+        public static string QuerryGetPersonalDetails() =>
      $"SELECT " +
      $"\"{nameof(UserPersonalDetailModel.Email)}\", " +
      $"\"{nameof(UserPersonalDetailModel.PhoneNumber)}\", " +
@@ -44,12 +55,7 @@ namespace DataBaseQuery.User
             $"\"{nameof(UserPersonalDetailModel.Id)}\" = @{nameof(UserPersonalDetailModel.Id)} ";
 
 
-        public static string UpdatePassword()=>
-            $"UPDATE \"AspNetUsers\" " +
-            $"SET " +
-            $"\"{nameof(UserPersonalDetailModel.Email)}\" = @{nameof(UserPersonalDetailModel.Email)}, " +
-           
-            $"WHERE  " +
-            $"\"{nameof(UserPersonalDetailModel.Id)}\" = @{nameof(UserPersonalDetailModel.Id)} ";
+
+
     }
 }

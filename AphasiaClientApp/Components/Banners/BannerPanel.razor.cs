@@ -22,6 +22,11 @@ namespace AphasiaClientApp.Components.Banners
         {
             currentUser = await localStorage.GetItemAsync<string>("therapistEmail");
         }
+
+        public void navigateToAddPatinent()
+        {
+            navigationManager.NavigateTo("/yourPatients/createPatient");
+        }
    
     }
 }

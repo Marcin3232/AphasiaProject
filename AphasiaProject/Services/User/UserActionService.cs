@@ -19,6 +19,12 @@ namespace AphasiaProject.Services.User
         {
             _repository = repository;
         }
+
+        public List<PatientModel> GetPatients(int key) =>
+        Task.FromResult(_repository.Get<PatientModel>(
+            UserActionsQuerry.QuerryGetPatients(), new { Key = key })).Result;
+
+
         public UserPersonalDetailModel GetUserData(int key)
         {
             return Task.FromResult(_repository.Get<UserPersonalDetailModel>(

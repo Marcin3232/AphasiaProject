@@ -81,6 +81,16 @@ $("#changePassword").click(function(){
 
 
 
+$("#createPatient").click(function(){
+	let userData = {
+		"id":id[1]+id[2],
+		"login":$('#userName').val(),
+		"patientPass" : $('#NewPassword').val()
+	}
+    let url = urlContext+"api/userControllers/create/patient"
+	restRequest("POST",url,JSON.stringify(userData))
+})
+
 
 
 

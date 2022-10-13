@@ -30,6 +30,7 @@
 	<ItemGroup>
 		<None Include="compilerconfig.json" />
 		<None Include="ExercisePanels\PanelMusicCore\PanelMusic.razor" />
+		<None Include="Pages\Management\Patients\CreatePatient.razor" />
 		<None Include="wwwroot\css\bootstrap\forms\_floating-labels.scss" />
 		<None Include="wwwroot\css\bootstrap\forms\_form-check.scss" />
 		<None Include="wwwroot\css\bootstrap\forms\_form-control.scss" />
@@ -1433,6 +1434,7 @@
 		<Exec Command="npm run sass -- --style=compressed Styles:wwwroot/css" />
 	</Target>
 
+
 	<ItemGroup>
 		<ProjectReference Include="..\CommonExercise\CommonExercise.csproj" />
 		<ProjectReference Include="..\Services\Storages\Storages.csproj" />
@@ -1453,6 +1455,8 @@
 			<LastGenOutput>Resource.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
+
+
 
 
   </Project>

@@ -175,10 +175,50 @@ namespace AphasiaProject.Controllers.Auth
            model.Id = userid;
            var user = await UserManager.FindByIdAsync(userid.ToString());
            await UserManager.ChangePasswordAsync(user, model.PassOld, model.PassNew);
-            return (Ok("ok"));
+           return (Ok("ok"));
         }
 
 
+        [HttpPost("create/patient")]
+        [Produces("application/json")]
+        public async Task<ActionResult> POSTCreatePatient(PatientCreationModel model)
+        {
+
+            var user = new AppUser()
+            {
+                UserName = model.Login,
+                Role = "Patient",
+                Email = "DefaultEmail@org.com",
+                CreateDateTime = DateTime.UtcNow,
+                IsActive = false,
+                TherapistId = model.Id
+            };
+            await UserManager.CreateAsync(user, model.Password);
+
+            await UserManager.AddClaimAsync(user, new Claim("Role", user.Role));
+            await UserManager.AddClaimAsync(user, new Claim("UserName", user.UserName));
+            await UserManager.AddClaimAsync(user, new Claim("Email", user.Email));
+
+
+            _logger.LogInfo($"Add new user id: {user.Id}");
+            return Ok(new AppRegisterResponseViewModel(user));
+        }
+
+        [HttpGet("patients")]
+        [Produces("application/json")]
+        public async Task<ActionResult> GETPatients(int id)
+        {
+            try
+            {
+                var result = _userActionService.GetPatients(id);
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
+        }
 
     }
 
