@@ -112,7 +112,6 @@ namespace AphasiaClientApp.ExercisePanels.PanelEnumeration
 
                 if (Counter != lastCount)
                 {
-                    Cts = new CancellationTokenSource();
                     lastCount = Counter;
                     if (IsArrangeInTurn())
                     {

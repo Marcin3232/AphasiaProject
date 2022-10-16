@@ -1,6 +1,7 @@
 ﻿using AphasiaClientApp.ExercisePanels.BasePanelFunc;
 using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Models.Enums;
+using AphasiaClientApp.Pages.Exercises;
 using CommonExercise.ExerciseResourceProjection;
 using CommonExercise.Models;
 using CommonExercise.Utils;
@@ -15,6 +16,8 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
 {
     public partial class PanelMatch
     {
+        [CascadingParameter]
+        public MainPanel MainPanel { get; set; }
         [Parameter]
         public int Counter { get; set; } = 0;
         [Parameter]
@@ -59,7 +62,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
                 {
                     Reset();
                     lastCount = Counter;
-
+                    MainPanel.cts = new System.Threading.CancellationTokenSource();
                     panelMatchList = InitMatchList();
                     RandomizeList();
                     await OnPlayTaskSound();
@@ -151,7 +154,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchCore
             {
                 await Task.Delay(10);
                 var model = modelList.FirstOrDefault(x => x.IsMatch);
-                await Task.Delay(await Sound.PlaySrcAsync(model?.DescriptionSound));
+                await Task.Delay(await Sound.PlaySrcAsync(model?.DescriptionSound), MainPanel.cts.Token);
             }
             blocker = false;
         }

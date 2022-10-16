@@ -33,6 +33,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelOption2Core
             Model = panelList.Shuffle().FirstOrDefault();
             show = true;
             StateHasChanged();
+            MainPanel.cts=new System.Threading.CancellationTokenSource();
             await PlayTask();
             StateHasChanged();
 
@@ -71,7 +72,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelOption2Core
                       item.IsShowBorder = true;
                       StateHasChanged();
 
-                      await Task.Delay(await Sound.PlaySrcAsync(item.TextSoundSrc));
+                      await Task.Delay(await Sound.PlaySrcAsync(item.TextSoundSrc), MainPanel.cts.Token);
 
                       for (int i = 0; i < 1000; i++)
                       {
@@ -97,7 +98,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelOption2Core
                  isBlocked = true;
                  await Task.Delay(100);
 
-                 await Task.Delay(await Sound.PlaySrcAsync(Model.MainInstructionSoundSrc));
+                 await Task.Delay(await Sound.PlaySrcAsync(Model.MainInstructionSoundSrc), MainPanel.cts.Token);
 
                  isBlocked = false;
 

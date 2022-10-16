@@ -1,6 +1,7 @@
 ﻿using AphasiaClientApp.ExercisePanels.BasePanelFunc;
 using AphasiaClientApp.Models.Constant;
 using AphasiaClientApp.Models.Enums;
+using AphasiaClientApp.Pages.Exercises;
 using CommonExercise.Enums;
 using CommonExercise.ExerciseResourceProjection;
 using CommonExercise.Models;
@@ -9,12 +10,15 @@ using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AphasiaClientApp.ExercisePanels.PanelIndicate
 {
     public partial class PanelIndicate : ComponentBase
     {
+        [CascadingParameter]
+        public MainPanel MainPanel { get; set; }
         [Parameter]
         public int Counter { get; set; } = 0;
         [Parameter]
@@ -46,6 +50,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
             ModelList = PnaleIndicateNormalizer
                 .Get(exercise.ExerciseInformation.ExerciseTaskId,
                 exercise.ExerciseResource);
+            MainPanel.cts = new CancellationTokenSource();
             show = true;
             lastCount = -1;
             StateHasChanged();
@@ -181,8 +186,9 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
         private async Task OnPlayDescSound()
         {
             await Task.Delay(10);
+            MainPanel.cts = new CancellationTokenSource();
             var delay = await Sound.PlayAsync(IndicateList.FirstOrDefault(x => x.IsIndicate)?.Desctiption);
-            await Task.Delay(delay);
+            await Task.Delay(delay, MainPanel.cts.Token);
         }
 
         private bool IsPlayDesc() => !string.IsNullOrEmpty(ModelList.FirstOrDefault()?.Desctiption)

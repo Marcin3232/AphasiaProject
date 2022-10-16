@@ -25,6 +25,7 @@
                 </div>
                 <div class="col col-pos">
                     <NaviCardExercise Title="Cofnij"
+                                      IsPulse=@goNext
                                       NaviType="@NaviTypeImage.Back"
                                       ClickCallback="Back" />
                 </div>
@@ -45,6 +46,7 @@
                 </div>
                 <div class="col col-pos">
                     <NaviCardExercise Title="Dalej"
+                                      IsPulse=@goNext
                                       NaviType="@NaviTypeImage.Next"
                                       ClickCallback="Next" />
                 </div>
@@ -84,8 +86,8 @@
     <PanelFindPairGame @ref=@panelFindPairGame NextCallback=@OnGoNext />
     <PanelOption2 @ref=@panelOption2
                   NextCallback=@OnGoNext />
-                  <PanelMatchSentence @ref=@panelMatchSentence 
-                   NextCallback=@OnGoNext />
+    <PanelMatchSentence @ref=@panelMatchSentence
+                        NextCallback=@OnGoNext />
 
 </CascadingValue>
 
@@ -96,5 +98,5 @@
                 EventCallback=@OnFooterAction />
 
 <LoadingDialogModel @ref="@dialogLoad" />
-<CloseExercisesModal @ref="@dialogExit"   
+<CloseExercisesModal @ref="@dialogExit"
                      OnClose="OnCloseExerciseDialog" />

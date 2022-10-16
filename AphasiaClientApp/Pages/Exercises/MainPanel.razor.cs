@@ -86,16 +86,16 @@ namespace AphasiaClientApp.Pages.Exercises
             if (Exercise == null)
             {
                 Exercise = await dBExerciseService.GetExercise((int)Id);
+
+                if (Exercise == null)
+                {
+                    snackbarMessage.Show("Ostrzeżenie", "Ćwiczenie chwilowo niedostępne.", Models.Enums.StatusType.Warning, false, null);
+                    await Task.Delay(1000);
+                    Navigation.NavigateTo("/choiceTypeAphasia");
+                    return;
+                }
+
                 NumericPhase(Exercise);
-            }
-
-
-            if (Exercise == null)
-            {
-                snackbarMessage.Show("Ostrzeżenie", "Ćwiczenie chwilowo niedostępne.", Models.Enums.StatusType.Warning, false, null);
-                await Task.Delay(1000);
-                Navigation.NavigateBack();
-                return;
             }
 
             if (ExerciseHistory == null)
@@ -132,7 +132,7 @@ namespace AphasiaClientApp.Pages.Exercises
             }
 
             var type = (ExerciseType)ExercisePhaseCurrent?.Type;
-
+            cts = new CancellationTokenSource();
             switch (GetExercisePanel(type))
             {
                 case ExercisePanelOption.PanelOption1:
@@ -193,7 +193,8 @@ namespace AphasiaClientApp.Pages.Exercises
             await Task.Delay(10);
             await SaveCurrentHistory();
             await dialogLoad.Close();
-            Navigation.NavigateBack();
+            cts.Cancel();
+            Navigation.NavigateTo("/choiceTypeAphasia");
         }
 
         private void NumericPhase(Exercise exercise)
@@ -213,8 +214,10 @@ namespace AphasiaClientApp.Pages.Exercises
             if (action)
             {
                 cts.Cancel();
+                goNext = false;
                 await Task.Delay(10);
                 await StartNewPanel();
+                await IsPlayTitle();
             }
         }
 
@@ -263,9 +266,14 @@ namespace AphasiaClientApp.Pages.Exercises
             Counter--;
         }
 
-        private Task Refresh()
+        private async Task Refresh()
         {
-            return Task.CompletedTask;
+            await dialogLoad.Show();
+            await Task.Delay(10);
+            await SaveCurrentHistory();
+            await dialogLoad.Close();
+            await OnInitializedAsync();
+
         }
 
         private bool NextPhase(bool isUp = false)
@@ -370,7 +378,6 @@ namespace AphasiaClientApp.Pages.Exercises
             goNext = action;
             if (goNext)
                 await SoundService.PlaySrcAsync(GoNext.GoNextSrc());
-
         }
 
         private void OnCancel(bool action) =>
@@ -378,14 +385,14 @@ namespace AphasiaClientApp.Pages.Exercises
 
         private async Task SaveCurrentHistory()
         {
-            await _exerciseResultHistoryService.Insert(new Services.ExerciseResultHistoryServices.ExerciseResultHistory()
+            await _exerciseResultHistoryService.Insert(new ExerciseResultHistory()
             {
                 Id = 0,
                 Key = Base64.Encode(KeyExtension.Generate(Id, IdUser, ExerciseKey.History)),
                 JsonValue = JsonExtension<Exercise>.Serialize64(Exercise),
                 CreateTime = DateTime.Now
             });
-            await _exerciseResultHistoryService.Insert(new Services.ExerciseResultHistoryServices.ExerciseResultHistory()
+            await _exerciseResultHistoryService.Insert(new ExerciseResultHistory()
             {
                 Id = 0,
                 Key = Base64.Encode(KeyExtension.Generate(Id, IdUser, ExerciseKey.HistoryResult)),

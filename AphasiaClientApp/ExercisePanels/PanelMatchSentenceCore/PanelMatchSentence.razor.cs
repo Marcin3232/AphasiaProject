@@ -136,8 +136,8 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchSentenceCore
                 mark.IsCorrect = false;
                 StateHasChanged();
 
-                await Task.Delay(await Sound.PlaySrcAsync(SoundTaskHelper.GetSoundSrc(SoundSrc.Bu)));
-                await Task.Delay(1000);
+                await Task.Delay(await Sound.PlaySrcAsync(SoundTaskHelper.GetSoundSrc(SoundSrc.Bu)), MainPanel.cts.Token);
+                await Task.Delay(1000, MainPanel.cts.Token);
 
                 item.IsCorrect = null;
                 mark.IsCorrect = true;
@@ -152,8 +152,8 @@ namespace AphasiaClientApp.ExercisePanels.PanelMatchSentenceCore
                 mark.IsCorrect = null;
                 mark.IsSelected = false;
                 StateHasChanged();
-                await Task.Delay(await Sound.PlaySrcAsync(SoundTaskHelper.GetSoundSrc(SoundSrc.Blik)));
-                await Task.Delay(100);
+                await Task.Delay(await Sound.PlaySrcAsync(SoundTaskHelper.GetSoundSrc(SoundSrc.Blik)), MainPanel.cts.Token);
+                await Task.Delay(100, MainPanel.cts.Token);
             }
 
             if (!model.Selected.Any(x => !x.IsShow))

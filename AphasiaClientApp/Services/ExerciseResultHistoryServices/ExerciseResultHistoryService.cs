@@ -1,4 +1,5 @@
 ﻿using AphasiaClientApp.Extensions.RequestMethod;
+using CommonExercise.Models;
 using CommonExercise.Models.Request;
 using System.Collections.Generic;
 using System.Net.Http;
