@@ -1,43 +1,46 @@
-﻿@page "/ChangePassword"
+﻿@page "/yourPatients/createPatient"
 @using Models.Enums
+
 <div class="field-body" style="margin-top:50px; margin-bottom:60px;">
     <div class="card card-l border-0">
-        <div class="text-card-title text-center">Zmień Hasło</div>
+        <div class="text-card-title text-center">Stwórz użytkownika</div>
               <div class="mb-3">
                 <div class="form-group">
                     <div class="text-forms text-left-label">
-                        <label for="OldPassword" class="form-label text-start"><b>Stare Hasło</b></label>
+                        <label for="userName" class="form-label text-start"><b>Login użytkownika</b></label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-person-fill"></i>
-                        <InputText id="OldPassword" placeholder="Stare Hasło" @bind-Value="changePasswordModel.OldPassword" class="form-control" />
+                        <input id="userName" placeholder="Login" class="form-control" />
                     </div>
                 </div>
               </div>
               <div class="mb-3">
                 <div class="form-group">
                     <div class="text-forms text-left-label">
-                        <label for="NewPassword" class="form-label text-start"><b>Nowe Hasło</b></label>
+                        <label for="NewPassword" class="form-label text-start"><b>Hasło</b></label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-person-fill"></i>
-                        <InputText id="NewPassword" placeholder="Nowe Hasło" @bind-Value="changePasswordModel.Password" class="form-control" />
+                        <input id="NewPassword" placeholder="Hasło" class="form-control" />
                     </div>
                 </div>
                 </div>
                <div class="mb-3">
                 <div class="form-group">
                     <div class="text-forms text-left-label">
-                        <label for="NewPasswordRepeat" class="form-label text-start"><b>Powtórz Nowe Hasło</b></label>
+                        <label for="NewPasswordRepeat" class="form-label text-start"><b>Powtórz Hasło</b></label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-person-fill"></i>
-                        <InputText id="NewPasswordRepeat" placeholder="Powtórz Nowe Hasło" @bind-Value="changePasswordModel.PasswordRepeat" class="form-control" />
+                        <input id="NewPasswordRepeat" placeholder="Powtórz Hasło" class="form-control" />
                     </div>
                 </div>
              </div>
             <div class="positioner">
-                <ButtonModel Id="changePassword" ButtonTypes="ButtonTypes.ButtonSmLDarkResponvie" ButtonCallback=ExecutePasswordChange EventType="ButtonEventType.Submit" Text="Zapisz"/>
+                <ButtonModel Id="createPatient" ButtonTypes="ButtonTypes.ButtonSmLDarkResponvie"  Text="Stwórz"/>
             </div>
          </div>
      </div>
+
+

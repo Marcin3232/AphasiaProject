@@ -11,5 +11,7 @@ namespace AphasiaProject.Services.User
     {
         UserPersonalDetailModel GetUserData(int key);
         Task<int> UpdateUserPersonalData(UserPersonalDetailModel model);
+
+        List<PatientModel> GetPatients(int key);
     }
 }
