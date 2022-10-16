@@ -1,1 +1,86 @@
-.text-navi-card{position:static;font-family:Roboto;font-style:normal;font-weight:normal;font-size:14px;line-height:16px;text-align:center;align-content:center;font-feature-settings:"liga" off;color:#055961;flex:none;order:1;flex-grow:0}.text-navi-card-vert{position:static;font-family:Roboto;font-style:normal;font-weight:normal;font-size:14px;line-height:16px;text-align:center;font-feature-settings:"liga" off;color:#055961;flex:none;order:1;flex-grow:0;margin:27px 0px}.card{background:#dbf4f6}.card-body{padding:2px !important}.btn-nav-exercise{width:52px;height:52px;background:#dbf4f6;border-radius:50%}.btn-nav-exercise:hover{background:rgba(5,89,97,.15)}.card:hover .text-navi-card{text-decoration-line:underline}.btn-nav-exercise:active{background:rgba(5,89,97,.3)}
+.text-navi-card {
+    position: static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    align-content: center;
+    font-feature-settings: "liga" off;
+    color: #055961;
+    flex: none;
+    order: 1;
+    flex-grow: 0
+}
+
+.text-navi-card-vert {
+    position: static;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    font-feature-settings: "liga" off;
+    color: #055961;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 27px 0px
+}
+
+.card {
+    background: #dbf4f6
+}
+
+.card-body {
+    padding: 2px !important
+}
+
+.btn-nav-exercise {
+    width: 52px;
+    height: 52px;
+    background: #dbf4f6;
+    border-radius: 50%
+}
+
+    .btn-nav-exercise:hover {
+        background: rgba(5,89,97,.15)
+    }
+
+.card:hover .text-navi-card {
+    text-decoration-line: underline
+}
+
+.btn-nav-exercise:active {
+    background: rgba(5,89,97,.3)
+}
+
+
+.pulse {
+    animation: pulse-animation 1s infinite;
+    border-radius:50%;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+    }
+}
+
+
+.master {
+    color: black;
+    float: right;
+}
+
+@media (max-width:900px) {
+    .master {
+        display: none
+    }
+}

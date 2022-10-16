@@ -19,7 +19,11 @@ namespace AphasiaClientApp.Components.Cards
         public NaviTypeImage NaviType { get; set; }
         [Parameter]
         public EventCallback ClickCallback { get; set; }
+        [Parameter]
+        public bool IsPulse { get; set; } = false;
         private string _imageUrl => Path.PathFile + NaviType.GetAttribute<DisplayAttribute>().Name;
+
+        private string _pulseAnimation => IsPulse ? "pulse" : "";
 
     }
 }

@@ -58,3 +58,30 @@
 .btn-nav-exercise:active {
   background: $base-activer-dark;
 }
+
+.pulse {
+    animation: pulse-animation 1s infinite;
+    border-radius: 50%;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+    }
+}
+
+
+.master {
+    color: black;
+    float: right;
+}
+
+@media (max-width:900px) {
+    .master {
+        display: none
+    }
+}
