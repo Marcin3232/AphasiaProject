@@ -178,7 +178,6 @@ namespace AphasiaProject.Controllers.Auth
            return (Ok("ok"));
         }
 
-
         [HttpPost("create/patient")]
         [Produces("application/json")]
         public async Task<ActionResult> POSTCreatePatient(PatientCreationModel model)
@@ -201,6 +200,11 @@ namespace AphasiaProject.Controllers.Auth
 
 
             _logger.LogInfo($"Add new user id: {user.Id}");
+
+          
+
+            await _userActionService.createUserExcercises(user.Id);
+
             return Ok(new AppRegisterResponseViewModel(user));
         }
 

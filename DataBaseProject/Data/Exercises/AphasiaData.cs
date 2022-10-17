@@ -14,7 +14,9 @@ namespace DataBaseProject.Data.Exercises
         private List<AphasiaModel> CreateList()
         {
             var temp = new List<AphasiaModel>();
-
+            temp.Add(Create(1, "Czuciowa", "...",true,1,0));
+            temp.Add(Create(2, "Motoryczna", "...", true, 2, 0));
+            temp.Add(Create(3, "Mieszana", "...", true, 3, 0));
             return temp;
         }
 

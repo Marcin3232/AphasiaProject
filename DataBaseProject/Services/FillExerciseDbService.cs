@@ -18,8 +18,12 @@ namespace DataBaseProject.Services
             var exerciseData = new ExerciseData();
             var exerciseNames = ExerciseNameData.ExerciseNameList();
             var exercises = exerciseData.GetFilled();
+            var aphasiaData = new AphasiaData().GetFilled();
+            
             using (var context = new ExerciseDbContext())
             {
+                context.AddRange(aphasiaData);
+                context.SaveChanges();
                 exerciseNames.ForEach(x =>
                 {
                     InsertOrUpdateExerciseName(context, x).GetAwaiter().GetResult();
