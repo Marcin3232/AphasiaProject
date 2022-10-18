@@ -12,5 +12,7 @@ namespace AphasiaClientApp.Components.Buttons
         public EventCallback ButtonCallback { get; set; }
         [Parameter]
         public string Text { get; set; }
+        [Parameter]
+        public string Id { get; set; }
     }
 }

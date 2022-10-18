@@ -5,9 +5,10 @@ namespace AphasiaClientApp.Models.Management
     public class PatientModel
     {
 
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public int Id { get; set; }
+        public string UserName { get; set; }
       
+        public bool IsActive { get; set; }  
     }
 }
 

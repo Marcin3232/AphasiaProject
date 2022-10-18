@@ -1,6 +1,8 @@
 ﻿using AphasiaProject.Models.Helpers;
 using AphasiaProject.Models.ResponseExercise;
 using AphasiaProject.Services.Dapper;
+using CommonExercise.Models;
+using CommonExercise.Models.User.Management;
 using DataBaseQuery.Exercise;
 using ExerciseResource.Factory;
 using System;
@@ -67,5 +69,19 @@ namespace AphasiaProject.Services.Exercise
                 Phases = phases,
                 ExerciseResource = resources
             };
+
+        public async Task<int> UpdateUserExercies(List<ExcerciseCartManagementModel> model)
+        {
+            return await _repository.ExecuteAsync(ExerciseQuery.UserExerciseInsert(), model);
+        }
+
+        public List<UserExercisePhaseModel> GetExercisePhases(int key)=>
+            Task.FromResult(_repository.Get<UserExercisePhaseModel>(
+            ExerciseQuery.GetUserExercisePhases(), new { Key = key })).Result;
+
+        public async Task<int> UpdateUserPhase(List<UserPhaseSaveModel> model)
+        {
+            return await _repository.ExecuteAsync(ExerciseQuery.UserPhaseUpdate(), model);
+        }
     }
 }

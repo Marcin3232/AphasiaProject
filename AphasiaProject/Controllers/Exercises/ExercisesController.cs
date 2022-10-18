@@ -1,6 +1,7 @@
 ﻿using AphasiaProject.Services.Exercise;
 using CommonExercise.Enums;
 using CommonExercise.Models;
+using CommonExercise.Models.User.Management;
 using DataBaseProject.Context;
 using DataBaseProject.Data.Exercises;
 using DataBaseProject.Models.Exercise;
@@ -66,18 +67,54 @@ namespace AphasiaProject.Controllers.Exercises
         }
 
 
-        //Excercise management
-        [HttpGet("excercise/{userid}")]
-        public async Task<ActionResult> GetExcerciseForManagement(int userid)
-        {
-            return null;
-        }
+
 
         [HttpPost("excercise/{userid}")]
         [Produces("application/json")]
         public async Task<ActionResult> POSTExcerciseForManagement(int userid, List<ExcerciseCartManagementModel> model)
         {
-            return null;
+            try
+            {
+                var result = _exerciseService.UpdateUserExercies(model);
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
+        }
+
+        [HttpGet("user/exercisephase/{exId}")]
+        [Produces("application/json")]
+        public async Task<ActionResult> GetUserExercisePhases(int exId)
+        {
+            try
+            {
+                var result = _exerciseService.GetExercisePhases(exId);
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
+        }
+
+        [HttpPost("user/exercisephase")]
+        [Produces("application/json")]
+        public async Task<ActionResult> SaveUserExercisePhases(List<UserPhaseSaveModel> model)
+        {
+            try
+            {
+                var result = _exerciseService.UpdateUserPhase(model);
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
         }
     }
 }

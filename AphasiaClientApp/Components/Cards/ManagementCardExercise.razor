@@ -1,6 +1,6 @@
 ﻿@using AphasiaClientApp.Models.Enums
 
-<div class="card grid-square" index="@Order" disabledCart=@Disabled exId=@UserExId>
+<div class="card grid-square" style="@Style" index="@Order" disabledCart=@Disabled exId=@UserExId @onclick=change>
     <div class="mini-circle">
         <div class="center">
             <div class="text-style">
@@ -11,7 +11,7 @@
     <div class="center">
         <div class="circle">
             <div class="center">
-               <img src="/resource/aphasiaType/mixedAphasiaType.svg" class="position-center" style="max-width:120px; max-height:120px;" alt="..." />
+               <img src="@ImageUrl" class="position-center" style="max-width:120px; max-height:120px;" alt="..." />
             </div>
         </div>
     </div>
@@ -22,11 +22,15 @@
     </div>
     <p>
 
-        <div class="text-style" style="margin-left:5px;">
+        <div class="text-style" style="margin-left:5px;" >
             <ImageButtonModel ButtonCallback=ButtonCallback
-                              ImageButtonType=ImageButtonTypes.ButtonFrame
+                              Id="RedirectToPhase"
+                              ExerciseId ="@UserExId"
+                              ImageButtonType=ImageButtonTypes.ButtonRedirectToExPhases
                               TypeImage=NaviTypeImage.Settings
-                              SetType=".ic-light-color" />
+                              SetType=".ic-light-color"
+                              SetStyle="background:white"/>
+                              
 
             @for (int i = 0; i < maxMark; i++)
             {
@@ -35,3 +39,5 @@
         </div>
     </p>
 </div>
+
+        

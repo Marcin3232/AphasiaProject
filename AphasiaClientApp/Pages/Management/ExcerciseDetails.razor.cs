@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using AphasiaClientApp.Features.AuthService;
+using CommonExercise.Models.User.Management;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AphasiaClientApp.Pages.Management
@@ -7,16 +11,20 @@ namespace AphasiaClientApp.Pages.Management
     public partial class ExcerciseDetails
     {
         [Inject]
-        IJSRuntime JsRuntime { get; set; }
+        public IAuthenticationService AuthenticationService { get; set; }
 
-        protected override void OnInitialized()
-        {
+        List<UserExercisePhaseModel> userExercisePhaseModels = new List<UserExercisePhaseModel>();
 
-        }
-        async Task SaveAsync()
+
+        [Parameter]
+        public string Id { get; set; }
+        public int index { get; set; }  
+        protected override async Task<Task> OnInitializedAsync()
         {
-            string name = await JsRuntime.InvokeAsync<string>("prompt", "What is your name?");
-            await JsRuntime.InvokeVoidAsync("alert", $"Hello {name}!");
+            userExercisePhaseModels = await AuthenticationService.GetPatientPhases(Int16.Parse(Id));
+                ;
+            index = userExercisePhaseModels.Count;
+            return base.OnInitializedAsync();
         }
 
         void RedirectToResults()

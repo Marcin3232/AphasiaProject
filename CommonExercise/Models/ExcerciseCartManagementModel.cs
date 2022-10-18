@@ -13,7 +13,7 @@ namespace CommonExercise.Models
         public int Id { get; set; }
 
         [JsonPropertyName("disabled")]
-        public string Disabled { get; set; }
+        public bool Disabled { get; set; }
 
         [JsonPropertyName("order")]
         public int order { get; set; }

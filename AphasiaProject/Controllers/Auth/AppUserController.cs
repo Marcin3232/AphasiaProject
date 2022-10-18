@@ -208,13 +208,30 @@ namespace AphasiaProject.Controllers.Auth
             return Ok(new AppRegisterResponseViewModel(user));
         }
 
-        [HttpGet("patients")]
+        [HttpGet("patients/{id}")]
         [Produces("application/json")]
         public async Task<ActionResult> GETPatients(int id)
         {
             try
             {
                 var result = _userActionService.GetPatients(id);
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
+        }
+
+
+        [HttpGet("patients/getExercises/{id}/{type}")]
+        [Produces("application/json")]
+        public async Task<ActionResult> GetPatientExercises(int id,int type)
+        {
+            try
+            {
+                var result = _userActionService.GetPacientsExercises(id,type);
                 return result == null ? NotFound() : Ok(result);
             }
             catch (Exception ex)

@@ -30,7 +30,8 @@ namespace AphasiaClientApp.Components.Buttons
         public string SetClickType { get; set; }
         [Parameter]
         public string Id { get; set; }
-
+        [Parameter]
+        public int ExerciseId { get; set; }
 
         [Parameter]
         public string SetPatientID { get; set; }
@@ -38,9 +39,13 @@ namespace AphasiaClientApp.Components.Buttons
         private string Type => EventType.GetAttribute<DisplayAttribute>().Name;
         private string ImageSrc => Path.FullPathImage(TypeImage);
 
+        public void RedirectToExPhase()
+        {
+            UriHelper.NavigateTo("/management/management_exercise/excerciseDetails/"+ExerciseId, true);
+        }
         public void RedirectToPatientExcercisePage()
         {
-            UriHelper.NavigateTo("/management/"+SetPatientID+"/management_exercise",true);
+            UriHelper.NavigateTo("/management/"+SetPatientID+"/management_exercise/1",true);
         }
         public void RedirectToPatientDetailsPage()
         {

@@ -1,7 +1,9 @@
 ﻿ using AphasiaClientApp.Extensions.RequestMethod;
 using AphasiaClientApp.Features.AuthProviders;
 using AphasiaClientApp.Models.Auth;
+using AphasiaClientApp.Models.Management;
 using Blazored.LocalStorage;
+using CommonExercise.Models.User.Management;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -83,5 +85,33 @@ namespace AphasiaClientApp.Features.AuthService
             return result;
         }
 
+        public async Task<List<PatientModel>> GetPatients()
+        {
+            string id = await _localStorage.GetItemAsync<string>("therapistId");
+            string url = "/api/userControllers/patients/"+id;
+            var registerResult = await _client.GetAsync(url);
+            var registerContent = await registerResult.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<List<PatientModel>>(registerContent, _options);
+            return result;;
+        }
+
+        public async Task<List<PatientExerciseModel>> GetPatientsExercises(string id, string aKey)
+        {
+            
+            string url = "/api/userControllers/patients/getExercises/" + id+"/"+aKey;
+            var registerResult = await _client.GetAsync(url);
+            var registerContent = await registerResult.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<List<PatientExerciseModel>>(registerContent, _options);
+            return result; ;
+        }
+
+        public async Task<List<UserExercisePhaseModel>> GetPatientPhases(int key)
+        {
+            string url = "/api/Exercises/user/exercisephase/" + key;
+            var registerResult = await _client.GetAsync(url);
+            var registerContent = await registerResult.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<List<UserExercisePhaseModel>>(registerContent, _options);
+            return result; 
+        }
     }
 }

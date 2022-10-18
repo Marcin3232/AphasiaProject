@@ -18,15 +18,34 @@ namespace AphasiaClientApp.Components.Cards
         public string Disabled { get; set; } = "false";
 
         [Parameter]
+        public string Style { get; set; } = "background:white;";
+
+
+        [Parameter]
         public EventCallback ButtonCallback { get; set; }
         [Parameter]
         public double Mark { get; set; } = 3.56;
-
+        
         protected override Task OnInitializedAsync()
         {
             Task.Delay(1);
             StateHasChanged();
             return base.OnInitializedAsync();
+        }
+
+        public void change()
+        {
+            string disabled = Disabled;
+            if (disabled == "False")
+            {
+                Disabled = "True";
+                Style = "background:#d3d3d3;";
+            }
+            if (disabled == "True")
+            {
+                Disabled = "False";
+                Style = "background:white;";
+            }
         }
 
         private int maxMark => 5;

@@ -45,6 +45,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Exercises\UpdateUserPhase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Services\User\IUserActionService.cs" />
     <None Remove="Services\User\UserActionService.cs" />
   </ItemGroup>

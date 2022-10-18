@@ -17,5 +17,6 @@ public class UserExerciseModel
     [Required]
     public UserAphasiaModel UserAphasia { get; set; }
     public bool IsActive { get; set; } = false;
+    public int Order { get; set; } = 0;
 }
 

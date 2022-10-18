@@ -1,4 +1,5 @@
 ﻿using CommonExercise.Models.User;
+using CommonExercise.Models.User.Management;
 using DataBaseQuery.ModelHelper;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,22 @@ namespace DataBaseQuery.User
         $"FROM \"UserExercise\" as ue JOIN \"UserAphasia\" as ua on ue.\"{nameof(UserExerciseModel.UserAphasiaId)}\" = ua.\"{nameof(UserAphasiaModel.Id)}\"" +
            $"WHERE " +
            $"ua.\"IdUser\" = @Key ";
+
+
+        public static string QuerryGetExercisesForPatient()=>
+               $"SELECT " +
+        $"ue.\"{nameof(AphasiaExerciseModel.Id)}\", " +
+            $"ue.\"{nameof(AphasiaExerciseModel.Order)}\", "+
+        $"en.\"{nameof(AphasiaExerciseModel.ImageSrc)}\", " +
+         $"en.\"{nameof(AphasiaExerciseModel.Name)}\", " +
+        $"ue.\"{nameof(AphasiaExerciseModel.IsActive)}\" " +
+        $"from \"UserAphasia\" ua join \"UserExercise\" ue on ua.\"Id\"  = ue.\"UserAphasiaId\" " +
+            $"join \"Exercise\" e2 on ue.\"ExerciseId\" = e2.\"Id\" " +
+            $"join \"ExerciseName\" en on e2.\"ExerciseNameId\" = en.\"Id\" " +
+           $"WHERE " +
+           $"(ua.\"IdUser\" =@Key and ua.\"AphasiaId\"=@Key2) order by ue.\"Order\" asc  ";
+
+
 
 
 

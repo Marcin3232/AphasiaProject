@@ -1,6 +1,6 @@
-﻿@page "/management/{PatientId}/management_exercise"
+﻿@page "/management/{PatientId}/management_exercise/{AphasiaType}"
 @using AphasiaClientApp.Models.Enums
-
+@inject NavigationManager UriHelper
 <style>
     .navbar-custom {
         margin-bottom: 30px !important;
@@ -23,9 +23,9 @@
                     <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame SetClickType="Check"  TypeImage=NaviTypeImage.CheckedBox />
                     <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame SetClickType="Uncheck" TypeImage=NaviTypeImage.UncheckedBox />
                     <ImageButtonModel TypeImage=NaviTypeImage.ChartBar />
-                    <ImageButtonModel TypeImage=NaviTypeImage.HeadMoto />
-                    <ImageButtonModel TypeImage=NaviTypeImage.HeadSenso />
-                    <ImageButtonModel TypeImage=NaviTypeImage.HeadMix /></div>
+                    <ImageButtonModel ButtonCallback="RedirectMoto" id="Moto" TypeImage=NaviTypeImage.HeadMoto />
+                    <ImageButtonModel ButtonCallback="RedirectSenso" Id="Senso" TypeImage=NaviTypeImage.HeadSenso />
+                    <ImageButtonModel ButtonCallback="RedirectMix" Id="Mix" TypeImage=NaviTypeImage.HeadMix /></div>
                 </div>
                 <div class="col col-1" >
                     <div class="text-center">
@@ -38,14 +38,24 @@
 		<div id="grid" class="row">
             <div id="gridFlex">
 	<div id="gridDemo" class="col">
-    <ManagementCardExercise UserExId=30 Disabled="false"  Order="1" ExName="Gesty: tak nie" Mark="4"/>
-    <ManagementCardExercise UserExId=31 Disabled="false"  Order="2" ExName="Zestaw ćwiczeń narządów mowy" Mark="3"/>
-    <ManagementCardExercise UserExId=32 Disabled="false"  Order="3" ExName="Cyfry" Mark="5"/>
-    <ManagementCardExercise UserExId=33 Disabled="false"  Order="4" ExName="Rzeczowniki" Mark="4"/>
-    <ManagementCardExercise UserExId=34 Disabled="false"  Order="5" ExName="Czynności" Mark="5"/>
-    <ManagementCardExercise UserExId=35 Disabled="false"  Order="6" ExName="Co robi? Malarz maluje" Mark="4"/>
-    <ManagementCardExercise UserExId=36 Disabled="false"  Order="7" ExName="Przeciwieństwa" Mark="4"/>
-    <ManagementCardExercise UserExId=37 Disabled="false"  Order="8" ExName="Kolory" Mark="4"/>
+
+           @for (int i = 0; i < index; i++)
+            {
+                        string url = patientExerciseModel[i].ImageSrc + ".svg";
+                        bool isActive = patientExerciseModel[i].IsActive;
+
+                        if (isActive == true)
+                        {
+                            <ManagementCardExercise Style="background:#d3d3d3;" UserExId=patientExerciseModel[i].Id Disabled="@isActive.ToString()"  
+                         Order="i+1" ExName="@patientExerciseModel[i].Name" ImageUrl="@url" Mark="1"/>
+                        }
+                        if (isActive == false)
+                        {
+                            <ManagementCardExercise Style="background:white;" UserExId=patientExerciseModel[i].Id Disabled="@isActive.ToString()"  
+                         Order="i+1" ExName="@patientExerciseModel[i].Name" ImageUrl="@url" Mark="1"/>
+                        }
+                      
+            }
 			</div>
             </div>
 		
@@ -55,6 +65,5 @@
 
 
 </div>
-
 
 

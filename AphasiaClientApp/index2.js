@@ -1,8 +1,21 @@
+
+if(window.location.pathname.split('/')[4]=="1"){
+	document.getElementById("Moto").style.background="#d3d3d3"
+}
+if(window.location.pathname.split('/')[4]=="2"){
+	document.getElementById("Senso").style.background="#d3d3d3"
+}
+if(window.location.pathname.split('/')[4]=="3"){
+	document.getElementById("Mix").style.background="#d3d3d3"
+}
+
+
 $('.Uncheck').click(function(){
+	let test = 111;
 	let arr = document.getElementsByClassName('card')
 	for (let i = 0; i < arr.length; i++) {
 		arr[i].style.background = 'white'
-		$(arr[i]).attr("disabledCart", false)
+		$(arr[i]).attr("disabledCart", "False")
 	}
 })
 
@@ -11,23 +24,23 @@ $('.Check').click(function(){
 	let arr = document.getElementsByClassName('card')
 	for (let i = 0; i < arr.length; i++) {
 		arr[i].style.background = '#d3d3d3'
-		$(arr[i]).attr("disabledCart", false)
+		$(arr[i]).attr("disabledCart", "True")
 	}
 })
 
 
-$('.card').click(function(event){
-	    let element = event.currentTarget
-		let elementAttr = $(element).attr("disabledCart")
-		if(elementAttr === "false"){
-				element.style.background = '#d3d3d3'
-			    $(element).attr("disabledCart", "true")
-		}
-		if(elementAttr === "true"){
-			element.style.background = 'white'
-			$(element).attr("disabledCart", "false")
-		}
-})
+// $('.card').click(function(event){
+// 	    let element = event.currentTarget
+// 		let elementAttr = $(element).attr("disabledCart")
+// 		if(elementAttr === "false"){
+// 				element.style.background = '#d3d3d3'
+// 			    $(element).attr("disabledCart", "true")
+// 		}
+// 		if(elementAttr === "true"){
+// 			element.style.background = 'white'
+// 			$(element).attr("disabledCart", "false")
+// 		}
+// })
 
 //// Backend conenction funtions
 
@@ -39,15 +52,17 @@ $("#buttonSaveExcerciseHistory").click(function(){
  let cards = $('.card')
  let cardsInfoArray = []
  for(let i = 0; i < cards.length;i++){
+
 	let obj = {
 		"exId" : $(cards[i]).attr("exid"),
-		"disabled": $(cards[i]).attr("disabledCart"),
-		"order": i
+		"disabled": ($(cards[i]).attr("disabledCart").toLowerCase()==="true"),
+		"order": i+1
 	}
 	cardsInfoArray.push(obj)
  }
  let url = urlContext+"api/Exercises/excercise/"+window.location.pathname.split('/')[2];
  restRequest("POST",url,JSON.stringify(cardsInfoArray))
+ location.reload()
 })
 
 
@@ -66,8 +81,8 @@ $("#personaldDataSumbit").click(function(){
 	
 	console.log(id)
     let url = urlContext+"api/userControllers/edit/personalData/"+id[1]+id[2]
-
 	restRequest("POST",url,JSON.stringify(userData))
+	location.reload()
 })
 
 $("#changePassword").click(function(){
@@ -77,6 +92,7 @@ $("#changePassword").click(function(){
 	}
     let url = urlContext+"api/userControllers/edit/password/"+id[1]+id[2]
 	restRequest("POST",url,JSON.stringify(userData))
+	location.href("/")
 })
 
 
@@ -89,9 +105,26 @@ $("#createPatient").click(function(){
 	}
     let url = urlContext+"api/userControllers/create/patient"
 	restRequest("POST",url,JSON.stringify(userData))
+	location.href("/yourPatients")
 })
 
 
+$("#savePhases").click(function(){
+	let switchCointainers = $('.switch-container')
+	let switchCointainersInfoArray = []
+	for(let i = 0; i < switchCointainers.length;i++){
+   
+	   let obj = {
+		   "PhaseId" : $(switchCointainers[i]).attr("phaseid"),
+		   "IsActive": ($(switchCointainers[i]).attr("isavaible").toLowerCase()==="true"),
+	   }
+	   switchCointainersInfoArray.push(obj)
+	}
+	let url = urlContext+"api/Exercises/user/exercisephase";
+	restRequest("POST",url,JSON.stringify(switchCointainersInfoArray))
+	location.reload()
+	console.log(success)
+   })
 
 
 

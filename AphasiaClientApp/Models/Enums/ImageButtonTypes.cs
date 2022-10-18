@@ -7,5 +7,6 @@
         ButtonRemovePatient=2,
         ButtonRedirectPaitent=3,
         ButtonRedirectPaitentToDetails = 4,
+        ButtonRedirectToExPhases = 5,
     }
 }

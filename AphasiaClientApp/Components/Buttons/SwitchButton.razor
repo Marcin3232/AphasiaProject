@@ -1,7 +1,15 @@
 ﻿
 
-<div class="switch-container">
+<div class="switch-container" phaseId = "@PhaseId" isAvaible="@IsActivated">
 <p class="phase-name">@PhaseName</p>
-<input type="checkbox" id="@PhaseName" name="@PhaseName"/>
+    @if(IsActivated == "True")
+    {
+        <input type="checkbox" id="@PhaseName" name="@PhaseName"  @onclick=change/>
+    }
+    else
+    {
+        <input type="checkbox" id="@PhaseName" name="@PhaseName" checked @onclick=change/>
+    }
+
 <label for="@PhaseName">Toggle</label>
 </div>

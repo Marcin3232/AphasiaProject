@@ -8,6 +8,7 @@ using DataBaseQuery.User;
 using System.Threading.Tasks;
 using DataBaseProject.Models.UserExercise;
 using DataBaseQuery.ModelHelper;
+using CommonExercise.Models.User.Management;
 
 namespace AphasiaProject.Services.User
 {
@@ -86,12 +87,14 @@ namespace AphasiaProject.Services.User
                 });
             });
 
-            await _repository.ExecuteAsync(UserActionsQuerry.QueryInsertUserPhases(), phaseModelList);
-
-
-
-            throw new NotImplementedException();
+         return  await _repository.ExecuteAsync(UserActionsQuerry.QueryInsertUserPhases(), phaseModelList);
         }
+
+        public List<AphasiaExerciseModel> GetPacientsExercises(int key, int aphasia) =>
+            Task.FromResult(_repository.Get<AphasiaExerciseModel>(
+            UserActionsQuerry.QuerryGetExercisesForPatient(), new { Key = key,Key2 = aphasia })).Result;
+
+
 
         public List<PatientModel> GetPatients(int key) =>
         Task.FromResult(_repository.Get<PatientModel>(

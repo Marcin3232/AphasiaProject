@@ -1,4 +1,7 @@
 ﻿
+using CommonExercise.Models;
+using CommonExercise.Models.User.Management;
+
 namespace DataBaseQuery.Exercise
 {
     public class ExerciseQuery
@@ -42,6 +45,27 @@ namespace DataBaseQuery.Exercise
             $"en.\"IdExerciseTask\" as ExerciseTaskId " +
             $"FROM \"Exercise\" as e " +
             $"JOIN \"ExerciseName\" as en on en.\"Id\" = e.\"ExerciseNameId\" ";
+        public static string UserExerciseInsert() =>
+        $"UPDATE \"UserExercise\" " +
+            $"SET " +
+             $"\"IsActive\" = @{nameof(ExcerciseCartManagementModel.Disabled)}, " +
+             $"\"Order\" = @{nameof(ExcerciseCartManagementModel.order)} " +
+            $"WHERE  " +
+            $"\"{nameof(ExcerciseCartManagementModel.Id)}\" = @{nameof(ExcerciseCartManagementModel.Id)}";
 
+        public static string GetUserExercisePhases() =>
+            " select upe.\"Id\" ,epn.\"Description\",epn.\"Name\",upe.\"IsActive\"  from \"UserPhaseExercise\" upe " +
+            "join \"ExercisePhase\" ep on upe.\"ExercisePhaseId\" = ep.\"Id\"  " +
+            "join \"ExercisePhaseName\" epn on ep.\"PhaseNameId\" = epn.\"Id\"  " +
+            "where upe.\"UserExerciseId\" = @Key " +
+            "order by upe.\"Id\" asc";
+
+
+        public static string UserPhaseUpdate() =>
+       $"UPDATE \"UserPhaseExercise\" " +
+           $"SET " +
+            $"\"IsActive\" = @{nameof(UserPhaseSaveModel.IsActive)} " +
+           $"WHERE  " +
+           $"\"Id\" = @{nameof(UserPhaseSaveModel.PhaseId)}";
     }
 }
