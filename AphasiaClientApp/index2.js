@@ -92,7 +92,7 @@ $("#changePassword").click(function(){
 	}
     let url = urlContext+"api/userControllers/edit/password/"+id[1]+id[2]
 	restRequest("POST",url,JSON.stringify(userData))
-	location.href("/")
+	location.href = "/"
 })
 
 
@@ -105,9 +105,12 @@ $("#createPatient").click(function(){
 	}
     let url = urlContext+"api/userControllers/create/patient"
 	restRequest("POST",url,JSON.stringify(userData))
-	location.href("/yourPatients")
+	location.href = "/yourPatients"
 })
 
+$("#refresh").click(function(){
+	location.reload(true);
+})
 
 $("#savePhases").click(function(){
 	let switchCointainers = $('.switch-container')
@@ -122,11 +125,28 @@ $("#savePhases").click(function(){
 	}
 	let url = urlContext+"api/Exercises/user/exercisephase";
 	restRequest("POST",url,JSON.stringify(switchCointainersInfoArray))
-	location.reload()
+	window.history.back();
 	console.log(success)
    })
 
-
+$("#patientSearch").keyup(function(){
+	var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('patientSearch');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("list-group");
+    li = ul.getElementsByTagName('li');
+    for (i = 0; i < li.length; i++) {
+      a = li[i];
+      txtValue = a.textContent || a.innerText;
+      let filters = filter.split(" ") 
+      filters = filters.filter(f => f.length)   
+      let shouldDisplay = true
+      filters.forEach(filt => {
+        shouldDisplay = shouldDisplay && txtValue.toUpperCase().includes(filt)
+      })
+      li[i].style.display = (shouldDisplay || filters.length === 0) ? "" : "none";
+    }
+})
 
 
 function restRequest(type,url,data){
