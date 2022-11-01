@@ -53,7 +53,7 @@ namespace AphasiaClientApp.ExercisePanels.PanelIndicate
             MainPanel.cts = new CancellationTokenSource();
             show = true;
             lastCount = -1;
-            StateHasChanged();
+         //   StateHasChanged();
             return ModelList.Count > 2 ? ModelList.Count * repeat : repeat;
         }
 

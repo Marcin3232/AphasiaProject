@@ -272,6 +272,8 @@ namespace AphasiaClientApp.Pages.Exercises
             await Task.Delay(10);
             await SaveCurrentHistory();
             await dialogLoad.Close();
+            cts.Cancel();
+            goNext = false;
             await OnInitializedAsync();
 
         }
