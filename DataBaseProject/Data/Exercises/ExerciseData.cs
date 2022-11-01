@@ -27,6 +27,7 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(14, _exerciseNameData.GetName("14"), 0, true, null, 0));
             temp.Add(Create(15, _exerciseNameData.GetName("15"), 0, true, null, 0));
             temp.Add(Create(16, _exerciseNameData.GetName("16"), 0, true, null, 0));
+            temp.Add(Create(17, _exerciseNameData.GetName("21"), 0, true, null, 0));
             return temp;
         }
 

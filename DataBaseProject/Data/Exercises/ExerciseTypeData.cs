@@ -42,6 +42,10 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(26, _exerciseTypeNameData.GetTypeName(26)));
             temp.Add(Create(27, _exerciseTypeNameData.GetTypeName(27)));
             temp.Add(Create(28, _exerciseTypeNameData.GetTypeName(28)));
+            temp.Add(Create(29, _exerciseTypeNameData.GetTypeName(29)));
+            temp.Add(Create(30, _exerciseTypeNameData.GetTypeName(30)));
+            temp.Add(Create(31, _exerciseTypeNameData.GetTypeName(31)));
+
             return temp;
         }
 

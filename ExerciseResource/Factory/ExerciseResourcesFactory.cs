@@ -14,6 +14,7 @@ using ExerciseResource.Models.Exercise24;
 using ExerciseResource.Models.Exercise14;
 using ExerciseResource.Models.Exercise15;
 using System.Collections.Generic;
+using ExerciseResource.Models.Exercise21;
 
 namespace ExerciseResource.Factory
 {
@@ -46,6 +47,8 @@ namespace ExerciseResource.Factory
                     return Exercise14ResourceList(random);
                 case "15":
                     return Exercise15ResourceList(random);
+                case "21":
+                    return Exercise21ResourceList(random);
                 case "24":
                     return Exercise24ResourceList();
                 case "33":
@@ -122,6 +125,12 @@ namespace ExerciseResource.Factory
         private List<Exercise15Resource> Exercise15ResourceList(bool random)
         {
             var model = new Exercise15ResourcesList();
+            return random ? model.GetRandomValues() : model.GetValues();
+        }
+
+        private List<Exercise21Resource> Exercise21ResourceList(bool random)
+        {
+            var model = new Exercise21ResourcesList();
             return random ? model.GetRandomValues() : model.GetValues();
         }
 

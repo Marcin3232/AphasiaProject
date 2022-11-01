@@ -40,6 +40,9 @@ namespace DataBaseProject.Data.Exercises
             temp.Add(Create(26, (int)ExerciseType.ThreeImageTextRepeat, "Powtórz 3 określenia", "..."));
             temp.Add(Create(27, (int)ExerciseType.IndicateThreeImage, "Wskaż gdzie pomiędzy 3 obrazkami", "..."));
             temp.Add(Create(28, (int)ExerciseType.MatchTwoTermsToPhoto, "Dopasuj dwa określenia do fotografii", "..."));
+            temp.Add(Create(29, (int)ExerciseType.MatchPhotos, "Dopasuj fotografię", "..."));
+            temp.Add(Create(30, (int)ExerciseType.IndicateIncorect, "Wskaż co nie pasuje 4 obrazki", "..."));
+            temp.Add(Create(31, (int)ExerciseType.IndicateCorrect, "Wskaż pasujące 4 obrazki", "..."));
             return temp;
         }
 
