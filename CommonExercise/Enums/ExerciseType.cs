@@ -30,5 +30,8 @@
         ThreeImageTextRepeat = 26,
         IndicateThreeImage = 27,
         MatchTwoTermsToPhoto = 28,
+        MatchPhotos = 29,
+        IndicateIncorect = 30,
+        IndicateCorrect = 31
     }
 }
