@@ -5,7 +5,7 @@
 @switch (ImageButtonType)
 {
     case ImageButtonTypes.ButtonFrame:
-        <button class="btn-ic @SetType @SetClickType" id=@Id type="@Type" style="@SetStyle" @onclick=ButtonCallback>
+        <button class="btn-ic @SetType @SetClickType" title="@Tip" id=@Id type="@Type" style="@SetStyle" @onclick=ButtonCallback>
             <img src="@ImageSrc" width=28 height=27 alt="..." />
         </button>
         break;
@@ -16,7 +16,7 @@
 
         break;
     case ImageButtonTypes.ButtonRemovePatient:
-        <button class="btn-nf @SetType" type="@Type" style="@SetStyle" @onclick="()=>removePatientModal.Show()">
+        <button class="btn-nf @SetType" type="@Type" style="@SetStyle" title="Usuń Pacjenta" @onclick="()=>removePatientModal.Show()">
             <img src="@ImageSrc" style="max-width:34px;max-height:34px;" alt="..." />
         </button>
 
@@ -24,17 +24,17 @@
         break;
 
     case ImageButtonTypes.ButtonRedirectPaitent:
-        <button class="btn-ic @SetType" type="@Type" style="@SetStyle" @onclick=RedirectToPatientExcercisePage>
+        <button class="btn-ic @SetType" title="Terapia" type="@Type" style="@SetStyle" @onclick=RedirectToPatientExcercisePage>
             <img src="@ImageSrc" width=28 height=27 alt="..." />
         </button>
         break;
         case ImageButtonTypes.ButtonRedirectToExPhases:
-        <button class="btn-ic @SetType" type="@Type" style="@SetStyle" @onclick=RedirectToExPhase>
+        <button class="btn-ic @SetType" type="@Type" title="Szczegóły ćwiczenia" style="@SetStyle" @onclick=RedirectToExPhase>
             <img src="@ImageSrc" width=28 height=27 alt="..." />
         </button>
         break;
     case ImageButtonTypes.ButtonRedirectPaitentToDetails:
-        <button class="btn-ic @SetType" type="@Type" style="@SetStyle" @onclick=RedirectToPatientDetailsPage>
+        <button class="btn-ic @SetType" type="@Type" title="Dane Pacjenta" style="@SetStyle" @onclick=RedirectToPatientDetailsPage>
             <img src="@ImageSrc" width=28 height=27 alt="..." />
         </button>
         break;

@@ -107,6 +107,8 @@ namespace AphasiaProject.Controllers.Auth
 
             if (user != null && await UserManager.CheckPasswordAsync(user, model.Password))
             {
+                user.IsActive = true;
+                await UserManager.UpdateAsync(user);
 
                 var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettings.JWT_Secret))
                     , SecurityAlgorithms.HmacSha256);
@@ -121,6 +123,7 @@ namespace AphasiaProject.Controllers.Auth
                 return Ok(new { token });
             }
 
+      
             _logger.LogInfo(($"Login failed {model.UserName}"));
             return BadRequest();
         }

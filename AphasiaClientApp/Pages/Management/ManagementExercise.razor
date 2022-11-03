@@ -14,21 +14,21 @@
             <div class="row panel justify-content-center">
                 <div class="col col-1">
                     <div class="text-center">
-                    <ImageButtonModel Id="buttonSaveExcerciseHistory" TypeImage=NaviTypeImage.Save /></div>
+                    <ImageButtonModel Tip="Zapisz" Id="buttonSaveExcerciseHistory" TypeImage=NaviTypeImage.Save /></div>
                 </div>
                 <div class="col-sm-9">
                     <div class="text-center">
-                    <ImageButtonModel TypeImage=NaviTypeImage.Refresh Id="refresh" />
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame SetClickType="Check"  TypeImage=NaviTypeImage.CheckedBox />
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame SetClickType="Uncheck" TypeImage=NaviTypeImage.UncheckedBox />
-                    <ImageButtonModel TypeImage=NaviTypeImage.ChartBar />
-                    <ImageButtonModel ButtonCallback="RedirectMoto" id="Moto" TypeImage=NaviTypeImage.HeadMoto />
-                    <ImageButtonModel ButtonCallback="RedirectSenso" Id="Senso" TypeImage=NaviTypeImage.HeadSenso />
-                    <ImageButtonModel ButtonCallback="RedirectMix" Id="Mix" TypeImage=NaviTypeImage.HeadMix /></div>
+                    <ImageButtonModel Tip="Odśwież" TypeImage=NaviTypeImage.Refresh Id="refresh" />
+                    <ImageButtonModel Tip="Wyłącz wszystkie zestawy ćwiczeń" ImageButtonType=ImageButtonTypes.ButtonFrame SetClickType="Check"  TypeImage=NaviTypeImage.CheckedBox />
+                    <ImageButtonModel Tip="Włącz wszystkie zestawy ćwiczeń" ImageButtonType=ImageButtonTypes.ButtonFrame SetClickType="Uncheck" TypeImage=NaviTypeImage.UncheckedBox />
+                    <ImageButtonModel Tip="Zobacz Wyniki" TypeImage=NaviTypeImage.ChartBar />
+                    <ImageButtonModel Tip="Afazja Motoryczna" ButtonCallback="RedirectMoto" id="Moto" TypeImage=NaviTypeImage.HeadMoto />
+                    <ImageButtonModel Tip="Afazja Sensoryczna" ButtonCallback="RedirectSenso" Id="Senso" TypeImage=NaviTypeImage.HeadSenso />
+                    <ImageButtonModel Tip="Afazja Mieszana" ButtonCallback="RedirectMix" Id="Mix" TypeImage=NaviTypeImage.HeadMix /></div>
                 </div>
                 <div class="col col-1" >
                     <div class="text-center">
-                    <ImageButtonModel TypeImage=NaviTypeImage.Play /></div>
+                    <ImageButtonModel Tip="Rozpocznij Terapie" TypeImage=NaviTypeImage.Play /></div>
                 </div>
             </div>
         </div>

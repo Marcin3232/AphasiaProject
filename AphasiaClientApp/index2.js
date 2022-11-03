@@ -85,11 +85,27 @@ $("#personaldDataSumbit").click(function(){
 	location.reload()
 })
 
+
+setTimeout(() => {
+	$('#changePassword').prop("disabled",true)
+	$('#createPatient').prop("disabled",true)
+}, 300);
+
+$('#NewPasswordRepeat').change(function(){
+	if($('#NewPassword').val() == $('#NewPasswordRepeat').val()){
+		$('#changePassword').removeAttr("disabled")
+		$('#createPatient').removeAttr("disabled")
+	}
+})
+
+
 $("#changePassword").click(function(){
 	let userData = {
 		"passOld" : $('#OldPassword').val(),
 		"passNew" : $('#NewPassword').val()
 	}
+
+
     let url = urlContext+"api/userControllers/edit/password/"+id[1]+id[2]
 	restRequest("POST",url,JSON.stringify(userData))
 	location.href = "/"
@@ -105,7 +121,24 @@ $("#createPatient").click(function(){
 	}
     let url = urlContext+"api/userControllers/create/patient"
 	restRequest("POST",url,JSON.stringify(userData))
+
+
+	setTimeout(() => {
+		let username = "Login: " +$('#userName').val();
+		let password = "\nHaslo: " + $('#NewPassword').val();
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(username+password));
+		element.setAttribute('download', $('#userName').val());
+		element.style.display = 'none';
+		document.body.appendChild(element);
+		element.click();
+		document.body.removeChild(element);
+	}, 100);
+
+setTimeout(() => {
 	location.href = "/yourPatients"
+}, 300);
+	
 })
 
 $("#refresh").click(function(){
@@ -161,4 +194,3 @@ function restRequest(type,url,data){
 	 });
 }
 
- 

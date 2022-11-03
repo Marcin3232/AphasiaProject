@@ -11,9 +11,18 @@
 
             <li class="list-group-item">
                 <div class="patientItemImage oneline">
-           
-                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.CheckCircle SetType="ic-light" />
+
+                    @if (@patientModelList[i].IsActive == true)
+                    {
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame SetStyle="background:lightgreen" TypeImage=NaviTypeImage.CheckCircle SetType="ic-light" />
                     <div class="patientItemText">@patientModelList[i].UserName</div>
+                    }
+                    else
+                    {  
+                    <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonFrame TypeImage=NaviTypeImage.CheckCircle SetType="ic-light" />
+                    <div class="patientItemText">@patientModelList[i].UserName</div> 
+                    }
+               
                 </div>
                 <div class="patientItemActions text-right">
                     <ImageButtonModel ImageButtonType=ImageButtonTypes.ButtonRedirectPaitent SetPatientID="@patientModelList[i].Id.ToString()" TypeImage=NaviTypeImage.LeftNaviArrow SetType="ic-light" />

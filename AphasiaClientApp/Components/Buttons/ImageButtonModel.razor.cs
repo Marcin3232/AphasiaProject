@@ -36,6 +36,12 @@ namespace AphasiaClientApp.Components.Buttons
         [Parameter]
         public string SetPatientID { get; set; }
 
+        [Parameter]
+        public string Tip { get; set; }
+
+        [Parameter]
+        public string Active { get; set; }
+
         private string Type => EventType.GetAttribute<DisplayAttribute>().Name;
         private string ImageSrc => Path.FullPathImage(TypeImage);
 
