@@ -50,7 +50,7 @@ namespace AphasiaProject.Services.Exercise
 
         private List<ResponseExercisePhase> GetExercisePhase(int id)
         {
-            var query = $"{ExerciseQuery.QuerySelectPhaseExerciseResponse()} WHERE ep.\"ExerciseId\" = @{nameof(SingleValue<int>.Value)};";
+            var query = $"{ExerciseQuery.QuerySelectPhaseExerciseResponse()} WHERE ep.\"ExerciseId\" = @{nameof(SingleValue<int>.Value)} and ep.\"IsActive\" is true;";
             return Task.FromResult(_repository.Get<ResponseExercisePhase>(query, new SingleValue<int>() { Value = id })).Result;
         }
 
@@ -75,7 +75,7 @@ namespace AphasiaProject.Services.Exercise
             return await _repository.ExecuteAsync(ExerciseQuery.UserExerciseInsert(), model);
         }
 
-        public List<UserExercisePhaseModel> GetExercisePhases(int key)=>
+        public List<UserExercisePhaseModel> GetExercisePhases(int key) =>
             Task.FromResult(_repository.Get<UserExercisePhaseModel>(
             ExerciseQuery.GetUserExercisePhases(), new { Key = key })).Result;
 

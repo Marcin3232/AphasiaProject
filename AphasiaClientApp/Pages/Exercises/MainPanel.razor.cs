@@ -95,6 +95,7 @@ namespace AphasiaClientApp.Pages.Exercises
                     return;
                 }
 
+                
                 NumericPhase(Exercise);
             }
 
