@@ -1,4 +1,5 @@
 ﻿@page "/choiceAphasiaExercise/{AphasiaTypeId}"
+@page "/exercisePreview/{id:int}/{type:int}"
 @using Models.Enums
 @inject IJSRuntime JsRuntime
 @inject NavigationManager navigationManager
@@ -10,11 +11,25 @@
         </p>
         @if (exerciseNameList != null)
         {
+            int index = 0;
             foreach (var item in exerciseNameList.GetRange((PageIndex - 1) * PageElements, MaxCountPagination == PageIndex ? (int)((((float)exerciseNameList.Count() / PageElements) % 1) * PageElements) : PageElements))
             {
-                <AphasiaClientApp.Components.Cards.TaskCardModel Title="@item.Name"
+                if((Id !=0 && Type != 0))
+                {
+                    <AphasiaClientApp.Components.Cards.TaskCardModel Title="@item.Name"
                                                          ImageUrl="@item.ImageSrc"
-                                                         Url="@($"/exercises/main_panel/{item.Id}/{0}")" /> //todo Tomek idUsera po logowaniu
+                                                         Url="@($"/exercises/main_panel/exerciseView/{exIndexes[index]}")" />
+                    //todo Tomek idUsera po logowaniu
+                }
+                else
+                {
+                     <AphasiaClientApp.Components.Cards.TaskCardModel Title="@item.Name"
+                                                         ImageUrl="@item.ImageSrc"
+                                                      Url="@($"/exercises/main_panel/{item.Id}/{0}")" />
+                }
+               
+                //todo Tomek idUsera po logowaniu
+                index++;
             }
         }
     </div>

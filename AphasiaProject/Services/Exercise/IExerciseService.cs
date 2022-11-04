@@ -10,7 +10,8 @@ namespace AphasiaProject.Services.Exercise
     {
         Task<List<ResponseExerciseModel>> GetAll();
         Task<ResponseExerciseModel> GetById(int id);
-
+        Task<ResponseExerciseModel> GetByIdExercise(int id);
+        List<ExerciseNameWithUEID> GetExerciseName(int id,int type);
         public  Task<int> UpdateUserExercies(List<ExcerciseCartManagementModel> model);
         public List<UserExercisePhaseModel> GetExercisePhases(int key);
 

@@ -34,6 +34,12 @@ namespace AphasiaClientApp.Pages.Exercises
     {
         [Parameter]
         public int Id { get; set; }
+
+
+
+        [Parameter]
+        public int ExerciseId { get; set; } = 0;
+
         [Parameter]
         public int IdUser { get; set; } = 0;
         [Inject]
@@ -85,7 +91,16 @@ namespace AphasiaClientApp.Pages.Exercises
                 Exercise = JsonExtension<Exercise>.Deserialize64(exerciseResult.JsonValue);
             if (Exercise == null)
             {
-                Exercise = await dBExerciseService.GetExercise((int)Id);
+
+                if (ExerciseId != 0)
+                {
+                    Exercise = await dBExerciseService.GetExerciseByExId((int)ExerciseId);
+                }
+                else
+                {  
+                    Exercise = await dBExerciseService.GetExerciseByExId((int)ExerciseId);
+                }
+             
 
                 if (Exercise == null)
                 {

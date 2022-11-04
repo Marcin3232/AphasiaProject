@@ -34,7 +34,7 @@ namespace AphasiaClientApp.Pages.Management
 
         void RedirectToExcercisePreview()
         {
-            UriHelper.NavigateTo("/excercisePreview");
+            UriHelper.NavigateTo("/exercises/main_panel/exerciseView/"+Id);
         }
     }
 }

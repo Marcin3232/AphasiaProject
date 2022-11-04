@@ -17,6 +17,14 @@ namespace AphasiaClientApp.Pages
     {
         [Parameter]
         public string AphasiaTypeId { get; set; }
+
+
+        [Parameter]
+        public int Id { get; set; } = 0;
+
+        [Parameter]
+        public int Type { get; set; } = 0;
+
         [Inject]
         public IDbExerciseService dBExerciseService { get; set; }
         [Inject]
@@ -29,6 +37,7 @@ namespace AphasiaClientApp.Pages
         private int PageElements = 4;
         private LoadingDialogModel dialogLoad = new LoadingDialogModel();
         private List<ExerciseName> exerciseNameList;
+        private List<int> exIndexes = new List<int>();
 
         protected override async Task OnInitializedAsync()
         {
@@ -38,8 +47,30 @@ namespace AphasiaClientApp.Pages
                 await dialogLoad.Show();
                 await ChangeStyleByWidth();
 
+
+                if((Id !=0 && Type != 0))
+                {
+                    exerciseNameList = new List<ExerciseName>();
+                    var exes = await dBExerciseService.GetExerciseNameFromAphasiaTypePreview(Id, Type);
+                    exes.ForEach(x =>
+                    {
+                        ExerciseName temp = new ExerciseName();
+                        temp.Id = x.Id;
+                        temp.IdExerciseTask = x.IdExerciseTask;
+                        temp.Description = x.Description;
+                        temp.Name = x.Name;
+                        temp.ImageSrc = x.ImageSrc;
+                        exerciseNameList.Add(temp);
+                        exIndexes.Add(x.ExerciseId);
+                    });
+                }
+                else
+                {
                 if (int.TryParse(AphasiaTypeId, out int idType))
                     exerciseNameList = await dBExerciseService.GetExerciseNameFromAphasiaType(idType);
+                }
+
+              
 
                 if (exerciseNameList == null)
                 {

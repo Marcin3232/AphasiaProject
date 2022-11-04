@@ -44,6 +44,10 @@ namespace AphasiaProject.Controllers.Auth
             _userActionService = userActionService;
         }
 
+
+
+
+
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> UserRegister(AppRegisterRequestViewModel model)

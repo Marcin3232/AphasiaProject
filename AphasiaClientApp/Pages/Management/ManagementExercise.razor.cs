@@ -2,6 +2,7 @@
 using AphasiaClientApp.Models.Management;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -41,14 +42,21 @@ namespace AphasiaClientApp.Pages.Management
         public void RedirectMoto()
         {
             UriHelper.NavigateTo("/management/" + PatientId + "/management_exercise/"+1,true);
+            AphasiaType= "1";
         }
         public void RedirectSenso()
         {
             UriHelper.NavigateTo("/management/" + PatientId + "/management_exercise/" + 2, true);
+            AphasiaType= "2";
         }
         public void RedirectMix()
         {
             UriHelper.NavigateTo("/management/" + PatientId + "/management_exercise/" + 3, true);
+            AphasiaType = "3";
+        }
+        public void RedirectExercises() { 
+         
+            UriHelper.NavigateTo("/exercisePreview/"+PatientId+"/"+Int16.Parse(AphasiaType));
         }
     }
 }

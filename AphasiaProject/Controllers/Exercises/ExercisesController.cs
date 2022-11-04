@@ -66,6 +66,36 @@ namespace AphasiaProject.Controllers.Exercises
             }
         }
 
+        [HttpGet("preview/{id}")]
+        public async Task<ActionResult> GetExerciseByEx(int id)
+        {
+            try
+            {
+                var result = _exerciseService.GetByIdExercise(id).Result;
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
+        }
+
+
+        [HttpGet("preview/list/{id}/{type}")]
+        public async Task<ActionResult> GetExercisesForPreview(int id,int type)
+        {
+            try
+            {
+                var result = _exerciseService.GetExerciseName(id,type);
+                return result == null ? NotFound() : Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return Problem(ex.ToString());
+            }
+        }
 
 
 

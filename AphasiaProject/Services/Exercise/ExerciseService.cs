@@ -48,6 +48,44 @@ namespace AphasiaProject.Services.Exercise
             return CreateExercise(information, phase, resource);
         }
 
+        public async Task<ResponseExerciseModel> GetByIdExercise(int id)
+        {
+            var information = GetExerciseInformationTest(id);
+
+            if (information == null)
+                return null;
+
+            var phase = GetExercisePhaseTest(id);
+
+            if (!phase.Any())
+                return null;
+
+            var resource = GetExerciseResource(information.ExerciseTaskId);
+
+            if (resource == null)
+                return null;
+
+            return CreateExercise(information, phase, resource);
+        }
+
+
+
+
+        private List<ResponseExercisePhase> GetExercisePhaseTest(int id)
+        {
+            var query = $"{ExerciseQuery.QuerySelectPhaseExerciseResponseExercise()} WHERE ue.\"Id\" = @{nameof(SingleValue<int>.Value)} and upe.\"IsActive\" is true;";
+            return Task.FromResult(_repository.Get<ResponseExercisePhase>(query, new SingleValue<int>() { Value = id })).Result;
+        }
+
+
+        private ResponseExerciseInformation GetExerciseInformationTest(int id)
+        {
+            var query = $"{ExerciseQuery.QuerySelectExerciseInformationResponseExercise()} WHERE ue.\"Id\" = @{nameof(SingleValue<int>.Value)};";
+            return Task.FromResult(_repository.Get<ResponseExerciseInformation>(query, new SingleValue<int>() { Value = id })).Result.FirstOrDefault();
+        }
+
+
+
         private List<ResponseExercisePhase> GetExercisePhase(int id)
         {
             var query = $"{ExerciseQuery.QuerySelectPhaseExerciseResponse()} WHERE ep.\"ExerciseId\" = @{nameof(SingleValue<int>.Value)} and ep.\"IsActive\" is true;";
@@ -83,5 +121,10 @@ namespace AphasiaProject.Services.Exercise
         {
             return await _repository.ExecuteAsync(ExerciseQuery.UserPhaseUpdate(), model);
         }
+
+        public List<ExerciseNameWithUEID> GetExerciseName(int id, int type) =>
+            Task.FromResult(_repository.Get<ExerciseNameWithUEID>(
+            ExerciseQuery.QuerySelectExNames(), new { Key = id ,Key2 = type})).Result;
+        
     }
 }
