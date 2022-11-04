@@ -1,0 +1,20 @@
+﻿@page "/exerciseresults/{id}"
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Charts
+
+<div >
+<div style="text-align:center;margin-top:150px">
+    <h1>Uśrednione Wyniki Ćwiczenia</h1>
+        <SfChart>
+    <ChartPrimaryXAxis Title="Ćwiczenie" ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+    <ChartPrimaryYAxis Title="Czas" >
+	</ChartPrimaryYAxis>	
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@PersonalResults" XName="Data" YName="Czas" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+</div>
+
+
+</div>

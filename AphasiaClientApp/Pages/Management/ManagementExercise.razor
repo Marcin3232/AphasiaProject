@@ -21,7 +21,7 @@
                     <ImageButtonModel Tip="Odśwież" TypeImage=NaviTypeImage.Refresh Id="refresh" />
                     <ImageButtonModel Tip="Wyłącz wszystkie zestawy ćwiczeń" ImageButtonType=ImageButtonTypes.ButtonFrame SetClickType="Check"  TypeImage=NaviTypeImage.CheckedBox />
                     <ImageButtonModel Tip="Włącz wszystkie zestawy ćwiczeń" ImageButtonType=ImageButtonTypes.ButtonFrame SetClickType="Uncheck" TypeImage=NaviTypeImage.UncheckedBox />
-                    <ImageButtonModel Tip="Zobacz Wyniki" TypeImage=NaviTypeImage.ChartBar />
+                    <ImageButtonModel Tip="Zobacz Wyniki" ButtonCallback="RedirectResults" TypeImage=NaviTypeImage.ChartBar />
                     <ImageButtonModel Tip="Afazja Motoryczna" ButtonCallback="RedirectMoto" id="Moto" TypeImage=NaviTypeImage.HeadMoto />
                     <ImageButtonModel Tip="Afazja Sensoryczna" ButtonCallback="RedirectSenso" Id="Senso" TypeImage=NaviTypeImage.HeadSenso />
                     <ImageButtonModel Tip="Afazja Mieszana" ButtonCallback="RedirectMix" Id="Mix" TypeImage=NaviTypeImage.HeadMix /></div>
@@ -42,16 +42,17 @@
             {
                         string url = patientExerciseModel[i].ImageSrc + ".svg";
                         bool isActive = patientExerciseModel[i].IsActive;
-
+                        Random r = new Random();
+                        
                         if (isActive == true)
                         {
                             <ManagementCardExercise Style="background:#d3d3d3;" UserExId=patientExerciseModel[i].Id Disabled="@isActive.ToString()"  
-                         Order="i+1" ExName="@patientExerciseModel[i].Name" ImageUrl="@url" Mark="1"/>
+                         Order="i+1" ExName="@patientExerciseModel[i].Name" ImageUrl="@url" Mark="r.Next(2,6)"/>
                         }
                         if (isActive == false)
                         {
                             <ManagementCardExercise Style="background:white;" UserExId=patientExerciseModel[i].Id Disabled="@isActive.ToString()"  
-                         Order="i+1" ExName="@patientExerciseModel[i].Name" ImageUrl="@url" Mark="1"/>
+                         Order="i+1" ExName="@patientExerciseModel[i].Name" ImageUrl="@url" Mark="r.Next(2,6)"/>
                         }
                       
             }

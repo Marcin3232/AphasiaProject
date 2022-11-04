@@ -18,6 +18,7 @@ namespace AphasiaClientApp.Pages.Management
 
         [Parameter]
         public string Id { get; set; }
+        public string IdUser { get; set; }
         public int index { get; set; }  
         protected override async Task<Task> OnInitializedAsync()
         {
@@ -29,7 +30,7 @@ namespace AphasiaClientApp.Pages.Management
 
         void RedirectToResults()
         {
-            UriHelper.NavigateTo("/results");
+            UriHelper.NavigateTo("/exerciseresults/"+Id);
         }
 
         void RedirectToExcercisePreview()

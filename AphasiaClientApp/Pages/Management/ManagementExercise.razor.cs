@@ -38,7 +38,10 @@ namespace AphasiaClientApp.Pages.Management
             await base.OnAfterRenderAsync(firstRender);
         }
 
-
+        public void RedirectResults()
+        {
+            UriHelper.NavigateTo("/results");
+        }
         public void RedirectMoto()
         {
             UriHelper.NavigateTo("/management/" + PatientId + "/management_exercise/"+1,true);
