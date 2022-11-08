@@ -33,3 +33,8 @@ W głównym katalogu powinnien się zatem znaleść folder node_modules oraz pli
   "license": "ISC"
 }
 ```
+###
+Istnieje możliwość zawieszenia się skryptów strony internetowej. Zaleca się wtedy wciśnięcie kompinacji klawiszy
+```
+Shift + F5
+```
