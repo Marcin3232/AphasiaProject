@@ -9,6 +9,10 @@ npm init -y
 ```
 npm install sass --save-dev
 ```
+### instalacja bibliotek
+```
+npm install
+```
 
 W głównym katalogu powinnien się zatem znaleść folder node_modules oraz plik 'package.json'
 ```
