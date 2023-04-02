@@ -1,4 +1,9 @@
 # AphasiaProject
+## Prezentacja
+
+
+https://user-images.githubusercontent.com/58747227/229345921-a9f75954-f042-4413-b2d4-ee1207946402.mp4
+
 
 ## Uruchamianie client app
 ### kompilator scss
